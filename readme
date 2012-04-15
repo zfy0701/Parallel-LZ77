@@ -1,0 +1,9 @@
+rmq speed is acceptable compare  to the one of Junlian
+(build in 8 is slow)
+
+my prefix sum is too inefficient, so currently I wrapped the one with Junlian's
+
+all nearest smaller value get 0.35 => 0.2, currently I don't worry
+
+
+
