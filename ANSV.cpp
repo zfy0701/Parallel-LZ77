@@ -56,7 +56,7 @@ inline int getRight(int **table, int depth, int n, int index) {
 	return cur;
 }
 
-void ANSV(int * a, int n, int *left, int *right, int **table) {
+void ComputeANSV(int * a, int n, int *left, int *right, int **table) {
 	int depth = getDepth(n);
 
 	#pragma omp parallel for 
@@ -79,10 +79,16 @@ void ANSV(int * a, int n, int *left, int *right, int **table) {
 		
 		m = (m + 1) / 2;
 	}	
-	
-	#pragma omp parallel for// schedule(dynamic, BSIZE)  //check here!
+ 
+	#pragma omp parallel for
 	for(int i = 0; i < n; i++) {
 		left[i] = getLeft(table, depth, n, i);
 		right[i] = getRight(table, depth, n, i);
   }
+  
+  #pragma omp parallel for
+	for(int i = 0; i < n; i++) {
+//		right[i] = getRight(table, depth, n, i);
+  }
+  //mydealloc(n*2);
 }

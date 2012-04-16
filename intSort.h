@@ -219,11 +219,6 @@ namespace intSort {
 
 typedef unsigned int uint;
 
-static void integerSort(int *A, int n) {
-  long maxV = sequence::reduce(A,n,utils::maxF<uint>());
-  intSort::iSort(A, NULL, n, maxV,  utils::identityF<uint>());
-}
-
 static void integerSort(uint *A, int n) {
   long maxV = sequence::reduce(A,n,utils::maxF<uint>());
   intSort::iSort(A, NULL, n, maxV,  utils::identityF<uint>());

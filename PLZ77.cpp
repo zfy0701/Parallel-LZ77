@@ -13,22 +13,10 @@
 #include "utils.h"
 #include "Base.h"
 
+#include "ansv2.h"
 //using namespace std;
 
-
 ///////////////////////////////////////////////
-int mymem[1 << 28];
-int bm = 0;
-
-inline int * myalloc(int n) {
-	int i = bm;
-	bm += n;
-	return mymem + i;
-}
-
-inline void mydealloc(int n) {
-	bm -= n;
-}
 
 double stamp;
 
@@ -69,7 +57,7 @@ void getLPF(int *sa, int n, int *lcp, int *lpf) {
 		table[i] = myalloc(n);
 
 	start();
-	ANSV(sa, n, l, r, table);
+	ComputeANSV(sa, n, l, r, table);
 
 	report("ansn");
 	
@@ -108,9 +96,9 @@ void getLPF(int *sa, int n, int *lcp, int *lpf) {
 
 //some optimization require n >= 8
 int getLZ(int *lpf, int n, int *lz) {
-	int l2 = fflog2(n);
-	int depth = l2 + 2;
-	int nn = 1 << (depth - 1);
+	int l2 = cflog2(n);
+	int depth = l2 + 1;
+	int nn = 1 << l2;
 	
 	//printf("%d %d %d\n", nn, n, depth);
 	
@@ -124,23 +112,6 @@ int getLZ(int *lpf, int n, int *lz) {
 	}
 	report("prepare"); //combine performance would be better due to cache miss
 	
-	//for (int i = 0; i <= n; i++) printf("%2d ", next[i]);printf("\n");
-	//for (int i = 0; i <= n; i++) printf("%2d ", flag[i]);printf("\n");
-
-/* 
-	int dist = 1;
-	for (int d = 0; d < depth; d++) {
-		#pragma omp parallel for
-		for(int i = 0; i < n - dist; i++) {
-			int j = next[i];
-			if (flag[i] == 1 && flag[j] == 0) flag[j] = 1;			
-			 next2[i] = next[j];
-		}
-		std::swap(next, next2);
-		dist <<= 1;
-	}
- */
-
 	int sn = (n + l2 - 1) / l2;
 	
 	int * next = lz, *next2 = lz + sn + 1;
@@ -205,21 +176,44 @@ int getLZ(int *lpf, int n, int *lz) {
 
 void checkANSV(int d) {
 	int n = 1 << d;
-	int *a = new int[n], *ql = new int[n], *qr = new int[n];
-	int **table = new int*[d+1];
-		for (int i = 0; i < d+1; i++) table[i] = new int[n];
+	int *a = new int[n];
+	
+
 	for ( int i = 0; i < n; i++)
 		a[i] = min(rand() % n, n-1-i);
 		
-		start();
-	ANSV(a, n, ql, qr, table);
-	report("ansv");
+	start();
+		int *ql = new int[n], *qr = new int[n];
+	int **table = new int*[d+1];
+		for (int i = 0; i < d+1; i++) table[i] = new int[n];
+		
+	ComputeANSV(a, n, ql, qr, table);
+
+	report("ansv");	
 	
+	ANSV an(a, n);
+	report("ansv2");
+	sequence::scan(a, a, n, utils::addF<int>(),0);
+	report("prefix sum");
+
+	int *l = an.getLeftNeighbors();
+	int *r = an.getRightNeighbors();
+	int i;
+	for (i = 0; i < n; i++) {
+		if (l[i] != ql[i]) {printf("l: %d %d %d\n", i, l[i], ql[i]);break;}
+		if (r[i] != qr[i]) {printf("l: %d %d %d\n", i, r[i], qr[i]);break;}
+	}
+	if (i == n) printf("pass\n");
+	
+	printf("\n");
+		
 	for (int i = 0; i < d+1; i++) delete table[i];
 	delete table;
-	delete a;
+	
 	delete ql;
 	delete qr;
+	
+	delete a;
 }
 
 void checkLZ(int d) {
@@ -370,7 +364,7 @@ void checkSimple( int d) {
 		}
 	}
 	report("par2");
-		
+	
 	start();
 	for (int i = 0; i < n; i++) {
 		a[i % 128] = cal(i);
@@ -420,6 +414,10 @@ int main(int argc, char *argv[]) {
 	//checkLZ(d);
 	checkANSV(d);
 	//checkCorrect();
+	
+//	for (int i = 0; i < 17; i++) 
+//		printf("%d %d\n", (int)log2(i), fflog2(i)); 
+
 	
 	return 0;
 }

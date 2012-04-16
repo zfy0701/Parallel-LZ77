@@ -2,7 +2,7 @@
 CC=g++
 CFLAGS=-O3 -fopenmp
 
-all: plz77
+all: plz77 ansv2
 
 .PHONY: clean
 
@@ -19,10 +19,19 @@ PrefixSum.o: PrefixSum.cpp PrefixSum.h
 	$(CC) $(CFLAGS) -c PrefixSum.cpp
 	
 PLZ77.o: PLZ77.cpp
-	$(CC) $(CFLAGS) -c PLZ77.cpp
+	$(CC) $(CFLAGS)  -c PLZ77.cpp
 	
 rangeMin.o: rangeMin.cpp rangeMin.h
 	$(CC) $(CFLAGS) -c rangeMin.cpp
 
-plz77: PLZ77.o ANSV.o RMQ.o PrefixSum.o rangeMin.o
-	$(CC) $(CFLAGS) -o $@ PLZ77.o ANSV.o RMQ.o PrefixSum.o rangeMin.o
+ansv2.o: ansv2.cpp ansv2.h
+	$(CC) $(CFLAGS) -c ansv2.cpp
+	
+ansvTest.o: ansvTest.cpp 
+	$(CC) $(CFLAGS) -c ansvTest.cpp
+	
+ansv2: ansvTest.o ansv2.o
+	$(CC) $(CFLAGS) -o $@ ansvTest.o ansv2.o
+	
+plz77: PLZ77.o ANSV.o RMQ.o PrefixSum.o rangeMin.o ansv2.o
+	$(CC) $(CFLAGS) -o $@ PLZ77.o ANSV.o RMQ.o PrefixSum.o rangeMin.o ansv2.o

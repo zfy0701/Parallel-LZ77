@@ -22,6 +22,8 @@ void buildRMQ(int *a, int n, int **table) {
 	//int tot = 0;
 	
 	int depth = getDepth(n);
+	
+	printf("%d %d\n", n, depth);
 
 	#pragma omp parallel for 
 	for(int i = 0; i < n; i++) {
