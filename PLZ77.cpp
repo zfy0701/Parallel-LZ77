@@ -7,9 +7,11 @@
 #include "RMQ.h"
 #include "PrefixSum.h"
 #include "rangeMin.h"
-#include "Base.h"
+
 #include "sequence.h"
+#include "intSort.h"
 #include "utils.h"
+#include "Base.h"
 
 //using namespace std;
 
@@ -104,34 +106,26 @@ void getLPF(int *sa, int n, int *lcp, int *lpf) {
 	mydealloc(n*d+d);
 }
 
+//some optimization require n >= 8
 int getLZ(int *lpf, int n, int *lz) {
-	int depth = getDepth(n);
+	int l2 = fflog2(n);
+	int depth = l2 + 2;
 	int nn = 1 << (depth - 1);
 	
 	//printf("%d %d %d\n", nn, n, depth);
 	
-	int *next = lz; //TODO BE CAUTIOUS ! adjust the memory alloc so less cache miss
 	int *flag = myalloc(max(nn, n + 1));
-	
 //	report("alloc");
 	
 	#pragma omp parallel for
 	for(int i = 0; i < n; i++) {
 		flag[i] = 0;
-		next[i] = min(n, i + max(lpf[i], 1));
+		lpf[i] = min(n, i + max(lpf[i], 1));
 	}
 	report("prepare"); //combine performance would be better due to cache miss
 	
-	int * next2 = lpf;
-	flag[n] = 0; next[n] = next2[n] = n;
-	
-	flag[0] = 1;
-	
 	//for (int i = 0; i <= n; i++) printf("%2d ", next[i]);printf("\n");
 	//for (int i = 0; i <= n; i++) printf("%2d ", flag[i]);printf("\n");
-	
-	//following version is not cache efficient!!
-
 
 /* 
 	int dist = 1;
@@ -145,35 +139,44 @@ int getLZ(int *lpf, int n, int *lz) {
 		std::swap(next, next2);
 		dist <<= 1;
 	}
-
  */
 
-	int sn = n ;// / flog2(n) + 1;
+	int sn = (n + l2 - 1) / l2;
 	
-	//int * sample = 
- 	
+	int * next = lz, *next2 = lz + sn + 1;
+	int * sflag = myalloc(sn);
+	
+	next[sn] = next2[sn] = sn; 
+	
+	//build the sub tree
  	#pragma omp parallel for
- 	for (int i = 1; i < sn; i++) {
- 	}
-
-
-/* 
-	for (int d = 0; flag[n] == 0; d++) {
-		int p = omp_get_num_threads();
-		int nn = n - dist;
-		int work = (nn + p - 1)  / p;
-		
-		#pragma omp parallel
-		{
-			int tid = omp_get_thread_num();
-			int low = tid + work;
-			int high 
+ 	for (int i = 0; i < sn; i ++) {
+		int j;
+		for(j = lpf[i*l2]; j % l2 && j != n; j = lpf[j]) ;
+		if (j == n) next[i] = sn;
+		else next[i] = j / l2;
+		sflag[i] = 0;
+	}
+	sflag[0] = 1;
+	
+	//point jump
+	for (int d = 0; sflag[sn] == 0; d++) {
+		#pragma omp parallel for
+		for(int i = 0; i < sn; i ++) {
+			int j = next[i];
+			if (sflag[i] == 1 && sflag[j] == 0) sflag[j] = 1;			
+			next2[i] = next[j];
 		}
-		
 		std::swap(next, next2);
 	}
- */
-
+	
+	//filling the result
+ 	#pragma omp parallel for
+ 	for (int i = 0; i < n; i += l2) {
+		if (sflag[i / l2]) {
+			for(int j = i; j % l2 && j !=n; j = lpf[j]) flag[j] = 1;
+		}
+	}
 
 	report("point jump");
 	
@@ -193,11 +196,10 @@ int getLZ(int *lpf, int n, int *lz) {
 		}
 	}
 	report("combine result");
-
-	mydealloc(max(nn, n + 1));
-	//mydealloc(n+1);
-	//mydealloc(n+1);
 	
+	mydealloc(sn); //sflag
+	mydealloc(max(nn, n + 1));
+
 	return m;
 }
 
@@ -414,9 +416,9 @@ int main(int argc, char *argv[]) {
 //	printf("%d %d\n", p, d); 
 	//checkSimple(p,d);
 	//checkScan(p, d);
-	checkRMQ( d);
+	//checkRMQ( d);
 	//checkLZ(d);
-	//checkANSV(d);
+	checkANSV(d);
 	//checkCorrect();
 	
 	return 0;
