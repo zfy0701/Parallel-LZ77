@@ -730,9 +730,9 @@ int main(int argc, char *argv[]) {
     //checkRMQ(d);
     //checkLZ(d);
     //checkANSV(d);
-  //checkSuffix(p, d);
+  checkSuffix(p, d);
     //checkCorrect();
-    checkAll(p, d);
+  //  checkAll(p, d);
 //  for (int i = 0; i < 17; i++) 
 //      printf("%d %d\n", (int)log2(i), fflog2(i)); 
 

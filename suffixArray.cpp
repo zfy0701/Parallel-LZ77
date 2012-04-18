@@ -121,10 +121,13 @@ pair<int*,int*> suffixArrayRec(int* s, int n, int K, bool findLCPs) {
       name12[i] = 1;
     else name12[i] = 0;
   }
+  nextTime("sort sample");
+
   name12[0] = 1;
   sequence::scanI(name12,name12,n12,utils::addF<int>(),0);
   int names = name12[n12-1];
-  
+ nextTime("inclusive scan");
+
   pair<int*,int*> SA12_LCP;
   int* SA12;
   int* LCP12 = NULL;
@@ -145,6 +148,7 @@ pair<int*,int*> suffixArrayRec(int* s, int n, int K, bool findLCPs) {
     SA12 = SA12_LCP.first;
     LCP12 = SA12_LCP.second;
     free(s12);
+    //nextTime("recursive call");
 
     // restore proper indices into original array
     cilk_for (int i = 0;  i < n12;  i++) {
@@ -172,6 +176,8 @@ pair<int*,int*> suffixArrayRec(int* s, int n, int K, bool findLCPs) {
   // uses the fact that we already have the tails sorted in SA12
   int* s0  = newA(int,n0);
   int x = sequence::filter(SA12,s0,n12,mod3is1());
+   nextTime("filter");
+
   pair<int,int> *D = (pair<int,int> *) malloc(n0*sizeof(pair<int,int>));
   D[0].first = s[n-1]; D[0].second = n-1;
   cilk_for (int i=0; i < x; i++) {
@@ -185,9 +191,12 @@ pair<int*,int*> suffixArrayRec(int* s, int n, int K, bool findLCPs) {
   compS comp(s,rank);
   int o = (n%3 == 1) ? 1 : 0;
   int *SA = newA(int,n); 
+  nextTime("sort 2");
+
   merge(SA0+o,n0-o,SA12+1-o,n12+o-1,SA,comp);
   free(SA0); free(SA12);
   int* LCP = NULL;
+   nextTime("merge");
 
   //get LCP from LCP12
   if(findLCPs){

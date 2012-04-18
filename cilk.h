@@ -20,8 +20,8 @@
 // OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#define cilk_spawn
-#define cilk_sync
+#define cilk_spawn _Pragma("omp task")
+#define cilk_sync _Pragma("omp taskwait") 
 #define cilk_for_1 _Pragma("omp parallel for schedule (static,1)") for
 #define cilk_for _Pragma("omp parallel for") for
 #define cilk_main main
