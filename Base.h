@@ -2,20 +2,7 @@
 #define _BASE_H_
 
 #include <math.h>
-
-static int mymem[1 << 28];
-static int bm = 0;
-
-inline int * myalloc(int n) {
-	int i = bm;
-	bm += n;
-	return mymem + i;
-}
-
-inline void mydealloc(int n) {
-	bm -= n;
-}
-
+#include <stdio.h>
 
 const int BSIZE = 16;
 
@@ -26,6 +13,9 @@ inline int getDepth(int i) {
   return a+1;
 }
 
+static int mylog2[1<<16];
+
+
 inline int fflog2(int i) {
 	int res = -1;
 	if (i >> 16) {
@@ -33,9 +23,20 @@ inline int fflog2(int i) {
 		i >>= 16;
 	} else i &= 0xffff;
 	
+	if (i >> 8) {
+		res += 8;
+		i >>= 8;
+	} else i &= 0xff;
+		
+	if (i >> 4) {
+		res += 4;
+		i >>= 4;
+	} else i &= 0xf;
+	
 	for (; i; i >>= 1) res++;
 	return res;
 }
+
 
 inline int cflog2(int i) {
 	int res = 0;

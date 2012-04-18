@@ -1,6 +1,4 @@
 #make clean
 make
 n=23;
-./plz77 1 $n
-./plz77 2 $n
-./plz77 4 $n
+./plz77 8 $n
