@@ -196,7 +196,7 @@ pair<int*,int*> suffixArrayRec(int* s, int n, int K, bool findLCPs) {
   merge(SA0+o,n0-o,SA12+1-o,n12+o-1,SA,comp);
   free(SA0); free(SA12);
   int* LCP = NULL;
-   nextTime("merge");
+   nextTime("\t**MERGE");
 
   //get LCP from LCP12
   if(findLCPs){

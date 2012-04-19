@@ -19,12 +19,12 @@ PrefixSum.o: PrefixSum.cpp PrefixSum.h
 	$(CC) $(CFLAGS) -c PrefixSum.cpp
 	
 PLZ77.o: PLZ77.cpp
-	$(CC) $(CFLAGS)  -c PLZ77.cpp
+	$(CC) $(CFLAGS) -c PLZ77.cpp
 	
 rangeMin.o: rangeMin.cpp rangeMin.h
 	$(CC) $(CFLAGS) -c rangeMin.cpp
 
-suffixArray.o: suffixArray.cpp
+suffixArray.o: suffixArray.cpp merge.h
 	$(CC) $(CFLAGS) -c suffixArray.cpp
 
 suffixArrayTest.o: suffixArrayTest.cpp

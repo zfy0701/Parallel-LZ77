@@ -99,6 +99,8 @@ int getLZ(int *lpf, int n, int *lz) {
 
     //for (int i = 0; i < n; i++) printf("%2d ", lpf[i]);printf("\n");
 
+
+    l2 = max(l2, 256);
     int sn = (n + l2 - 1) / l2;
     
     int * next = myalloc(sn+1), *next2 = myalloc(sn+1);
@@ -501,7 +503,7 @@ void checkSuffix(int p, int d) {
     int *a = new int[n+3];
     int i;  
     for ( i = 0; i < n; i++) 
-        a[i] = rand() % 4 + 1;
+        a[i] = rand() % n + 1;
     a[n] = a[n+1] = a[n+2] = 0;
 
     int *SA = new int[n];
@@ -722,6 +724,7 @@ int main(int argc, char *argv[]) {
         if (i == 2) d = atoi(argv[i]);
     }
     omp_set_num_threads(p);
+  //  omp_set_nested(true);
 //    initlog2();
 
 //  printf("%d %d\n", p, d); 
@@ -730,9 +733,9 @@ int main(int argc, char *argv[]) {
     //checkRMQ(d);
     //checkLZ(d);
     //checkANSV(d);
-  checkSuffix(p, d);
+ // checkSuffix(p, d);
     //checkCorrect();
-  //  checkAll(p, d);
+    checkAll(p, d);
 //  for (int i = 0; i < 17; i++) 
 //      printf("%d %d\n", (int)log2(i), fflog2(i)); 
 
