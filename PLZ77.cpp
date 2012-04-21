@@ -12,27 +12,11 @@
 #include "intSort.h"
 #include "utils.h"
 #include "Base.h"
+#include "mysort.h"
+#include "merge.h"
 
 #include "ansv2.h"
 //using namespace std;
-
-
-static int mymem[1 << 28];
-static int bm = 0;
-
-inline int * myalloc(int n) {
-    int i = bm;
-    bm += n;
-    if (i+n > (1<<28)) {
-        printf("overflow\n");
-    }
-    return mymem + i;
-}
-
-inline void mydealloc(int n) {
-    bm -= n;
-}
-
 
 ///////////////////////////////////////////////
 
@@ -45,35 +29,39 @@ inline int getLCP(int **table, int l, int r) {
 
 void getLPF(int *sa, int n, int *lcp, int *lpf) {
     int d = getDepth(n);
-    int *l = myalloc(n), *r = myalloc(n);
-    int ** table = (int **)myalloc(d*sizeof(int*)/sizeof(int));
-    
-    //#pragma omp parallel for
-    for (int i = 0; i < d; i++) 
-        table[i] = myalloc(n);
+    int *l = new int[n], *r = new int[n];
 
-    ComputeANSV(sa, n, l, r, table);
+    ComputeANSV(sa, n, l, r);
     nextTime("ansn");
 
-    buildRMQ(lcp, n, table);
+    // int *table[32];
+  //  for (int i = 0; i < d; i++) table[i] = new int[n];
+  //  buildRMQ(lcp, n, table);
+    myRMQ rmq(lcp, n);
+    //rmq.precomputeQueries();
+
     nextTime("rmq");
     
     #pragma omp parallel for
     for(int i = 0; i < n; i++) {
         int llcp = 0, rlcp = 0;
-        if (l[i] != -1) 
-            llcp = getLCP(table, l[i], i);
-        if (r[i] != -1)
-            rlcp = getLCP(table, i, r[i]);
-            
+        if (l[i] != -1) {
+            //llcp = getLCP(table, l[i], i);
+            llcp = lcp[rmq.query(l[i]+1, i)];
+        }
+        if (r[i] != -1) {
+            //rlcp = getLCP(table, i, r[i]);
+            rlcp = lcp[rmq.query(i+1, r[i])];
+        }
+
         lpf[sa[i]] = max(llcp, rlcp);
     }
     nextTime("lpf");
-  
-    mydealloc(n);
-    mydealloc(n);
-    mydealloc(d*sizeof(int*)/sizeof(int));
-    mydealloc(n*d);
+    
+    delete l; delete r;
+
+    // for (int i = 0; i < d; i++) 
+    //      delete table[i] ;
 }
 
 //some optimization require n >= 8
@@ -85,7 +73,7 @@ int getLZ(int *lpf, int n, int *lz) {
     //printf("%d %d %d\n", nn, n, depth);
     
     //printf("mem base %d\n", bm);
-    int *flag = myalloc(n);
+    int *flag = new int[n+1];
     //int *flag = new int[(max(nn, n + 1))];
 
     //nextTime("alloc");
@@ -94,17 +82,17 @@ int getLZ(int *lpf, int n, int *lz) {
         flag[i] = 0;
         lpf[i] = min(n, i + max(lpf[i], 1));
     }
+    flag[n] = 0;
     
     nextTime("prepare"); //combine performance would be better due to cache miss
 
     //for (int i = 0; i < n; i++) printf("%2d ", lpf[i]);printf("\n");
 
-
     l2 = max(l2, 256);
     int sn = (n + l2 - 1) / l2;
     
-    int * next = myalloc(sn+1), *next2 = myalloc(sn+1);
-    int * sflag = myalloc(sn+1), *sflag2 = myalloc(sn+1);
+    int * next = new int[sn+1], *next2 = new int[sn+1];
+    int * sflag = new int[sn+1];
     
 
     //build the sub tree
@@ -127,10 +115,8 @@ int getLZ(int *lpf, int n, int *lz) {
         for(int i = 0; i < sn; i ++) {
             int j = next[i];
             if (sflag[i] == 1) {
-                // #pragma omp flush(flag)
                 sflag[j] = 1;
                 //printf("%d ", j);
-               //  #pragma omp flush(flag)
                //sflag2[j] = 1;
                //sflag2[i] = 1;
             } 
@@ -163,14 +149,14 @@ int getLZ(int *lpf, int n, int *lz) {
     //for (int i = 0; i <= sn; i++) printf("%2d ", sflag[i]);printf("\n");
     
     //exclusiveScan(flag, nn);
-    sequence::scan(flag, flag, n, utils::addF<int>(),0);
+    sequence::scan(flag, flag, n+1, utils::addF<int>(),0);
 
     //for (int i = 0; i < n; i++) printf("%2d ", flag[i]);printf("\n");
 
     nextTime("prefix sum");
     //for (int i = 0; i <= n; i++) printf("%2d ", flag[i]);printf("\n");
     
-    int m = flag[n-1];
+    int m = flag[n];
     //lz = new int[m];
        
     #pragma omp parallel for
@@ -181,9 +167,7 @@ int getLZ(int *lpf, int n, int *lz) {
     }
     //nextTime("combine result"); //check a bit about out of boundary
     
-    mydealloc(4*(sn+1)); //sflag, next, next2
-    
-    mydealloc(n);
+    delete flag; delete sflag; delete next; delete next2;
 
     return m;
 }
@@ -232,10 +216,10 @@ void checkANSV(int d) {
         
     startTime();
         int *ql = new int[n], *qr = new int[n];
-    int **table = new int*[d+1];
-        for (int i = 0; i < d+1; i++) table[i] = new int[n];
+    //int **table = new int*[d+1];
+     //   for (int i = 0; i < d+1; i++) table[i] = new int[n];
         
-    ComputeANSV(a, n, ql, qr, table);
+    ComputeANSV(a, n, ql, qr);
 
     nextTime("ansv");   
     
@@ -255,8 +239,8 @@ void checkANSV(int d) {
     
     printf("\n");
         
-    for (int i = 0; i < d+1; i++) delete table[i];
-    delete table;
+    //for (int i = 0; i < d+1; i++) delete table[i];
+    //delete table;
     
     delete ql;
     delete qr;
@@ -445,9 +429,9 @@ void checkAll(int np, int d) {
     reportTime("seq total time");
 
     for (int p = 1; p <= np; p *= 2) {
-        printf("\nNum of procs %d\n", p);
-    //nextTime("lz seq");
         omp_set_num_threads(p);
+
+        printf("\nNum of procs %d %d\n", p, omp_get_max_threads());
 
         startTime();
         
@@ -714,6 +698,7 @@ void checkCorrect() {
     printf("st:  0  1  2  3  4  7 10 12\n");
 
 }
+int a [10000000] = {8, 15, 21, 54, 64, 75, 88, 91, 12, 22, 47, 50, 54, 65, 66, 72, 0, 66, 67, 70, 82, 83, 98, 99};
 
 int main(int argc, char *argv[]) {
 
@@ -724,7 +709,7 @@ int main(int argc, char *argv[]) {
         if (i == 2) d = atoi(argv[i]);
     }
     omp_set_num_threads(p);
-  //  omp_set_nested(true);
+//    omp_set_nested(true);
 //    initlog2();
 
 //  printf("%d %d\n", p, d); 
@@ -735,11 +720,17 @@ int main(int argc, char *argv[]) {
     //checkANSV(d);
  // checkSuffix(p, d);
     //checkCorrect();
-    checkAll(p, d);
+   checkAll(p, d);
 //  for (int i = 0; i < 17; i++) 
 //      printf("%d %d\n", (int)log2(i), fflog2(i)); 
 
-    
+    // int n = 24;
+    // ParallelSortRS(a, n);
+    // for (int i = 0; i < n; i++) printf("%d ", a[i]); printf("\n");
+
+    // n = 10000000;
+    // cilk_for (int i = 0; i < n; i++) a[i] = rand() % n;
+    //  ParallelSortRS(a, n);
     return 0;
 }
 

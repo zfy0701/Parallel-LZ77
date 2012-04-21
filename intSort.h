@@ -117,7 +117,7 @@ namespace intSort {
     blockTrans<E>(B, A, oB, oA, cnts).trans(blocks, m);
 
     // put the offsets for each bucket in the first bucket set of BK
-    for (int j = 0; j < m; j++) BK[0][j] = oA[j*blocks];
+    cilk_for (int j = 0; j < m; j++) BK[0][j] = oA[j*blocks];
   }
 
   // a function to extract "bits" bits starting at bit location "offset"
@@ -157,7 +157,7 @@ namespace intSort {
       int* offsets = BK[0];
       int remain = numBK - BUCKETS - 1;
       float y = remain / (float) n;
-      cilk_for (int i=0; i < BUCKETS; i++) {
+      for (int i=0; i < BUCKETS; i++) {
 	int segOffset = offsets[i];
 	int segNextOffset = (i == BUCKETS-1) ? n : offsets[i+1];
 	int segLen = segNextOffset - segOffset;

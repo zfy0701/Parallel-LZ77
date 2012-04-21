@@ -21,15 +21,19 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 #include "cilk.h"
+#include "Base.h"
+#include <queue>
+
 #define _MERGE_BSIZE 8192
 
 template <class ET, class F> 
-int binSearchOld(ET* S, int n, ET v, F f) {
+int binSearchOld(ET* S, int n, ET v) {
   if (n == 0) return 0;
   else { 
     int mid = n/2;
-    if (f(v,S[mid])) return binSearch(S, mid, v, f);
-    else return mid + 1 + binSearch(S+mid+1, (n-mid)-1, v, f);
+   // if (f(v,S[mid])) return binSearch(S, mid, v, f);
+    if (v < S[mid]) return binSearch(S, mid, v);
+    else return mid + 1 + binSearch(S+mid+1, (n-mid)-1, v);
   }
 }
 
@@ -49,7 +53,7 @@ int binSearch(ET* S, int n, ET v, F f) {
 
 
 template <class ET, class F> 
-void SeqMerge(ET* S1, int l1, ET* S2, int l2, ET* R, F f) {
+inline void SeqMerge(ET* S1, int l1, ET* S2, int l2, ET* R, F f) {
   ET* pR = R; 
   ET* pS1 = S1; 
   ET* pS2 = S2;
@@ -93,6 +97,108 @@ void ParMerge(ET* S1, int l1, ET* S2, int l2, ET* R, F f) {
   } else {
     SeqMerge(S1, l1, S2, l2, R, f);
   }
+}
+
+#define KSIZE 16
+#define HSIZE 128
+
+// template <class ET, class F> 
+// class Cmp {
+// //private:
+// public:
+//   static F f;
+
+//   bool operator () (const pair<ET, int>  & x, const pair<ET,int> & y) {
+//     return !f(x.first, y.first);
+//   }
+// };
+
+template <class ET>
+void kmerge(ET **st, ET **ed, ET *r, int k) {
+
+  int depth = getDepth(k);
+  int nthread = omp_get_max_threads();
+
+  int i;
+
+  for (i = 0; i < k; ) {
+    if (st[i] == ed[i]) {
+      st[i] = st[k-1];
+      ed[i] = ed[k-1];
+      k--;
+    } else i++;
+  }
+  if (k == 0) return;
+    
+  if (k > KSIZE) {
+    std::priority_queue<pair<ET,int>, vector<pair<ET,int> >, greater<pair<ET,int> > > pq;
+    for (i = 0; i < k; i++) pq.push( make_pair(*st[i], i) ); 
+
+    // pair<ET, int> heap[HSIZE];
+    // for (i = 0; i < k; i++) heap[i] = make_pair(*st[i], i);
+    // std::make_heap(heap, heap + k, greater<pair<ET, int> >() );
+
+    int kk = k; 
+    while (kk > KSIZE) {
+      pair<ET,int> v = pq.top(); pq.pop();
+      //pair<ET, int> v = heap[0];
+      //pop_heap (heap, heap + kk); 
+
+      *(r++) = v.first;
+      
+      if (++st[v.second] != ed[v.second]) {
+        pq.push(make_pair(*(st[v.second]), v.second)); 
+        // heap[kk-1] = make_pair(*(st[v.second]), v.second);
+        // push_heap(heap, heap + kk);
+      } else {
+        kk--;
+      }
+    }
+
+    // while (kk > 0) {
+    //   pair<ET,int> v = pq.top(); pq.pop();
+    //   *(r++) = v.first;
+    //   ++st[v.second];
+    //   kk--;
+    // }
+
+   // delete heap;
+  }
+
+  for (i = 0; i < k; ) {
+    if (st[i] == ed[i]) {
+      st[i] = st[k-1];
+      ed[i] = ed[k-1];
+      k--;
+    } else i++;
+  }
+ if (k == 0) return;
+
+
+  while (k > 2) {
+    ET min_val = *st[0];
+    int min_ind = 0;
+
+    for (i = 1; i < k; i++) { //chose the minimum by brute force
+      if (*st[i] < min_val) {
+        min_val = *st[i];
+        min_ind = i;
+      }
+    } 
+
+    st[min_ind]++;
+    if (st[min_ind] == ed[min_ind]) {
+      st[min_ind] = st[k-1];
+      ed[min_ind] = ed[k-1];
+      k--;
+    }
+    *(r++) = min_val;
+  } 
+
+  if (k == 2) {
+     std::merge(st[0], ed[0], st[1], ed[1], r);
+  } else 
+     while (st[0] != ed[0]) *(r++) = *(st[0]++);
 }
 
 template <class ET, class F> 

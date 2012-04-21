@@ -1,6 +1,6 @@
 
 CC=g++
-CFLAGS=-O -fopenmp
+CFLAGS=-O3 -fopenmp
 
 all: plz77 ansv2 sa
 
@@ -18,13 +18,13 @@ RMQ.o: RMQ.cpp RMQ.h
 PrefixSum.o: PrefixSum.cpp PrefixSum.h
 	$(CC) $(CFLAGS) -c PrefixSum.cpp
 	
-PLZ77.o: PLZ77.cpp
+PLZ77.o: PLZ77.cpp  mysort.h merge.h
 	$(CC) $(CFLAGS) -c PLZ77.cpp
-	
+
 rangeMin.o: rangeMin.cpp rangeMin.h
 	$(CC) $(CFLAGS) -c rangeMin.cpp
 
-suffixArray.o: suffixArray.cpp merge.h
+suffixArray.o: suffixArray.cpp merge.h mysort.h
 	$(CC) $(CFLAGS) -c suffixArray.cpp
 
 suffixArrayTest.o: suffixArrayTest.cpp

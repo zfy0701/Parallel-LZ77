@@ -27,6 +27,7 @@
 #include "cilk.h"
 #include "merge.h"
 #include "rangeMin.h"
+#include "mysort.h"
 using namespace std;
 
 bool isSorted(int *SA, int *s, int n);
@@ -53,6 +54,20 @@ struct compS {
       return leq(_s[i],_s12[i+1], _s[j],_s12[j+1]);
     else
       return leq(_s[i],_s[i+1],_s12[i+2], _s[j],_s[j+1],_s12[j+2]);
+  }
+};
+
+struct compQ {
+  int* _s;
+  int i;
+
+  int operator < (const compQ & b) const {
+    int j = b.i;
+    return leq(_s[i],_s[i+1],_s[i+2], _s[j],_s[j+1],_s[j+2]);
+  }
+  int operator > (const compQ & b) const {
+    int j = b.i;
+    return !leq(_s[i],_s[i+1],_s[i+2], _s[j],_s[j+1],_s[j+2]);
   }
 };
 
@@ -84,33 +99,61 @@ pair<int*,int*> suffixArrayRec(int* s, int n, int K, bool findLCPs) {
   int n0=(n+2)/3, n1=(n+1)/3, n12=n-n0;
   pair<int,int> *C = (pair<int,int> *) malloc(n12*sizeof(pair<int,int>));
 
+  int* sorted12 = newA(int,n12); 
   int bits = utils::logUp(K);
-  // if 3 chars fit into an int then just do one radix sort
+  // // if 3 chars fit into an int then just do one radix sort
   if (bits < 11) {
     cilk_for (int i=0; i < n12; i++) {
       int j = 1+(i+i+i)/2;
       C[i].first = (s[j] << 2*bits) + (s[j+1] << bits) + s[j+2];
-      C[i].second = j;}
-    radixSortPair(C, n12, 1 << 3*bits);
+      C[i].second = j;
+    }
+    //radixSortPair(C, n12, 1 << 3*bits);
+    //for (int i = 0; i < n12; i++) printf("%d ", C[i].first); printf("\n");
+    ParallelSortRS(C, n12);
+    //for (int i = 0; i < n12; i++) printf("%d ", C[i].first); printf("\n");
 
-  // otherwise do 3 radix sorts, one per char
+    // otherwise do 3 radix sorts, one per char
+    //printf("\t hi\n");
+    cilk_for (int i=0; i < n12; i++) sorted12[i] = C[i].second;
+
+    nextTime("\t ** sort 1a ");
+      
   } else {
+
+    // cilk_for (int i=0; i < n12; i++) {
+    //   int j = 1+(i+i+i)/2;
+    //   C[i].first = s[j+2]; 
+    //   C[i].second = j;}
+    // // radix sort based on 3 chars
+    // radixSortPair(C, n12, K);
+
+    // cilk_for (int i=0; i < n12; i++) C[i].first = s[C[i].second+1];
+    // radixSortPair(C, n12, K);
+
+    // cilk_for (int i=0; i < n12; i++) C[i].first = s[C[i].second];
+    // radixSortPair(C, n12, K);
+    // cilk_for (int i=0; i < n12; i++) sorted12[i] = C[i].second;
+
+    compQ * tmp = new compQ[n12];
     cilk_for (int i=0; i < n12; i++) {
       int j = 1+(i+i+i)/2;
-      C[i].first = s[j+2]; 
-      C[i].second = j;}
-    // radix sort based on 3 chars
-    radixSortPair(C, n12, K);
-    cilk_for (int i=0; i < n12; i++) C[i].first = s[C[i].second+1];
-    radixSortPair(C, n12, K);
-    cilk_for (int i=0; i < n12; i++) C[i].first = s[C[i].second];
-    radixSortPair(C, n12, K);
+      tmp[i].i = j;
+      tmp[i]._s = s;
+    }
+   //std::sort(tmp, tmp+n12);
+    ParallelSortRS(tmp, n12);
+   //pair<int *,int> *2 = (pair<int*,int> *) malloc(n12*sizeof(pair<int,int>));
+   cilk_for (int i=0; i < n12; i++) sorted12[i] = tmp[i].i;
+    free(tmp);
+    nextTime("\t ** sort 1b ");
   }
 
-  // copy sorted results into sorted12
-  int* sorted12 = newA(int,n12); 
-  cilk_for (int i=0; i < n12; i++) sorted12[i] = C[i].second;
   free(C);
+
+
+  // copy sorted results into sorted12
+  
 
   // generate names based on 3 chars
   int* name12 = newA(int,n12);
@@ -121,12 +164,12 @@ pair<int*,int*> suffixArrayRec(int* s, int n, int K, bool findLCPs) {
       name12[i] = 1;
     else name12[i] = 0;
   }
-  nextTime("sort sample");
+  
 
   name12[0] = 1;
   sequence::scanI(name12,name12,n12,utils::addF<int>(),0);
   int names = name12[n12-1];
- nextTime("inclusive scan");
+  nextTime("\t\t inclusive scan");
 
   pair<int*,int*> SA12_LCP;
   int* SA12;
@@ -143,7 +186,7 @@ pair<int*,int*> suffixArrayRec(int* s, int n, int K, bool findLCPs) {
     free(name12);  free(sorted12);
     //for (int i=0; i < n12; i++) cout << s12[i] << " : ";
     //cout << endl;
-
+     nextTime("\t \t before rec ");
     SA12_LCP = suffixArrayRec(s12, n12, names+1, findLCPs); 
     SA12 = SA12_LCP.first;
     LCP12 = SA12_LCP.second;
@@ -170,13 +213,12 @@ pair<int*,int*> suffixArrayRec(int* s, int n, int K, bool findLCPs) {
   int* rank  = newA(int,n + 2);  
   rank[n]=1; rank[n+1] = 0;
   cilk_for (int i = 0;  i < n12;  i++) {rank[SA12[i]] = i+2;}
-
   
   // stably sort the mod 0 suffixes 
   // uses the fact that we already have the tails sorted in SA12
   int* s0  = newA(int,n0);
   int x = sequence::filter(SA12,s0,n12,mod3is1());
-   nextTime("filter");
+  nextTime("\t\t filter");
 
   pair<int,int> *D = (pair<int,int> *) malloc(n0*sizeof(pair<int,int>));
   D[0].first = s[n-1]; D[0].second = n-1;
@@ -191,12 +233,13 @@ pair<int*,int*> suffixArrayRec(int* s, int n, int K, bool findLCPs) {
   compS comp(s,rank);
   int o = (n%3 == 1) ? 1 : 0;
   int *SA = newA(int,n); 
-  nextTime("sort 2");
+    // int n = 14;
+  nextTime("\t ** sort 2");
 
   merge(SA0+o,n0-o,SA12+1-o,n12+o-1,SA,comp);
   free(SA0); free(SA12);
   int* LCP = NULL;
-   nextTime("\t**MERGE");
+  nextTime("\t ** MERGE");
 
   //get LCP from LCP12
   if(findLCPs){
@@ -223,6 +266,7 @@ pair<int*,int*> suffixArrayRec(int* s, int n, int K, bool findLCPs) {
     free(LCP12);
   }
   free(rank);
+  nextTime("\t\t LCP");
   return make_pair(SA,LCP);
 }
 

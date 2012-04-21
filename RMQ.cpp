@@ -11,7 +11,6 @@ using namespace std;
 //const double ln2 = log(2.0);
 
 inline int superfflog2(int i) {
-
 	if (i >> 16) {
 		return 16 + mylog2[i>>16];
 	} else {
@@ -27,8 +26,6 @@ inline void initlog2() {
 		mylog2[i] = k;
 		//if (mylog2[i] != check(i)) printf("(%d %d) ", mylog2[i], check(i)); 
 	}
-
-
 	//for (int i = 0; i <= 0xffff; i++) printf("(%d %d) ", mylog2[i], check(i)); printf("\n");
 }
 
