@@ -5,11 +5,9 @@
 #include <algorithm>
 #include "cilk.h"
 #include "Base.h"
-//#include "merge.h"
+#include "merge.h"
 
-using namespace std;
-
-
+//using namespace std;
 
 template <class E>
 inline void Sublists(E * a, int start, int end, int * subsize, int at, E * pivots, int fp, int lp) {
@@ -40,8 +38,8 @@ void ParallelSortRS(E * a, int n) {
 		return;
 	}
 	
-	timer t;
-	t.start();
+	//timer t;
+	//t.start();
 
 	int size = (n + p - 1) / p;
 	int rsize = (size + p - 1) / (p); 
@@ -53,7 +51,7 @@ void ParallelSortRS(E * a, int n) {
 	E *b = new E[n];
 
 	
-	t.reportNext("\t\t\t prepare");
+	//t.reportNext("\t\t\t prepare");
 	//printf("para: size %d, rsize %d sample_size %d\n", size, rsize, sample_size);
 	cilk_for (int i = 0; i < p; i++) {
 		int start = i * size;
@@ -68,7 +66,7 @@ void ParallelSortRS(E * a, int n) {
 		}
 	}
 	std::sort(sample, sample + sample_size);
-	t.reportNext("\t\t\t local sort");
+	//t.reportNext("\t\t\t local sort");
 
 //	for (int i = 0; i < sample_size; i++) printf("%d ", sample[i]); printf("\n");
 
@@ -86,7 +84,7 @@ void ParallelSortRS(E * a, int n) {
 		subsize[i*(p+1)+p] = end;
 		Sublists(a, start, end - 1, subsize, i*(p+1), pivots, 1, p - 1);
 	}
-	t.reportNext("\t\t\t divide");
+	//t.reportNext("\t\t\t divide");
 
 	// for (int i = 0; i < p; i++) {
 	// 	for (int j = 0; j <= p; j++) {
@@ -107,7 +105,7 @@ void ParallelSortRS(E * a, int n) {
 
 	//eclusive scan 
 	sequence::scan(bucket, bucket, p, utils::addF<int>(),0);
-	t.reportNext("\t\t\t bucket");
+	//t.reportNext("\t\t\t bucket");
 
 	//for (int i = 0; i < p; i++) printf("%d ", bucket[i]); printf("\n");
 
@@ -127,7 +125,7 @@ void ParallelSortRS(E * a, int n) {
 		//printf("merged\n");
 		delete st; delete ed;
 	}
-	t.reportNext("\t\t\t merge");
+	//t.reportNext("\t\t\t merge");
 	
 	cilk_for (int i = 0; i < n; i++) a[i] = b[i];
 	
@@ -136,23 +134,26 @@ void ParallelSortRS(E * a, int n) {
 	delete subsize;
 	delete sample;
 	delete pivots;
-	t.reportNext("\t\t\t done");
-	t.stop();
+	//t.reportNext("\t\t\t done");
+	//t.stop();
 
 }
 
-
 template <class E, class F>
-void ParallelMergeSort(E * & a, int n, F f) {
+void ParallelMergeSort(E * o, int n, F f) {
 	E * b = new E[n];
+	E * a = new E[n]; //might be the problem, why?
 
 	int p = omp_get_max_threads();
 
 	int size = (n + p - 1) / p;
 	
 	int dep = getDepth(p);
+
+	cilk_for (int i = 0; i < n; i++) 
+		a[i] = o[i];
 	
-	cilk_for_1 (int i = 0; i < n; i+= size) {
+	cilk_for (int i = 0; i < n; i+= size) {
 		int end = min(n, i + size);
 		std::sort(a + i, a + end, f);
 	}
@@ -163,14 +164,31 @@ void ParallelMergeSort(E * & a, int n, F f) {
 		for (int i = 0; i < n; i+= dist2) {
 			int start = i;
 			int end = start + dist;
-			if (end < n)
-				ParMerge(a+start, dist, a+end, min(dist, n - end), b+start, f);
+			if (end < n) {
+				merge(a+start, dist, a+end, min(dist, n - end), b+start, f);
+				//std::merge(a+start, a+end, a+end, a+min(start+dist2, n), b+start, f);
+			} 
+			else {
+				cilk_for (int i = start; i < n; i++) {
+					b[i] = a[i];
+				}
+			}
 		}
 		dist = dist2;
 		swap(a, b);
 	}
-	delete b;
-}
 
+	// if (a == o) {
+	// 	delete b;
+	// } else {
+		cilk_for (int i = 0; i < n; i++) {
+			o[i] = a[i];
+		}
+		
+		delete a; delete b;
+	// 	}
+	// 	delete a;
+	// }
+}
 
 #endif

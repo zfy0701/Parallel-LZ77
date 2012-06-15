@@ -31,81 +31,88 @@
 #include <iostream>
 
 struct timer {
-  double totalTime;
-  double lastTime;
-  double totalWeight;
-  bool on;
-  struct timezone tzp;
-  timer() {
-    struct timezone tz = {0, 0};
-    totalTime=0.0; 
-    totalWeight=0.0;
-    on=0; tzp = tz;}
-  double getTime() {
-    timeval now;
-    gettimeofday(&now, &tzp);
-    return ((double) now.tv_sec) + ((double) now.tv_usec)/1000000.;
-  }
-  void start () {
-    on = 1;
-    lastTime = getTime();
-  } 
-  double stop () {
-    on = 0;
-    double d = (getTime()-lastTime);
-    totalTime += d;
-    return d;
-  } 
+	double totalTime;
+	double lastTime;
+	double totalWeight;
+	bool on;
+	struct timezone tzp;
+	timer() {
+		struct timezone tz = {0, 0};
+		totalTime = 0.0;
+		totalWeight = 0.0;
+		on = 0; tzp = tz;
+	}
+	double getTime() {
+		timeval now;
+		gettimeofday(&now, &tzp);
+		return ((double) now.tv_sec) + ((double) now.tv_usec) / 1000000.;
+	}
+	void start () {
+		on = 1;
+		lastTime = getTime();
+	}
+	double stop () {
+		on = 0;
+		double d = (getTime() - lastTime);
+		totalTime += d;
+		return d;
+	}
 
-  void clear () {
-    totalTime = 0;
-    totalWeight = 0;
-  } 
+	void clear () {
+		totalTime = 0;
+		totalWeight = 0;
+	}
 
-  double stop (double weight) {
-    on = 0;
-    totalWeight += weight;
-    double d = (getTime()-lastTime);
-    totalTime += weight*d;
-    return d;
-  } 
+	double stop (double weight) {
+		on = 0;
+		totalWeight += weight;
+		double d = (getTime() - lastTime);
+		totalTime += weight * d;
+		return d;
+	}
 
-  double total() {
-    if (on) return totalTime + getTime() - lastTime;
-    else return totalTime;
-  }
-  double next() {
-    if (!on) return 0.0;
-    double t = getTime();
-    double td = t - lastTime;
-    totalTime += td;
-    lastTime = t;
-    return td;
-  }
+	double total() {
+		if (on) return totalTime + getTime() - lastTime;
+		else return totalTime;
+	}
+	double next() {
+		if (!on) return 0.0;
+		double t = getTime();
+		double td = t - lastTime;
+		totalTime += td;
+		lastTime = t;
+		return td;
+	}
 
-  void reportTime(double time) {
-    std::cout << std::setprecision(3) << time << " seconds" << std::endl;
-  }
+	void reportTime(double time) {
+		std::cout << std::setprecision(3) << time << " seconds" << std::endl;
+	}
 
-  void reportStop(double weight, std::string str) {
-    std::cout << str << " :" << weight << ": ";
-    reportTime(stop(weight));
-  }
+	void reportStop(double weight, std::string str) {
+		std::cout << str << " :" << weight << ": ";
+		reportTime(stop(weight));
+	}
 
-  void reportTotal() {
-    double to = (totalWeight > 0.0) ? total()/totalWeight : total();
-    reportTime(to);
-    totalTime = 0.0;
-    totalWeight = 0.0;
-  }
+	void reportTotal() {
+		double to = (totalWeight > 0.0) ? total() / totalWeight : total();
+		reportTime(to);
+		totalTime = 0.0;
+		totalWeight = 0.0;
+	}
 
-  void reportTotal(std::string str) {
-    std::cout << str << " : "; 
-    reportTotal();}
+	void reportTotal(std::string str) {
+		std::cout << str << " : ";
+		reportTotal();
+	}
 
-  void reportNext() {reportTime(next());}
+	void reportNext() {
+		reportTime(next());
+	}
 
-  void reportNext(std::string str) {std::cout << str << " : "; reportNext();}
+	void reportNext(std::string str) {
+		std::cout << str << " : ";
+		reportNext();
+	}
 };
 
 static timer _tm;

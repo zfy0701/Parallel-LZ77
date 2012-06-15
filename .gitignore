@@ -1,3 +1,6 @@
 *.o
 plz77
 /doc/*
+*sublime*
+*.swp
+kernelCode.txt
