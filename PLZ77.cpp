@@ -1,15 +1,16 @@
 /*
  * The parallel algirthm for Lempel-ziv 77 compression
  */
+#ifdef OPENMP
+#include <omp.h>
+#endif
 
 #include <stdio.h>
 #include <iostream>
 #include <sys/time.h>
-#include <omp.h>
 
 #include "ANSV.h"
-#include "RMQ.h"
-//#include "PrefixSum.h"
+
 #include "rangeMin.h"
 
 #include "sequence.h"
@@ -25,12 +26,6 @@
 ///////////////////////////////////////////////
 pair<int*,int*> suffixArray(int* s, int n, bool findLCPs);
 
-inline int getLCP(int **table, int l, int r) {
-    //actually need following to ensure correctness all the time
-    //if (l + 1 == r) return lcp[r];
-    //if (l == r) return n - l;
-    return queryRMQ(table, l + 1,  r);
-}
 
 void getLPF(int *sa, int n, int *lcp, int *lpf) {
     int d = getDepth(n);
@@ -39,9 +34,7 @@ void getLPF(int *sa, int n, int *lcp, int *lpf) {
     ComputeANSV(sa, n, l, r);
     //nextTime("ansn");
 
-    // int *table[32];
-  //  for (int i = 0; i < d; i++) table[i] = new int[n];
-  //  buildRMQ(lcp, n, table);
+  
     myRMQ rmq(lcp, n);
     //rmq.precomputeQueries();
 
@@ -50,11 +43,9 @@ void getLPF(int *sa, int n, int *lcp, int *lpf) {
     cilk_for (int i = 0; i < n; i++) {
         int llcp = 0, rlcp = 0;
         if (l[i] != -1) {
-            //llcp = getLCP(table, l[i], i);
             llcp = lcp[rmq.query(l[i]+1, i)];
         }
         if (r[i] != -1) {
-            //rlcp = getLCP(table, i, r[i]);
             rlcp = lcp[rmq.query(i+1, r[i])];
         }
 

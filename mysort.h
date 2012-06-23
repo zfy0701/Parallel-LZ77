@@ -1,3 +1,5 @@
+#ifdef OPENMP
+
 #ifndef _MYSORT_H
 #define _MYSORT_H
 
@@ -191,4 +193,5 @@ void ParallelMergeSort(E * o, int n, F f) {
 	// }
 }
 
+#endif
 #endif
