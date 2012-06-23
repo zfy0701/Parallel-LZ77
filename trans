@@ -1,0 +1,5 @@
+make
+
+scp *.cpp *.h run blacklight.psc.teragrid.org:~/PLZ77
+
+ssh blacklight.psc.teragrid.org 'cd ~/PLZ77; make; sh run'
