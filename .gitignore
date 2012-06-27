@@ -1,4 +1,6 @@
 *.o
+*.pdf
+*.ps
 plz77
 /doc/*
 *sublime*
