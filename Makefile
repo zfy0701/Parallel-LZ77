@@ -14,7 +14,8 @@ PCC = icpc
 CFLAGS = -O2 -DCILKP
 
 else 
-PCC = $(CC)
+PCC = /usr/bin/g++
+CFLAGS = -fopenmp -O2 -DOPENMP
 endif
 
 

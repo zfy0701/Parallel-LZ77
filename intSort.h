@@ -98,7 +98,7 @@ void radixStep(E *A, E *B, bIndexT *Tmp, bucketsT *BK,
     int *oA = (int *) (BK + blocks);
     int *oB = (int *) (BK + 2 * blocks);
 
-    _cilk_grainsize_1
+    //_cilk_grainsize_1
     cilk_for (int i = 0; i < blocks; i++) {
         int od = i * nn;
         int nni = min(max(n - od, 0), nn);

@@ -10,11 +10,10 @@
 #include "intSort.h"
 #include "utils.h"
 #include "Base.h"
-//#include "mysort.h"
 #include "merge.h"
 #include "cilk.h"
-
-
+#include <unistd.h>
+#include <fcntl.h>
 
 int LempelZiv(int *s, int n, int *LZ);
 int ParallelLZ77(int *s, int n, int *lz);
@@ -22,36 +21,15 @@ int ParallelLZ77(int *s, int n, int *lz);
 int getLZ(int *lpf, int n, int *lz);
 pair<int *, int *> suffixArray(int *s, int n, bool findLCPs);
 
-#ifdef OPENMP
-void setThreads(int p) {
-  omp_set_num_threads(p);
+char* itoa(int val, int base = 10){
+	static char buf[32] = {0};
+	int i = 30;
+	for(; val && i ; --i, val /= base)
+		buf[i] = "0123456789abcdef"[val % base];
+	return &buf[i+1];	
 }
-#endif
 
-// void checkLZ(int d) {
-// 	int n = 1 << d;
-// 	int *a = new int[n + 1], *ql = new int[n + 1], *qr = new int[n + 1];
-// 	int i;
-// 	for ( i = 0; i < n; i++)
-// 		a[i] = min(rand() % n, n - 1 - i);
-// 	a[0] = 0;
-
-// 	startTime();
-// 	for (int i = 1; i < n; i++) {
-// 		ql[i] = i + max(1, a[ql[i - 1]]);
-// 	}
-// 	nextTime("lz seq");
-
-// 	printf("lz par:\n");
-// 	getLZ(a, n, ql);
-
-// 	printf("\n");
-// }
-
-
-
-void checkAll(int np, int d, int sigma) {
-	int n = 1 << d;
+void checkAll(int np, int n, int sigma) {
 	int *a = new int[n + 3];
 	int i;
 	int *lz = new int[n];
@@ -68,13 +46,13 @@ void checkAll(int np, int d, int sigma) {
 		reportTime("parallel total time:");
 		printf("\nParallel:\n");
 		// for (int p = 1; p <= np; p *= 2) {
-		// 	setThreads(p);
+		//  setThreads(p);
 
-		// 	startTime();
+		//  startTime();
 
-		// 	printf("#procs %d, #result %d\n", p, ParallelLZ77(a, n, lz));
-		// 	reportTime("parallel total time:");
-		// 	printf("\n");
+		//  printf("#procs %d, #result %d\n", p, ParallelLZ77(a, n, lz));
+		//  reportTime("parallel total time:");
+		//  printf("\n");
 		// }
 
 		printf("***************** END OF TEST ON ALLPHABET SIZE = %d *****************\n\n", s);
@@ -84,8 +62,13 @@ void checkAll(int np, int d, int sigma) {
 	printf("ALL TEST DONE!\n");
 }
 
+int checkAll_wrapper(void *args) {
+	long long *pt = (long long *) args;
+	checkAll(pt[0], pt[1], pt[2]);
+}
+
 void getText(int n, char *path, int *dst) {
-	char *buf = new char[n+1];
+	char *buf = new char[n + 1];
 	FILE *fptr = fopen(path, "r");
 	int nn = fread(buf, 1, n, fptr);
 
@@ -98,15 +81,14 @@ void getText(int n, char *path, int *dst) {
 	delete buf;
 }
 
-void checkSourceFile(int np, int d, char *path) {
+
+
+void checkSourceFile(int np, int n, char *path) {
 	//printf("%s\n", path);
 	//flush();
 
-
-	int n = 1 << d;
-	
 	//n = 128;
-	
+
 	int *a = new int[n + 3];
 	int i;
 	int *lz = new int[n];
@@ -116,50 +98,123 @@ void checkSourceFile(int np, int d, char *path) {
 	getText(n, path, a);
 	a[n] = a[n + 1] = a[n + 2] = 0;
 
-	
+
 	printf("\nParallel:\n");
 	printf("#result %d\n", ParallelLZ77(a, n, lz));
 	nextTime("parallel total time:");
 
-	
+
 	// for (int p = 1; p <= np; p *= 2) {
-	// 	setThreads(p);
+	//  setThreads(p);
 
-	// 	startTime();
+	//  startTime();
 
-	// 	printf("#procs %d, #result %d\n", p, ParallelLZ77(a, n, lz));
-	// 	reportTime("parallel total time:");
-	// 	printf("\n");
+	//  printf("#procs %d, #result %d\n", p, ParallelLZ77(a, n, lz));
+	//  reportTime("parallel total time:");
+	//  printf("\n");
 	// }
 
 	printf("***************** END TEST LINX CODE *****************\n\n");
-	
-	 delete lz; delete a; 
+
+	delete lz; delete a;
 	//printf("ALL TEST DONE!\n");
 }
 
+int checkSourceFile_wrapper(void *args) {
+	long long *pt = (long long *) args;
+	checkSourceFile(pt[0], pt[1], (char *)pt[2]);
+}
 
+extern "C++"
+inline void Usage(char *program) {
+	printf("Usage: %s [options]\n", program);
+	printf("-p <num>\tNumber of processors to use\n");
+	printf("-d <num>\t2^n of character will be processed\n");
+	printf("-r <num>\tGenerete random string with the specified alphabet size\n");
+	printf("-i <file>\tInput file name\n");
+	printf("-o <file>\tOutput file name\n");
+	printf("-h \t\tDisplay this help\n");
+}
 
-char *path;
+int main(int argc, char *argv[]) {
+	int opt;
+	int p = 1, d = -1, n = -1;
+	int sigma = -1;
+	char path[1025] = {};
 
-int cilk_main(int argc, char *argv[]) {
-	int p = 2, d = 28;
-	int sigma = 4;
-	for (int i = 1; i < argc; i++) {
-		//printf("%s\n", argv[i]);
-		if (i == 1) p = atoi(argv[i]);
-		if (i == 2) d = atoi(argv[i]);
-		if (i == 3) sigma = atoi(argv[i]);
-		if (i == 4) path = argv[i];
+	while ((opt = getopt(argc, argv, "p:d:r:i:o:")) != -1) {
+		switch (opt) {
+			case 'p': {
+				p = atoi(optarg);
+				break;
+			}
+			case 'd': {
+				d = atoi(optarg);
+				n = 1 << d;
+				break;
+			}
+			case 'r': {
+				sigma = atoi(optarg);
+				break;
+			}
+			case 'i': {
+				strncpy(path, optarg, 1024);
+				// if (dup2(open(optarg, O_RDONLY), STDIN_FILENO) < 0) {
+				// 	perror("Input file error");
+				// 	exit(EXIT_FAILURE);
+				// }
+				break;
+			}
+
+			case 'o': {
+				if (dup2(open(optarg, O_CREAT | O_WRONLY, 0644), STDOUT_FILENO) < 0) {
+					perror("Output file error");
+					exit(EXIT_FAILURE);
+				}
+
+				break;
+			}
+			default: {
+				Usage(argv[0]);
+				exit(1);
+			}
+		}
 	}
 
-	//printf("%d %d %d %s\n", p, d, sigma, path);
-	#ifdef OPENMP
-	setThreads(p);
-	#endif
+	if (d < 0) {
+		perror("Input file size not specified");
+		exit(1);
+	}
 
-	checkSourceFile(p, d, path);
+	if (sigma < 0 && path[0] == 0) {
+		perror("No input file specified / Random string genereted.");
+		exit(1);
+	}
 
-	//checkAll(p, d, sigma);
+#ifdef CILK
+	cilk::context ctx;
+	ctx.set_worker_count(p);
+#elif OPENMP
+	omp_set_num_threads(p);
+#endif
 
+#ifdef CILK
+	long long args[3];
+	args[0] = p;
+	args[1] = n;
+	if (sigma > 1) {
+		args[2] = sigma;
+		ctx.run(checkAll_wrapper, (void *)args);
+	} else {
+		args[2] = (long long)path;
+		ctx.run(checkSourceFile_wrapper, (void *)args);
+	}
+#else
+	if (sigma > 1) {
+		checkAll(p, n, sigma);
+	} else {
+		checkSourceFile(p, n, path);
+	}
+#endif
 }
+
