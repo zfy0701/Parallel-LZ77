@@ -3,6 +3,7 @@
  */
 #ifdef OPENMP
 #include <omp.h>
+#include "PSRS.h"
 #endif
 
 #include <stdio.h>
@@ -17,7 +18,6 @@
 #include "intSort.h"
 #include "utils.h"
 #include "Base.h"
-#include "mysort.h"
 #include "merge.h"
 
 //#include "ansv2.h"

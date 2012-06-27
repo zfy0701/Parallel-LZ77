@@ -32,10 +32,10 @@ ANSV.o: ANSV.cpp ANSV.h
 rangeMin.o: rangeMin.cpp rangeMin.h
 	$(PCC) $(CFLAGS) -c $<
 
-suffixArray.o: suffixArray.cpp merge.h mysort.h
+suffixArray.o: suffixArray.cpp merge.h PSRS.h
 	$(PCC) $(CFLAGS) -c $<
 
-PLZ77.o: PLZ77.cpp mysort.h merge.h
+PLZ77.o: PLZ77.cpp
 	$(PCC) $(CFLAGS) -c $<
 
 LZ77.o: LZ77.cpp

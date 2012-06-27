@@ -29,6 +29,10 @@
 #include "rangeMin.h"
 using namespace std;
 
+#ifdef OPENMP
+#include "PSRS.h"
+#endif
+
 bool isSorted(int *SA, int *s, int n);
 
 // Radix sort a pair of integers based on first element
@@ -55,6 +59,26 @@ struct compS {
       return leq(_s[i],_s[i+1],_s12[i+2], _s[j],_s[j+1],_s12[j+2]);
   }
 };
+
+#ifdef OPENMP
+struct compQ {
+    int *_s;
+    int i;
+
+    int operator < (const compQ &b) const {
+        int j = b.i;
+        if (_s[i] == _s[j] &&_s[i+1] == _s[j+1] && _s[i+2] == _s[j+2]) return i < j;
+
+        return leq(_s[i], _s[i + 1], _s[i + 2], _s[j], _s[j + 1], _s[j + 2]);
+    }
+    int operator > (const compQ &b) const {
+         int j = b.i;
+        if (_s[i] == _s[j] &&_s[i+1] == _s[j+1] && _s[i+2] == _s[j+2]) return i > j;
+
+         return !leq(_s[i], _s[i + 1], _s[i + 2], _s[j], _s[j + 1], _s[j + 2]);
+    }
+};
+#endif
 
 struct mod3is1 { bool operator() (int i) {return i%3 == 1;}};
 
@@ -91,7 +115,13 @@ pair<int*,int*> suffixArrayRec(int* s, int n, int K, bool findLCPs) {
       int j = 1+(i+i+i)/2;
       C[i].first = (s[j] << 2*bits) + (s[j+1] << bits) + s[j+2];
       C[i].second = j;}
+
+#ifdef OPENMP
+    ParallelSortRS(C, n12);
+    //ParallelMergeSort(C, n12, less<pair<int, int> >());
+#else
     radixSortPair(C, n12, 1 << 3*bits);
+#endif
 
   // otherwise do 3 radix sorts, one per char
   } else {
@@ -99,12 +129,30 @@ pair<int*,int*> suffixArrayRec(int* s, int n, int K, bool findLCPs) {
       int j = 1+(i+i+i)/2;
       C[i].first = s[j+2]; 
       C[i].second = j;}
+
+#ifdef OPENMP
+        compQ *tmp = new compQ[n12];
+        cilk_for (int i = 0; i < n12; i++) {
+            int j = 1 + (i + i + i) / 2;
+            tmp[i].i = j;
+            tmp[i]._s = s;
+        }
+        ParallelSortRS(tmp, n12);
+        //ParallelMergeSort(tmp, n12, less<compQ>());
+        cilk_for (int i = 0; i < n12; i++) {
+            C[i].second = tmp[i].i;
+        }
+        delete tmp;
+#else
+
     // radix sort based on 3 chars
     radixSortPair(C, n12, K);
     cilk_for (int i=0; i < n12; i++) C[i].first = s[C[i].second+1];
     radixSortPair(C, n12, K);
     cilk_for (int i=0; i < n12; i++) C[i].first = s[C[i].second];
     radixSortPair(C, n12, K);
+#endif
+
   }
 
   // copy sorted results into sorted12
