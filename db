@@ -1,7 +1,0 @@
-#make clean
-make
-p=2;
-n=23;
-sig=4;
-./plz77 $p $n $sig  /Users/fuyaoz/Dropbox/Documents/everything\@CMU/15418/project/kernelCode.txt
-

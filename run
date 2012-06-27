@@ -1,6 +1,0 @@
-#make clean
-make
-p=8;
-n=20;
-sig=8;
-./plz77 $p $n $sig kernelCode.txt
