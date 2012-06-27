@@ -51,6 +51,26 @@ inline int cflog2(int i) {
 	return res;
 }
 
+
+inline int superfflog2(int i) {
+	if (i >> 16) {
+		return 16 + mylog2[i>>16];
+	} else {
+		return mylog2[i];
+	}
+}
+
+inline void initlog2() {
+	int i;
+	for (i = 0; i <= 0xffff; i++) {
+		int j = i, k = -1;
+		while (j) {j >>= 1; k++;}
+		mylog2[i] = k;
+		//if (mylog2[i] != check(i)) printf("(%d %d) ", mylog2[i], check(i)); 
+	}
+	//for (int i = 0; i <= 0xffff; i++) printf("(%d %d) ", mylog2[i], check(i)); printf("\n");
+}
+
 //#define max(x, y) (((x) > (y))?(x) : (y))
 //#define min(x, y) (((x) < (y))?(x) : (y))
 
