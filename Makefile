@@ -2,30 +2,29 @@ CC = /usr/bin/g++
 CFLAGS = -O2
 
 ifdef OPENMP
-PCC = /usr/bin/g++
+PCC = $(CC)
 CFLAGS = -fopenmp -O2 -DOPENMP
 
 else ifdef CILK
-PCC = cilk++
-CFLAGS = -O2 -DCILK -Wno-cilk-for
+PCC = $(CC)
+CFLAGS = -O2 -lcilkrts -DCILK -Wno-cilk-for
 
 else ifdef IPPROOT
 PCC = icpc
 CFLAGS = -O2 -DCILKP
 
 else 
-PCC = /usr/bin/g++
+PCC = $(CC)
 CFLAGS = -fopenmp -O2 -DOPENMP
 endif
 
 
 all: plz77 
-#ansv2 sa
 
 .PHONY: clean
 
 clean: 
-	rm -rf plz77 ansv2 sa *~ *.o
+	rm -rf plz77 *~ *.o
 
 ANSV.o: ANSV.cpp ANSV.h
 	$(PCC) $(CFLAGS) -c $<

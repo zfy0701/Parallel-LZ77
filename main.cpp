@@ -125,8 +125,7 @@ int checkSourceFile_wrapper(void *args) {
 	checkSourceFile(pt[0], pt[1], (char *)pt[2]);
 }
 
-extern "C++"
-inline void Usage(char *program) {
+void Usage(char *program) {
 	printf("Usage: %s [options]\n", program);
 	printf("-p <num>\tNumber of processors to use\n");
 	printf("-d <num>\t2^n of character will be processed\n");
@@ -192,29 +191,14 @@ int main(int argc, char *argv[]) {
 	}
 
 #ifdef CILK
-	cilk::context ctx;
-	ctx.set_worker_count(p);
+	__cilkrts_set_param("nworkers", itoa(p));
 #elif OPENMP
 	omp_set_num_threads(p);
 #endif
-
-#ifdef CILK
-	long long args[3];
-	args[0] = p;
-	args[1] = n;
-	if (sigma > 1) {
-		args[2] = sigma;
-		ctx.run(checkAll_wrapper, (void *)args);
-	} else {
-		args[2] = (long long)path;
-		ctx.run(checkSourceFile_wrapper, (void *)args);
-	}
-#else
 	if (sigma > 1) {
 		checkAll(p, n, sigma);
 	} else {
 		checkSourceFile(p, n, path);
 	}
-#endif
 }
 

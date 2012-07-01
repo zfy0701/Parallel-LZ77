@@ -21,7 +21,8 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 #if defined(CILK)
-#include <cilk.h>
+#include <cilk/cilk.h>
+#include <cilk/cilk_api.h>
 #define cilk_main cilk_main
 #define cilk_for_1 _Pragma("cilk_grainsize = 1") cilk_for
 #define _cilk_grainsize_1 _Pragma("cilk_grainsize = 1")
