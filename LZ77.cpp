@@ -33,14 +33,15 @@ void calNearestElement(int a[], int n, int leftElements[], int rightElements[]) 
 int LempelZiv(int *s, int n, int *LZ) {
     int i, lpf, l, r;
     int *leftElements = new int[n], * rightElements = new int[n];
-    
+            startTime();
+
     pair<int*,int*> res = suffixArray(s,n,0);
     int* SA = res.first;
-    //nextTime("seq suffix array");
+    nextTime("seq suffix array");
 
     calNearestElement(SA, n, leftElements, rightElements);
 
-    //nextTime("seq ANSV");
+    nextTime("seq ANSV");
 
     int *Rank = new int[n];
     for (i = 0; i < n; i++) {
@@ -63,7 +64,7 @@ int LempelZiv(int *s, int n, int *LZ) {
     }
     //printf("%d\n", k);
     //for (i = 0;i < k;i++) printf("%d ", LZ[i] + 1);
-    //nextTime("seq lpf");
+    nextTime("seq lpf");
     delete SA;
     delete Rank;
     delete leftElements;

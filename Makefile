@@ -1,4 +1,4 @@
-CC = /usr/bin/g++
+CC = g++
 CFLAGS = -O2
 
 ifdef OPENMP

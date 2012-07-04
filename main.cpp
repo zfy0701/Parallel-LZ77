@@ -14,6 +14,8 @@
 #include "cilk.h"
 #include <unistd.h>
 #include <fcntl.h>
+#include <sys/stat.h>
+#include <sys/types.h>
 
 int LempelZiv(int *s, int n, int *LZ);
 int ParallelLZ77(int *s, int n, int *lz);
@@ -42,8 +44,11 @@ void checkAll(int np, int n, int sigma) {
 
 		startTime();
 
+		printf("#result %d\n", LempelZiv(a, n, lz));
+		nextTime("sequential total time:");
+
 		printf("#result %d\n", ParallelLZ77(a, n, lz));
-		reportTime("parallel total time:");
+		nextTime("parallel total time:");
 		printf("\nParallel:\n");
 		// for (int p = 1; p <= np; p *= 2) {
 		//  setThreads(p);
@@ -158,10 +163,10 @@ int main(int argc, char *argv[]) {
 			}
 			case 'i': {
 				strncpy(path, optarg, 1024);
-				// if (dup2(open(optarg, O_RDONLY), STDIN_FILENO) < 0) {
-				// 	perror("Input file error");
-				// 	exit(EXIT_FAILURE);
-				// }
+				 if (dup2(open(optarg, O_RDONLY), STDIN_FILENO) < 0) {
+				 	perror("Input file error");
+				 	exit(EXIT_FAILURE);
+				}
 				break;
 			}
 
@@ -180,15 +185,22 @@ int main(int argc, char *argv[]) {
 		}
 	}
 
-	if (d < 0) {
-		perror("Input file size not specified");
-		exit(1);
-	}
-
 	if (sigma < 0 && path[0] == 0) {
 		perror("No input file specified / Random string genereted.");
 		exit(1);
 	}
+
+	if (d < 0) {
+		if (sigma < 0) {
+			struct stat info;
+	    	stat(path, &info);
+	    	n = info.st_size;
+	    } else {
+			perror("Random data size not specified");
+	    	exit(1);
+		}
+	}
+
 
 #ifdef CILK
 	__cilkrts_set_param("nworkers", itoa(p));

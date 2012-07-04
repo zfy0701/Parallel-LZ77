@@ -31,14 +31,15 @@ void getLPF(int *sa, int n, int *lcp, int *lpf) {
     int d = getDepth(n);
     int *l = new int[n], *r = new int[n];
 
+    nextTime("checkpoint");
     ComputeANSV(sa, n, l, r);
-    //nextTime("ansn");
+    nextTime("ansn");
 
   
     myRMQ rmq(lcp, n);
     //rmq.precomputeQueries();
 
-    //nextTime("rmq");
+    nextTime("rmq");
     
     cilk_for (int i = 0; i < n; i++) {
         int llcp = 0, rlcp = 0;
@@ -51,7 +52,7 @@ void getLPF(int *sa, int n, int *lcp, int *lpf) {
 
         lpf[sa[i]] = max(llcp, rlcp);
     }
-    //nextTime("lpf");
+    nextTime("lpf");
     
     delete l; delete r;
 

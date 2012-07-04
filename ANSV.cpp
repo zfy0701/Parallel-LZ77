@@ -13,11 +13,11 @@ using namespace std;
 #define RIGHT(i) (((i) << 1) | 1)
 #define PARENT(i) ((i) >> 1)
 
-inline int getLeft(int **table, int depth, int n, int index) {
+inline int getLeft(int **table, int depth, int n, int index, int start) {
 	int value = table[0][index];
 	if (value == table[depth - 1][0]) return -1;
 
-	int cur = PARENT(index), d, dist = 2;
+	int cur = PARENT(start), d, dist = 2;
 	for (d = 1; d < depth; d++) {
 		if ((cur + 1) * dist > index + 1) cur --;
 		if (cur < 0) return -1;
@@ -35,11 +35,11 @@ inline int getLeft(int **table, int depth, int n, int index) {
 	return cur;
 } 
 
-inline int getRight(int **table, int depth, int n, int index) {
+inline int getRight(int **table, int depth, int n, int index, int start) {
 	int value = table[0][index];
 	if (value == table[depth - 1][0]) return -1;
 
-	int cur = PARENT(index), d, dist = 2;
+	int cur = PARENT(start), d, dist = 2;
 	for (d = 1; d < depth; d++) {
 		if (cur * dist < index) cur ++;
 		if (cur * dist >= n) return -1;
@@ -57,18 +57,38 @@ inline int getRight(int **table, int depth, int n, int index) {
 	return cur;
 }
 
-void ComputeANSV(int *a, int n, int *left, int *right) {
-	int depth = getDepth(n);
-	int *all = new int[n * 2];
+
+void ComputeANSV_Linear(int a[], int n, int leftElements[], int rightElements[], int offset) {
+    int i, top;
+    int *stack = new int[n];
+
+    for (i = 0, top = -1; i < n; i++) {
+        while (top > -1 && a[stack[top]] > a[i]) top--;
+        if (top == -1) leftElements[i] = -1;
+        else leftElements[i] = stack[top] + offset;
+        stack[++top] = i;
+    }
+
+    for (i = n - 1, top = -1; i >= 0; i--) {
+        while (top > -1 && a[stack[top]] > a[i]) top--;
+        if (top == -1) rightElements[i] = -1;
+        else rightElements[i] = stack[top] + offset;
+        stack[++top] = i;
+    }
+    delete stack;
+}
+
+void ComputeANSV(int * a, int n, int *left, int *right) {
+    int l2 = cflog2(n);
+    int depth = l2 + 1;
+
+	int *all = new int[n];
 	int **table = new int*[depth];
 
-	table[0] = all;
-	for (int i = 1; i < depth; i++) {
+	table[0] = a;
+	table[1] = all;
+	for (int i = 2; i < depth; i++) {
 		table[i] = table[i - 1] + (1 << (depth - i));
-	}
-
-	cilk_for (int i = 0; i < n; i++) {
-		table[0][i] = a[i];
 	}
 
 	int m = n;
@@ -86,10 +106,45 @@ void ComputeANSV(int *a, int n, int *left, int *right) {
 		m = (m + 1) / 2;
 	}
 
-	cilk_for (int i = 0; i < n; i++) {
-		left[i] = getLeft(table, depth, n, i);
-		right[i] = getRight(table, depth, n, i);
-	}
-	delete table;
+    int p = 
+#ifdef OPENMP
+	omp_get_max_threads();
+#elif CILK
+	__cilkrts_get_nworkers();
+#endif
+    //printf("num of proc %d.\n", p);
+    int size = (n + p - 1) / p;
+
+  	cilk_for (int i = 0; i < n; i += size) {
+  		int j = min(i + size, n);
+  		ComputeANSV_Linear(a + i, j - i, left + i, right + i, i);
+
+  		int tmp = i;
+  		for (int k = i; k < j; k++) {
+  			if (left[k] == -1) {
+  				if (a[tmp] >= a[k] && tmp != -1) {
+  					//if (left[tmp] != -1)
+  					//	tmp = left[tmp];
+					tmp = getLeft(table, depth, n, k, tmp);
+				}
+				left[k] = tmp;
+  			}
+  		}
+
+  		tmp = j - 1;
+  		for (int k = j - 1; k >=  i; k--) {
+  			if (right[k] == -1) {
+  				if (a[tmp] >= a[k] && tmp != -1) {
+  					//if (right[tmp] != -1)
+  					//	tmp = right[k];
+	  				tmp = getRight(table, depth, n, k, tmp);
+  				}
+  				right[k] = tmp;
+  			}
+  		}
+  	}
+
+  	delete table;
 	delete all;
 }
+
