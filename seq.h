@@ -26,7 +26,7 @@
 #define A_SEQ_INCLUDED
 
 #include <iostream>
-#include "cilk.h"
+#include "parallel.h"
 #include "sequence.h"
 
 using namespace std;
@@ -64,7 +64,7 @@ public:
 
     seq copy() {
         ET *A = newA(ET, sz);
-        cilk_for(int i = 0; i < sz; i++) A[i] = S[i];
+        parallel_for(int i = 0; i < sz; i++) A[i] = S[i];
         return seq(A, sz);
     }
 
@@ -124,16 +124,16 @@ public:
     seq append(seq S2) {
         int rsize = S2.size() + sz;
         ET *R = newA(ET, rsize);
-        cilk_for (int i = 0; i < sz; i++) R[i] = S[i];
-        cilk_for (int ii = 0; ii < S2.size(); ii++) R[ii + sz] = S2.S[ii];
+        parallel_for (int i = 0; i < sz; i++) R[i] = S[i];
+        parallel_for (int ii = 0; ii < S2.size(); ii++) R[ii + sz] = S2.S[ii];
         return seq(R, rsize);
     }
 
     seq appendD(seq S2) {
         int rsize = S2.size() + sz;
         ET *R = newA(ET, rsize);
-        cilk_for (int i = 0; i < sz; i++) R[i] = S[i];
-        cilk_for (int ii = 0; ii < S2.size(); ii++) R[ii + sz] = S2.S[ii];
+        parallel_for (int i = 0; i < sz; i++) R[i] = S[i];
+        parallel_for (int ii = 0; ii < S2.size(); ii++) R[ii + sz] = S2.S[ii];
         free(S2.S); free(S);
         return seq(R, rsize);
     }

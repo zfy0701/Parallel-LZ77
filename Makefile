@@ -7,7 +7,7 @@ CFLAGS = -fopenmp -O2 -DOPENMP
 
 else ifdef CILK
 PCC = $(CC)
-CFLAGS = -O2 -lcilkrts -DCILK -Wno-cilk-for
+CFLAGS = -O2 -lcilkrts -DCILK
 
 else ifdef IPPROOT
 PCC = icpc
@@ -23,7 +23,7 @@ all: plz77 lz77_1 lz77_2
 .PHONY: clean
 
 clean: 
-	rm -rf plz77 *~ *.o
+	rm -rf plz77 lz77_1 lz77_2 *~ *.o
 
 ANSV.o: ANSV.cpp ANSV.h
 	$(PCC) $(CFLAGS) -c $<

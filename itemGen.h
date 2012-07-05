@@ -25,7 +25,7 @@
 
 #include <iostream>
 #include <algorithm>
-#include "cilk.h"
+#include "parallel.h"
 #include "utils.h"
 
 namespace dataGen {

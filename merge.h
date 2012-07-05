@@ -22,9 +22,7 @@
 #ifndef _MERGE_H
 #define _MERGE_H
 
-#include "cilk.h"
-/* #include "Base.h" */
-/* #include <queue> */
+#include "parallel.h"
 
 #define _MERGE_BSIZE 8192
 
@@ -116,12 +114,12 @@ void merge(ET *S1, int l1, ET *S2, int l2, ET *R, F f) {
             int *pos1 = new int[ll1 + 1]; // pos1[i] means the position of s1[i*Splite] in s2
             *(pos1++) = 0;
 
-            cilk_for (int i = 0; i < ll1; i++) {
+            parallel_for (int i = 0; i < ll1; i++) {
                 pos1[i] = binSearch(S2, l2, S1[std::min((i + 1) * SPLIT_BSIZE, l1) - 1], f);
             }
 
             pos1[ll1-1] = l2;
-            cilk_for (int i = 0; i < ll1; i++) {
+            parallel_for (int i = 0; i < ll1; i++) {
                 int start1 = i * SPLIT_BSIZE;
                 int n1 = std::min(SPLIT_BSIZE, l1 - start1);
                 int start2 = pos1[i - 1];

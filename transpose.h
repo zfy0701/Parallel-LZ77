@@ -24,6 +24,7 @@
 #define A_TRANSPOSE_INCLUDED
 
 #define _TRANS_THRESHHOLD 64
+#include "parallel.h"
 
 template <class E>
 struct transpose {
@@ -40,15 +41,15 @@ struct transpose {
     } else if (cCount > rCount) {
       int l1 = cCount/2;
       int l2 = cCount - cCount/2;
-      cilk_spawn transR(rStart,rCount,rLength,cStart,l1,cLength);
+      parallel_spawn transR(rStart,rCount,rLength,cStart,l1,cLength);
       transR(rStart,rCount,rLength,cStart + l1,l2,cLength);
-      cilk_sync;
+      parallel_sync;
     } else {
       int l1 = rCount/2;
       int l2 = rCount - rCount/2;
-      cilk_spawn transR(rStart,l1,rLength,cStart,cCount,cLength);
+      parallel_spawn transR(rStart,l1,rLength,cStart,cCount,cLength);
       transR(rStart + l1,l2,rLength,cStart,cCount,cLength);
-      cilk_sync;
+      parallel_sync;
     }	
   }
 
@@ -80,22 +81,21 @@ struct blockTrans {
     } else if (cCount > rCount) {
       int l1 = cCount/2;
       int l2 = cCount - cCount/2;
-      cilk_spawn transR(rStart,rCount,rLength,cStart,l1,cLength);
+      parallel_spawn transR(rStart,rCount,rLength,cStart,l1,cLength);
       transR(rStart,rCount,rLength,cStart + l1,l2,cLength);
-      cilk_sync;
+      parallel_sync;
     } else {
       int l1 = rCount/2;
       int l2 = rCount - rCount/2;
-      cilk_spawn transR(rStart,l1,rLength,cStart,cCount,cLength);
+      parallel_spawn transR(rStart,l1,rLength,cStart,cCount,cLength);
       transR(rStart + l1,l2,rLength,cStart,cCount,cLength);
-      cilk_sync;
+      parallel_sync;
     }	
   }
  
   void trans(int rCount, int cCount) {
     transR(0,rCount,cCount,0,cCount,rCount);
   }
-
 } ;
 
 #endif // A_TRANSPOSE_INCLUDED

@@ -122,7 +122,7 @@ int cilk_main(int argc, char **argv) {
       int m = n/STR_LEN;
       int* strings = new int[(STR_LEN+1)*m];
       int* offsets = new int[m];
-      cilk_for (int i=0;i<m;i++) {
+      parallel_for (int i=0;i<m;i++) {
 	int k = dataGen::hash<int>(i)%n;
 	int j = 0;
 	for (j=0; j<STR_LEN && k+j < n; j++) 
@@ -131,7 +131,7 @@ int cilk_main(int argc, char **argv) {
       }
       startTime();
 
-      cilk_for (int i=0; i<m; i++) { 
+      parallel_for (int i=0; i<m; i++) { 
 	int* s = strings + (STR_LEN+1)*i;
 	offsets[i] = T.search(s);
       }

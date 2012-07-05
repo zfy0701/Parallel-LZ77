@@ -31,7 +31,7 @@ PLFLAGS = -fopenmp
 
 else ifdef CILK
 PCC = cilk++
-PCFLAGS = -O2 -DCILK -Wno-cilk-for
+PCFLAGS = -O2 -DCILK
 PLFLAGS =
 
 else ifdef IPPROOT

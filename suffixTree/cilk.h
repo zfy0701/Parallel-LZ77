@@ -22,13 +22,13 @@
 
 #if defined(CILK)
 #include <cilk.h>
-#define cilk_for_1 _Pragma("cilk_grainsize = 1") cilk_for
+#define parallel_for_1 _Pragma("cilk_grainsize = 1") parallel_for
 #define _cilk_grainsize_1 _Pragma("cilk_grainsize = 1")
 #define _cilk_grainsize_2 _Pragma("cilk_grainsize = 2")
 #define _cilk_grainsize_256 _Pragma("cilk_grainsize = 256")
 #elif defined(CILKP)
 #define cilk_main main
-#define cilk_for_1 _Pragma("cilk grainsize = 1") cilk_for
+#define parallel_for_1 _Pragma("cilk grainsize = 1") parallel_for
 #define _cilk_grainsize_1 _Pragma("cilk grainsize = 1")
 #define _cilk_grainsize_2 _Pragma("cilk grainsize = 2")
 #define _cilk_grainsize_256 _Pragma("cilk grainsize = 256")
@@ -36,8 +36,8 @@
 #elif defined(OPENMP)
 #define cilk_spawn
 #define cilk_sync
-#define cilk_for_1 _Pragma("omp parallel for schedule (static,1)") for
-#define cilk_for _Pragma("omp parallel for") for
+#define parallel_for_1 _Pragma("omp parallel for schedule (static,1)") for
+#define parallel_for _Pragma("omp parallel for") for
 #define cilk_main main
 #define _cilk_grainsize_1 
 #define _cilk_grainsize_2 
@@ -46,8 +46,8 @@
 #else
 #define cilk_spawn
 #define cilk_sync
-#define cilk_for_1 for
-#define cilk_for for
+#define parallel_for_1 for
+#define parallel_for for
 #define cilk_main main
 #define _cilk_grainsize_1 
 #define _cilk_grainsize_2 

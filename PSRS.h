@@ -5,7 +5,7 @@
 #include <iostream>
 #include <algorithm>
 #include <queue>
-#include "cilk.h"
+#include "parallel.h"
 #include "Base.h"
 #include "merge.h"
 #include "sequence.h"
@@ -149,7 +149,7 @@ void ParallelSortRS(E * a, int n) {
 	
 	//t.reportNext("\t\t\t prepare");
 	//printf("para: size %d, rsize %d sample_size %d\n", size, rsize, sample_size);
-	cilk_for (int i = 0; i < p; i++) {
+	parallel_for (int i = 0; i < p; i++) {
 		int start = i * size;
 		int end = min(n, start + size);
 
@@ -172,7 +172,7 @@ void ParallelSortRS(E * a, int n) {
 	}
 	//for (int i = 0; i < p; i++) printf("%d ", pivots[i]); printf("\n");
 
-	cilk_for (int i = 0; i < p; i++) {
+	parallel_for (int i = 0; i < p; i++) {
 		int start = i * size;
 		int end = min(n, start + size);
 
@@ -190,7 +190,7 @@ void ParallelSortRS(E * a, int n) {
 	// 	printf("\n");
 	// }
 
-	cilk_for (int i = 0; i < p; i++) {
+	parallel_for (int i = 0; i < p; i++) {
 		bucket[i] = 0;
 		for (int j = i; j <  p * (p+1); j += p+1) {
 			bucket[i] += subsize[j+1] - subsize[j];
@@ -205,7 +205,7 @@ void ParallelSortRS(E * a, int n) {
 
 	//for (int i = 0; i < p; i++) printf("%d ", bucket[i]); printf("\n");
 
-	cilk_for (int i = 0; i < p; i++) {
+	parallel_for (int i = 0; i < p; i++) {
 		//SeqMerge(a, subsize[i+j*(p+1)], a, subsize[i+j*(p+1)+1], b + bucket2[i], f);
 		E **st = new E*[p], **ed = new E*[p];
 		for (int j = 0; j < p; j++) {
@@ -223,7 +223,7 @@ void ParallelSortRS(E * a, int n) {
 	}
 	//t.reportNext("\t\t\t merge");
 	
-	cilk_for (int i = 0; i < n; i++) a[i] = b[i];
+	parallel_for (int i = 0; i < n; i++) a[i] = b[i];
 	
 	delete b;
 	delete bucket;
@@ -246,10 +246,10 @@ void ParallelMergeSort(E * o, int n, F f) {
 	
 	int dep = getDepth(p);
 
-	cilk_for (int i = 0; i < n; i++) 
+	parallel_for (int i = 0; i < n; i++) 
 		a[i] = o[i];
 	
-	cilk_for (int i = 0; i < n; i+= size) {
+	parallel_for (int i = 0; i < n; i+= size) {
 		int end = min(n, i + size);
 		std::sort(a + i, a + end, f);
 	}
@@ -265,7 +265,7 @@ void ParallelMergeSort(E * o, int n, F f) {
 				//std::merge(a+start, a+end, a+end, a+min(start+dist2, n), b+start, f);
 			} 
 			else {
-				cilk_for (int i = start; i < n; i++) {
+				parallel_for (int i = start; i < n; i++) {
 					b[i] = a[i];
 				}
 			}
@@ -277,7 +277,7 @@ void ParallelMergeSort(E * o, int n, F f) {
 	// if (a == o) {
 	// 	delete b;
 	// } else {
-		cilk_for (int i = 0; i < n; i++) {
+		parallel_for (int i = 0; i < n; i++) {
 			o[i] = a[i];
 		}
 		

@@ -9,7 +9,6 @@
 #include <fcntl.h>
 #include <sys/stat.h>
 #include <sys/types.h>
-#include "cilk.h"
 #include "test.h"
 
 #include "gettime.h"
@@ -137,5 +136,5 @@ int LempelZiv2(int *s, int n, int *LZ) {
 }
 
 int main(int argc, char *argv[]) {
-    return test_main(argc, argv, (char *)"Seq LZ77 with ANSV",LempelZiv);
+    return test_main(argc, argv, (char *)"Seq LZ77 with ANSV", LempelZiv);
 }

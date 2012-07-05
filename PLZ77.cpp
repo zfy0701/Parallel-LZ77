@@ -33,7 +33,7 @@ void getLPF_0(int *s, int *sa, int n, int *lcp, int *lpf) {
 
 //    nextTime("rmq");
     
-    cilk_for (int i = 0; i < n; i++) {
+    parallel_for (int i = 0; i < n; i++) {
         int llcp = 0, rlcp = 0;
         if (l[i] != -1) {
             llcp = lcp[rmq.query(l[i]+1, i)];
@@ -64,14 +64,14 @@ void getLPF_1(int *s, int *sa, int n, int *lcp, int *lpf) {
     st.BuildTree(lcp, n);
     nextTime("\tbuild tree");
 
-    cilk_for (int i = 0; i < n; i++) {
+    parallel_for (int i = 0; i < n; i++) {
         rank[sa[i]] = i;
     }
 
     int size = 8196;
 
     //compute lpf for first element
-    cilk_for (int i = 0; i < n; i += size) {
+    parallel_for (int i = 0; i < n; i += size) {
         int j = min(i + size, n);
         int mid = rank[i], left = leftElements[rank[i]], right = rightElements[rank[i]];
         if (left != -1) {
@@ -85,7 +85,7 @@ void getLPF_1(int *s, int *sa, int n, int *lcp, int *lpf) {
     st.DeleteTree();
 
     //compute lpf for rest elements    
-    cilk_for (int i = 0; i < n; i += size) {    
+    parallel_for (int i = 0; i < n; i += size) {    
         int j = min(i + size, n);  
         for (int k = i + 1; k < j; k++) {
             int left = leftElements[rank[k]];
@@ -105,7 +105,7 @@ void getLPF_1(int *s, int *sa, int n, int *lcp, int *lpf) {
         }
     }
 
-    cilk_for (int i = 0; i < n; i++) {
+    parallel_for (int i = 0; i < n; i++) {
         lpf[i] = max(leftLPF[i], rightLPF[i]);
     }
 
@@ -126,7 +126,7 @@ void getLPF_2(int *s, int *sa, int n, int *lcp, int *lpf) {
     ComputeANSV(sa, n, leftElements, rightElements);
     nextTime("\tansn");
 
-    cilk_for (int i = 0; i < n; i++) {
+    parallel_for (int i = 0; i < n; i++) {
         rank[sa[i]] = i;
     }
 
@@ -136,7 +136,7 @@ void getLPF_2(int *s, int *sa, int n, int *lcp, int *lpf) {
     int size = (n + p - 1) / p;
     //int size = 8196;
 
-    cilk_for (int i = 0; i < n; i += size) {
+    parallel_for (int i = 0; i < n; i += size) {
         int j = min(i + size, n);
 
         //compute lpf for first element
@@ -172,7 +172,7 @@ void getLPF_2(int *s, int *sa, int n, int *lcp, int *lpf) {
         }
     }
 
-    cilk_for (int i = 0; i < n; i++) {
+    parallel_for (int i = 0; i < n; i++) {
         lpf[i] = max(leftLPF[i], rightLPF[i]);
     }
 
@@ -195,7 +195,7 @@ pair<int *, int> getLZ(int *lpf, int n) {
     //int *flag = new int[(max(nn, n + 1))];
 
     //nextTime("alloc");
-    cilk_for (int i = 0; i < n; i++) {
+    parallel_for (int i = 0; i < n; i++) {
         flag[i] = 0;
         lpf[i] = min(n, i + max(lpf[i], 1));
     }
@@ -210,7 +210,7 @@ pair<int *, int> getLZ(int *lpf, int n) {
     int * sflag = new int[sn+1];
     
     //build the sub tree
-    cilk_for (int i = 0; i < sn; i ++) {
+    parallel_for (int i = 0; i < sn; i ++) {
         int j;
         for(j = lpf[i*l2]; j % l2 && j != n; j = lpf[j]) ;
         if (j == n) next[i] = sn;
@@ -223,7 +223,7 @@ pair<int *, int> getLZ(int *lpf, int n) {
     //point jump
     int dep = getDepth(sn); ;
     for (int d = 0; d < dep; d++) {
-        cilk_for(int i = 0; i < sn; i ++) {
+        parallel_for(int i = 0; i < sn; i ++) {
             int j = next[i];
             if (sflag[i] == 1) {
                 sflag[j] = 1;
@@ -235,7 +235,7 @@ pair<int *, int> getLZ(int *lpf, int n) {
     }
 
     //filling the result
-    cilk_for (int i = 0; i < n; i += l2) {
+    parallel_for (int i = 0; i < n; i += l2) {
         if (sflag[i / l2]) {
             //printf("adsf");
             flag[i] = 1;
@@ -254,7 +254,7 @@ pair<int *, int> getLZ(int *lpf, int n) {
     int m = flag[n];
     int * lz = new int[m];
     
-    cilk_for(int i = 0; i < n; i++) {    
+    parallel_for(int i = 0; i < n; i++) {    
         if (flag[i] < flag[i+1]) {
             lz[flag[i]] = i;
         }
@@ -278,7 +278,7 @@ pair<int *, int> ParallelLZ77(int *s, int n) {
     int *lcp = new int[n];
     if (flag < 2) {
         lcp[0] = 0;
-        cilk_for (int i = 1; i < n; i++) 
+        parallel_for (int i = 1; i < n; i++) 
             lcp[i] = salcp.second[i-1];
     }
 

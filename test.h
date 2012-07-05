@@ -2,7 +2,7 @@
 #define _TEST_H
 
 #include "Base.h"
-#include "cilk.h"
+#include "parallel.h"
 #include "utils.h"
 #include "gettime.h"
 
@@ -108,7 +108,7 @@ inline int test_main(int argc, char *argv[], char * algoname, std::pair<int *, i
 
 	printf("***************** TEST BEGIN *****************\n");
 
-	int *a = new int[n + 2];
+	int *a = new int[n + 3];
 
 	if (sigma >= 1) {
 		printf(" * Data generated randomly with alphabet size: %d.\n", sigma);
@@ -122,12 +122,12 @@ inline int test_main(int argc, char *argv[], char * algoname, std::pair<int *, i
 	printf(" * Algorithm: %s\n", algoname);
 	printf(" * Threads num: %d\n", p);
 
-	timer tm;
+	timer testTm;
 	a[n] = a[n + 1] = a[n + 2] = 0;
-	tm.start ();
-	startTime();
-	printf(" * result %d\n", lz77(a, n).second);
-	tm.reportTotal(" * Total time:");
+	testTm.start();
+	std::pair<int *, int> res = lz77(a, n);
+	printf(" * result %d\n", res.second);
+	testTm.reportNext(" * Total time:");
 	printf("***************** TEST ENDED *****************\n\n");
 
 	delete a;

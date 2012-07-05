@@ -98,7 +98,7 @@ namespace intSort {
     int* oA = (int*) (BK+blocks);
     int* oB = (int*) (BK+2*blocks);
 
-    cilk_for (int i=0; i < blocks; i++) {
+    parallel_for (int i=0; i < blocks; i++) {
       int od = i*nn;
       int nni = min(max(n-od,0),nn);
       radixBlock(A+od, B, Tmp+od, cnts + m*i, oB + m*i, od, nni, m, extract);
@@ -156,7 +156,7 @@ namespace intSort {
       int* offsets = BK[0];
       int remain = numBK - BUCKETS - 1;
       float y = remain / (float) n;
-      cilk_for (int i=0; i < BUCKETS; i++) {
+      parallel_for (int i=0; i < BUCKETS; i++) {
 	int segOffset = offsets[i];
 	int segNextOffset = (i == BUCKETS-1) ? n : offsets[i+1];
 	int segLen = segNextOffset - segOffset;
@@ -190,8 +190,8 @@ namespace intSort {
     else
       radixLoopTopDown(A, B, Tmp, BK, numBK, n, bits, f);
     if (bucketOffsets != NULL) {
-      {cilk_for (int i=0; i < m; i++) bucketOffsets[i] = n;}
-      {cilk_for (int i=0; i < n-1; i++) {
+      {parallel_for (int i=0; i < m; i++) bucketOffsets[i] = n;}
+      {parallel_for (int i=0; i < n-1; i++) {
 	  int v = f(A[i]);
 	  int vn = f(A[i+1]);
 	  if (v != vn) bucketOffsets[vn] = i+1;

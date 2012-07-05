@@ -25,7 +25,7 @@
 
 #include <iostream>
 #include <math.h>
-#include "cilk.h"
+#include "parallel.h"
 #include "gettime.h"
 #include "sequence.h"
 #include "utils.h"
@@ -99,7 +99,7 @@ void radixStep(E *A, E *B, bIndexT *Tmp, bucketsT *BK,
     int *oB = (int *) (BK + 2 * blocks);
 
     //_cilk_grainsize_1
-    cilk_for (int i = 0; i < blocks; i++) {
+    parallel_for (int i = 0; i < blocks; i++) {
         int od = i * nn;
         int nni = min(max(n - od, 0), nn);
         radixBlock(A + od, B, Tmp + od, cnts + m * i, oB + m * i, od, nni, m, extract);
@@ -117,7 +117,7 @@ void radixStep(E *A, E *B, bIndexT *Tmp, bucketsT *BK,
     blockTrans<E>(B, A, oB, oA, cnts).trans(blocks, m);
 
     // put the offsets for each bucket in the first bucket set of BK
-    cilk_for (int j = 0; j < m; j++) BK[0][j] = oA[j * blocks];
+    parallel_for (int j = 0; j < m; j++) BK[0][j] = oA[j * blocks];
 }
 
 // a function to extract "bits" bits starting at bit location "offset"
@@ -194,10 +194,10 @@ void iSort(E *A, int *bucketOffsets, int n, long m, bool bottomUp, F f) {
         radixLoopTopDown(A, B, Tmp, BK, numBK, n, bits, f);
     if (bucketOffsets != NULL) {
         {
-            cilk_for (int i = 0; i < m; i++) bucketOffsets[i] = n;
+            parallel_for (int i = 0; i < m; i++) bucketOffsets[i] = n;
         }
         {
-            cilk_for (int i = 0; i < n - 1; i++) {
+            parallel_for (int i = 0; i < n - 1; i++) {
                 int v = f(A[i]);
                 int vn = f(A[i + 1]);
                 if (v != vn) bucketOffsets[vn] = i + 1;

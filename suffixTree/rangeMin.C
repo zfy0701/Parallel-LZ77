@@ -36,11 +36,11 @@ myRMQ::myRMQ(int* _a, int _n){
 void myRMQ::precomputeQueries(){
   depth = log2(m) + 1;
   table = new int*[depth];
-  cilk_for(int i=0;i<depth;i++) {
+  parallel_for(int i=0;i<depth;i++) {
     table[i] = new int[n];
   }
 
-  cilk_for(int i=0; i < m; i++) {
+  parallel_for(int i=0; i < m; i++) {
     int start = i*BSIZE;
     int end = min(start+BSIZE,n);
     int k = i*BSIZE;
@@ -50,12 +50,12 @@ void myRMQ::precomputeQueries(){
   }
   int dist = 1;
   for(int j=1;j<depth;j++) {
-    cilk_for(int i=0; i< m-dist; i++){
+    parallel_for(int i=0; i< m-dist; i++){
       if (a[table[j-1][i]] <= a[table[j-1][i+dist]])
 	table[j][i] = table[j-1][i];
       else table[j][i] = table[j-1][i+dist];
     }
-    cilk_for(int i = m-dist; i<m; i++) {
+    parallel_for(int i = m-dist; i<m; i++) {
       table[j][i] = table[j-1][i];
     }
     dist*=2;
@@ -102,7 +102,7 @@ int myRMQ::query(int i, int j){
 
 myRMQ::~myRMQ(){
   
-  cilk_for(int i=0;i<depth;i++){
+  parallel_for(int i=0;i<depth;i++){
     delete[] table[i];
   }
   delete[] table;

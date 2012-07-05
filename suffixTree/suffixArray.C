@@ -87,7 +87,7 @@ pair<int*,int*> suffixArrayRec(int* s, int n, int K, bool findLCPs) {
   int bits = utils::logUp(K);
   // if 3 chars fit into an int then just do one radix sort
   if (bits < 11) {
-    cilk_for (int i=0; i < n12; i++) {
+    parallel_for (int i=0; i < n12; i++) {
       int j = 1+(i+i+i)/2;
       C[i].first = (s[j] << 2*bits) + (s[j+1] << bits) + s[j+2];
       C[i].second = j;}
@@ -95,26 +95,26 @@ pair<int*,int*> suffixArrayRec(int* s, int n, int K, bool findLCPs) {
 
   // otherwise do 3 radix sorts, one per char
   } else {
-    cilk_for (int i=0; i < n12; i++) {
+    parallel_for (int i=0; i < n12; i++) {
       int j = 1+(i+i+i)/2;
       C[i].first = s[j+2]; 
       C[i].second = j;}
     // radix sort based on 3 chars
     radixSortPair(C, n12, K);
-    cilk_for (int i=0; i < n12; i++) C[i].first = s[C[i].second+1];
+    parallel_for (int i=0; i < n12; i++) C[i].first = s[C[i].second+1];
     radixSortPair(C, n12, K);
-    cilk_for (int i=0; i < n12; i++) C[i].first = s[C[i].second];
+    parallel_for (int i=0; i < n12; i++) C[i].first = s[C[i].second];
     radixSortPair(C, n12, K);
   }
 
   // copy sorted results into sorted12
   int* sorted12 = newA(int,n12); 
-  cilk_for (int i=0; i < n12; i++) sorted12[i] = C[i].second;
+  parallel_for (int i=0; i < n12; i++) sorted12[i] = C[i].second;
   free(C);
 
   // generate names based on 3 chars
   int* name12 = newA(int,n12);
-  cilk_for (int i = 1;  i < n12;  i++) {
+  parallel_for (int i = 1;  i < n12;  i++) {
     if (s[sorted12[i]]!=s[sorted12[i-1]] 
 	|| s[sorted12[i]+1]!=s[sorted12[i-1]+1] 
 	|| s[sorted12[i]+2]!=s[sorted12[i-1]+2]) 
@@ -134,7 +134,7 @@ pair<int*,int*> suffixArrayRec(int* s, int n, int K, bool findLCPs) {
     s12[n12] = s12[n12+1] = s12[n12+2] = 0;
 
     // move mod 1 suffixes to bottom half and and mod 2 suffixes to top
-    cilk_for (int i= 0; i < n12; i++)
+    parallel_for (int i= 0; i < n12; i++)
       if (sorted12[i]%3 == 1) s12[sorted12[i]/3] = name12[i];
       else s12[sorted12[i]/3+n1] = name12[i];
     free(name12);  free(sorted12);
@@ -147,7 +147,7 @@ pair<int*,int*> suffixArrayRec(int* s, int n, int K, bool findLCPs) {
     free(s12);
 
     // restore proper indices into original array
-    cilk_for (int i = 0;  i < n12;  i++) {
+    parallel_for (int i = 0;  i < n12;  i++) {
       int l = SA12[i]; 
       SA12[i] = (l<n1) ? 3*l+1 : 3*(l-n1)+2;
     }
@@ -156,7 +156,7 @@ pair<int*,int*> suffixArrayRec(int* s, int n, int K, bool findLCPs) {
     SA12 = sorted12; // suffix array is sorted array
     if (findLCPs) {
       LCP12 = newA(int,n12+3);
-      cilk_for(int i=0;i<n12+3;i++) 
+      parallel_for(int i=0;i<n12+3;i++) 
 	LCP12[i]=0; //LCP's are all 0 if not recursing
     }
   }
@@ -165,7 +165,7 @@ pair<int*,int*> suffixArrayRec(int* s, int n, int K, bool findLCPs) {
   // mod0 locations of rank will contain garbage
   int* rank  = newA(int,n + 2);  
   rank[n]=1; rank[n+1] = 0;
-  cilk_for (int i = 0;  i < n12;  i++) {rank[SA12[i]] = i+2;}
+  parallel_for (int i = 0;  i < n12;  i++) {rank[SA12[i]] = i+2;}
 
   
   // stably sort the mod 0 suffixes 
@@ -174,12 +174,12 @@ pair<int*,int*> suffixArrayRec(int* s, int n, int K, bool findLCPs) {
   int x = sequence::filter(SA12,s0,n12,mod3is1());
   pair<int,int> *D = (pair<int,int> *) malloc(n0*sizeof(pair<int,int>));
   D[0].first = s[n-1]; D[0].second = n-1;
-  cilk_for (int i=0; i < x; i++) {
+  parallel_for (int i=0; i < x; i++) {
     D[i+n0-x].first = s[s0[i]-1]; 
     D[i+n0-x].second = s0[i]-1;}
   radixSortPair(D,n0, K);
   int* SA0  = s0; // reuse memory since not overlapping
-  cilk_for (int i=0; i < n0; i++) SA0[i] = D[i].second;
+  parallel_for (int i=0; i < n0; i++) SA0[i] = D[i].second;
   free(D);
 
   compS comp(s,rank);
@@ -194,7 +194,7 @@ pair<int*,int*> suffixArrayRec(int* s, int n, int K, bool findLCPs) {
     LCP = newA(int,n);  
     LCP[n-1] = LCP[n-2] = 0; 
     myRMQ RMQ(LCP12,n12+3); //simple rmq
-    cilk_for(int i=0;i<n-2;i++){ 
+    parallel_for(int i=0;i<n-2;i++){ 
       int j=SA[i];
       int k=SA[i+1];
       int CLEN = 16;
@@ -221,7 +221,7 @@ pair<int*,int*> suffixArray(int* s, int n, bool findLCPs) {
   startTime();
   int *ss = newA(int,n+3); 
   ss[n] = ss[n+1] = ss[n+2] = 0;
-  cilk_for (int i=0; i < n; i++) ss[i] = s[i]+1;
+  parallel_for (int i=0; i < n; i++) ss[i] = s[i]+1;
   int k = 1 + sequence::reduce(ss,n,utils::maxF<int>());
 
   pair<int*,int*> SA_LCP = suffixArrayRec(ss,n,k, findLCPs);

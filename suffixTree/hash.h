@@ -44,7 +44,7 @@ class Table {
   // needs to be in separate routine due to Cilk bugs
   static void clearA(ET* A, int n, ET v) {
     _cilk_grainsize_256
-    cilk_for (int i=0; i < n; i++) A[i] = v;
+    parallel_for (int i=0; i < n; i++) A[i] = v;
   }
 
   struct addF { int operator() (int a, int b) {return a+b;}};
@@ -123,7 +123,7 @@ class Table {
   // in the range [0..n], where n is the number of entries.
   int compactLabels() {
     compactL = newA(int,m);
-    cilk_for (int i=0; i < m; i++) compactL[i] = (least <TA[i]);
+    parallel_for (int i=0; i < m; i++) compactL[i] = (least <TA[i]);
     int r = sequence::scan(compactL,compactL,m,addF(),0);
     return r;
   }
@@ -145,7 +145,7 @@ class Table {
   int count() {
     int *A = newA(int,m);
     _cilk_grainsize_256
-    cilk_for (int i=0; i < m; i++) A[i] = (least <TA[i]);
+    parallel_for (int i=0; i < m; i++) A[i] = (least <TA[i]);
     int r = sequence::reduce(A,0,m,addF());
     free(A);
     return r;
@@ -171,10 +171,10 @@ class Table {
 template <class ET, class CMP, class HASH>
 pair<int*,int> name(seq<ET> A, int m, CMP cmpF, HASH hashF, ET least) {
   Table<ET,CMP,HASH> T(m,cmpF,hashF,least);
-  {cilk_for(int i=0;i<A.size();i++) T.insert(A[i]);}
+  {parallel_for(int i=0;i<A.size();i++) T.insert(A[i]);}
   int n = T.compactLabels();
   int *R = newA(int,A.size());
-  {cilk_for(int i=0;i<A.size();i++) R[i] = T.findLabel(A[i]);}
+  {parallel_for(int i=0;i<A.size();i++) R[i] = T.findLabel(A[i]);}
   T.del(); 
   return pair<int*,int>(R,n);
 }
@@ -185,7 +185,7 @@ seq<ET> removeDuplicates(seq<ET> A, int m, CMP cmpF, HASH hashF, ET least) {
   Table<ET,CMP,HASH> T(m,cmpF,hashF,least);
   //nextTime("make table");
   _cilk_grainsize_256
-  cilk_for(int i=0;i<A.size();i++) T.insert(A[i]);
+  parallel_for(int i=0;i<A.size();i++) T.insert(A[i]);
   //nextTime("insert");
   seq<ET> R = T.entries();
   //nextTime("entries");

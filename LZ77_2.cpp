@@ -5,7 +5,6 @@
 #include <iostream>
 #include "gettime.h"
 #include "utils.h"
-#include "cilk.h"
 #include "test.h"
 using namespace std;
 

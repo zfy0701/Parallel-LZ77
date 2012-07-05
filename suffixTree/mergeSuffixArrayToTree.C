@@ -54,7 +54,7 @@ suffixTree suffixArrayToTree (int* SA, int* LCP, int n, int* s){
 
   //initialize nodes
   node* nodes = new node[2*n];
-  cilk_for(int i=1; i<n; i++){ //internal
+  parallel_for(int i=1; i<n; i++){ //internal
     nodes[2*i].value = LCP[i-1];
     nodes[2*i+1].value = n-SA[i]+1;
     nodes[2*i].parent = nodes[2*i+1].parent = 0;
@@ -69,7 +69,7 @@ suffixTree suffixArrayToTree (int* SA, int* LCP, int n, int* s){
   // Filter out non-root internal nodes
   int* flags = new int[n];
   flags[0] = -1;
-  cilk_for(int i=1; i<n;i++){
+  parallel_for(int i=1; i<n;i++){
     int j = 2*i;
     int p = nodes[j].parent;
     if (nodes[j].value > nodes[p].value) flags[i] = j;
@@ -80,18 +80,18 @@ suffixTree suffixArrayToTree (int* SA, int* LCP, int n, int* s){
   delete flags;
 
   // shortcut to roots of each cluster
-  cilk_for(int i=1;i<2*n;i++)
+  parallel_for(int i=1;i<2*n;i++)
     nodes[i].parent = getRoot(nodes, i);
 
   // copy leaves to hash structure
   stNode<int>* stnodes = new stNode<int>[n+nm];
-  cilk_for(int i=0;i<n;i++){
+  parallel_for(int i=0;i<n;i++){
     int j = 2*i+1;
     setNode(nodes,stnodes,s,i,j,(n-nodes[j].value+1));
   }
 
   // copy internal nodes to hash structure
-  cilk_for(int i=0;i<nm;i++){
+  parallel_for(int i=0;i<nm;i++){
     int j = oout[i];
     setNode(nodes,stnodes,s,n+i,j,(n-nodes[j-1].value+1));
   }
@@ -100,7 +100,7 @@ suffixTree suffixArrayToTree (int* SA, int* LCP, int n, int* s){
   // insert into hash table
   stNodeTable table = makeStNodeTable(3*(n+nm)/4);
   stNodeTable* ST = &table;
-  cilk_for(int i=0; i<n+nm; i++) {
+  parallel_for(int i=0; i<n+nm; i++) {
     ST->insert(stnodes+i);
   }
 

@@ -25,7 +25,7 @@
 
 #include <iostream>
 #include <fstream>
-#include "cilk.h"
+#include "parallel.h"
 #include "seq.h"
 #include "itemGen.h"
 #include <math.h>

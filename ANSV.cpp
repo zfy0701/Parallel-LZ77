@@ -1,6 +1,6 @@
 #include "ANSV.h"
 #include "Base.h"
-#include "cilk.h"
+#include "parallel.h"
 
 #include <cstdio>
 #include <cstdlib>
@@ -97,7 +97,7 @@ void ComputeANSV(int * a, int n, int *left, int *right) {
 	for (int d = 1; d < depth; d++) {
 		int m2 = m / 2;
 
-		cilk_for (int i = 0; i < m2; i++) {
+		parallel_for (int i = 0; i < m2; i++) {
 			table[d][i] = min(table[d - 1][LEFT(i)], table[d - 1][RIGHT(i)]);
 		}
 
@@ -108,7 +108,7 @@ void ComputeANSV(int * a, int n, int *left, int *right) {
 		m = (m + 1) / 2;
 	}
 
-  	cilk_for (int i = 0; i < n; i += BLOCK_SIZE) {
+  	parallel_for (int i = 0; i < n; i += BLOCK_SIZE) {
   		int j = min(i + BLOCK_SIZE, n);
   		ComputeANSV_Linear(a + i, j - i, left + i, right + i, i);
 

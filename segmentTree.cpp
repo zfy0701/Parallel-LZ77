@@ -1,5 +1,5 @@
 #include "segmentTree.h"
-#include "cilk.h"
+#include "parallel.h"
 #include "Base.h"
 
 #include <cstdio>
@@ -30,7 +30,7 @@ void SegmentTree::BuildTree(int * a, int _n) {
     for (int d = 1; d < depth; d++) {
         int m2 = m / 2;
 
-        cilk_for (int i = 0; i < m2; i++) {
+        parallel_for (int i = 0; i < m2; i++) {
             table[d][i] = min(table[d - 1][LEFT(i)], table[d - 1][RIGHT(i)]);
         }
 

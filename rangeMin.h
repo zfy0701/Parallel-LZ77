@@ -24,7 +24,7 @@
 #define _myRMQ_hpp_
 
 #include <iostream>
-#include "cilk.h"
+#include "parallel.h"
 using namespace std;
 
 class myRMQ{
