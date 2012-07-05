@@ -9,6 +9,7 @@
 #include <fcntl.h>
 #include <sys/stat.h>
 #include <sys/types.h>
+#include "cilk.h"
 
 #include "gettime.h"
 
@@ -185,9 +186,10 @@ void checkSourceFile(int np, int n, char *path) {
     getText(n, path, a);
     a[n] = a[n + 1] = a[n + 2] = 0;
 
+    startTime();
     printf("\nParallel:\n");
     printf("#result %d\n", LempelZiv(a, n, lz));
-    nextTime("parallel total time:");
+    reportTime("parallel total time:");
 
     printf("***************** END TEST LINX CODE *****************\n\n");
 
@@ -243,6 +245,13 @@ int main(int argc, char *argv[]) {
             }
         }
     }
+
+
+                #ifdef CILK
+                __cilkrts_set_param("nworkers", "1");
+                #elif OPENMP
+                omp_set_num_threads(1);
+                #endif
 
     if (sigma < 0 && path[0] == 0) {
         perror("No input file specified / Random string genereted.");

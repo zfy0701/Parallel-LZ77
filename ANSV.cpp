@@ -13,7 +13,7 @@ using namespace std;
 #define RIGHT(i) (((i) << 1) | 1)
 #define PARENT(i) ((i) >> 1)
 
-inline int getLeft(int **table, int depth, int n, int index, int start) {
+inline int getLeft_opt(int **table, int depth, int n, int index, int start) {
 	int value = table[0][index];
 	if (value == table[depth - 1][0]) return -1;
 
@@ -35,7 +35,7 @@ inline int getLeft(int **table, int depth, int n, int index, int start) {
 	return cur;
 } 
 
-inline int getRight(int **table, int depth, int n, int index, int start) {
+inline int getRight_opt(int **table, int depth, int n, int index, int start) {
 	int value = table[0][index];
 	if (value == table[depth - 1][0]) return -1;
 
@@ -79,7 +79,8 @@ void ComputeANSV_Linear(int a[], int n, int leftElements[], int rightElements[],
 }
 
 void ComputeANSV(int * a, int n, int *left, int *right) {
-    int depth = getDepth(n);
+    int l2 = cflog2(n);
+    int depth = l2 + 1;
 
 	int *all = new int[n];
 	int **table = new int*[depth];
@@ -124,7 +125,7 @@ void ComputeANSV(int * a, int n, int *left, int *right) {
   				if (a[tmp] >= a[k] && tmp != -1) {
   					//if (left[tmp] != -1)
   					//	tmp = left[tmp];
-					tmp = getLeft(table, depth, n, k, tmp);
+					tmp = getLeft_opt(table, depth, n, k, tmp);
 				}
 				left[k] = tmp;
   			}
@@ -136,7 +137,7 @@ void ComputeANSV(int * a, int n, int *left, int *right) {
   				if (a[tmp] >= a[k] && tmp != -1) {
   					//if (right[tmp] != -1)
   					//	tmp = right[k];
-	  				tmp = getRight(table, depth, n, k, tmp);
+	  				tmp = getRight_opt(table, depth, n, k, tmp);
   				}
   				right[k] = tmp;
   			}
@@ -146,4 +147,3 @@ void ComputeANSV(int * a, int n, int *left, int *right) {
   	delete table;
 	delete all;
 }
-

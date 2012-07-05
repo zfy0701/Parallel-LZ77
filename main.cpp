@@ -66,8 +66,6 @@ void getText(int n, char *path, int *dst) {
 	delete buf;
 }
 
-
-
 void checkSourceFile(int np, int n, char *path) {
 	int *a = new int[n + 3];
 	int i;
@@ -79,6 +77,7 @@ void checkSourceFile(int np, int n, char *path) {
 	a[n] = a[n + 1] = a[n + 2] = 0;
 
 	printf("\nParallel:\n");
+	startTime();
 	printf("#result %d\n", ParallelLZ77(a, n, lz));
 	nextTime("parallel total time:");
 
@@ -94,8 +93,12 @@ void Usage(char *program) {
 	printf("-r <num>\tGenerete random string with the specified alphabet size\n");
 	printf("-i <file>\tInput file name\n");
 	printf("-o <file>\tOutput file name\n");
+	printf("-f <file>\tChoose different algorithm for LPF\n");
 	printf("-h \t\tDisplay this help\n");
 }
+
+
+extern int flag;
 
 int main(int argc, char *argv[]) {
 	int opt;
@@ -103,7 +106,7 @@ int main(int argc, char *argv[]) {
 	int sigma = -1;
 	char path[1025] = {};
 
-	while ((opt = getopt(argc, argv, "p:d:r:i:o:")) != -1) {
+	while ((opt = getopt(argc, argv, "p:d:r:i:o:f:")) != -1) {
 		switch (opt) {
 			case 'p': {
 				p = atoi(optarg);
@@ -140,6 +143,11 @@ int main(int argc, char *argv[]) {
 
 				break;
 			}
+			case 'f': {
+				flag = atoi(optarg);
+
+				break;
+			}
 			default: {
 				Usage(argv[0]);
 				exit(1);
@@ -163,7 +171,7 @@ int main(int argc, char *argv[]) {
 		}
 	}
 
-	if (sigma > 1) {
+	if (sigma >= 1) {
 		checkAll(p, n, sigma);
 	} else {
 		checkSourceFile(p, n, path);

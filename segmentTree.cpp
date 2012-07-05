@@ -52,14 +52,14 @@ int SegmentTree::Query(int l, int r) {
 }
 
 int SegmentTree::query(int cur, int dep, int l, int r) {
-	int range = 1 << (depth - dep - 1);
+	int range = 1 << dep;
 	int leftBound = cur * range;
 	int rightBound = min(leftBound + range - 1, n - 1);	//all the bound is incluisve
 
-	if (leftBound >= n) return -1;	//invaild node [since the tree is not 2^n size]
+	if (leftBound >= n) return INFI;	//invaild node [since the tree is not 2^n size]
 
-	if (l > rightBound || r < leftBound) return -1;	//the ranges have no intersection
-	else if (l <= leftBound && r >= rightBound) return table[cur][dep];
+	if (l > rightBound || r < leftBound) return INFI;	//the ranges have no intersection
+	else if (l <= leftBound && r >= rightBound) return table[dep][cur];
 
-	return min(this->query(LEFT(cur), depth - 1, l, r), this->query(RIGHT(cur), depth - 1, l, r));
+	return min(this->query(LEFT(cur), dep - 1, l, r), this->query(RIGHT(cur), dep - 1, l, r));
 }

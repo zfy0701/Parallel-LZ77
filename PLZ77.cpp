@@ -19,28 +19,27 @@
 #include "utils.h"
 #include "Base.h"
 #include "merge.h"
+#include "segmentTree.h"
 
 //#include "ansv2.h"
 //using namespace std;
 
+
+
 ///////////////////////////////////////////////
 pair<int*,int*> suffixArray(int* s, int n, bool findLCPs);
 
-
-
-void getLPF(int *sa, int n, int *lcp, int *lpf) {
+void getLPF_0(int *s, int *sa, int n, int *lcp, int *lpf) {
     int d = getDepth(n);
     int *l = new int[n], *r = new int[n];
 
-    nextTime("checkpoint");
+    nextTime("\tcheckpoint");
     ComputeANSV(sa, n, l, r);
-    nextTime("ansn");
+    nextTime("\tansn");
 
-  
     myRMQ rmq(lcp, n);
-    //rmq.precomputeQueries();
 
-    nextTime("rmq");
+//    nextTime("rmq");
     
     cilk_for (int i = 0; i < n; i++) {
         int llcp = 0, rlcp = 0;
@@ -53,9 +52,166 @@ void getLPF(int *sa, int n, int *lcp, int *lpf) {
 
         lpf[sa[i]] = max(llcp, rlcp);
     }
-    nextTime("lpf");
+    nextTime("\tlpf");
     
     delete l; delete r;
+}
+
+
+void getLPF_1(int *s, int *sa, int n, int *lcp, int *lpf) {
+    int d = getDepth(n);
+    int *leftElements = new int[n], *rightElements = new int[n];
+
+    int *leftLPF = new int[n], *rightLPF = new int[n];
+    int *rank = new int[n];
+
+    nextTime("\tcheckpoint");
+    ComputeANSV(sa, n, leftElements, rightElements);
+ //   ComputeANSV_Linear(sa, n, leftElements, rightElements, 0);
+    nextTime("\tansn");
+    
+    SegmentTree st;
+    st.BuildTree(lcp, n);
+    nextTime("\tbuild tree");
+
+    cilk_for (int i = 0; i < n; i++) {
+        rank[sa[i]] = i;
+    }
+
+    int p = 
+    #ifdef OPENMP
+        omp_get_max_threads();
+    #elif CILK
+        __cilkrts_get_nworkers();
+    #endif
+    int size = (n + p - 1) / p;
+
+    //printf("p %d, size %d", p, size);
+
+    cilk_for (int i = 0; i < n; i += size) {
+        int j = min(i + size, n);
+
+        //compute lpf for first element
+        int mid = rank[i], left = leftElements[rank[i]], right = rightElements[rank[i]];
+
+        if (left != -1) {
+            leftLPF[i] = st.Query(left + 1, mid);
+        } else leftLPF[i] = 0;
+
+        if (right != -1) {
+            rightLPF[i] = st.Query(mid + 1, right);
+        } else rightLPF[i] = 0;
+
+        lpf[i] = max(leftLPF[i], rightLPF[i]);
+
+        //compute lpf for rest elements
+        for (int k = i + 1; k < j; k++) {
+            left = leftElements[rank[k]];
+            right = rightElements[rank[k]];
+
+            if (left != -1) {
+                int llcp = max(leftLPF[k - 1] - 1, 0);
+                while (s[sa[left] + llcp] == s[k + llcp]) llcp++;
+                leftLPF[k] = llcp;
+            } else leftLPF[k] = 0;
+
+            if (right != -1) {
+                int rlcp = max(rightLPF[k - 1] - 1, 0);
+                while (s[sa[right] + rlcp] == s[k + rlcp]) rlcp++;
+                rightLPF[k] = rlcp;
+            } else rightLPF[k] = 0;
+
+            // int mid = rank[k], left = leftElements[rank[k]], right = rightElements[rank[k]];
+
+            // if (left != -1) {
+            //     leftLPF[k] = st.Query(left + 1, mid);
+            // } else leftLPF[k] = 0;
+
+            // if (right != -1) {
+            //     rightLPF[k] = st.Query(mid + 1, right);
+            // } else rightLPF[k] = 0;
+
+            lpf[k] = max(leftLPF[k], rightLPF[k]);
+        }
+    }
+    st.DeleteTree();
+
+    nextTime("\tlpf");
+ 
+    delete leftElements; delete rightElements; delete rank;
+    delete leftLPF; delete rightLPF;
+
+    // for (int i = 0; i < d; i++) 
+    //      delete table[i] ;
+}
+
+void getLPF_2(int *s, int *sa, int n, int *lcp, int *lpf) {
+    int d = getDepth(n);
+    int *leftElements = new int[n], *rightElements = new int[n];
+
+    int *leftLPF = new int[n], *rightLPF = new int[n];
+    int *rank = new int[n];
+
+    nextTime("\tcheckpoint");
+    ComputeANSV(sa, n, leftElements, rightElements);
+    nextTime("\tansn");
+
+    cilk_for (int i = 0; i < n; i++) {
+        rank[sa[i]] = i;
+    }
+
+    int p = 
+    #ifdef OPENMP
+        omp_get_max_threads();
+    #elif CILK
+        __cilkrts_get_nworkers();
+    #endif
+    int size = (n + p - 1) / p;
+
+
+    cilk_for (int i = 0; i < n; i += size) {
+        int j = min(i + size, n);
+
+        //compute lpf for first element
+        int mid = rank[i], left = leftElements[rank[i]], right = rightElements[rank[i]];
+        int llcp = 0, rlcp = 0;
+
+        if (left != -1) {
+            while (s[sa[left] + llcp] == s[i + llcp]) llcp++;
+            leftLPF[i] = llcp;
+        } else leftLPF[i] = 0;
+
+        if (right != -1) {
+             while (s[sa[right] + rlcp] == s[i + rlcp]) rlcp++;
+            rightLPF[i] = rlcp;
+        } else rightLPF[i] = 0;
+
+        lpf[i] = max(leftLPF[i], rightLPF[i]);
+
+        //compute lpf for rest elements
+        for (int k = i + 1; k < j; k++) {
+            left = leftElements[rank[k]];
+            right = rightElements[rank[k]];
+
+            if (left != -1) {
+                llcp = max(leftLPF[k - 1] - 1, 0);
+                while (s[sa[left] + llcp] == s[k + llcp]) llcp++;
+                leftLPF[k] = llcp;
+            } else leftLPF[k] = 0;
+
+            if (right != -1) {
+                rlcp = max(rightLPF[k - 1] - 1, 0);
+                while (s[sa[right] + rlcp] == s[k + rlcp]) rlcp++;
+                rightLPF[k] = rlcp;
+            } else rightLPF[k] = 0;
+
+            lpf[k] = max(leftLPF[k], rightLPF[k]);
+        }
+    }
+    nextTime("\tlpf");
+ 
+    delete leftElements; delete rightElements; delete rank;
+    delete leftLPF; delete rightLPF;
 
     // for (int i = 0; i < d; i++) 
     //      delete table[i] ;
@@ -82,8 +238,6 @@ int getLZ(int *lpf, int n, int *lz) {
     
     nextTime("\tprepare"); //combine performance would be better due to cache miss
 
-    //for (int i = 0; i < n; i++) printf("%2d ", lpf[i]);printf("\n");
-
     l2 = max(l2, 256);
     int sn = (n + l2 - 1) / l2;
     
@@ -101,8 +255,7 @@ int getLZ(int *lpf, int n, int *lz) {
     }
     next[sn] = next2[sn] = sn; 
     sflag[0] = 1; sflag[sn] = 0;
- //    for (int i = 0; i <= sn; i++) printf("%2d ", i);printf("\n");
- //   for (int i = 0; i <= sn; i++) printf("%2d ", next[i]);printf("\n");
+
     //point jump
     int dep = getDepth(sn); ;
     for (int d = 0; d < dep; d++) {
@@ -133,16 +286,10 @@ int getLZ(int *lpf, int n, int *lz) {
     }
 
     nextTime("\tpoint jump");
-    
-    //for (int i = 0; i <= sn; i++) printf("%2d ", sflag[i]);printf("\n");
-    
-    //exclusiveScan(flag, nn);
+        
     sequence::scan(flag, flag, n+1, utils::addF<int>(),0);
 
-    //for (int i = 0; i < n; i++) printf("%2d ", flag[i]);printf("\n");
-
     nextTime("\tprefix sum");
-    //for (int i = 0; i <= n; i++) printf("%2d ", flag[i]);printf("\n");
     
     int m = flag[n];
     //lz = new int[m];
@@ -159,25 +306,38 @@ int getLZ(int *lpf, int n, int *lz) {
     return m;
 }
 
+int flag = 0;
+
 int ParallelLZ77(int *s, int n, int * lz) {
     startTime();
 
-    pair<int *, int*> salcp = suffixArray(s, n, true);
+    pair<int *, int*> salcp = suffixArray(s, n, flag < 2 ? true : false);
     nextTime("\tsuffix array");
 
     int *sa = salcp.first;
-    //int *lcp = salcp.second - 1;
-    //lcp[0] = 0;   //TODO check safety
     int *lcp = new int[n];
-    lcp[0] = 0;
-    cilk_for (int i = 1; i < n; i++) 
-        lcp[i] = salcp.second[i-1];
+    if (flag == 0) {
+        lcp[0] = 0;
+        cilk_for (int i = 1; i < n; i++) 
+            lcp[i] = salcp.second[i-1];
+    }
 
     //for (int i = 0; i < n; i++) {printf("%d ", sa[i]);} puts("");
     //for (int i = 0; i < n; i++) {printf("%d ", lcp[i]);} puts("");
 
     int *lpf = new int[n];
-    getLPF(sa, n, lcp, lpf);
+    // printf("lpf1");
+    if (flag == 0)
+        getLPF_0(s, sa, n, lcp, lpf);
+    // printf("lpf2");
+    // getLPF_2(s, sa, n, lcp, lpf);
+    // printf("lpf3");
+    else if (flag == 1)
+        getLPF_1(s, sa, n, lcp, lpf);
+    else 
+        getLPF_2(s, sa, n, lcp, lpf);
+
+    //getLPF(s, sa, n, lcp, lpf);
 
     //for (int i = 0; i < n; i++) {printf("%d ", lpf[i]);} puts("");
     int m = getLZ(lpf, n, lz);

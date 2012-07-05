@@ -3,6 +3,7 @@
 
 class SegmentTree {
 private:
+	static const int INFI = 1 << 30;
 	int n;
 	int **table;
 	int *all;
