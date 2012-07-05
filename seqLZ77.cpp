@@ -8,12 +8,17 @@
 #include "cilk.h"
 using namespace std;
 
+timer saTime;
+
 pair<int*,int*> suffixArray(int *s, int n, bool findLCPs);
 
 pair<int*,int> compute(int* A, int n){
   startTime();
+  saTime.start();
   pair<int*,int*> SA_LCP = suffixArray(A,n,true);
   _tm.stop();
+  cout<<"suffix array time:";
+  saTime.reportNext();
 
   //getting arrays in right format
   int* LCP = newA(int,n+1); LCP[0]=0; LCP[n]=0;
@@ -54,10 +59,12 @@ pair<int*,int> compute(int* A, int n){
     j++;
   }
   reportTime("sequential LZ77");
+  free(LPF);
   return pair<int*,int>(LZ,j);
 }
 
-int cilk_main(int argc, char *argv[]) {
+int main(int argc, char *argv[]) {
+  if(argc < 2) { cout<<"no input file specified\n"; abort(); }
   char* file = argv[1];
   FILE *fp = fopen(file, "r");
   fseek(fp,0L,SEEK_END);
