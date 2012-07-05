@@ -1,4 +1,3 @@
-#ifdef OPENMP
 
 #ifndef _MYSORT_H
 #define _MYSORT_H
@@ -21,7 +20,7 @@ template <class ET>
 void kmerge(ET **st, ET **ed, ET *r, int k) {
 
     int depth = getDepth(k);
-    int nthread = omp_get_max_threads();
+    int nthread = get_threads();
 
     int i;
 
@@ -128,7 +127,7 @@ inline void Sublists(E * a, int start, int end, int * subsize, int at, E * pivot
 template <class E>
 void ParallelSortRS(E * a, int n) {
 	//todo ensure sequentail sort for n < BSIZE
-	int p = omp_get_max_threads();
+	int p = get_threads();
 
 	if (p == 1) {
 		std::sort(a, a+n);
@@ -241,7 +240,7 @@ void ParallelMergeSort(E * o, int n, F f) {
 	E * b = new E[n];
 	E * a = new E[n]; //might be the problem, why?
 
-	int p = omp_get_max_threads();
+	int p = get_threads();
 
 	int size = (n + p - 1) / p;
 	
@@ -288,5 +287,4 @@ void ParallelMergeSort(E * o, int n, F f) {
 	// }
 }
 
-#endif
 #endif

@@ -13,6 +13,8 @@ using namespace std;
 #define RIGHT(i) (((i) << 1) | 1)
 #define PARENT(i) ((i) >> 1)
 
+const int BLOCK_SIZE = 8192;
+
 inline int getLeft_opt(int **table, int depth, int n, int index, int start) {
 	int value = table[0][index];
 	if (value == table[depth - 1][0]) return -1;
@@ -106,23 +108,14 @@ void ComputeANSV(int * a, int n, int *left, int *right) {
 		m = (m + 1) / 2;
 	}
 
-    int p = 
-#ifdef OPENMP
-	omp_get_max_threads();
-#elif CILK
-	__cilkrts_get_nworkers();
-#endif
-    //printf("num of proc %d.\n", p);
-    int size = (n + p - 1) / p;
-
-  	cilk_for (int i = 0; i < n; i += size) {
-  		int j = min(i + size, n);
+  	cilk_for (int i = 0; i < n; i += BLOCK_SIZE) {
+  		int j = min(i + BLOCK_SIZE, n);
   		ComputeANSV_Linear(a + i, j - i, left + i, right + i, i);
 
   		int tmp = i;
   		for (int k = i; k < j; k++) {
   			if (left[k] == -1) {
-  				if (a[tmp] >= a[k] && tmp != -1) {
+  				if ( tmp != -1 && a[tmp] >= a[k]) {
   					//if (left[tmp] != -1)
   					//	tmp = left[tmp];
 					tmp = getLeft_opt(table, depth, n, k, tmp);
@@ -134,7 +127,7 @@ void ComputeANSV(int * a, int n, int *left, int *right) {
   		tmp = j - 1;
   		for (int k = j - 1; k >=  i; k--) {
   			if (right[k] == -1) {
-  				if (a[tmp] >= a[k] && tmp != -1) {
+  				if (tmp != -1 && a[tmp] >= a[k]) {
   					//if (right[tmp] != -1)
   					//	tmp = right[k];
 	  				tmp = getRight_opt(table, depth, n, k, tmp);

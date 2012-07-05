@@ -20,31 +20,30 @@
 // OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+#include "Base.h"
+
 #if defined(CILK)
 #include <cilk/cilk.h>
 #include <cilk/cilk_api.h>
-#define cilk_main cilk_main
 #define cilk_for_1 _Pragma("cilk_grainsize = 1") cilk_for
 #define _cilk_grainsize_1 _Pragma("cilk_grainsize = 1")
 #define _cilk_grainsize_2 _Pragma("cilk_grainsize = 2")
 #define _cilk_grainsize_256 _Pragma("cilk_grainsize = 256")
-#elif defined(CILKP)
-#define cilk_main main
-#define cilk_for_1 _Pragma("cilk grainsize = 1") cilk_for
-#define _cilk_grainsize_1 _Pragma("cilk grainsize = 1")
-#define _cilk_grainsize_2 _Pragma("cilk grainsize = 2")
-#define _cilk_grainsize_256 _Pragma("cilk grainsize = 256")
-#include <cilk/cilk.h>
+#define set_threads(p) __cilkrts_set_param("nworkers", itoa(p))
+#define get_threads() __cilkrts_get_nworkers()
+
 #elif defined(OPENMP)
+#include <omp.h>
 #define cilk_spawn _Pragma("omp task")
 #define cilk_sync _Pragma("omp taskwait") 
 #define cilk_for_1 _Pragma("omp parallel for schedule (static,1)") for
 #define cilk_for _Pragma("omp parallel for") for
-#define cilk_main main
 #define _cilk_grainsize_1 
 #define _cilk_grainsize_2 
 #define _cilk_grainsize_256
-#include <omp.h>
+#define set_threads(p) omp_set_num_threads(p)
+#define get_threads() omp_get_max_threads()
+
 #else
 #define cilk_spawn
 #define cilk_sync

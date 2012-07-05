@@ -18,7 +18,7 @@ PCC = $(CC)
 CFLAGS = -fopenmp -O2 -DOPENMP
 endif
 
-all: plz77 lz771  seqLZ77
+all: plz77 lz77_1 lz77_2
 
 .PHONY: clean
 
@@ -37,23 +37,21 @@ suffixArray.o: suffixArray.cpp merge.h PSRS.h
 segmentTree.o: segmentTree.cpp segmentTree.h
 	$(PCC) $(CFLAGS) -c $<
 
-PLZ77.o: PLZ77.cpp
-	$(PCC) $(CFLAGS) -c $<
+LZ77_1.o: LZ77_1.cpp  test.h
+	$(CC) $(CFLAGS) -c $<
 
-LZ77.o: LZ77.cpp
-	$(PCC) $(CFLAGS) -c $<
-
-lz771: LZ77.o suffixArray.o rangeMin.o
+lz77_1: LZ77_1.o suffixArray.o rangeMin.o
 	$(PCC) $(CFLAGS) -o $@ $^
 
-main.o: main.cpp
-	$(PCC) $(CFLAGS) -c $<
+LZ77_2.o: LZ77_2.cpp  test.h
+	$(CC) $(CFLAGS) -c $<
 
-seqLZ77.o: seqLZ77.cpp
-	$(PCC) $(CFLAGS) -c $<
-
-plz77: main.o PLZ77.o ANSV.o rangeMin.o suffixArray.o segmentTree.o
+lz77_2: LZ77_2.o suffixArray.o rangeMin.o
 	$(PCC) $(CFLAGS) -o $@ $^
 
-seqLZ77: seqLZ77.o suffixArray.o rangeMin.o
+PLZ77.o: PLZ77.cpp  test.h
+	$(PCC) $(CFLAGS) -c $<
+	
+plz77: PLZ77.o ANSV.o rangeMin.o suffixArray.o segmentTree.o
 	$(PCC) $(CFLAGS) -o $@ $^
+

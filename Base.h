@@ -1,8 +1,12 @@
 #ifndef _BASE_H_
 #define _BASE_H_
 
-#include <math.h>
-#include <stdio.h>
+#include <cmath>
+#include <cstdio>
+#include <unistd.h>
+#include <fcntl.h>
+#include <sys/stat.h>
+#include <sys/types.h>
 
 const int BSIZE = 16;
 
@@ -14,7 +18,6 @@ inline int getDepth(int i) {
 }
 
 static int mylog2[1<<16];
-
 
 inline int fflog2(int i) {
 	int res = -1;
@@ -71,11 +74,12 @@ inline void initlog2() {
 	//for (int i = 0; i <= 0xffff; i++) printf("(%d %d) ", mylog2[i], check(i)); printf("\n");
 }
 
-//#define max(x, y) (((x) > (y))?(x) : (y))
-//#define min(x, y) (((x) < (y))?(x) : (y))
-
-//#define max(x, y) (((x) > (y))?(x) : (y))
-//#define min(x, y) (((x) < (y))?(x) : (y))
-
+inline char* itoa(int val, int base = 10){
+	static char buf[32] = {0};
+	int i = 30;
+	for(; val && i ; --i, val /= base)
+		buf[i] = "0123456789abcdef"[val % base];
+	return &buf[i+1];	
+}
 
 #endif

@@ -1,10 +1,6 @@
 /*
  * The parallel algirthm for Lempel-ziv 77 compression
  */
-#ifdef OPENMP
-#include <omp.h>
-#include "PSRS.h"
-#endif
 
 #include <stdio.h>
 #include <iostream>
@@ -20,11 +16,7 @@
 #include "Base.h"
 #include "merge.h"
 #include "segmentTree.h"
-
-//#include "ansv2.h"
-//using namespace std;
-
-
+#include "test.h"
 
 ///////////////////////////////////////////////
 pair<int*,int*> suffixArray(int* s, int n, bool findLCPs);
@@ -57,17 +49,15 @@ void getLPF_0(int *s, int *sa, int n, int *lcp, int *lpf) {
     delete l; delete r;
 }
 
-
 void getLPF_1(int *s, int *sa, int n, int *lcp, int *lpf) {
     int d = getDepth(n);
     int *leftElements = new int[n], *rightElements = new int[n];
 
     int *leftLPF = new int[n], *rightLPF = new int[n];
-    int *rank = new int[n];
+    int *rank = lpf; //reuse the space
 
     nextTime("\tcheckpoint");
     ComputeANSV(sa, n, leftElements, rightElements);
- //   ComputeANSV_Linear(sa, n, leftElements, rightElements, 0);
     nextTime("\tansn");
     
     SegmentTree st;
@@ -78,22 +68,12 @@ void getLPF_1(int *s, int *sa, int n, int *lcp, int *lpf) {
         rank[sa[i]] = i;
     }
 
-    int p = 
-    #ifdef OPENMP
-        omp_get_max_threads();
-    #elif CILK
-        __cilkrts_get_nworkers();
-    #endif
-    int size = (n + p - 1) / p;
+    int size = 8196;
 
-    //printf("p %d, size %d", p, size);
-
+    //compute lpf for first element
     cilk_for (int i = 0; i < n; i += size) {
         int j = min(i + size, n);
-
-        //compute lpf for first element
         int mid = rank[i], left = leftElements[rank[i]], right = rightElements[rank[i]];
-
         if (left != -1) {
             leftLPF[i] = st.Query(left + 1, mid);
         } else leftLPF[i] = 0;
@@ -101,13 +81,15 @@ void getLPF_1(int *s, int *sa, int n, int *lcp, int *lpf) {
         if (right != -1) {
             rightLPF[i] = st.Query(mid + 1, right);
         } else rightLPF[i] = 0;
+    }
+    st.DeleteTree();
 
-        lpf[i] = max(leftLPF[i], rightLPF[i]);
-
-        //compute lpf for rest elements
+    //compute lpf for rest elements    
+    cilk_for (int i = 0; i < n; i += size) {    
+        int j = min(i + size, n);  
         for (int k = i + 1; k < j; k++) {
-            left = leftElements[rank[k]];
-            right = rightElements[rank[k]];
+            int left = leftElements[rank[k]];
+            int right = rightElements[rank[k]];
 
             if (left != -1) {
                 int llcp = max(leftLPF[k - 1] - 1, 0);
@@ -120,29 +102,17 @@ void getLPF_1(int *s, int *sa, int n, int *lcp, int *lpf) {
                 while (s[sa[right] + rlcp] == s[k + rlcp]) rlcp++;
                 rightLPF[k] = rlcp;
             } else rightLPF[k] = 0;
-
-            // int mid = rank[k], left = leftElements[rank[k]], right = rightElements[rank[k]];
-
-            // if (left != -1) {
-            //     leftLPF[k] = st.Query(left + 1, mid);
-            // } else leftLPF[k] = 0;
-
-            // if (right != -1) {
-            //     rightLPF[k] = st.Query(mid + 1, right);
-            // } else rightLPF[k] = 0;
-
-            lpf[k] = max(leftLPF[k], rightLPF[k]);
         }
     }
-    st.DeleteTree();
+
+    cilk_for (int i = 0; i < n; i++) {
+        lpf[i] = max(leftLPF[i], rightLPF[i]);
+    }
 
     nextTime("\tlpf");
  
-    delete leftElements; delete rightElements; delete rank;
+    delete leftElements; delete rightElements;
     delete leftLPF; delete rightLPF;
-
-    // for (int i = 0; i < d; i++) 
-    //      delete table[i] ;
 }
 
 void getLPF_2(int *s, int *sa, int n, int *lcp, int *lpf) {
@@ -150,7 +120,7 @@ void getLPF_2(int *s, int *sa, int n, int *lcp, int *lpf) {
     int *leftElements = new int[n], *rightElements = new int[n];
 
     int *leftLPF = new int[n], *rightLPF = new int[n];
-    int *rank = new int[n];
+    int *rank = lpf;
 
     nextTime("\tcheckpoint");
     ComputeANSV(sa, n, leftElements, rightElements);
@@ -160,14 +130,11 @@ void getLPF_2(int *s, int *sa, int n, int *lcp, int *lpf) {
         rank[sa[i]] = i;
     }
 
-    int p = 
-    #ifdef OPENMP
-        omp_get_max_threads();
-    #elif CILK
-        __cilkrts_get_nworkers();
-    #endif
-    int size = (n + p - 1) / p;
+    int p = get_threads();
 
+    p *= 2;
+    int size = (n + p - 1) / p;
+    //int size = 8196;
 
     cilk_for (int i = 0; i < n; i += size) {
         int j = min(i + size, n);
@@ -186,8 +153,6 @@ void getLPF_2(int *s, int *sa, int n, int *lcp, int *lpf) {
             rightLPF[i] = rlcp;
         } else rightLPF[i] = 0;
 
-        lpf[i] = max(leftLPF[i], rightLPF[i]);
-
         //compute lpf for rest elements
         for (int k = i + 1; k < j; k++) {
             left = leftElements[rank[k]];
@@ -204,21 +169,21 @@ void getLPF_2(int *s, int *sa, int n, int *lcp, int *lpf) {
                 while (s[sa[right] + rlcp] == s[k + rlcp]) rlcp++;
                 rightLPF[k] = rlcp;
             } else rightLPF[k] = 0;
-
-            lpf[k] = max(leftLPF[k], rightLPF[k]);
         }
     }
+
+    cilk_for (int i = 0; i < n; i++) {
+        lpf[i] = max(leftLPF[i], rightLPF[i]);
+    }
+
     nextTime("\tlpf");
  
-    delete leftElements; delete rightElements; delete rank;
+    delete leftElements; delete rightElements;
     delete leftLPF; delete rightLPF;
-
-    // for (int i = 0; i < d; i++) 
-    //      delete table[i] ;
 }
 
 //some optimization require n >= 8
-int getLZ(int *lpf, int n, int *lz) {
+pair<int *, int> getLZ(int *lpf, int n) {
     int l2 = cflog2(n);
     int depth = l2 + 1;
     int nn = 1 << l2;
@@ -244,7 +209,6 @@ int getLZ(int *lpf, int n, int *lz) {
     int * next = new int[sn+1], *next2 = new int[sn+1];
     int * sflag = new int[sn+1];
     
-
     //build the sub tree
     cilk_for (int i = 0; i < sn; i ++) {
         int j;
@@ -263,9 +227,6 @@ int getLZ(int *lpf, int n, int *lz) {
             int j = next[i];
             if (sflag[i] == 1) {
                 sflag[j] = 1;
-                //printf("%d ", j);
-               //sflag2[j] = 1;
-               //sflag2[i] = 1;
             } 
             // printf("\n");
             next2[i] = next[j];
@@ -280,7 +241,6 @@ int getLZ(int *lpf, int n, int *lz) {
             flag[i] = 1;
             for(int j = lpf[i]; j % l2 && j != n; j = lpf[j]) {
                 flag[j] = 1;
-                //printf("write");
             }
         }
     }
@@ -292,7 +252,7 @@ int getLZ(int *lpf, int n, int *lz) {
     nextTime("\tprefix sum");
     
     int m = flag[n];
-    //lz = new int[m];
+    int * lz = new int[m];
     
     cilk_for(int i = 0; i < n; i++) {    
         if (flag[i] < flag[i+1]) {
@@ -303,12 +263,12 @@ int getLZ(int *lpf, int n, int *lz) {
     
     delete flag; delete sflag; delete next; delete next2;
 
-    return m;
+    return make_pair(lz, m);
 }
 
 int flag = 0;
 
-int ParallelLZ77(int *s, int n, int * lz) {
+pair<int *, int> ParallelLZ77(int *s, int n) {
     startTime();
 
     pair<int *, int*> salcp = suffixArray(s, n, flag < 2 ? true : false);
@@ -316,7 +276,7 @@ int ParallelLZ77(int *s, int n, int * lz) {
 
     int *sa = salcp.first;
     int *lcp = new int[n];
-    if (flag == 0) {
+    if (flag < 2) {
         lcp[0] = 0;
         cilk_for (int i = 1; i < n; i++) 
             lcp[i] = salcp.second[i-1];
@@ -340,11 +300,28 @@ int ParallelLZ77(int *s, int n, int * lz) {
     //getLPF(s, sa, n, lcp, lpf);
 
     //for (int i = 0; i < n; i++) {printf("%d ", lpf[i]);} puts("");
-    int m = getLZ(lpf, n, lz);
-
     delete salcp.first;
     delete salcp.second;
+
+    pair<int *, int> r = getLZ(lpf, n);
     delete lpf;
 
-    return m;
+    return r;
 }
+
+int main(int argc, char *argv[]) {
+    int opt;
+    while ((opt = getopt(argc, argv, "p:d:r:i:o:f:")) != -1) {
+        if (opt == 'f') {
+            flag = atoi(optarg);
+            break;
+        }
+    }
+
+    optind = 1;
+    return test_main(argc, argv, (char *)"Parallel LZ77 using suffix array", ParallelLZ77);
+}
+
+
+
+
