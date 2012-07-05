@@ -6,8 +6,8 @@ PCC = $(CC)
 CFLAGS = -fopenmp -O2 -DOPENMP
 
 else ifdef CILK
-PCC = cilk++
-CFLAGS = -O2 -DCILK -Wno-cilk-for
+PCC = $(CC)
+CFLAGS = -O2 -lcilkrts -DCILK -Wno-cilk-for
 
 else ifdef IPPROOT
 PCC = icpc

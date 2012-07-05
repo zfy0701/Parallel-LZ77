@@ -107,6 +107,11 @@ int main(int argc, char *argv[]) {
 		switch (opt) {
 			case 'p': {
 				p = atoi(optarg);
+				#ifdef CILK
+				__cilkrts_set_param("nworkers", itoa(p));
+				#elif OPENMP
+				omp_set_num_threads(p);
+				#endif
 				break;
 			}
 			case 'd': {
@@ -158,12 +163,6 @@ int main(int argc, char *argv[]) {
 		}
 	}
 
-
-#ifdef CILK
-	__cilkrts_set_param("nworkers", itoa(p));
-#elif OPENMP
-	omp_set_num_threads(p);
-#endif
 	if (sigma > 1) {
 		checkAll(p, n, sigma);
 	} else {
