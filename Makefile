@@ -6,8 +6,8 @@ PCC = $(CC)
 CFLAGS = -fopenmp -O2 -DOPENMP
 
 else ifdef CILK
-PCC = $(CC)
-CFLAGS = -O2 -lcilkrts -DCILK -Wno-cilk-for
+PCC = cilk++
+CFLAGS = -O2 -DCILK -Wno-cilk-for
 
 else ifdef IPPROOT
 PCC = icpc
@@ -18,8 +18,7 @@ PCC = $(CC)
 CFLAGS = -fopenmp -O2 -DOPENMP
 endif
 
-
-all: plz77 lz771
+all: plz77 lz771  seqLZ77
 
 .PHONY: clean
 
@@ -50,5 +49,11 @@ lz771: LZ77.o suffixArray.o rangeMin.o
 main.o: main.cpp
 	$(PCC) $(CFLAGS) -c $<
 
+seqLZ77.o: seqLZ77.cpp
+	$(PCC) $(CFLAGS) -c $<
+
 plz77: main.o PLZ77.o ANSV.o rangeMin.o suffixArray.o segmentTree.o
+	$(PCC) $(CFLAGS) -o $@ $^
+
+seqLZ77: seqLZ77.o suffixArray.o rangeMin.o
 	$(PCC) $(CFLAGS) -o $@ $^

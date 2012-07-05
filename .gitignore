@@ -3,6 +3,7 @@
 *.ps
 plz77
 lz771
+seqLZ77
 /doc/*
 *sublime*
 *.swp
