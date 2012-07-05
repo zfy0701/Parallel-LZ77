@@ -1,10 +1,8 @@
 //LZ77 implementation of "A simple algorithm for computing the
 //Lempel-Ziv factorization", DCC 2008
 
-#include <stdio.h>
+#include <cstdio>
 #include <iostream>
-#include "gettime.h"
-#include "utils.h"
 #include "test.h"
 using namespace std;
 
@@ -13,12 +11,9 @@ timer saTime;
 pair<int*,int*> suffixArray(int *s, int n, bool findLCPs);
 
 pair<int*,int> compute(int* A, int n){
-  startTime();
   saTime.start();
   pair<int*,int*> SA_LCP = suffixArray(A,n,true);
-  _tm.stop();
-  cout<<"\tsuffix array time:";
-  saTime.reportNext();
+  saTime.reportNext("\tsuffix array time:");
 
   //getting arrays in right format
   int* LCP = newA(int,n+1); LCP[0]=0; LCP[n]=0;
@@ -26,8 +21,7 @@ pair<int*,int> compute(int* A, int n){
   for(int i=0;i<n;i++)SA[i]=SA_LCP.first[i];
   for(int i=1;i<n;i++)LCP[i]=SA_LCP.second[i-1];
   free(SA_LCP.first); free(SA_LCP.second);
-  
-  startTime();
+
   int* LPF = newA(int,n);
   int top = 0;
   int* stack = newA(int,n);
@@ -58,7 +52,7 @@ pair<int*,int> compute(int* A, int n){
     LZ[j+1] = LZ[j] + max(1,LPF[LZ[j]]);
     j++;
   }
-  reportTime("\tsequential LZ77");
+  saTime.reportNext("\tlpf && lz");
   free(LPF);
   return pair<int*,int>(LZ,j);
 }

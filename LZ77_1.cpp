@@ -5,13 +5,7 @@
 #include <iostream>
 #include <cstdio>
 #include <cstring>
-#include <unistd.h>
-#include <fcntl.h>
-#include <sys/stat.h>
-#include <sys/types.h>
 #include "test.h"
-
-#include "gettime.h"
 
 using namespace std;
 
@@ -56,7 +50,7 @@ pair<int*,int> LempelZiv(int *s, int n) {
     }
 
     int k = 0;
-    int * LZ = new int[n];
+    int * LZ = Rank;
     for (k = i = 0; i < n; i += max(1, lpf)) {
         int left = leftElements[Rank[i]], right = rightElements[Rank[i]];
 
@@ -74,7 +68,6 @@ pair<int*,int> LempelZiv(int *s, int n) {
     //for (i = 0;i < k;i++) printf("%d ", LZ[i] + 1);
     nextTime("\tlpf");
     delete SA;
-    delete Rank;
     delete leftElements;
     delete rightElements;
 

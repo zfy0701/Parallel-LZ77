@@ -48,14 +48,16 @@
 #define get_threads() omp_get_max_threads()
 
 #else
-#define cilk_spawn
-#define cilk_sync
+#define parallel_spawn
+#define parallel_sync
 #define parallel_for_1 for
 #define parallel_for for
-#define cilk_main main
-#define _cilk_grainsize_1 
-#define _cilk_grainsize_2 
-#define _cilk_grainsize_256 
+#define parallel_main main
+#define parallel_grainsize_1 
+#define parallel_grainsize_2 
+#define parallel_grainsize_256 
+#define set_threads(p) 
+#define get_threads()  1
 #endif
  
 

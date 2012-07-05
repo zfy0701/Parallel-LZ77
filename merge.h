@@ -61,9 +61,10 @@ void merge(ET* S1, int l1, ET* S2, int l2, ET* R, F f) {
     else {
       int m1 = l1/2;
       int m2 = binSearch(S2,l2,S1[m1],f);
-      cilk_spawn merge(S1,m1,S2,m2,R,f);
+      parallel_spawn 
+      merge(S1,m1,S2,m2,R,f);
       merge(S1+m1,l1-m1,S2+m2,l2-m2,R+m1+m2,f);
-      cilk_sync;
+      parallel_sync;
     }
   } else {
     ET* pR = R; 

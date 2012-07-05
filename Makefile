@@ -15,10 +15,10 @@ CFLAGS = -O2 -DCILKP
 
 else 
 PCC = $(CC)
-CFLAGS = -fopenmp -O2 -DOPENMP
+CFLAGS = -O2
 endif
 
-all: plz77 lz77_1 lz77_2
+all: plz77 lz77_1 lz77_2 lz77_3
 
 .PHONY: clean
 
@@ -47,6 +47,12 @@ LZ77_2.o: LZ77_2.cpp  test.h
 	$(CC) $(CFLAGS) -c $<
 
 lz77_2: LZ77_2.o suffixArray.o rangeMin.o
+	$(PCC) $(CFLAGS) -o $@ $^
+
+LZ77_3.o: LZ77_3.cpp  test.h
+	$(CC) $(CFLAGS) -c $<
+
+lz77_3: LZ77_3.o rangeMin.o
 	$(PCC) $(CFLAGS) -o $@ $^
 
 PLZ77.o: PLZ77.cpp  test.h

@@ -126,7 +126,11 @@ inline int test_main(int argc, char *argv[], char * algoname, std::pair<int *, i
 	a[n] = a[n + 1] = a[n + 2] = 0;
 	testTm.start();
 	std::pair<int *, int> res = lz77(a, n);
-	printf(" * result %d\n", res.second);
+	int maxoffset = 0;
+	for (int i = 0; i < res.second - 1; i++) {
+		maxoffset = std::max(maxoffset, res.first[i+1] - res.first[i]);
+	}
+	printf(" * result: size = %d, max offset = %d\n", res.second, maxoffset);
 	testTm.reportNext(" * Total time:");
 	printf("***************** TEST ENDED *****************\n\n");
 
