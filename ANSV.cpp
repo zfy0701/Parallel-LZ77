@@ -2,9 +2,9 @@
 #include "Base.h"
 #include "cilk.h"
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <math.h>
+#include <cstdio>
+#include <cstdlib>
+#include <cmath>
 #include <iostream>
 
 using namespace std;
@@ -79,8 +79,7 @@ void ComputeANSV_Linear(int a[], int n, int leftElements[], int rightElements[],
 }
 
 void ComputeANSV(int * a, int n, int *left, int *right) {
-    int l2 = cflog2(n);
-    int depth = l2 + 1;
+    int depth = getDepth(n);
 
 	int *all = new int[n];
 	int **table = new int*[depth];

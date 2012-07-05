@@ -19,7 +19,7 @@ CFLAGS = -fopenmp -O2 -DOPENMP
 endif
 
 
-all: plz77 
+all: plz77 lz771
 
 .PHONY: clean
 
@@ -35,14 +35,20 @@ rangeMin.o: rangeMin.cpp rangeMin.h
 suffixArray.o: suffixArray.cpp merge.h PSRS.h
 	$(PCC) $(CFLAGS) -c $<
 
+segmentTree.o: segmentTree.cpp segmentTree.h
+	$(PCC) $(CFLAGS) -c $<
+
 PLZ77.o: PLZ77.cpp
 	$(PCC) $(CFLAGS) -c $<
 
 LZ77.o: LZ77.cpp
 	$(PCC) $(CFLAGS) -c $<
 
+lz771: LZ77.o suffixArray.o rangeMin.o
+	$(PCC) $(CFLAGS) -o $@ $^
+
 main.o: main.cpp
 	$(PCC) $(CFLAGS) -c $<
 
-plz77: main.o PLZ77.o LZ77.o ANSV.o rangeMin.o suffixArray.o
+plz77: main.o PLZ77.o ANSV.o rangeMin.o suffixArray.o segmentTree.o
 	$(PCC) $(CFLAGS) -o $@ $^

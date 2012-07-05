@@ -27,6 +27,7 @@
 pair<int*,int*> suffixArray(int* s, int n, bool findLCPs);
 
 
+
 void getLPF(int *sa, int n, int *lcp, int *lpf) {
     int d = getDepth(n);
     int *l = new int[n], *r = new int[n];

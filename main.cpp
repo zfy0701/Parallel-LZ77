@@ -17,7 +17,6 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 
-int LempelZiv(int *s, int n, int *LZ);
 int ParallelLZ77(int *s, int n, int *lz);
 
 int getLZ(int *lpf, int n, int *lz);
@@ -36,40 +35,21 @@ void checkAll(int np, int n, int sigma) {
 	int i;
 	int *lz = new int[n];
 
-	for (int s = 4; s <= sigma; s *= 2) {
-		printf("***************** TEST ON APLPHABET SIZE = %d *****************\n", s);
-		for ( i = 0; i < n; i++)
-			a[i] = rand() % s + 1;
-		a[n] = a[n + 1] = a[n + 2] = 0;
+	printf("***************** TEST ON APLPHABET SIZE = %d *****************\n", sigma);
+	for ( i = 0; i < n; i++)
+		a[i] = rand() % sigma + 1;
+	a[n] = a[n + 1] = a[n + 2] = 0;
 
-		startTime();
+	startTime();
 
-		printf("#result %d\n", LempelZiv(a, n, lz));
-		nextTime("sequential total time:");
+	printf("#result %d\n", ParallelLZ77(a, n, lz));
+	reportTime("parallel total time:");
+	printf("\nParallel:\n");
 
-		printf("#result %d\n", ParallelLZ77(a, n, lz));
-		nextTime("parallel total time:");
-		printf("\nParallel:\n");
-		// for (int p = 1; p <= np; p *= 2) {
-		//  setThreads(p);
-
-		//  startTime();
-
-		//  printf("#procs %d, #result %d\n", p, ParallelLZ77(a, n, lz));
-		//  reportTime("parallel total time:");
-		//  printf("\n");
-		// }
-
-		printf("***************** END OF TEST ON ALLPHABET SIZE = %d *****************\n\n", s);
-	}
+	printf("***************** END OF TEST ON ALLPHABET SIZE = %d *****************\n\n", sigma);
 
 	delete lz; delete a;
 	printf("ALL TEST DONE!\n");
-}
-
-int checkAll_wrapper(void *args) {
-	long long *pt = (long long *) args;
-	checkAll(pt[0], pt[1], pt[2]);
 }
 
 void getText(int n, char *path, int *dst) {
@@ -89,11 +69,6 @@ void getText(int n, char *path, int *dst) {
 
 
 void checkSourceFile(int np, int n, char *path) {
-	//printf("%s\n", path);
-	//flush();
-
-	//n = 128;
-
 	int *a = new int[n + 3];
 	int i;
 	int *lz = new int[n];
@@ -103,31 +78,13 @@ void checkSourceFile(int np, int n, char *path) {
 	getText(n, path, a);
 	a[n] = a[n + 1] = a[n + 2] = 0;
 
-
 	printf("\nParallel:\n");
 	printf("#result %d\n", ParallelLZ77(a, n, lz));
 	nextTime("parallel total time:");
 
-
-	// for (int p = 1; p <= np; p *= 2) {
-	//  setThreads(p);
-
-	//  startTime();
-
-	//  printf("#procs %d, #result %d\n", p, ParallelLZ77(a, n, lz));
-	//  reportTime("parallel total time:");
-	//  printf("\n");
-	// }
-
 	printf("***************** END TEST LINX CODE *****************\n\n");
 
 	delete lz; delete a;
-	//printf("ALL TEST DONE!\n");
-}
-
-int checkSourceFile_wrapper(void *args) {
-	long long *pt = (long long *) args;
-	checkSourceFile(pt[0], pt[1], (char *)pt[2]);
 }
 
 void Usage(char *program) {
