@@ -19,6 +19,8 @@ pair<int*,int> compute(int* A, int n){
   for(int i=0;i<n;i++)SA[i]=SA_LCP.first[i];
 
   int *LCP = GetLCP(A, n, SA);
+  //TO JS: do we really need LCP[n] = 0? because getlcp DONT return n+1 size array
+
   //int* LCP = newA(int,n+1); LCP[0]=0; LCP[n]=0;
   //for(int i=1;i<n;i++)LCP[i]=SA_LCP.second[i-1];
   //free(SA_LCP.first); free(SA_LCP.second);

@@ -282,7 +282,7 @@ int* suffixArrayNoLCP(int* s, int n) {
 int *GetLCP(int * s, int n, int * SA) {
   int i, j, k, t1, t2;
   int * Rank = new int[n];
-  int *Hgt = new int[n + 1]; Hgt[n] = 0; //this is hack for lz77_2
+  int *Hgt = new int[n];
   for (i=0;i<n;i++)
     Rank[SA[i]] = i;
   for (i=0;i<n;i++){

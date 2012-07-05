@@ -15,7 +15,7 @@ CFLAGS = -O2 -DCILKP
 
 else 
 PCC = $(CC)
-CFLAGS = -O2
+CFLAGS = -g
 endif
 
 all: plz77 lz77_1 lz77_2 lz77_3

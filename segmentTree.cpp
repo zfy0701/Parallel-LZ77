@@ -16,17 +16,16 @@ using namespace std;
 void SegmentTree::BuildTree(int * a, int _n) {
 	n = _n;
     depth = getDepth(n);
-
-    all = new int[n];
     table = new int*[depth];
-
+    
     table[0] = a;
-    table[1] = all;
-    for (int i = 2; i < depth; i++) {
-        table[i] = table[i - 1] + (1 << (depth - i));
+    int m = n;
+    for (int i = 1; i < depth; i++) {
+        m = (m + 1) / 2;
+        table[i] = new int[m];
     }
 
-    int m = n;
+    m = n;
     for (int d = 1; d < depth; d++) {
         int m2 = m / 2;
 
@@ -43,8 +42,8 @@ void SegmentTree::BuildTree(int * a, int _n) {
 }
 
 void SegmentTree::DeleteTree() {
-	delete all;
-	delete table;
+	for (int i = 1; i < depth; i++) delete table[i];
+    delete table;
 }
 
 int SegmentTree::Query(int l, int r) {

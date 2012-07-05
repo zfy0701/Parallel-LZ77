@@ -83,17 +83,16 @@ void ComputeANSV_Linear(int a[], int n, int leftElements[], int rightElements[],
 void ComputeANSV(int * a, int n, int *left, int *right) {
     int l2 = cflog2(n);
     int depth = l2 + 1;
-
-	int *all = new int[n];
 	int **table = new int*[depth];
 
 	table[0] = a;
-	table[1] = all;
-	for (int i = 2; i < depth; i++) {
-		table[i] = table[i - 1] + (1 << (depth - i));
+	int m = n;
+	for (int i = 1; i < depth; i++) {
+		m = (m + 1) / 2;
+		table[i] = new int[m];
 	}
 
-	int m = n;
+	m = n;
 	for (int d = 1; d < depth; d++) {
 		int m2 = m / 2;
 
@@ -137,6 +136,6 @@ void ComputeANSV(int * a, int n, int *left, int *right) {
   		}
   	}
 
+  	for (int i = 1; i < depth; i++) delete table[i];
   	delete table;
-	delete all;
 }
