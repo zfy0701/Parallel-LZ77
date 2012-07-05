@@ -40,7 +40,7 @@ segmentTree.o: segmentTree.cpp segmentTree.h
 LZ77_1.o: LZ77_1.cpp  test.h
 	$(CC) $(CFLAGS) -c $<
 
-lz77_1: LZ77_1.o suffixArray.o rangeMin.o
+lz77_1: LZ77_1.o suffixArray.o rangeMin.o ANSV.o
 	$(PCC) $(CFLAGS) -o $@ $^
 
 LZ77_2.o: LZ77_2.cpp  test.h

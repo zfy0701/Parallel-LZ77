@@ -7,19 +7,12 @@
 #include <sys/time.h>
 
 #include "ANSV.h"
-
+#include "suffixArray.h"
 #include "rangeMin.h"
-
 #include "sequence.h"
-#include "intSort.h"
-#include "utils.h"
 #include "Base.h"
-#include "merge.h"
 #include "segmentTree.h"
 #include "test.h"
-
-///////////////////////////////////////////////
-pair<int*,int*> suffixArray(int* s, int n, bool findLCPs);
 
 void getLPF_0(int *s, int *sa, int n, int *lcp, int *lpf) {
     int d = getDepth(n);

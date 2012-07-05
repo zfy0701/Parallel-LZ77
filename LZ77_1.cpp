@@ -6,30 +6,10 @@
 #include <cstdio>
 #include <cstring>
 #include "test.h"
-
+#include "ANSV.h"
+#include "suffixArray.h"
+ 
 using namespace std;
-
-pair<int*,int*> suffixArray(int* s, int n, bool findLCPs);
-
-void calNearestElement(int a[], int n, int leftElements[], int rightElements[]) {
-    int i, top;
-    int *stack = new int[n];
-
-    for (i = 0, top = -1; i < n; i++) {
-        while (top > -1 && a[stack[top]] > a[i]) top--;
-        if (top == -1) leftElements[i] = -1;
-        else leftElements[i] = stack[top];
-        stack[++top] = i;
-    }
-
-    for (i = n - 1, top = -1; i >= 0; i--) {
-        while (top > -1 && a[stack[top]] > a[i]) top--;
-        if (top == -1) rightElements[i] = -1;
-        else rightElements[i] = stack[top];
-        stack[++top] = i;
-    }
-    delete stack;
-}
 
 pair<int*,int> LempelZiv(int *s, int n) {
     int i, lpf, l, r;
@@ -40,7 +20,7 @@ pair<int*,int> LempelZiv(int *s, int n) {
     int* SA = res.first;
     nextTime("\tsuffix array");
 
-    calNearestElement(SA, n, leftElements, rightElements);
+    ComputeANSV_Linear(SA, n, leftElements, rightElements);
 
     nextTime("\tANSV");
 
@@ -84,7 +64,7 @@ int LempelZiv2(int *s, int n, int *LZ) {
     int* SA = res.first;
     nextTime("\tsuffix array");
 
-    calNearestElement(SA, n, leftElements, rightElements);
+    ComputeANSV_Linear(SA, n, leftElements, rightElements);
 
     nextTime("\tANSV");
 

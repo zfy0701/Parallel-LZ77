@@ -4,23 +4,24 @@
 #include <cstdio>
 #include <iostream>
 #include "test.h"
+#include "suffixArray.h"
 using namespace std;
 
 timer saTime;
 
-pair<int*,int*> suffixArray(int *s, int n, bool findLCPs);
-
 pair<int*,int> compute(int* A, int n){
   saTime.start();
-  pair<int*,int*> SA_LCP = suffixArray(A,n,true);
+  pair<int*,int*> SA_LCP = suffixArray(A,n,false);
   saTime.reportNext("\tsuffix array time:");
 
   //getting arrays in right format
-  int* LCP = newA(int,n+1); LCP[0]=0; LCP[n]=0;
   int* SA = newA(int,n+1); SA[n]=-1;
   for(int i=0;i<n;i++)SA[i]=SA_LCP.first[i];
-  for(int i=1;i<n;i++)LCP[i]=SA_LCP.second[i-1];
-  free(SA_LCP.first); free(SA_LCP.second);
+
+  int *LCP = GetLCP(A, n, SA);
+  //int* LCP = newA(int,n+1); LCP[0]=0; LCP[n]=0;
+  //for(int i=1;i<n;i++)LCP[i]=SA_LCP.second[i-1];
+  //free(SA_LCP.first); free(SA_LCP.second);
 
   int* LPF = newA(int,n);
   int top = 0;

@@ -100,7 +100,6 @@ inline int computeLCP(int* LCP12, int* rank, myRMQ & RMQ,
   return lll;
 }
 
-
 // This recursive version requires s[n]=s[n+1]=s[n+2] = 0
 // K is the maximum value of any element in s
 pair<int*,int*> suffixArrayRec(int* s, int n, int K, bool findLCPs) {
@@ -279,3 +278,25 @@ pair<int*,int*> suffixArray(int* s, int n, bool findLCPs) {
 
 int* suffixArrayNoLCP(int* s, int n) { 
   return suffixArray(s,n,false).first;}
+
+int *GetLCP(int * s, int n, int * SA) {
+  int i, j, k, t1, t2;
+  int * Rank = new int[n];
+  int *Hgt = new int[n + 1]; Hgt[n] = 0; //this is hack for lz77_2
+  for (i=0;i<n;i++)
+    Rank[SA[i]] = i;
+  for (i=0;i<n;i++){
+    t1 = Rank[i]; 
+    if (t1 == 0) Hgt[t1] = 0; 
+    else {
+      t2 = Rank[i - 1];
+      k = (i == 0 || Hgt[t2] <= 1) ? 0 : Hgt[t2] - 1;
+      j = SA[t1 - 1];
+      while (s[i + k] == s[j + k]) k++;
+      Hgt[t1] = k;
+    }
+  } //for
+  delete Rank;
+  return Hgt;
+}
+
