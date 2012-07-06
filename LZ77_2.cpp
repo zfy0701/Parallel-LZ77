@@ -1,44 +1,41 @@
 //LZ77 implementation of "A simple algorithm for computing the
 //Lempel-Ziv factorization", DCC 2008
 
-#include <cstdio>
 #include <iostream>
+#include <cstdio>
+#include <cstring>
 #include "test.h"
 #include "suffixArray.h"
 using namespace std;
 
-timer saTime;
-
 pair<int*,int> compute(int* A, int n){
-  saTime.start();
-  pair<int*,int*> SA_LCP = suffixArray(A,n,false);
-  saTime.reportNext("\tsuffix array time:");
+  timer lzTm;
+  lzTm.start();
 
-  //getting arrays in right format
-  int* SA = newA(int,n+1); SA[n]=-1;
-  for(int i=0;i<n;i++)SA[i]=SA_LCP.first[i];
+  A[n] = 128; //let last one be the max one, so SA[n] = n, and LCP[n] = 0
+  pair<int*,int*> SA_LCP = suffixArray(A,n + 1,false);
 
-  int *LCP = GetLCP(A, n, SA);
-  //TO JS: do we really need LCP[n] = 0? because getlcp DONT return n+1 size array
-
-  //int* LCP = newA(int,n+1); LCP[0]=0; LCP[n]=0;
-  //for(int i=1;i<n;i++)LCP[i]=SA_LCP.second[i-1];
-  //free(SA_LCP.first); free(SA_LCP.second);
-
+  int* SA = SA_LCP.first;
+  lzTm.reportNext("\tsuffix array time:");
+  int *LCP = GetLCP(A, n + 1, SA);
+  lzTm.reportNext("\tlcp time:");
+  SA[n]=-1;
+  A[n] = '\0';
+  
   int* LPF = newA(int,n);
   int top = 0;
   int* stack = newA(int,n);
   stack[0] = 0;
   for(int i=1;i<=n;i++){ //compute LPF array
     while(top != -1 && 
-	  ((SA[i] < SA[stack[top]]) || 
-	   ((SA[i] > SA[stack[top]]) && (LCP[i] <= LCP[stack[top]])))) {
+      ((SA[i] < SA[stack[top]]) || 
+       ((SA[i] > SA[stack[top]]) && (LCP[i] <= LCP[stack[top]])))) {
       int stack_top = stack[top];
       if(SA[i] < SA[stack_top]){
-	LPF[SA[stack_top]] = max(LCP[i],LCP[stack_top]);
-	LCP[i] = min(LCP[i],LCP[stack_top]);
+    LPF[SA[stack_top]] = max(LCP[i],LCP[stack_top]);
+    LCP[i] = min(LCP[i],LCP[stack_top]);
       } else {
-	LPF[SA[stack_top]] = LCP[stack_top];
+    LPF[SA[stack_top]] = LCP[stack_top];
       }
       top--;
     }
@@ -55,8 +52,8 @@ pair<int*,int> compute(int* A, int n){
     LZ[j+1] = LZ[j] + max(1,LPF[LZ[j]]);
     j++;
   }
-  saTime.reportNext("\tlpf && lz");
   free(LPF);
+  lzTm.reportNext("\tlpf && lz");
   return pair<int*,int>(LZ,j);
 }
 

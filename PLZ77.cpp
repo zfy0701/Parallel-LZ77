@@ -123,6 +123,9 @@ void getLPF_2(int *s, int *sa, int n, int *lcp, int *lpf) {
         rank[sa[i]] = i;
     }
 
+    // lcp = GetLCP(s,  n, sa);
+    // nextTime("\tlinear lcp test");
+
     int p = get_threads();
 
     p *= 2;
@@ -314,7 +317,4 @@ int main(int argc, char *argv[]) {
     optind = 1;
     return test_main(argc, argv, (char *)"Parallel LZ77 using suffix array", ParallelLZ77);
 }
-
-
-
 

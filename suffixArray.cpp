@@ -277,26 +277,23 @@ pair<int*,int*> suffixArray(int* s, int n, bool findLCPs) {
 }
 
 int* suffixArrayNoLCP(int* s, int n) { 
-  return suffixArray(s,n,false).first;}
-
-int *GetLCP(int * s, int n, int * SA) {
-  int i, j, k, t1, t2;
-  int * Rank = new int[n];
-  int *Hgt = new int[n];
-  for (i=0;i<n;i++)
-    Rank[SA[i]] = i;
-  for (i=0;i<n;i++){
-    t1 = Rank[i]; 
-    if (t1 == 0) Hgt[t1] = 0; 
-    else {
-      t2 = Rank[i - 1];
-      k = (i == 0 || Hgt[t2] <= 1) ? 0 : Hgt[t2] - 1;
-      j = SA[t1 - 1];
-      while (s[i + k] == s[j + k]) k++;
-      Hgt[t1] = k;
-    }
-  } //for
-  delete Rank;
-  return Hgt;
+  return suffixArray(s,n,false).first;
 }
 
+int *GetLCP(int * s, int n, int * SA) {   
+    int i, j, h;  
+    int * Rank = new int[n];
+    int *Hgt = new int[n];
+
+    Hgt[0] = 0;
+    for (i = 0; i < n; i++) Rank[SA[i]] = i;
+    for (h = 0, i = 0; i < n; i++) {
+        if (Rank[i] > 0){   
+            j = SA[Rank[i]-1];   
+            while (s[i+h] == s[j+h]) ++h;   
+            Hgt[Rank[i]] = h;   
+            if (h > 0) --h;     
+        }
+    }
+    return Hgt;
+}   

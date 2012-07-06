@@ -55,7 +55,7 @@ int SegmentTree::query(int cur, int dep, int l, int r) {
 	int leftBound = cur * range;
 	int rightBound = min(leftBound + range - 1, n - 1);	//all the bound is incluisve
 
-	if (leftBound >= n) return INFI;	//invaild node [since the tree is not 2^n size]
+	if (leftBound >= n) return INFI;	              //invaild node [since the tree is not 2^n size]
 
 	if (l > rightBound || r < leftBound) return INFI;	//the ranges have no intersection
 	else if (l <= leftBound && r >= rightBound) return table[dep][cur];

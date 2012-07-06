@@ -15,7 +15,7 @@ CFLAGS = -O2 -DCILKP
 
 else 
 PCC = $(CC)
-CFLAGS = -g
+CFLAGS = -O2
 endif
 
 all: plz77 lz77_1 lz77_2 lz77_3
@@ -31,7 +31,7 @@ ANSV.o: ANSV.cpp ANSV.h
 rangeMin.o: rangeMin.cpp rangeMin.h
 	$(PCC) $(CFLAGS) -c $<
 
-suffixArray.o: suffixArray.cpp merge.h PSRS.h
+suffixArray.o: suffixArray.cpp suffixArray.h merge.h PSRS.h
 	$(PCC) $(CFLAGS) -c $<
 
 segmentTree.o: segmentTree.cpp segmentTree.h
@@ -43,7 +43,7 @@ LZ77_1.o: LZ77_1.cpp  test.h
 lz77_1: LZ77_1.o suffixArray.o rangeMin.o ANSV.o
 	$(PCC) $(CFLAGS) -o $@ $^
 
-LZ77_2.o: LZ77_2.cpp  test.h
+LZ77_2.o: LZ77_2.cpp test.h
 	$(CC) $(CFLAGS) -c $<
 
 lz77_2: LZ77_2.o suffixArray.o rangeMin.o
