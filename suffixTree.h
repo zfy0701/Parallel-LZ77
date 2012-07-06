@@ -42,6 +42,16 @@ struct stNode {
     locationInOriginalArray = _location;
     edgeLength = _edgeLength;
   }
+
+  int getFirstChild(); //return -1 if this is leave
+
+  int getSibl();  //return -1 if there is no sibl
+
+  bool isLeaf();
+
+  int getSuffix();  //if it is leaf, return the suffix it represent, otherwise return -1
+
+  int getParent() {return parentID;}
 };
 
 struct stNodeHash {
@@ -108,6 +118,8 @@ struct suffixTree {
       }
     }
   }
+
+  int getRoot()
 };
 
 suffixTree suffixArrayToTree (int* SA, int* LCP, int n, int* s);
@@ -116,8 +128,6 @@ pair<int*,int*> suffixArray(int* s, int n, bool findLCPs);
 inline suffixTree buildSuffixTree(int* s, int n) {
     pair<int*,int*> SA_LCP = suffixArray(s, n, true);  
     suffixTree T = suffixArrayToTree(SA_LCP.first, SA_LCP.second, n, s);
-    // delete SA_LCP.first;
-    // delete SA_LCP.second;
     return T;
 }
 

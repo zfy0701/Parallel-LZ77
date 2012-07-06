@@ -2,9 +2,8 @@
  * The parallel algirthm for Lempel-ziv 77 compression
  */
 
-#include <stdio.h>
+#include <cstdio>
 #include <iostream>
-#include <sys/time.h>
 
 #include "ANSV.h"
 #include "suffixArray.h"
