@@ -113,4 +113,12 @@ struct suffixTree {
 suffixTree suffixArrayToTree (int* SA, int* LCP, int n, int* s);
 pair<int*,int*> suffixArray(int* s, int n, bool findLCPs);
 
+inline suffixTree buildSuffixTree(int* s, int n) {
+    pair<int*,int*> SA_LCP = suffixArray(s, n, true);  
+    suffixTree T = suffixArrayToTree(SA_LCP.first, SA_LCP.second, n, s);
+    // delete SA_LCP.first;
+    // delete SA_LCP.second;
+    return T;
+}
+
 #endif

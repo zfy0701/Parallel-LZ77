@@ -1,7 +1,8 @@
 *.o
 *.pdf
 *.ps
-plz77
+plz77_1
+plz77_2
 lz77_1
 lz77_2
 lz77_3
@@ -9,5 +10,5 @@ lz77_3
 *sublime*
 *.swp
 kernelCode.txt
-a
+a.txt
 *.sh

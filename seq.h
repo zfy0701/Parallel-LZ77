@@ -26,7 +26,7 @@
 #define A_SEQ_INCLUDED
 
 #include <iostream>
-#include "cilk.h"
+#include "parallel.h"
 #include "sequence.h"
 
 using namespace std;
@@ -62,9 +62,9 @@ public:
    static void tabulate(ET* I, int s, int e, F f) {
      int n = e-s;
      if (n > _BSIZE) {
-       cilk_spawn tabulate(I, s, s+n/2, f);
+       parallel_spawn tabulate(I, s, s+n/2, f);
        tabulate(I, s+n/2, e, f);
-       cilk_sync;
+       parallel_sync;
      } else {
        for (int i=s; i<e; i++) I[i] = f(i);
      }
@@ -118,9 +118,9 @@ public:
   template <class OT, class F> 
   void mapR(OT* R, int s, int n, F f) {
     if (n > _BSIZE) {
-      cilk_spawn mapR(R,s,n/2,f); 
+      parallel_spawn mapR(R,s,n/2,f); 
       mapR(R,s+n/2,n-n/2,f);
-      cilk_sync;
+      parallel_sync;
     } else for (int i=s; i<s+n; i++) R[i] = f(S[i]);
   }
 

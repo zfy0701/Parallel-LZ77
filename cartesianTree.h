@@ -44,9 +44,9 @@ void cartesianTree(node* Nodes, int s, int n) {
     return;
   }
   if (n > 1000){
-    cilk_spawn cartesianTree(Nodes,s,n/2);
+    parallel_spawn cartesianTree(Nodes,s,n/2);
     cartesianTree(Nodes,s+n/2,n-n/2);
-    cilk_sync;
+    parallel_sync;
   } else {
     cartesianTree(Nodes,s,n/2);
     cartesianTree(Nodes,s+n/2,n-n/2);

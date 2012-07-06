@@ -43,7 +43,7 @@ class Table {
 
   // needs to be in separate routine due to Cilk bugs
   static void clearA(ET* A, int n, ET v) {
-    _cilk_grainsize_256
+    parallel_grainsize_256
     parallel_for (int i=0; i < n; i++) A[i] = v;
   }
 
@@ -144,7 +144,7 @@ class Table {
   // returns the number of entries
   int count() {
     int *A = newA(int,m);
-    _cilk_grainsize_256
+    parallel_grainsize_256
     parallel_for (int i=0; i < m; i++) A[i] = (least <TA[i]);
     int r = sequence::reduce(A,0,m,addF());
     free(A);
@@ -184,7 +184,7 @@ seq<ET> removeDuplicates(seq<ET> A, int m, CMP cmpF, HASH hashF, ET least) {
   //startTime();
   Table<ET,CMP,HASH> T(m,cmpF,hashF,least);
   //nextTime("make table");
-  _cilk_grainsize_256
+  parallel_grainsize_256
   parallel_for(int i=0;i<A.size();i++) T.insert(A[i]);
   //nextTime("insert");
   seq<ET> R = T.entries();
