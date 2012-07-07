@@ -135,6 +135,7 @@ inline int test_main(int argc, char *argv[], char * algoname, std::pair<int *, i
 	printf("***************** TEST ENDED *****************\n\n");
 
 	delete a;
+	return 0;
 }
 
 #endif

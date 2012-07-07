@@ -35,6 +35,19 @@
 #define set_threads(p) __cilkrts_set_param("nworkers", itoa(p))
 #define get_threads() __cilkrts_get_nworkers()
 
+#elif defined(CILKP)
+#include <cilk/cilk.h>
+#include <cilk/cilk_api.h>
+#define parallel_for cilk_for
+#define parallel_for_1 _Pragma("cilk grainsize = 1") cilk_for
+#define parallel_grainsize_1 _Pragma("cilk grainsize = 1")
+#define parallel_grainsize_2 _Pragma("cilk grainsize = 2")
+#define parallel_grainsize_256 _Pragma("cilk grainsize = 256")
+#define parallel_spawn cilk_spawn
+#define parallel_sync cilk_sync
+#define set_threads(p) __cilkrts_set_param("nworkers", itoa(p))
+#define get_threads() __cilkrts_get_nworkers()
+
 #elif defined(OPENMP)
 #include <omp.h>
 #define parallel_for _Pragma("omp parallel for") for

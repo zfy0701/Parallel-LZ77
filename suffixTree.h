@@ -119,7 +119,7 @@ struct suffixTree {
     }
   }
 
-  int getRoot()
+  int getRoot();
 };
 
 suffixTree suffixArrayToTree (int* SA, int* LCP, int n, int* s);

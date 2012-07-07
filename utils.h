@@ -92,7 +92,7 @@ inline bool CAS(ET **ptr, ET* oldv, ET* newv) {
   /* Note that sete sets a 'byte' not the word */
   __asm__ __volatile__ (
                 "  lock\n"
-                "  cmpxchgq %2,%1\n"
+                "  cmpxchg  %2,%1\n"
 		//PTCMPXCH
                 "  sete %0\n"
                 : "=q" (ret), "=m" (*ptr)
