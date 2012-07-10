@@ -31,7 +31,7 @@ struct transpose {
   E *A, *B;
   transpose(E *AA, E *BB) : A(AA), B(BB) {}
 
-  void transR(int rStart, int rCount, int rLength,
+  inline void transR(int rStart, int rCount, int rLength,
 	      int cStart, int cCount, int cLength) {
     //cout << "cc,rc: " << cCount << "," << rCount << endl;
     if (cCount < _TRANS_THRESHHOLD && rCount < _TRANS_THRESHHOLD) {
@@ -53,7 +53,7 @@ struct transpose {
     }	
   }
 
-  void trans(int rCount, int cCount) {
+  inline void trans(int rCount, int cCount) {
     transR(0,rCount,cCount,0,cCount,rCount);
   }
 };
@@ -66,7 +66,7 @@ struct blockTrans {
   blockTrans(E *AA, E *BB, int *OOA, int *OOB, int *LL) 
     : A(AA), B(BB), OA(OOA), OB(OOB), L(LL) {}
 
-  void transR(int rStart, int rCount, int rLength,
+  inline void transR(int rStart, int rCount, int rLength,
 	     int cStart, int cCount, int cLength) {
     //cout << "cc,rc: " << cCount << "," << rCount << endl;
     if (cCount < _TRANS_THRESHHOLD && rCount < _TRANS_THRESHHOLD) {
@@ -93,7 +93,7 @@ struct blockTrans {
     }	
   }
  
-  void trans(int rCount, int cCount) {
+  inline    void trans(int rCount, int cCount) {
     transR(0,rCount,cCount,0,cCount,rCount);
   }
 } ;

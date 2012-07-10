@@ -38,32 +38,35 @@ mergeSuffixArrayToTree.o: mergeSuffixArrayToTree.cpp suffixTree.h
 segmentTree.o: segmentTree.cpp segmentTree.h
 	$(PCC) $(CFLAGS) -c $<
 
+BWT.o: BWT.cpp BWT.h
+	$(PCC) $(CFLAGS) -c $<
+
 LZ77_1.o: LZ77_1.cpp  test.h
 	$(PCC) $(CFLAGS) -c $<
 
-lz77_1: LZ77_1.o suffixArray.o rangeMin.o ANSV.o
+lz77_1: LZ77_1.o suffixArray.o rangeMin.o ANSV.o BWT.o
 	$(PCC) $(CFLAGS) -o $@ $^
 
 LZ77_2.o: LZ77_2.cpp test.h
 	$(PCC) $(CFLAGS) -c $<
 
-lz77_2: LZ77_2.o suffixArray.o rangeMin.o
+lz77_2: LZ77_2.o suffixArray.o rangeMin.o BWT.o
 	$(PCC) $(CFLAGS) -o $@ $^
 
 LZ77_3.o: LZ77_3.cpp test.h
 	$(PCC) $(CFLAGS) -c $<
 
-lz77_3: LZ77_3.o rangeMin.o
+lz77_3: LZ77_3.o rangeMin.o BWT.o
 	$(PCC) $(CFLAGS) -o $@ $^
 
 PLZ77_1.o: PLZ77_1.cpp test.h
 	$(PCC) $(CFLAGS) -c $<
 	
-plz77_1: PLZ77_1.o ANSV.o rangeMin.o suffixArray.o segmentTree.o
+plz77_1: PLZ77_1.o ANSV.o rangeMin.o suffixArray.o segmentTree.o BWT.o
 	$(PCC) $(CFLAGS) -o $@ $^
 
 PLZ77_2.o: PLZ77_2.cpp test.h
 	$(PCC) $(CFLAGS) -c $<
 	
-plz77_2: PLZ77_2.o rangeMin.o suffixArray.o mergeSuffixArrayToTree.o
+plz77_2: PLZ77_2.o rangeMin.o suffixArray.o mergeSuffixArrayToTree.o BWT.o
 	$(PCC) $(CFLAGS) -o $@ $^
