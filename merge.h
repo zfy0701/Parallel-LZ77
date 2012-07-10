@@ -51,7 +51,7 @@ int binSearch(ET *S, int n, ET v, F f) {
     return T - S;
 }
 
-// #ifdef OPENMP
+//#ifdef OPENMP
 
 #define SPLIT_BSIZE (_MERGE_BSIZE >> 2)
 

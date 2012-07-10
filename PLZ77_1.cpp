@@ -253,9 +253,7 @@ pair<int *, int> getLZ(int *lpf, int n) {
         if (flag[i] < flag[i+1]) {
             lz[flag[i]] = i;
         }
-    }
-    //nextTime("combine result"); //check a bit about out of boundary
-    
+    }    
     delete flag; delete sflag; delete next; delete next2;
 
     return make_pair(lz, m);
@@ -277,22 +275,13 @@ pair<int *, int> ParallelLZ77(int *s, int n) {
             lcp[i] = salcp.second[i-1];
     }
 
-    //for (int i = 0; i < n; i++) {printf("%d ", sa[i]);} puts("");
-    //for (int i = 0; i < n; i++) {printf("%d ", lcp[i]);} puts("");
-
     int *lpf = new int[n];
-    // printf("lpf1");
     if (flag == 0)
         getLPF_0(s, sa, n, lcp, lpf);
-    // printf("lpf2");
-    // getLPF_2(s, sa, n, lcp, lpf);
-    // printf("lpf3");
     else if (flag == 1)
         getLPF_1(s, sa, n, lcp, lpf);
     else 
         getLPF_2(s, sa, n, lcp, lpf);
-
-    //getLPF(s, sa, n, lcp, lpf);
 
     //for (int i = 0; i < n; i++) {printf("%d ", lpf[i]);} puts("");
     delete salcp.first;

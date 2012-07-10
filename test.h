@@ -5,6 +5,7 @@
 #include "parallel.h"
 #include "utils.h"
 #include "gettime.h"
+#include "BWT.h"
 
 inline int get_file_size(char * path) {
 	struct stat info;
@@ -39,6 +40,7 @@ inline void Usage(char *program) {
 	printf("-o <file>\tOutput file name\n");
 	printf("-f <file>\tChoose different algorithm for LPF\n");
 	printf("-h \t\tDisplay this help\n");
+	printf("-t 0: No transform. 1: Perform the Burrows–Wheeler transform first. 2: Perform Huffman coding afterward.");
 }
 
 inline int test_main(int argc, char *argv[], char * algoname, std::pair<int *, int> lz77(int *s, int n)) {
@@ -46,8 +48,9 @@ inline int test_main(int argc, char *argv[], char * algoname, std::pair<int *, i
 	int p = 1, d = -1, n = -1;
 	int sigma = -1;
 	char path[1025] = {};
+	int t = 0;
 
-	while ((opt = getopt(argc, argv, "p:d:r:i:o:f:")) != -1) {
+	while ((opt = getopt(argc, argv, "p:d:r:i:o:f:t:")) != -1) {
 		switch (opt) {
 			case 'p': {
 				p = atoi(optarg);
@@ -74,14 +77,17 @@ inline int test_main(int argc, char *argv[], char * algoname, std::pair<int *, i
 				if (dup2(open(optarg, O_CREAT | O_WRONLY, 0644), STDOUT_FILENO) < 0) {
 					perror("Output file error");
 					exit(EXIT_FAILURE);
+				} else {
+					//TODO
 				}
-
 				break;
 			}
-			case 'f': {
-				//flag = atoi(optarg);
-				//this should be done in the caller
+			case 'f': {	//DON'T DO ANYTHING HERE!
 				break;
+			}
+			case 't': {
+				t = atoi(optarg);
+				break;				
 			}
 			default: {
 				Usage(argv[0]);
@@ -125,6 +131,11 @@ inline int test_main(int argc, char *argv[], char * algoname, std::pair<int *, i
 	timer testTm;
 	a[n] = a[n + 1] = a[n + 2] = 0;
 	testTm.start();
+	if (t == 1) {
+		int *b = BurrowsWheelerTransform(a, n);
+		delete a;
+		a = b;
+	}
 	std::pair<int *, int> res = lz77(a, n);
 	int maxoffset = 0;
 	for (int i = 0; i < res.second - 1; i++) {
@@ -135,6 +146,7 @@ inline int test_main(int argc, char *argv[], char * algoname, std::pair<int *, i
 	printf("***************** TEST ENDED *****************\n\n");
 
 	delete a;
+	return 0;
 }
 
 #endif

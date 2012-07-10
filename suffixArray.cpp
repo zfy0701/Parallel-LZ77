@@ -36,7 +36,7 @@ using namespace std;
 bool isSorted(int *SA, int *s, int n);
 
 // Radix sort a pair of integers based on first element
-void radixSortPair(pair<int,int> *A, int n, long m) {
+inline void radixSortPair(pair<int,int> *A, int n, long m) {
   intSort::iSort(A,n,m,utils::firstF<int,int>());
 }
 
