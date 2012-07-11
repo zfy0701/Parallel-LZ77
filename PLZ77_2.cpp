@@ -1,5 +1,8 @@
 /*
  * Parallel suffix tree + sequential searching
+ * Current version doesn't work. We need to compute
+ * minimum index at each internal node of suffix
+ * tree to know when to stop searching
  */
 
 #include <cstdio>
@@ -24,8 +27,10 @@ int prevMatchLength(suffixTree st, int currIndex){
     stNode<int>* b = st.table.find(&currentNode);
     if (b == NULL) break;
     else {
+      cout<<currentNode.edgeFirstChar<<" found ";
       int length = b->edgeLength;
       int stLocation = b->locationInOriginalArray;
+      cout<<"st location="<<stLocation<<" ";
       if(stLocation >= currIndex) break;
       matchLength++;
       // don't need to test first position since matched in hash table
@@ -47,7 +52,7 @@ int prevMatchLength(suffixTree st, int currIndex){
 
 pair<int *, int> ParallelLZ77(int *s, int n) {
   startTime();
-  //for(int i=0;i<=n;i++)cout<<s[i]<<" ";
+  for(int i=0;i<=n;i++)cout<<s[i]<<" ";
 
   suffixTree st = buildSuffixTree(s, n);
   nextTime("\tSuffix Tree");
@@ -57,8 +62,9 @@ pair<int *, int> ParallelLZ77(int *s, int n) {
   int currIndex = 1;
   
   while(currIndex < n){
-    //cout<<currIndex<<endl;
+    cout<<currIndex<<" ";
     int matchLength = prevMatchLength(st,currIndex);
+    cout<<matchLength<<endl;
     int dist = max(1,matchLength);
     LZ[m] = LZ[m-1] + dist;
     m++;
