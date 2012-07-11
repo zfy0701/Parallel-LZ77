@@ -18,6 +18,7 @@ pair<int *, int> LempelZiv(int *s, int n) {
     int *leftElements = new int[n], * rightElements = new int[n];
 
     pair<int *, int *> res = suffixArray(s, n, 0);
+
     int *SA = res.first;
     lzTm.reportNext("\tsuffix array");
 

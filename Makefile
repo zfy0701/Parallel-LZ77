@@ -12,7 +12,7 @@ PCC = icpc
 CFLAGS = -O2 -DCILKP
 else 
 PCC = $(CC)
-CFLAGS = -O2
+CFLAGS = -g
 endif
 
 

@@ -51,7 +51,7 @@ int binSearch(ET *S, int n, ET v, F f) {
     return T - S;
 }
 
-//#ifdef OPENMP
+#ifdef OPENMP
 
 #define SPLIT_BSIZE (_MERGE_BSIZE >> 2)
 
@@ -90,35 +90,34 @@ void merge(ET *S1, int l1, ET *S2, int l2, ET *R, F f) {
     }
 }
 
-// #else
-// template <class ET, class F> 
-// void merge(ET* S1, int l1, ET* S2, int l2, ET* R, F f) {
-//   int lr = l1 + l2;
-//   if (lr > _MERGE_BSIZE) {
-//     if (l2>l1)  merge(S2,l2,S1,l1,R,f);
-//     else {
-//       int m1 = l1/2;
-//       int m2 = binSearch(S2,l2,S1[m1],f);
-//       parallel_spawn 
-//       merge(S1,m1,S2,m2,R,f);
-//       merge(S1+m1,l1-m1,S2+m2,l2-m2,R+m1+m2,f);
-//       parallel_sync;
-//     }
-//   } else {
-//     ET* pR = R; 
-//     ET* pS1 = S1; 
-//     ET* pS2 = S2;
-//     ET* eS1 = S1+l1; 
-//     ET* eS2 = S2+l2;
-//     while (true) {
-//       *pR++ = f(*pS2,*pS1) ? *pS2++ : *pS1++;
-//       if (pS1==eS1) {std::copy(pS2,eS2,pR); break;}
-//       if (pS2==eS2) {std::copy(pS1,eS1,pR); break;}
-//     }
-//   }
-// }
-
-// #endif
+#else
+template <class ET, class F> 
+void merge(ET* S1, int l1, ET* S2, int l2, ET* R, F f) {
+  int lr = l1 + l2;
+  if (lr > _MERGE_BSIZE) {
+    if (l2>l1)  merge(S2,l2,S1,l1,R,f);
+    else {
+      int m1 = l1/2;
+      int m2 = binSearch(S2,l2,S1[m1],f);
+      parallel_spawn 
+      merge(S1,m1,S2,m2,R,f);
+      merge(S1+m1,l1-m1,S2+m2,l2-m2,R+m1+m2,f);
+      parallel_sync;
+    }
+  } else {
+    ET* pR = R; 
+    ET* pS1 = S1; 
+    ET* pS2 = S2;
+    ET* eS1 = S1+l1; 
+    ET* eS2 = S2+l2;
+    while (true) {
+      *pR++ = f(*pS2,*pS1) ? *pS2++ : *pS1++;
+      if (pS1==eS1) {std::copy(pS2,eS2,pR); break;}
+      if (pS2==eS2) {std::copy(pS1,eS1,pR); break;}
+    }
+  }
+}
+#endif
 
 #endif
 

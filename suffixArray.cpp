@@ -108,6 +108,7 @@ pair<int*,int*> suffixArrayRec(int* s, int n, int K, bool findLCPs) {
   pair<int,int> *C = (pair<int,int> *) malloc(n12*sizeof(pair<int,int>));
 
   int bits = utils::logUp(K);
+
   // if 3 chars fit into an int then just do one radix sort
   if (bits < 11) {
     parallel_for (int i=0; i < n12; i++) {
@@ -265,7 +266,6 @@ pair<int*,int*> suffixArrayRec(int* s, int n, int K, bool findLCPs) {
 }
 
 pair<int*,int*> suffixArray(int* s, int n, bool findLCPs) {
-  startTime();
   int *ss = newA(int,n+3); 
   ss[n] = ss[n+1] = ss[n+2] = 0;
   parallel_for (int i=0; i < n; i++) ss[i] = s[i]+1;
