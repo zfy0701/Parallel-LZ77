@@ -28,9 +28,6 @@ pair<int *, int> ParallelLZ77(int *s, int n) {
 
     int *minLabel = new int[st.m];
 
-    //initialize
-
-
     //first round rake, only for children
     parallel_for (int i = 0; i < n; i++) { //does it really gurantee i is ith suffix?
         minLabel[i] = i;
@@ -98,7 +95,10 @@ pair<int *, int> ParallelLZ77(int *s, int n) {
         }
         lpf[i] = val;
     }
-
+    delete minLabel;
+    delete up;
+    delete minup;
+    st.del();
     pair<int *, int> r = ParallelLPFtoLZ(lpf, n);
     delete lpf;
     return r;

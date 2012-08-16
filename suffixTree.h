@@ -46,14 +46,6 @@ struct stNode {
     locationInOriginalArray = _location;
     edgeLength = _edgeLength;
   }
-
-  int getFirstChild(); //return -1 if this is leave
-
-  int getSibl();  //return -1 if there is no sibl
-
-  bool isLeaf();
-
-  int getSuffix();  //if it is leaf, return the suffix it represent, otherwise return -1
 };
 
 struct stNodeHash {
@@ -80,6 +72,7 @@ static stNodeTable makeStNodeTable(int m) {
   return stNodeTable(m, stNodeCmp(), stNodeHash(), (stNode<int> *) NULL);
 }
 
+//TODO: delay the stNodeTable computation
 struct suffixTree {
   int n; // number of leaves
   int m; // total number of nodes (leaves and internal)
