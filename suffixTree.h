@@ -50,8 +50,6 @@ struct stNode {
   bool isLeaf();
 
   int getSuffix();  //if it is leaf, return the suffix it represent, otherwise return -1
-
-  int getParent() {return parentID;}
 };
 
 struct stNodeHash {
@@ -119,7 +117,16 @@ struct suffixTree {
     }
   }
 
-  int getRoot();
+  int getRoot() {   //check with julian
+   int root = 0;
+   while (nodes[root].parentID != root)
+    root = nodes[root].parentID;
+   return root;
+  }
+
+  bool isLeaf(int i) {
+    return i < n;
+  }
 };
 
 suffixTree suffixArrayToTree (int* SA, int* LCP, int n, int* s);

@@ -3,10 +3,13 @@
 
 #include <cmath>
 #include <cstdio>
+#include <iostream>
 #include <unistd.h>
 #include <fcntl.h>
 #include <sys/stat.h>
 #include <sys/types.h>
+
+int test_main(int argc, char *argv[], char * algoname, std::pair<int *, int> lz77(int *s, int n));
 
 const int BSIZE = 16;
 

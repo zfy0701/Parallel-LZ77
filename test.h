@@ -5,7 +5,6 @@
 #include "parallel.h"
 #include "utils.h"
 #include "gettime.h"
-#include "BWT.h"
 
 inline int get_file_size(char * path) {
 	struct stat info;
@@ -40,7 +39,6 @@ inline void Usage(char *program) {
 	printf("-o <file>\tOutput file name\n");
 	printf("-f <file>\tChoose different algorithm for LPF\n");
 	printf("-h \t\tDisplay this help\n");
-	printf("-t 0: No transform. 1: Perform the Burrows–Wheeler transform first. 2: Perform Huffman coding afterward.");
 }
 
 inline int test_main(int argc, char *argv[], char * algoname, std::pair<int *, int> lz77(int *s, int n)) {
@@ -85,10 +83,7 @@ inline int test_main(int argc, char *argv[], char * algoname, std::pair<int *, i
 			case 'f': {	//DON'T DO ANYTHING HERE!
 				break;
 			}
-			case 't': {
-				t = atoi(optarg);
-				break;				
-			}
+
 			default: {
 				Usage(argv[0]);
 				exit(1);
@@ -131,11 +126,7 @@ inline int test_main(int argc, char *argv[], char * algoname, std::pair<int *, i
 	timer testTm;
 	a[n] = a[n + 1] = a[n + 2] = 0;
 	testTm.start();
-	if (t == 1) {
-		int *b = BurrowsWheelerTransform(a, n);
-		delete a;
-		a = b;
-	}
+
 	std::pair<int *, int> res = lz77(a, n);
 	int maxoffset = 0;
 	for (int i = 0; i < res.second - 1; i++) {

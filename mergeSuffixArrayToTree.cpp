@@ -50,8 +50,6 @@ inline void setNode(node *nodes, stNode<int>* stnodes, int *s,
 }
 
 suffixTree suffixArrayToTree (int* SA, int* LCP, int n, int* s){
-  startTime();
-
   //initialize nodes
   node* nodes = new node[2*n];
   parallel_for(int i=1; i<n; i++){ //internal
