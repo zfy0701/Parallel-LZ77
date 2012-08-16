@@ -27,7 +27,10 @@ pair<int *, int> ParallelLZ77(int *s, int n) {
     int root = st.getRoot(); //I'm not sure!
 
     int *minLabel = new int[st.m];
-
+    parallel_for (int i = n; i < st.m; i++) {
+        minLabel[i] = n;
+    }
+    
     //first round rake, only for children
     parallel_for (int i = 0; i < n; i++) { //does it really gurantee i is ith suffix?
         minLabel[i] = i;
