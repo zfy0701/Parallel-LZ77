@@ -24,7 +24,11 @@
 #define __SUFFIX_UTILS__
 #include "hash.h"
 
-struct notNeg { bool operator () (int i) {return (i >= 0);}};
+struct notNeg {
+  bool operator () (int i) {
+    return (i >= 0);
+  }
+};
 
 template <class strElt>
 struct stNode {
@@ -34,8 +38,8 @@ struct stNode {
   int locationInOriginalArray;
   int edgeLength;
 
-  void setValues(int _parentID,strElt _edgeFirstChar,
-		 int _pointingTo, int _location, int _edgeLength){
+  void setValues(int _parentID, strElt _edgeFirstChar,
+                 int _pointingTo, int _location, int _edgeLength) {
     parentID = _parentID;
     edgeFirstChar = _edgeFirstChar;
     pointingTo = _pointingTo;
@@ -53,35 +57,36 @@ struct stNode {
 };
 
 struct stNodeHash {
-  unsigned int operator() (stNode<int>* stn) {
+  unsigned int operator() (stNode<int> *stn) {
     unsigned int seed = utils::hash(stn->parentID);
-    seed ^= utils::hash(stn->edgeFirstChar) +  
-      0x9e3779b9 + (seed << 6) + (seed >> 2);
+    seed ^= utils::hash(stn->edgeFirstChar) +
+            0x9e3779b9 + (seed << 6) + (seed >> 2);
     return seed;
   }
 };
 
 struct stNodeCmp {
-  int operator() (stNode<int>* a, stNode<int>* b){
-    if(a->parentID > b->parentID) return 1;
-    else if(a->parentID < b->parentID) return -1;
-    else return (a->edgeFirstChar > b->edgeFirstChar) 
-	   ? 1 : ((a->edgeFirstChar == b->edgeFirstChar) ? 0 : -1); }
+  int operator() (stNode<int> *a, stNode<int> *b) {
+    if (a->parentID > b->parentID) return 1;
+    else if (a->parentID < b->parentID) return -1;
+    else return (a->edgeFirstChar > b->edgeFirstChar)
+                  ? 1 : ((a->edgeFirstChar == b->edgeFirstChar) ? 0 : -1);
+  }
 };
 
 typedef Table<stNode<int>*, stNodeCmp, stNodeHash> stNodeTable;
 
 static stNodeTable makeStNodeTable(int m) {
-  return stNodeTable(m,stNodeCmp(),stNodeHash(),(stNode<int>*) NULL);
+  return stNodeTable(m, stNodeCmp(), stNodeHash(), (stNode<int> *) NULL);
 }
 
 struct suffixTree {
   int n; // number of leaves
   int m; // total number of nodes (leaves and internal)
   stNodeTable table;
-  int* s;
-  stNode<int>* nodes;
-  suffixTree(int _n, int _m, stNodeTable _table, int* _s, stNode<int>* _nodes) :
+  int *s;
+  stNode<int> *nodes;
+  suffixTree(int _n, int _m, stNodeTable _table, int *_s, stNode<int> *_nodes) :
     n(_n), m(_m), table(_table), s(_s), nodes(_nodes) {}
   void del() {
     table.del();
@@ -89,39 +94,39 @@ struct suffixTree {
     free(nodes);
   }
 
-  int search(int* string) {
+  int search(int *string) {
     //stNode for searching
     stNode<int> currentNode;
     int position = 0;
-    currentNode.parentID = 0;  
+    currentNode.parentID = 0;
     if (string[0] == 0) return 0;
 
     while (1) {
       currentNode.edgeFirstChar = string[position];
-      stNode<int>* b = table.find(&currentNode);
+      stNode<int> *b = table.find(&currentNode);
       if (b == NULL) return -1;
       else {
-	int length = b->edgeLength;
-	int stLocation = b->locationInOriginalArray;
+        int length = b->edgeLength;
+        int stLocation = b->locationInOriginalArray;
 
         // don't need to test first position since matched in hash table
-	for (int i=1; i<length; i++) {
-	  if (string[position+i] == 0) return stLocation-position;
-	  if (string[position+i] != s[stLocation+i]) return -1;
-	}
+        for (int i = 1; i < length; i++) {
+          if (string[position + i] == 0) return stLocation - position;
+          if (string[position + i] != s[stLocation + i]) return -1;
+        }
 
-	if (string[position+length] == 0) return stLocation-position;
-	position += length;
-	currentNode.parentID = b->pointingTo; 
+        if (string[position + length] == 0) return stLocation - position;
+        position += length;
+        currentNode.parentID = b->pointingTo;
       }
     }
   }
 
   int getRoot() {   //check with julian
-   int root = 0;
-   while (nodes[root].parentID != root)
-    root = nodes[root].parentID;
-   return root;
+    int root = 0;
+    while (nodes[root].parentID != root)
+      root = nodes[root].parentID;
+    return root;
   }
 
   bool isLeaf(int i) {
@@ -129,13 +134,13 @@ struct suffixTree {
   }
 };
 
-suffixTree suffixArrayToTree (int* SA, int* LCP, int n, int* s);
-pair<int*,int*> suffixArray(int* s, int n, bool findLCPs);
+suffixTree suffixArrayToTree (int *SA, int *LCP, int n, int *s);
+pair<int *, int *> suffixArray(int *s, int n, bool findLCPs);
 
-inline suffixTree buildSuffixTree(int* s, int n) {
-    pair<int*,int*> SA_LCP = suffixArray(s, n, true);  
-    suffixTree T = suffixArrayToTree(SA_LCP.first, SA_LCP.second, n, s);
-    return T;
+inline suffixTree buildSuffixTree(int *s, int n) {
+  pair<int *, int *> SA_LCP = suffixArray(s, n, true);
+  suffixTree T = suffixArrayToTree(SA_LCP.first, SA_LCP.second, n, s);
+  return T;
 }
 
 #endif

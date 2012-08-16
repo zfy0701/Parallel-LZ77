@@ -44,6 +44,7 @@ pair<int *, int> ParallelLPFtoLZ(int *lpf, int n) {
         else next[i] = j / l2;
         sflag[i] = 0;
     }
+
     next[sn] = next2[sn] = sn; 
     sflag[0] = 1; sflag[sn] = 0;
 
@@ -73,7 +74,7 @@ pair<int *, int> ParallelLPFtoLZ(int *lpf, int n) {
     }
 
     nextTime("\tpoint jump");
-        
+    
     sequence::scan(flag, flag, n+1, utils::addF<int>(),0);
 
     nextTime("\tprefix sum");

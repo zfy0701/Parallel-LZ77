@@ -12,6 +12,7 @@
 #include "sequence.h"
 #include "Base.h"
 #include "test.h"
+#include "utils.h"
 
 using namespace std;
 
@@ -25,22 +26,27 @@ pair<int *, int> ParallelLZ77(int *s, int n) {
     stNode<int> *nodes = st.nodes;
     int root = st.getRoot(); //I'm not sure!
 
-    int *minL = new int[st.n];
-    int *minR = new int[st.n];
-
     int *minLabel = new int[st.m];
 
     //initialize
-    parallel_for (int i = 0; i < st.n; i++) {
-        minL[i] = minR[i] = -1;
-    }
+
 
     //first round rake, only for children
-    parallel_for (int i = 0; i < st.m; i++) {
+    parallel_for (int i = 0; i < n; i++) { //does it really gurantee i is ith suffix?
+        minLabel[i] = i;
         int pid = nodes[i].parentID;
+        utils::writeMin(minLabel + pid, i);
     }
 
-    //finish the contraction [TODO]
+    bool changed = true;
+    while (changed) {
+        changed = false;
+        parallel_for (int i = n; i < st.m; i++) {
+            int pid = nodes[i].parentID;
+            if (utils::writeMin(minLabel + pid, minLabel[i]))
+                changed = true;
+        }
+    }
 
     int dep = getDepth(st.m);
     int **up = new int*[dep];

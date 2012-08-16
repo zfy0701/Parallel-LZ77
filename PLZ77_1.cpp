@@ -12,7 +12,7 @@
 #include "Base.h"
 #include "segmentTree.h"
 #include "test.h"
-
+ 
 pair<int *, int> ParallelLPFtoLZ(int *lpf, int n);
 
 void getLPF_0(int *s, int *sa, int n, int *lcp, int *lpf) {
