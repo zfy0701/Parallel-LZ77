@@ -32,7 +32,7 @@ struct notNeg {
 
 template <class strElt>
 struct stNode {
-  int parentID;
+  int parentID;     //my feeling is that the parentID is not working for stNode
   strElt edgeFirstChar;
   int pointingTo;
   int locationInOriginalArray;
@@ -117,8 +117,12 @@ struct suffixTree {
 
   int getRoot() {   //check with julian
     int root = 0;
-    while (nodes[root].parentID != root)
+    printf("%d %d\n", n, m);
+    while (nodes[root].parentID != root && nodes[root].parentID != 0) {
       root = nodes[root].parentID;
+      printf("%d\n", root);
+    }
+    nodes[root].parentID = root;
     return root;
   }
 

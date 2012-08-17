@@ -25,18 +25,21 @@ pair<int *, int> ParallelLZ77(int *s, int n) {
     //references
     stNode<int> *nodes = st.nodes;
     int root = st.getRoot(); //I'm not sure!
+    nextTime("\tSuffix Tree root");
 
     int *minLabel = new int[st.m];
     parallel_for (int i = n; i < st.m; i++) {
         minLabel[i] = n;
     }
-    
+    nextTime("\tInitial labeling");
+
     //first round rake, only for children
     parallel_for (int i = 0; i < n; i++) { //does it really gurantee i is ith suffix?
         minLabel[i] = i;
         int pid = nodes[i].parentID;
         utils::writeMin(minLabel + pid, i);
     }
+    nextTime("\tInitial Contraction");
 
     bool changed = true;
     while (changed) {
@@ -47,6 +50,7 @@ pair<int *, int> ParallelLZ77(int *s, int n) {
                 changed = true;
         }
     }
+    nextTime("\tTree Contraction");
 
     int dep = getDepth(st.m);
     int **up = new int*[dep];
