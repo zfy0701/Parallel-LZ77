@@ -1,0 +1,53 @@
+
+Distribution:
+This code is free and provided as is, except the RMQ code (files RMQ*), 
+which is written by Yohannes Fischer and distributed under the GNU GPL 
+(see COPYRIGHT file). 
+
+The only condition of use (for the non GPL covered code) is:
+If you use any of this code for experiments in a research paper please 
+cite the journal article in which the algorithm is described:
+
+Gang Chen, Simon J. Puglisi & W. F. Smyth, 
+LZ factorization in less time and space, 
+Mathematics in Computer Science (MCS),
+Special Issue on Combinatorial Algorithms,
+Volume 1, Number 4, (2008) pp. 605-623
+http://dx.doi.org/10.1007/s11786-007-0024-4
+
+and publish the URL from which you downloaded the code. Thanks.
+
+Description:
+The program computes the LZ factorization (LZ77 parsing) of a string,
+given the string and its suffix array.
+
+Usage:
+./lz6n inputfile
+
+The file "inputfile" contains the string.
+
+The file "inputfile.sa" must also be present and
+must contain the suffix array as a string of four
+byte integers.
+
+In its current form the program will only output
+some statistics about the LZ77 parsing. If you
+want to do something with the factors you'll need
+to modify the code (mmsearch.cpp).
+
+To do:
+1) Computation of 1-group boundaries can undoubtedly be made faster
+by scanning the string and counting bigram frequencies rather than 
+scanning the SA and looking for changes as is currently done.
+
+2) The current version allows factors to overlap, but could be easily
+adapted to restrict this, and to restrict factor length, etcetera.
+
+If you find any bugs please let me know.
+
+Simon Puglisi
+Melbourne
+November 2007
+sjp@cs.rmit.edu.au
+
+(Updated November 2008).

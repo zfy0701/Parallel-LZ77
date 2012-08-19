@@ -1,0 +1,1547 @@
+# 08:49:56 
+Test case = /fibo/fib_s9227465
+Time to calc lz = 0.54 secs
+maxFactorLength = 3524578
+numfactors = 34
+longFactors (len>8) = 27
+averageFactorLength = 271396.00
+# 08:49:57 
+Test case = /fibo/fib_s14930352
+Time to calc lz = 0.93 secs
+maxFactorLength = 5702887
+numfactors = 35
+longFactors (len>8) = 28
+averageFactorLength = 426581.47
+# 08:49:59 
+Test case = /periodic/fss9
+Time to calc lz = 0.19 secs
+maxFactorLength = 1217712
+numfactors = 40
+longFactors (len>8) = 32
+averageFactorLength = 71286.05
+# 08:49:59 
+Test case = /periodic/fss10
+Time to calc lz = 0.77 secs
+maxFactorLength = 5158310
+numfactors = 44
+longFactors (len>8) = 36
+averageFactorLength = 274520.62
+# 08:50:01 
+Test case = /random/rndA2_8Mb
+Time to calc lz = 1.64 secs
+maxFactorLength = 39
+numfactors = 402646
+longFactors (len>8) = 402381
+averageFactorLength = 20.83
+# 08:50:03 
+Test case = /random/rndA21_8Mb
+Time to calc lz = 2.10 secs
+maxFactorLength = 9
+numfactors = 1927759
+longFactors (len>8) = 10
+averageFactorLength = 4.35
+# 08:50:05 
+Test case = /dna/E.coli
+Time to calc lz = 0.89 secs
+maxFactorLength = 2043
+numfactors = 454953
+longFactors (len>8) = 386762
+averageFactorLength = 10.20
+# 08:50:07 
+Test case = /dna/chr19.dna4
+Time to calc lz = 18.74 secs
+maxFactorLength = 3397
+numfactors = 4632826
+longFactors (len>8) = 4528906
+averageFactorLength = 13.78
+# 08:50:29 
+Test case = /dna/chr22.dna4
+Time to calc lz = 9.86 secs
+maxFactorLength = 1768
+numfactors = 2679323
+longFactors (len>8) = 2584812
+averageFactorLength = 12.91
+# 08:50:42 
+Test case = /protein/p16Mb
+Time to calc lz = 3.85 secs
+maxFactorLength = 6699
+numfactors = 2922024
+longFactors (len>8) = 84590
+averageFactorLength = 5.74
+# 08:50:47 
+Test case = /protein/p32Mb
+Time to calc lz = 9.96 secs
+maxFactorLength = 16188
+numfactors = 5377225
+longFactors (len>8) = 211488
+averageFactorLength = 6.14
+# 08:50:59 
+Test case = /english/bible
+Time to calc lz = 0.53 secs
+maxFactorLength = 548
+numfactors = 368267
+longFactors (len>8) = 219433
+averageFactorLength = 10.99
+# 08:51:00 
+Test case = /english/howto
+Time to calc lz = 6.76 secs
+maxFactorLength = 70718
+numfactors = 3369657
+longFactors (len>8) = 1838657
+averageFactorLength = 11.70
+# 09:44:19 
+Test case = /fibo/fib_s9227465
+Time to calc lz = 0.56 secs
+maxFactorLength = 3524578
+numfactors = 34
+longFactors (len>8) = 27
+averageFactorLength = 271396.00
+# 09:44:20 
+Test case = /fibo/fib_s14930352
+Time to calc lz = 0.87 secs
+maxFactorLength = 5702887
+numfactors = 35
+longFactors (len>8) = 28
+averageFactorLength = 426581.47
+# 09:44:22 
+Test case = /periodic/fss9
+Time to calc lz = 0.17 secs
+maxFactorLength = 1217712
+numfactors = 40
+longFactors (len>8) = 32
+averageFactorLength = 71286.05
+# 09:44:22 
+Test case = /periodic/fss10
+Time to calc lz = 0.70 secs
+maxFactorLength = 5158310
+numfactors = 44
+longFactors (len>8) = 36
+averageFactorLength = 274520.62
+# 09:44:24 
+Test case = /random/rndA2_8Mb
+Time to calc lz = 1.46 secs
+maxFactorLength = 39
+numfactors = 402646
+longFactors (len>8) = 402381
+averageFactorLength = 20.83
+# 09:44:26 
+Test case = /random/rndA21_8Mb
+Time to calc lz = 1.93 secs
+maxFactorLength = 9
+numfactors = 1927759
+longFactors (len>8) = 10
+averageFactorLength = 4.35
+# 09:44:28 
+Test case = /dna/E.coli
+Time to calc lz = 0.89 secs
+maxFactorLength = 2043
+numfactors = 454953
+longFactors (len>8) = 386762
+averageFactorLength = 10.20
+# 09:44:29 
+Test case = /dna/chr19.dna4
+Time to calc lz = 19.67 secs
+maxFactorLength = 3397
+numfactors = 4632826
+longFactors (len>8) = 4528906
+averageFactorLength = 13.78
+# 09:44:51 
+Test case = /dna/chr22.dna4
+Time to calc lz = 9.74 secs
+maxFactorLength = 1768
+numfactors = 2679323
+longFactors (len>8) = 2584812
+averageFactorLength = 12.91
+# 09:45:02 
+Test case = /protein/p16Mb
+Time to calc lz = 3.92 secs
+maxFactorLength = 6699
+numfactors = 2922024
+longFactors (len>8) = 84590
+averageFactorLength = 5.74
+# 09:45:07 
+Test case = /protein/p32Mb
+Time to calc lz = 9.83 secs
+maxFactorLength = 16188
+numfactors = 5377225
+longFactors (len>8) = 211488
+averageFactorLength = 6.14
+# 09:45:19 
+Test case = /english/bible
+Time to calc lz = 0.53 secs
+maxFactorLength = 548
+numfactors = 368267
+longFactors (len>8) = 219433
+averageFactorLength = 10.99
+# 09:45:20 
+Test case = /english/howto
+Time to calc lz = 6.98 secs
+maxFactorLength = 70718
+numfactors = 3369657
+longFactors (len>8) = 1838657
+averageFactorLength = 11.70
+# 10:38:39 
+Test case = /fibo/fib_s9227465
+Time to calc lz = 0.54 secs
+maxFactorLength = 3524578
+numfactors = 34
+longFactors (len>8) = 27
+averageFactorLength = 271396.00
+# 10:38:40 
+Test case = /fibo/fib_s14930352
+Time to calc lz = 0.81 secs
+maxFactorLength = 5702887
+numfactors = 35
+longFactors (len>8) = 28
+averageFactorLength = 426581.47
+# 10:38:41 
+Test case = /periodic/fss9
+Time to calc lz = 0.16 secs
+maxFactorLength = 1217712
+numfactors = 40
+longFactors (len>8) = 32
+averageFactorLength = 71286.05
+# 10:38:42 
+Test case = /periodic/fss10
+Time to calc lz = 0.70 secs
+maxFactorLength = 5158310
+numfactors = 44
+longFactors (len>8) = 36
+averageFactorLength = 274520.62
+# 10:38:43 
+Test case = /random/rndA2_8Mb
+Time to calc lz = 1.46 secs
+maxFactorLength = 39
+numfactors = 402646
+longFactors (len>8) = 402381
+averageFactorLength = 20.83
+# 10:38:45 
+Test case = /random/rndA21_8Mb
+Time to calc lz = 1.92 secs
+maxFactorLength = 9
+numfactors = 1927759
+longFactors (len>8) = 10
+averageFactorLength = 4.35
+# 10:38:48 
+Test case = /dna/E.coli
+Time to calc lz = 0.89 secs
+maxFactorLength = 2043
+numfactors = 454953
+longFactors (len>8) = 386762
+averageFactorLength = 10.20
+# 10:38:49 
+Test case = /dna/chr19.dna4
+Time to calc lz = 19.19 secs
+maxFactorLength = 3397
+numfactors = 4632826
+longFactors (len>8) = 4528906
+averageFactorLength = 13.78
+# 10:39:12 
+Test case = /dna/chr22.dna4
+Time to calc lz = 10.06 secs
+maxFactorLength = 1768
+numfactors = 2679323
+longFactors (len>8) = 2584812
+averageFactorLength = 12.91
+# 10:39:24 
+Test case = /protein/p16Mb
+Time to calc lz = 3.81 secs
+maxFactorLength = 6699
+numfactors = 2922024
+longFactors (len>8) = 84590
+averageFactorLength = 5.74
+# 10:39:29 
+Test case = /protein/p32Mb
+Time to calc lz = 10.23 secs
+maxFactorLength = 16188
+numfactors = 5377225
+longFactors (len>8) = 211488
+averageFactorLength = 6.14
+# 10:39:41 
+Test case = /english/bible
+Time to calc lz = 0.53 secs
+maxFactorLength = 548
+numfactors = 368267
+longFactors (len>8) = 219433
+averageFactorLength = 10.99
+# 10:39:42 
+Test case = /english/howto
+Time to calc lz = 6.65 secs
+maxFactorLength = 70718
+numfactors = 3369657
+longFactors (len>8) = 1838657
+averageFactorLength = 11.70
+# 11:33:00 
+Test case = /fibo/fib_s9227465
+Time to calc lz = 0.54 secs
+maxFactorLength = 3524578
+numfactors = 34
+longFactors (len>8) = 27
+averageFactorLength = 271396.00
+# 11:33:01 
+Test case = /fibo/fib_s14930352
+Time to calc lz = 0.82 secs
+maxFactorLength = 5702887
+numfactors = 35
+longFactors (len>8) = 28
+averageFactorLength = 426581.47
+# 11:33:01 
+Test case = /periodic/fss9
+Time to calc lz = 0.15 secs
+maxFactorLength = 1217712
+numfactors = 40
+longFactors (len>8) = 32
+averageFactorLength = 71286.05
+# 11:33:02 
+Test case = /periodic/fss10
+Time to calc lz = 0.70 secs
+maxFactorLength = 5158310
+numfactors = 44
+longFactors (len>8) = 36
+averageFactorLength = 274520.62
+# 11:33:02 
+Test case = /random/rndA2_8Mb
+Time to calc lz = 1.45 secs
+maxFactorLength = 39
+numfactors = 402646
+longFactors (len>8) = 402381
+averageFactorLength = 20.83
+# 11:33:04 
+Test case = /random/rndA21_8Mb
+Time to calc lz = 1.92 secs
+maxFactorLength = 9
+numfactors = 1927759
+longFactors (len>8) = 10
+averageFactorLength = 4.35
+# 11:33:06 
+Test case = /dna/E.coli
+Time to calc lz = 0.88 secs
+maxFactorLength = 2043
+numfactors = 454953
+longFactors (len>8) = 386762
+averageFactorLength = 10.20
+# 11:33:07 
+Test case = /dna/chr19.dna4
+Time to calc lz = 19.00 secs
+maxFactorLength = 3397
+numfactors = 4632826
+longFactors (len>8) = 4528906
+averageFactorLength = 13.78
+# 11:33:26 
+Test case = /dna/chr22.dna4
+Time to calc lz = 9.79 secs
+maxFactorLength = 1768
+numfactors = 2679323
+longFactors (len>8) = 2584812
+averageFactorLength = 12.91
+# 11:33:39 
+Test case = /protein/p16Mb
+Time to calc lz = 3.84 secs
+maxFactorLength = 6699
+numfactors = 2922024
+longFactors (len>8) = 84590
+averageFactorLength = 5.74
+# 11:33:44 
+Test case = /protein/p32Mb
+Time to calc lz = 9.24 secs
+maxFactorLength = 16188
+numfactors = 5377225
+longFactors (len>8) = 211488
+averageFactorLength = 6.14
+# 11:33:55 
+Test case = /english/bible
+Time to calc lz = 0.53 secs
+maxFactorLength = 548
+numfactors = 368267
+longFactors (len>8) = 219433
+averageFactorLength = 10.99
+# 11:33:56 
+Test case = /english/howto
+Time to calc lz = 6.77 secs
+maxFactorLength = 70718
+numfactors = 3369657
+longFactors (len>8) = 1838657
+averageFactorLength = 11.70
+# 12:27:15 
+Test case = /fibo/fib_s9227465
+Time to calc lz = 0.54 secs
+maxFactorLength = 3524578
+numfactors = 34
+longFactors (len>8) = 27
+averageFactorLength = 271396.00
+# 12:27:15 
+Test case = /fibo/fib_s14930352
+Time to calc lz = 0.81 secs
+maxFactorLength = 5702887
+numfactors = 35
+longFactors (len>8) = 28
+averageFactorLength = 426581.47
+# 12:27:16 
+Test case = /periodic/fss9
+Time to calc lz = 0.16 secs
+maxFactorLength = 1217712
+numfactors = 40
+longFactors (len>8) = 32
+averageFactorLength = 71286.05
+# 12:27:17 
+Test case = /periodic/fss10
+Time to calc lz = 0.70 secs
+maxFactorLength = 5158310
+numfactors = 44
+longFactors (len>8) = 36
+averageFactorLength = 274520.62
+# 12:27:17 
+Test case = /random/rndA2_8Mb
+Time to calc lz = 1.46 secs
+maxFactorLength = 39
+numfactors = 402646
+longFactors (len>8) = 402381
+averageFactorLength = 20.83
+# 12:27:19 
+Test case = /random/rndA21_8Mb
+Time to calc lz = 1.94 secs
+maxFactorLength = 9
+numfactors = 1927759
+longFactors (len>8) = 10
+averageFactorLength = 4.35
+# 12:27:21 
+Test case = /dna/E.coli
+Time to calc lz = 0.88 secs
+maxFactorLength = 2043
+numfactors = 454953
+longFactors (len>8) = 386762
+averageFactorLength = 10.20
+# 12:27:22 
+Test case = /dna/chr19.dna4
+Time to calc lz = 18.68 secs
+maxFactorLength = 3397
+numfactors = 4632826
+longFactors (len>8) = 4528906
+averageFactorLength = 13.78
+# 12:27:43 
+Test case = /dna/chr22.dna4
+Time to calc lz = 10.26 secs
+maxFactorLength = 1768
+numfactors = 2679323
+longFactors (len>8) = 2584812
+averageFactorLength = 12.91
+# 12:27:56 
+Test case = /protein/p16Mb
+Time to calc lz = 3.93 secs
+maxFactorLength = 6699
+numfactors = 2922024
+longFactors (len>8) = 84590
+averageFactorLength = 5.74
+# 12:28:01 
+Test case = /protein/p32Mb
+Time to calc lz = 9.15 secs
+maxFactorLength = 16188
+numfactors = 5377225
+longFactors (len>8) = 211488
+averageFactorLength = 6.14
+# 12:28:12 
+Test case = /english/bible
+Time to calc lz = 0.53 secs
+maxFactorLength = 548
+numfactors = 368267
+longFactors (len>8) = 219433
+averageFactorLength = 10.99
+# 12:28:13 
+Test case = /english/howto
+Time to calc lz = 7.03 secs
+maxFactorLength = 70718
+numfactors = 3369657
+longFactors (len>8) = 1838657
+averageFactorLength = 11.70
+# 13:21:27 
+Test case = /fibo/fib_s9227465
+Time to calc lz = 0.54 secs
+maxFactorLength = 3524578
+numfactors = 34
+longFactors (len>8) = 27
+averageFactorLength = 271396.00
+# 13:21:28 
+Test case = /fibo/fib_s14930352
+Time to calc lz = 0.81 secs
+maxFactorLength = 5702887
+numfactors = 35
+longFactors (len>8) = 28
+averageFactorLength = 426581.47
+# 13:21:29 
+Test case = /periodic/fss9
+Time to calc lz = 0.16 secs
+maxFactorLength = 1217712
+numfactors = 40
+longFactors (len>8) = 32
+averageFactorLength = 71286.05
+# 13:21:29 
+Test case = /periodic/fss10
+Time to calc lz = 0.70 secs
+maxFactorLength = 5158310
+numfactors = 44
+longFactors (len>8) = 36
+averageFactorLength = 274520.62
+# 13:21:30 
+Test case = /random/rndA2_8Mb
+Time to calc lz = 1.46 secs
+maxFactorLength = 39
+numfactors = 402646
+longFactors (len>8) = 402381
+averageFactorLength = 20.83
+# 13:21:31 
+Test case = /random/rndA21_8Mb
+Time to calc lz = 1.94 secs
+maxFactorLength = 9
+numfactors = 1927759
+longFactors (len>8) = 10
+averageFactorLength = 4.35
+# 13:21:33 
+Test case = /dna/E.coli
+Time to calc lz = 0.89 secs
+maxFactorLength = 2043
+numfactors = 454953
+longFactors (len>8) = 386762
+averageFactorLength = 10.20
+# 13:21:34 
+Test case = /dna/chr19.dna4
+Time to calc lz = 18.72 secs
+maxFactorLength = 3397
+numfactors = 4632826
+longFactors (len>8) = 4528906
+averageFactorLength = 13.78
+# 13:21:56 
+Test case = /dna/chr22.dna4
+Time to calc lz = 10.44 secs
+maxFactorLength = 1768
+numfactors = 2679323
+longFactors (len>8) = 2584812
+averageFactorLength = 12.91
+# 13:22:08 
+Test case = /protein/p16Mb
+Time to calc lz = 4.02 secs
+maxFactorLength = 6699
+numfactors = 2922024
+longFactors (len>8) = 84590
+averageFactorLength = 5.74
+# 13:22:13 
+Test case = /protein/p32Mb
+Time to calc lz = 9.59 secs
+maxFactorLength = 16188
+numfactors = 5377225
+longFactors (len>8) = 211488
+averageFactorLength = 6.14
+# 13:22:25 
+Test case = /english/bible
+Time to calc lz = 0.54 secs
+maxFactorLength = 548
+numfactors = 368267
+longFactors (len>8) = 219433
+averageFactorLength = 10.99
+# 13:22:26 
+Test case = /english/howto
+Time to calc lz = 6.95 secs
+maxFactorLength = 70718
+numfactors = 3369657
+longFactors (len>8) = 1838657
+averageFactorLength = 11.70
+# 14:16:06 
+Test case = /fibo/fib_s9227465
+Time to calc lz = 0.53 secs
+maxFactorLength = 3524578
+numfactors = 34
+longFactors (len>8) = 27
+averageFactorLength = 271396.00
+# 14:16:07 
+Test case = /fibo/fib_s14930352
+Time to calc lz = 0.87 secs
+maxFactorLength = 5702887
+numfactors = 35
+longFactors (len>8) = 28
+averageFactorLength = 426581.47
+# 14:16:09 
+Test case = /periodic/fss9
+Time to calc lz = 0.18 secs
+maxFactorLength = 1217712
+numfactors = 40
+longFactors (len>8) = 32
+averageFactorLength = 71286.05
+# 14:16:09 
+Test case = /periodic/fss10
+Time to calc lz = 0.70 secs
+maxFactorLength = 5158310
+numfactors = 44
+longFactors (len>8) = 36
+averageFactorLength = 274520.62
+# 14:16:10 
+Test case = /random/rndA2_8Mb
+Time to calc lz = 1.46 secs
+maxFactorLength = 39
+numfactors = 402646
+longFactors (len>8) = 402381
+averageFactorLength = 20.83
+# 14:16:12 
+Test case = /random/rndA21_8Mb
+Time to calc lz = 1.92 secs
+maxFactorLength = 9
+numfactors = 1927759
+longFactors (len>8) = 10
+averageFactorLength = 4.35
+# 14:16:14 
+Test case = /dna/E.coli
+Time to calc lz = 0.89 secs
+maxFactorLength = 2043
+numfactors = 454953
+longFactors (len>8) = 386762
+averageFactorLength = 10.20
+# 14:16:15 
+Test case = /dna/chr19.dna4
+Time to calc lz = 19.84 secs
+maxFactorLength = 3397
+numfactors = 4632826
+longFactors (len>8) = 4528906
+averageFactorLength = 13.78
+# 14:16:38 
+Test case = /dna/chr22.dna4
+Time to calc lz = 9.80 secs
+maxFactorLength = 1768
+numfactors = 2679323
+longFactors (len>8) = 2584812
+averageFactorLength = 12.91
+# 14:16:50 
+Test case = /protein/p16Mb
+Time to calc lz = 3.83 secs
+maxFactorLength = 6699
+numfactors = 2922024
+longFactors (len>8) = 84590
+averageFactorLength = 5.74
+# 14:16:55 
+Test case = /protein/p32Mb
+Time to calc lz = 9.48 secs
+maxFactorLength = 16188
+numfactors = 5377225
+longFactors (len>8) = 211488
+averageFactorLength = 6.14
+# 14:17:07 
+Test case = /english/bible
+Time to calc lz = 0.53 secs
+maxFactorLength = 548
+numfactors = 368267
+longFactors (len>8) = 219433
+averageFactorLength = 10.99
+# 14:17:08 
+Test case = /english/howto
+Time to calc lz = 6.82 secs
+maxFactorLength = 70718
+numfactors = 3369657
+longFactors (len>8) = 1838657
+averageFactorLength = 11.70
+# 15:10:55 
+Test case = /fibo/fib_s9227465
+Time to calc lz = 0.54 secs
+maxFactorLength = 3524578
+numfactors = 34
+longFactors (len>8) = 27
+averageFactorLength = 271396.00
+# 15:10:56 
+Test case = /fibo/fib_s14930352
+Time to calc lz = 0.82 secs
+maxFactorLength = 5702887
+numfactors = 35
+longFactors (len>8) = 28
+averageFactorLength = 426581.47
+# 15:10:57 
+Test case = /periodic/fss9
+Time to calc lz = 0.15 secs
+maxFactorLength = 1217712
+numfactors = 40
+longFactors (len>8) = 32
+averageFactorLength = 71286.05
+# 15:10:58 
+Test case = /periodic/fss10
+Time to calc lz = 0.70 secs
+maxFactorLength = 5158310
+numfactors = 44
+longFactors (len>8) = 36
+averageFactorLength = 274520.62
+# 15:10:59 
+Test case = /random/rndA2_8Mb
+Time to calc lz = 1.46 secs
+maxFactorLength = 39
+numfactors = 402646
+longFactors (len>8) = 402381
+averageFactorLength = 20.83
+# 15:11:00 
+Test case = /random/rndA21_8Mb
+Time to calc lz = 1.92 secs
+maxFactorLength = 9
+numfactors = 1927759
+longFactors (len>8) = 10
+averageFactorLength = 4.35
+# 15:11:03 
+Test case = /dna/E.coli
+Time to calc lz = 0.88 secs
+maxFactorLength = 2043
+numfactors = 454953
+longFactors (len>8) = 386762
+averageFactorLength = 10.20
+# 15:11:04 
+Test case = /dna/chr19.dna4
+Time to calc lz = 19.05 secs
+maxFactorLength = 3397
+numfactors = 4632826
+longFactors (len>8) = 4528906
+averageFactorLength = 13.78
+# 15:11:25 
+Test case = /dna/chr22.dna4
+Time to calc lz = 9.82 secs
+maxFactorLength = 1768
+numfactors = 2679323
+longFactors (len>8) = 2584812
+averageFactorLength = 12.91
+# 15:11:37 
+Test case = /protein/p16Mb
+Time to calc lz = 3.96 secs
+maxFactorLength = 6699
+numfactors = 2922024
+longFactors (len>8) = 84590
+averageFactorLength = 5.74
+# 15:11:42 
+Test case = /protein/p32Mb
+Time to calc lz = 9.78 secs
+maxFactorLength = 16188
+numfactors = 5377225
+longFactors (len>8) = 211488
+averageFactorLength = 6.14
+# 15:11:54 
+Test case = /english/bible
+Time to calc lz = 0.54 secs
+maxFactorLength = 548
+numfactors = 368267
+longFactors (len>8) = 219433
+averageFactorLength = 10.99
+# 15:11:55 
+Test case = /english/howto
+Time to calc lz = 6.49 secs
+maxFactorLength = 70718
+numfactors = 3369657
+longFactors (len>8) = 1838657
+averageFactorLength = 11.70
+# 16:05:44 
+Test case = /fibo/fib_s9227465
+Time to calc lz = 0.54 secs
+maxFactorLength = 3524578
+numfactors = 34
+longFactors (len>8) = 27
+averageFactorLength = 271396.00
+# 16:05:45 
+Test case = /fibo/fib_s14930352
+Time to calc lz = 0.81 secs
+maxFactorLength = 5702887
+numfactors = 35
+longFactors (len>8) = 28
+averageFactorLength = 426581.47
+# 16:05:46 
+Test case = /periodic/fss9
+Time to calc lz = 0.16 secs
+maxFactorLength = 1217712
+numfactors = 40
+longFactors (len>8) = 32
+averageFactorLength = 71286.05
+# 16:05:46 
+Test case = /periodic/fss10
+Time to calc lz = 0.70 secs
+maxFactorLength = 5158310
+numfactors = 44
+longFactors (len>8) = 36
+averageFactorLength = 274520.62
+# 16:05:48 
+Test case = /random/rndA2_8Mb
+Time to calc lz = 1.46 secs
+maxFactorLength = 39
+numfactors = 402646
+longFactors (len>8) = 402381
+averageFactorLength = 20.83
+# 16:05:50 
+Test case = /random/rndA21_8Mb
+Time to calc lz = 1.92 secs
+maxFactorLength = 9
+numfactors = 1927759
+longFactors (len>8) = 10
+averageFactorLength = 4.35
+# 16:05:52 
+Test case = /dna/E.coli
+Time to calc lz = 0.89 secs
+maxFactorLength = 2043
+numfactors = 454953
+longFactors (len>8) = 386762
+averageFactorLength = 10.20
+# 16:05:53 
+Test case = /dna/chr19.dna4
+Time to calc lz = 18.80 secs
+maxFactorLength = 3397
+numfactors = 4632826
+longFactors (len>8) = 4528906
+averageFactorLength = 13.78
+# 16:06:14 
+Test case = /dna/chr22.dna4
+Time to calc lz = 9.83 secs
+maxFactorLength = 1768
+numfactors = 2679323
+longFactors (len>8) = 2584812
+averageFactorLength = 12.91
+# 16:06:26 
+Test case = /protein/p16Mb
+Time to calc lz = 3.86 secs
+maxFactorLength = 6699
+numfactors = 2922024
+longFactors (len>8) = 84590
+averageFactorLength = 5.74
+# 16:06:31 
+Test case = /protein/p32Mb
+Time to calc lz = 9.78 secs
+maxFactorLength = 16188
+numfactors = 5377225
+longFactors (len>8) = 211488
+averageFactorLength = 6.14
+# 16:06:43 
+Test case = /english/bible
+Time to calc lz = 0.54 secs
+maxFactorLength = 548
+numfactors = 368267
+longFactors (len>8) = 219433
+averageFactorLength = 10.99
+# 16:06:44 
+Test case = /english/howto
+Time to calc lz = 6.67 secs
+maxFactorLength = 70718
+numfactors = 3369657
+longFactors (len>8) = 1838657
+averageFactorLength = 11.70
+# 17:00:20 
+Test case = /fibo/fib_s9227465
+Time to calc lz = 0.54 secs
+maxFactorLength = 3524578
+numfactors = 34
+longFactors (len>8) = 27
+averageFactorLength = 271396.00
+# 17:00:21 
+Test case = /fibo/fib_s14930352
+Time to calc lz = 0.81 secs
+maxFactorLength = 5702887
+numfactors = 35
+longFactors (len>8) = 28
+averageFactorLength = 426581.47
+# 17:00:23 
+Test case = /periodic/fss9
+Time to calc lz = 0.16 secs
+maxFactorLength = 1217712
+numfactors = 40
+longFactors (len>8) = 32
+averageFactorLength = 71286.05
+# 17:00:23 
+Test case = /periodic/fss10
+Time to calc lz = 0.70 secs
+maxFactorLength = 5158310
+numfactors = 44
+longFactors (len>8) = 36
+averageFactorLength = 274520.62
+# 17:00:24 
+Test case = /random/rndA2_8Mb
+Time to calc lz = 1.46 secs
+maxFactorLength = 39
+numfactors = 402646
+longFactors (len>8) = 402381
+averageFactorLength = 20.83
+# 17:00:26 
+Test case = /random/rndA21_8Mb
+Time to calc lz = 1.93 secs
+maxFactorLength = 9
+numfactors = 1927759
+longFactors (len>8) = 10
+averageFactorLength = 4.35
+# 17:00:29 
+Test case = /dna/E.coli
+Time to calc lz = 0.88 secs
+maxFactorLength = 2043
+numfactors = 454953
+longFactors (len>8) = 386762
+averageFactorLength = 10.20
+# 17:00:30 
+Test case = /dna/chr19.dna4
+Time to calc lz = 18.97 secs
+maxFactorLength = 3397
+numfactors = 4632826
+longFactors (len>8) = 4528906
+averageFactorLength = 13.78
+# 17:00:53 
+Test case = /dna/chr22.dna4
+Time to calc lz = 9.81 secs
+maxFactorLength = 1768
+numfactors = 2679323
+longFactors (len>8) = 2584812
+averageFactorLength = 12.91
+# 17:01:05 
+Test case = /protein/p16Mb
+Time to calc lz = 3.92 secs
+maxFactorLength = 6699
+numfactors = 2922024
+longFactors (len>8) = 84590
+averageFactorLength = 5.74
+# 17:01:10 
+Test case = /protein/p32Mb
+Time to calc lz = 9.67 secs
+maxFactorLength = 16188
+numfactors = 5377225
+longFactors (len>8) = 211488
+averageFactorLength = 6.14
+# 17:01:22 
+Test case = /english/bible
+Time to calc lz = 0.54 secs
+maxFactorLength = 548
+numfactors = 368267
+longFactors (len>8) = 219433
+averageFactorLength = 10.99
+# 17:01:22 
+Test case = /english/howto
+Time to calc lz = 6.49 secs
+maxFactorLength = 70718
+numfactors = 3369657
+longFactors (len>8) = 1838657
+averageFactorLength = 11.70
+# 17:55:23 
+Test case = /fibo/fib_s9227465
+Time to calc lz = 0.54 secs
+maxFactorLength = 3524578
+numfactors = 34
+longFactors (len>8) = 27
+averageFactorLength = 271396.00
+# 17:55:24 
+Test case = /fibo/fib_s14930352
+Time to calc lz = 0.81 secs
+maxFactorLength = 5702887
+numfactors = 35
+longFactors (len>8) = 28
+averageFactorLength = 426581.47
+# 17:55:26 
+Test case = /periodic/fss9
+Time to calc lz = 0.16 secs
+maxFactorLength = 1217712
+numfactors = 40
+longFactors (len>8) = 32
+averageFactorLength = 71286.05
+# 17:55:26 
+Test case = /periodic/fss10
+Time to calc lz = 0.71 secs
+maxFactorLength = 5158310
+numfactors = 44
+longFactors (len>8) = 36
+averageFactorLength = 274520.62
+# 17:55:28 
+Test case = /random/rndA2_8Mb
+Time to calc lz = 1.46 secs
+maxFactorLength = 39
+numfactors = 402646
+longFactors (len>8) = 402381
+averageFactorLength = 20.83
+# 17:55:30 
+Test case = /random/rndA21_8Mb
+Time to calc lz = 1.93 secs
+maxFactorLength = 9
+numfactors = 1927759
+longFactors (len>8) = 10
+averageFactorLength = 4.35
+# 17:55:32 
+Test case = /dna/E.coli
+Time to calc lz = 0.88 secs
+maxFactorLength = 2043
+numfactors = 454953
+longFactors (len>8) = 386762
+averageFactorLength = 10.20
+# 17:55:33 
+Test case = /dna/chr19.dna4
+Time to calc lz = 19.79 secs
+maxFactorLength = 3397
+numfactors = 4632826
+longFactors (len>8) = 4528906
+averageFactorLength = 13.78
+# 17:55:57 
+Test case = /dna/chr22.dna4
+Time to calc lz = 9.81 secs
+maxFactorLength = 1768
+numfactors = 2679323
+longFactors (len>8) = 2584812
+averageFactorLength = 12.91
+# 17:56:09 
+Test case = /protein/p16Mb
+Time to calc lz = 3.83 secs
+maxFactorLength = 6699
+numfactors = 2922024
+longFactors (len>8) = 84590
+averageFactorLength = 5.74
+# 17:56:14 
+Test case = /protein/p32Mb
+Time to calc lz = 10.09 secs
+maxFactorLength = 16188
+numfactors = 5377225
+longFactors (len>8) = 211488
+averageFactorLength = 6.14
+# 17:56:26 
+Test case = /english/bible
+Time to calc lz = 0.54 secs
+maxFactorLength = 548
+numfactors = 368267
+longFactors (len>8) = 219433
+averageFactorLength = 10.99
+# 17:56:27 
+Test case = /english/howto
+Time to calc lz = 6.48 secs
+maxFactorLength = 70718
+numfactors = 3369657
+longFactors (len>8) = 1838657
+averageFactorLength = 11.70
+# 18:50:18 
+Test case = /fibo/fib_s9227465
+Time to calc lz = 0.54 secs
+maxFactorLength = 3524578
+numfactors = 34
+longFactors (len>8) = 27
+averageFactorLength = 271396.00
+# 18:50:19 
+Test case = /fibo/fib_s14930352
+Time to calc lz = 0.81 secs
+maxFactorLength = 5702887
+numfactors = 35
+longFactors (len>8) = 28
+averageFactorLength = 426581.47
+# 18:50:21 
+Test case = /periodic/fss9
+Time to calc lz = 0.16 secs
+maxFactorLength = 1217712
+numfactors = 40
+longFactors (len>8) = 32
+averageFactorLength = 71286.05
+# 18:50:21 
+Test case = /periodic/fss10
+Time to calc lz = 0.70 secs
+maxFactorLength = 5158310
+numfactors = 44
+longFactors (len>8) = 36
+averageFactorLength = 274520.62
+# 18:50:23 
+Test case = /random/rndA2_8Mb
+Time to calc lz = 1.46 secs
+maxFactorLength = 39
+numfactors = 402646
+longFactors (len>8) = 402381
+averageFactorLength = 20.83
+# 18:50:25 
+Test case = /random/rndA21_8Mb
+Time to calc lz = 1.99 secs
+maxFactorLength = 9
+numfactors = 1927759
+longFactors (len>8) = 10
+averageFactorLength = 4.35
+# 18:50:27 
+Test case = /dna/E.coli
+Time to calc lz = 1.27 secs
+maxFactorLength = 2043
+numfactors = 454953
+longFactors (len>8) = 386762
+averageFactorLength = 10.20
+# 18:50:29 
+Test case = /dna/chr19.dna4
+Time to calc lz = 18.86 secs
+maxFactorLength = 3397
+numfactors = 4632826
+longFactors (len>8) = 4528906
+averageFactorLength = 13.78
+# 18:50:51 
+Test case = /dna/chr22.dna4
+Time to calc lz = 9.74 secs
+maxFactorLength = 1768
+numfactors = 2679323
+longFactors (len>8) = 2584812
+averageFactorLength = 12.91
+# 18:51:03 
+Test case = /protein/p16Mb
+Time to calc lz = 3.82 secs
+maxFactorLength = 6699
+numfactors = 2922024
+longFactors (len>8) = 84590
+averageFactorLength = 5.74
+# 18:51:08 
+Test case = /protein/p32Mb
+Time to calc lz = 10.34 secs
+maxFactorLength = 16188
+numfactors = 5377225
+longFactors (len>8) = 211488
+averageFactorLength = 6.14
+# 18:51:21 
+Test case = /english/bible
+Time to calc lz = 0.53 secs
+maxFactorLength = 548
+numfactors = 368267
+longFactors (len>8) = 219433
+averageFactorLength = 10.99
+# 18:51:22 
+Test case = /english/howto
+Time to calc lz = 7.23 secs
+maxFactorLength = 70718
+numfactors = 3369657
+longFactors (len>8) = 1838657
+averageFactorLength = 11.70
+# 19:45:19 
+Test case = /fibo/fib_s9227465
+Time to calc lz = 0.54 secs
+maxFactorLength = 3524578
+numfactors = 34
+longFactors (len>8) = 27
+averageFactorLength = 271396.00
+# 19:45:20 
+Test case = /fibo/fib_s14930352
+Time to calc lz = 0.81 secs
+maxFactorLength = 5702887
+numfactors = 35
+longFactors (len>8) = 28
+averageFactorLength = 426581.47
+# 19:45:21 
+Test case = /periodic/fss9
+Time to calc lz = 0.16 secs
+maxFactorLength = 1217712
+numfactors = 40
+longFactors (len>8) = 32
+averageFactorLength = 71286.05
+# 19:45:22 
+Test case = /periodic/fss10
+Time to calc lz = 0.70 secs
+maxFactorLength = 5158310
+numfactors = 44
+longFactors (len>8) = 36
+averageFactorLength = 274520.62
+# 19:45:23 
+Test case = /random/rndA2_8Mb
+Time to calc lz = 1.47 secs
+maxFactorLength = 39
+numfactors = 402646
+longFactors (len>8) = 402381
+averageFactorLength = 20.83
+# 19:45:25 
+Test case = /random/rndA21_8Mb
+Time to calc lz = 1.94 secs
+maxFactorLength = 9
+numfactors = 1927759
+longFactors (len>8) = 10
+averageFactorLength = 4.35
+# 19:45:28 
+Test case = /dna/E.coli
+Time to calc lz = 0.89 secs
+maxFactorLength = 2043
+numfactors = 454953
+longFactors (len>8) = 386762
+averageFactorLength = 10.20
+# 19:45:29 
+Test case = /dna/chr19.dna4
+Time to calc lz = 18.73 secs
+maxFactorLength = 3397
+numfactors = 4632826
+longFactors (len>8) = 4528906
+averageFactorLength = 13.78
+# 19:45:51 
+Test case = /dna/chr22.dna4
+Time to calc lz = 10.01 secs
+maxFactorLength = 1768
+numfactors = 2679323
+longFactors (len>8) = 2584812
+averageFactorLength = 12.91
+# 19:46:03 
+Test case = /protein/p16Mb
+Time to calc lz = 4.51 secs
+maxFactorLength = 6699
+numfactors = 2922024
+longFactors (len>8) = 84590
+averageFactorLength = 5.74
+# 19:46:09 
+Test case = /protein/p32Mb
+Time to calc lz = 9.94 secs
+maxFactorLength = 16188
+numfactors = 5377225
+longFactors (len>8) = 211488
+averageFactorLength = 6.14
+# 19:46:21 
+Test case = /english/bible
+Time to calc lz = 0.54 secs
+maxFactorLength = 548
+numfactors = 368267
+longFactors (len>8) = 219433
+averageFactorLength = 10.99
+# 19:46:22 
+Test case = /english/howto
+Time to calc lz = 6.50 secs
+maxFactorLength = 70718
+numfactors = 3369657
+longFactors (len>8) = 1838657
+averageFactorLength = 11.70
+# 20:40:18 
+Test case = /fibo/fib_s9227465
+Time to calc lz = 0.54 secs
+maxFactorLength = 3524578
+numfactors = 34
+longFactors (len>8) = 27
+averageFactorLength = 271396.00
+# 20:40:19 
+Test case = /fibo/fib_s14930352
+Time to calc lz = 0.81 secs
+maxFactorLength = 5702887
+numfactors = 35
+longFactors (len>8) = 28
+averageFactorLength = 426581.47
+# 20:40:21 
+Test case = /periodic/fss9
+Time to calc lz = 0.16 secs
+maxFactorLength = 1217712
+numfactors = 40
+longFactors (len>8) = 32
+averageFactorLength = 71286.05
+# 20:40:21 
+Test case = /periodic/fss10
+Time to calc lz = 0.70 secs
+maxFactorLength = 5158310
+numfactors = 44
+longFactors (len>8) = 36
+averageFactorLength = 274520.62
+# 20:40:23 
+Test case = /random/rndA2_8Mb
+Time to calc lz = 1.46 secs
+maxFactorLength = 39
+numfactors = 402646
+longFactors (len>8) = 402381
+averageFactorLength = 20.83
+# 20:40:24 
+Test case = /random/rndA21_8Mb
+Time to calc lz = 1.93 secs
+maxFactorLength = 9
+numfactors = 1927759
+longFactors (len>8) = 10
+averageFactorLength = 4.35
+# 20:40:27 
+Test case = /dna/E.coli
+Time to calc lz = 0.89 secs
+maxFactorLength = 2043
+numfactors = 454953
+longFactors (len>8) = 386762
+averageFactorLength = 10.20
+# 20:40:28 
+Test case = /dna/chr19.dna4
+Time to calc lz = 19.09 secs
+maxFactorLength = 3397
+numfactors = 4632826
+longFactors (len>8) = 4528906
+averageFactorLength = 13.78
+# 20:40:51 
+Test case = /dna/chr22.dna4
+Time to calc lz = 11.11 secs
+maxFactorLength = 1768
+numfactors = 2679323
+longFactors (len>8) = 2584812
+averageFactorLength = 12.91
+# 20:41:04 
+Test case = /protein/p16Mb
+Time to calc lz = 3.86 secs
+maxFactorLength = 6699
+numfactors = 2922024
+longFactors (len>8) = 84590
+averageFactorLength = 5.74
+# 20:41:09 
+Test case = /protein/p32Mb
+Time to calc lz = 9.19 secs
+maxFactorLength = 16188
+numfactors = 5377225
+longFactors (len>8) = 211488
+averageFactorLength = 6.14
+# 20:41:21 
+Test case = /english/bible
+Time to calc lz = 0.54 secs
+maxFactorLength = 548
+numfactors = 368267
+longFactors (len>8) = 219433
+averageFactorLength = 10.99
+# 20:41:21 
+Test case = /english/howto
+Time to calc lz = 6.65 secs
+maxFactorLength = 70718
+numfactors = 3369657
+longFactors (len>8) = 1838657
+averageFactorLength = 11.70
+# 21:35:18 
+Test case = /fibo/fib_s9227465
+Time to calc lz = 0.54 secs
+maxFactorLength = 3524578
+numfactors = 34
+longFactors (len>8) = 27
+averageFactorLength = 271396.00
+# 21:35:20 
+Test case = /fibo/fib_s14930352
+Time to calc lz = 0.80 secs
+maxFactorLength = 5702887
+numfactors = 35
+longFactors (len>8) = 28
+averageFactorLength = 426581.47
+# 21:35:21 
+Test case = /periodic/fss9
+Time to calc lz = 0.16 secs
+maxFactorLength = 1217712
+numfactors = 40
+longFactors (len>8) = 32
+averageFactorLength = 71286.05
+# 21:35:22 
+Test case = /periodic/fss10
+Time to calc lz = 0.70 secs
+maxFactorLength = 5158310
+numfactors = 44
+longFactors (len>8) = 36
+averageFactorLength = 274520.62
+# 21:35:23 
+Test case = /random/rndA2_8Mb
+Time to calc lz = 1.46 secs
+maxFactorLength = 39
+numfactors = 402646
+longFactors (len>8) = 402381
+averageFactorLength = 20.83
+# 21:35:25 
+Test case = /random/rndA21_8Mb
+Time to calc lz = 1.92 secs
+maxFactorLength = 9
+numfactors = 1927759
+longFactors (len>8) = 10
+averageFactorLength = 4.35
+# 21:35:27 
+Test case = /dna/E.coli
+Time to calc lz = 0.89 secs
+maxFactorLength = 2043
+numfactors = 454953
+longFactors (len>8) = 386762
+averageFactorLength = 10.20
+# 21:35:29 
+Test case = /dna/chr19.dna4
+Time to calc lz = 20.04 secs
+maxFactorLength = 3397
+numfactors = 4632826
+longFactors (len>8) = 4528906
+averageFactorLength = 13.78
+# 21:35:53 
+Test case = /dna/chr22.dna4
+Time to calc lz = 10.42 secs
+maxFactorLength = 1768
+numfactors = 2679323
+longFactors (len>8) = 2584812
+averageFactorLength = 12.91
+# 21:36:05 
+Test case = /protein/p16Mb
+Time to calc lz = 3.95 secs
+maxFactorLength = 6699
+numfactors = 2922024
+longFactors (len>8) = 84590
+averageFactorLength = 5.74
+# 21:36:10 
+Test case = /protein/p32Mb
+Time to calc lz = 9.26 secs
+maxFactorLength = 16188
+numfactors = 5377225
+longFactors (len>8) = 211488
+averageFactorLength = 6.14
+# 21:36:22 
+Test case = /english/bible
+Time to calc lz = 0.53 secs
+maxFactorLength = 548
+numfactors = 368267
+longFactors (len>8) = 219433
+averageFactorLength = 10.99
+# 21:36:22 
+Test case = /english/howto
+Time to calc lz = 6.65 secs
+maxFactorLength = 70718
+numfactors = 3369657
+longFactors (len>8) = 1838657
+averageFactorLength = 11.70
+# 22:29:47 
+Test case = /fibo/fib_s9227465
+Time to calc lz = 0.54 secs
+maxFactorLength = 3524578
+numfactors = 34
+longFactors (len>8) = 27
+averageFactorLength = 271396.00
+# 22:29:49 
+Test case = /fibo/fib_s14930352
+Time to calc lz = 0.81 secs
+maxFactorLength = 5702887
+numfactors = 35
+longFactors (len>8) = 28
+averageFactorLength = 426581.47
+# 22:29:50 
+Test case = /periodic/fss9
+Time to calc lz = 0.16 secs
+maxFactorLength = 1217712
+numfactors = 40
+longFactors (len>8) = 32
+averageFactorLength = 71286.05
+# 22:29:51 
+Test case = /periodic/fss10
+Time to calc lz = 0.70 secs
+maxFactorLength = 5158310
+numfactors = 44
+longFactors (len>8) = 36
+averageFactorLength = 274520.62
+# 22:29:52 
+Test case = /random/rndA2_8Mb
+Time to calc lz = 1.46 secs
+maxFactorLength = 39
+numfactors = 402646
+longFactors (len>8) = 402381
+averageFactorLength = 20.83
+# 22:29:54 
+Test case = /random/rndA21_8Mb
+Time to calc lz = 1.92 secs
+maxFactorLength = 9
+numfactors = 1927759
+longFactors (len>8) = 10
+averageFactorLength = 4.35
+# 22:29:56 
+Test case = /dna/E.coli
+Time to calc lz = 0.89 secs
+maxFactorLength = 2043
+numfactors = 454953
+longFactors (len>8) = 386762
+averageFactorLength = 10.20
+# 22:29:58 
+Test case = /dna/chr19.dna4
+Time to calc lz = 18.71 secs
+maxFactorLength = 3397
+numfactors = 4632826
+longFactors (len>8) = 4528906
+averageFactorLength = 13.78
+# 22:30:20 
+Test case = /dna/chr22.dna4
+Time to calc lz = 9.68 secs
+maxFactorLength = 1768
+numfactors = 2679323
+longFactors (len>8) = 2584812
+averageFactorLength = 12.91
+# 22:30:32 
+Test case = /protein/p16Mb
+Time to calc lz = 3.83 secs
+maxFactorLength = 6699
+numfactors = 2922024
+longFactors (len>8) = 84590
+averageFactorLength = 5.74
+# 22:30:37 
+Test case = /protein/p32Mb
+Time to calc lz = 9.16 secs
+maxFactorLength = 16188
+numfactors = 5377225
+longFactors (len>8) = 211488
+averageFactorLength = 6.14
+# 22:30:48 
+Test case = /english/bible
+Time to calc lz = 0.53 secs
+maxFactorLength = 548
+numfactors = 368267
+longFactors (len>8) = 219433
+averageFactorLength = 10.99
+# 22:30:49 
+Test case = /english/howto
+Time to calc lz = 6.48 secs
+maxFactorLength = 70718
+numfactors = 3369657
+longFactors (len>8) = 1838657
+averageFactorLength = 11.70
+# 23:24:14 
+Test case = /fibo/fib_s9227465
+Time to calc lz = 0.54 secs
+maxFactorLength = 3524578
+numfactors = 34
+longFactors (len>8) = 27
+averageFactorLength = 271396.00
+# 23:24:15 
+Test case = /fibo/fib_s14930352
+Time to calc lz = 0.81 secs
+maxFactorLength = 5702887
+numfactors = 35
+longFactors (len>8) = 28
+averageFactorLength = 426581.47
+# 23:24:17 
+Test case = /periodic/fss9
+Time to calc lz = 0.16 secs
+maxFactorLength = 1217712
+numfactors = 40
+longFactors (len>8) = 32
+averageFactorLength = 71286.05
+# 23:24:17 
+Test case = /periodic/fss10
+Time to calc lz = 0.70 secs
+maxFactorLength = 5158310
+numfactors = 44
+longFactors (len>8) = 36
+averageFactorLength = 274520.62
+# 23:24:18 
+Test case = /random/rndA2_8Mb
+Time to calc lz = 1.47 secs
+maxFactorLength = 39
+numfactors = 402646
+longFactors (len>8) = 402381
+averageFactorLength = 20.83
+# 23:24:20 
+Test case = /random/rndA21_8Mb
+Time to calc lz = 1.92 secs
+maxFactorLength = 9
+numfactors = 1927759
+longFactors (len>8) = 10
+averageFactorLength = 4.35
+# 23:24:23 
+Test case = /dna/E.coli
+Time to calc lz = 0.88 secs
+maxFactorLength = 2043
+numfactors = 454953
+longFactors (len>8) = 386762
+averageFactorLength = 10.20
+# 23:24:24 
+Test case = /dna/chr19.dna4
+Time to calc lz = 19.28 secs
+maxFactorLength = 3397
+numfactors = 4632826
+longFactors (len>8) = 4528906
+averageFactorLength = 13.78
+# 23:24:47 
+Test case = /dna/chr22.dna4
+Time to calc lz = 10.22 secs
+maxFactorLength = 1768
+numfactors = 2679323
+longFactors (len>8) = 2584812
+averageFactorLength = 12.91
+# 23:24:59 
+Test case = /protein/p16Mb
+Time to calc lz = 3.94 secs
+maxFactorLength = 6699
+numfactors = 2922024
+longFactors (len>8) = 84590
+averageFactorLength = 5.74
+# 23:25:04 
+Test case = /protein/p32Mb
+Time to calc lz = 9.60 secs
+maxFactorLength = 16188
+numfactors = 5377225
+longFactors (len>8) = 211488
+averageFactorLength = 6.14
+# 23:25:16 
+Test case = /english/bible
+Time to calc lz = 0.53 secs
+maxFactorLength = 548
+numfactors = 368267
+longFactors (len>8) = 219433
+averageFactorLength = 10.99
+# 23:25:17 
+Test case = /english/howto
+Time to calc lz = 7.06 secs
+maxFactorLength = 70718
+numfactors = 3369657
+longFactors (len>8) = 1838657
+averageFactorLength = 11.70

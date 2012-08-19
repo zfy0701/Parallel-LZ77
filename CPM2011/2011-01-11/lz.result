@@ -1,0 +1,2340 @@
+# 15:48:07 
+Test case = /fibo/fib_s9227465
+# alpha = 2; logbase2(2) = 1
+# bits = 1
+# Total 1-group Length = 9227464.00; Number of 1-groups = 2.00
+# Average 1-group Length = 4613732.00
+# Time to compute intervals = 0.84
+# allocated 6932056 bytes
+# 
+#Time to initialize RMQ = 0.14
+numfactors = 34
+averageFactorLength = 271396.00
+maxFactorLength = 3524578.00
+longFactors (len>8) = 32
+# renormalizations = 9227463; rmqsavoided = 9227221
+# totalRMQs = 242; averageRMQLength = 5.73
+# shortRMQs = 28; longRMQs = 211
+Time to lz factorize = 1.35 secs
+# 15:48:08 
+Test case = /fibo/fib_s14930352
+# alpha = 2; logbase2(2) = 1
+# bits = 1
+# Total 1-group Length = 14930351.00; Number of 1-groups = 2.00
+# Average 1-group Length = 7465175.50
+# Time to compute intervals = 1.30
+# allocated 11209224 bytes
+# 
+#Time to initialize RMQ = 0.21
+numfactors = 35
+averageFactorLength = 426581.47
+maxFactorLength = 5702887.00
+longFactors (len>8) = 33
+# renormalizations = 14930350; rmqsavoided = 14930092
+# totalRMQs = 258; averageRMQLength = 5.97
+# shortRMQs = 28; longRMQs = 227
+Time to lz factorize = 2.11 secs
+# 15:48:10 
+Test case = /periodic/fss9
+# alpha = 2; logbase2(2) = 1
+# bits = 1
+# Total 1-group Length = 2851442.00; Number of 1-groups = 2.00
+# Average 1-group Length = 1425721.00
+# Time to compute intervals = 0.23
+# allocated 2060950 bytes
+# 
+#Time to initialize RMQ = 0.04
+numfactors = 40
+averageFactorLength = 71286.05
+maxFactorLength = 1217712.00
+longFactors (len>8) = 38
+# renormalizations = 2851441; rmqsavoided = 2851196
+# totalRMQs = 245; averageRMQLength = 9.32
+# shortRMQs = 33; longRMQs = 210
+Time to lz factorize = 0.37 secs
+# 15:48:11 
+Test case = /periodic/fss10
+# alpha = 2; logbase2(2) = 1
+# bits = 1
+# Total 1-group Length = 12078907.00; Number of 1-groups = 2.00
+# Average 1-group Length = 6039453.50
+# Time to compute intervals = 1.09
+# allocated 9070672 bytes
+# 
+#Time to initialize RMQ = 0.18
+numfactors = 44
+averageFactorLength = 274520.62
+maxFactorLength = 5158310.00
+longFactors (len>8) = 42
+# renormalizations = 12078906; rmqsavoided = 12078609
+# totalRMQs = 297; averageRMQLength = 10.38
+# shortRMQs = 33; longRMQs = 262
+Time to lz factorize = 1.70 secs
+# 15:48:13 
+Test case = /random/rndA2_8Mb
+# alpha = 2; logbase2(2) = 1
+# bits = 1
+# Total 1-group Length = 8388607.00; Number of 1-groups = 2.00
+# Average 1-group Length = 4194303.50
+# Time to compute intervals = 0.67
+# allocated 6302896 bytes
+# 
+#Time to initialize RMQ = 0.14
+numfactors = 385232
+averageFactorLength = 21.78
+maxFactorLength = 42.00
+longFactors (len>8) = 385230
+# renormalizations = 8388606; rmqsavoided = 4194170
+# totalRMQs = 4194436; averageRMQLength = 95860.58
+# shortRMQs = 1100934; longRMQs = 2886027
+Time to lz factorize = 12.22 secs
+# 15:48:25 
+Test case = /random/rndA21_8Mb
+# alpha = 21; logbase2(21) = 4
+# bits = 5
+# Total 1-group Length = 8388607.00; Number of 1-groups = 21.00
+# Average 1-group Length = 399457.47
+# Time to compute intervals = 0.66
+# allocated 6302896 bytes
+# 
+#Time to initialize RMQ = 0.14
+numfactors = 1835235
+averageFactorLength = 4.57
+maxFactorLength = 9.00
+longFactors (len>8) = 1835214
+# renormalizations = 8388587; rmqsavoided = 399140
+# totalRMQs = 7989447; averageRMQLength = 4009.72
+# shortRMQs = 3281115; longRMQs = 3495591
+Time to lz factorize = 17.22 secs
+# 15:48:42 
+Test case = /dna/E.coli
+# alpha = 4; logbase2(4) = 2
+# bits = 2
+# Total 1-group Length = 4638689.00; Number of 1-groups = 4.00
+# Average 1-group Length = 1159672.25
+# Time to compute intervals = 0.31
+# allocated 3417990 bytes
+# 
+#Time to initialize RMQ = 0.08
+numfactors = 432791
+averageFactorLength = 10.72
+maxFactorLength = 2805.00
+longFactors (len>8) = 432787
+# renormalizations = 4638686; rmqsavoided = 1310868
+# totalRMQs = 3327818; averageRMQLength = 27570.17
+# shortRMQs = 1025331; longRMQs = 2047115
+Time to lz factorize = 7.40 secs
+# 15:48:50 
+Test case = /dna/chr19.dna4
+# alpha = 4; logbase2(4) = 2
+# bits = 2
+# Total 1-group Length = 63811648.00; Number of 1-groups = 4.00
+# Average 1-group Length = 15952912.00
+# Time to compute intervals = 5.50
+# allocated 49864350 bytes
+# 
+#Time to initialize RMQ = 1.08
+numfactors = 4411679
+averageFactorLength = 14.44
+maxFactorLength = 3397.00
+longFactors (len>8) = 4411675
+# renormalizations = 63811647; rmqsavoided = 23204533
+# totalRMQs = 40607114; averageRMQLength = 283033.66
+# shortRMQs = 10359409; longRMQs = 27615567
+Time to lz factorize = 163.23 secs
+# 15:51:33 
+Test case = /dna/chr22.dna4
+# alpha = 4; logbase2(4) = 2
+# bits = 2
+# Total 1-group Length = 34553756.00; Number of 1-groups = 4.00
+# Average 1-group Length = 8638439.00
+# Time to compute intervals = 2.83
+# allocated 27006592 bytes
+# 
+#Time to initialize RMQ = 0.59
+numfactors = 2554184
+averageFactorLength = 13.51
+maxFactorLength = 1768.00
+longFactors (len>8) = 2554180
+# renormalizations = 34553754; rmqsavoided = 12081421
+# totalRMQs = 22472333; averageRMQLength = 166053.61
+# shortRMQs = 6017592; longRMQs = 14935656
+Time to lz factorize = 78.17 secs
+# 15:52:51 
+Test case = /protein/p16Mb
+# alpha = 23; logbase2(23) = 4
+# bits = 5
+# Total 1-group Length = 16777215.00; Number of 1-groups = 23.00
+# Average 1-group Length = 729444.12
+# Time to compute intervals = 1.28
+# allocated 12856496 bytes
+# 
+#Time to initialize RMQ = 0.28
+numfactors = 2751023
+averageFactorLength = 6.10
+maxFactorLength = 6699.00
+longFactors (len>8) = 2751000
+# renormalizations = 16777193; rmqsavoided = 3599368
+# totalRMQs = 13177825; averageRMQLength = 9409.02
+# shortRMQs = 4412569; longRMQs = 7006339
+Time to lz factorize = 34.30 secs
+# 15:53:26 
+Test case = /protein/p32Mb
+# alpha = 24; logbase2(24) = 4
+# bits = 5
+# Total 1-group Length = 33554428.00; Number of 1-groups = 24.00
+# Average 1-group Length = 1398101.12
+# Time to compute intervals = 2.66
+# allocated 26225840 bytes
+# 
+#Time to initialize RMQ = 0.57
+numfactors = 5040051
+averageFactorLength = 6.59
+maxFactorLength = 16190.00
+longFactors (len>8) = 5040027
+# renormalizations = 33554408; rmqsavoided = 8314407
+# totalRMQs = 25240001; averageRMQLength = 16915.39
+# shortRMQs = 8200136; longRMQs = 13860422
+Time to lz factorize = 73.58 secs
+# 15:54:40 
+Test case = /english/bible
+# alpha = 63; logbase2(63) = 5
+# bits = 6
+# Total 1-group Length = 4047391.00; Number of 1-groups = 63.00
+# Average 1-group Length = 64244.30
+# Time to compute intervals = 0.25
+# allocated 2920552 bytes
+# 
+#Time to initialize RMQ = 0.07
+numfactors = 337558
+averageFactorLength = 11.99
+maxFactorLength = 549.00
+longFactors (len>8) = 337495
+# renormalizations = 4047329; rmqsavoided = 2410484
+# totalRMQs = 1636845; averageRMQLength = 1253.34
+# shortRMQs = 652415; longRMQs = 772134
+Time to lz factorize = 3.84 secs
+# 15:54:44 
+Test case = /english/howto
+# alpha = 197; logbase2(197) = 7
+# bits = 8
+# Total 1-group Length = 39422080.00; Number of 1-groups = 186.00
+# Average 1-group Length = 211946.67
+# Time to compute intervals = 2.89
+# allocated 30809992 bytes
+# 
+#Time to initialize RMQ = 0.67
+numfactors = 3063929
+averageFactorLength = 12.87
+maxFactorLength = 70718.00
+longFactors (len>8) = 3063732
+# renormalizations = 39421908; rmqsavoided = 22870367
+# totalRMQs = 16551541; averageRMQLength = 10667.77
+# shortRMQs = 5748351; longRMQs = 8992454
+Time to lz factorize = 54.24 secs
+# 16:15:49 
+Test case = /fibo/fib_s9227465
+# alpha = 2; logbase2(2) = 1
+# bits = 1
+# Total 1-group Length = 9227464.00; Number of 1-groups = 2.00
+# Average 1-group Length = 4613732.00
+# Time to compute intervals = 0.84
+# allocated 6932056 bytes
+# 
+#Time to initialize RMQ = 0.14
+numfactors = 34
+averageFactorLength = 271396.00
+maxFactorLength = 3524578.00
+longFactors (len>8) = 32
+# renormalizations = 9227463; rmqsavoided = 9227221
+# totalRMQs = 242; averageRMQLength = 5.73
+# shortRMQs = 28; longRMQs = 211
+Time to lz factorize = 1.34 secs
+# 16:15:50 
+Test case = /fibo/fib_s14930352
+# alpha = 2; logbase2(2) = 1
+# bits = 1
+# Total 1-group Length = 14930351.00; Number of 1-groups = 2.00
+# Average 1-group Length = 7465175.50
+# Time to compute intervals = 1.29
+# allocated 11209224 bytes
+# 
+#Time to initialize RMQ = 0.21
+numfactors = 35
+averageFactorLength = 426581.47
+maxFactorLength = 5702887.00
+longFactors (len>8) = 33
+# renormalizations = 14930350; rmqsavoided = 14930092
+# totalRMQs = 258; averageRMQLength = 5.97
+# shortRMQs = 28; longRMQs = 227
+Time to lz factorize = 2.10 secs
+# 16:15:52 
+Test case = /periodic/fss9
+# alpha = 2; logbase2(2) = 1
+# bits = 1
+# Total 1-group Length = 2851442.00; Number of 1-groups = 2.00
+# Average 1-group Length = 1425721.00
+# Time to compute intervals = 0.22
+# allocated 2060950 bytes
+# 
+#Time to initialize RMQ = 0.04
+numfactors = 40
+averageFactorLength = 71286.05
+maxFactorLength = 1217712.00
+longFactors (len>8) = 38
+# renormalizations = 2851441; rmqsavoided = 2851196
+# totalRMQs = 245; averageRMQLength = 9.32
+# shortRMQs = 33; longRMQs = 210
+Time to lz factorize = 0.37 secs
+# 16:15:53 
+Test case = /periodic/fss10
+# alpha = 2; logbase2(2) = 1
+# bits = 1
+# Total 1-group Length = 12078907.00; Number of 1-groups = 2.00
+# Average 1-group Length = 6039453.50
+# Time to compute intervals = 1.10
+# allocated 9070672 bytes
+# 
+#Time to initialize RMQ = 0.18
+numfactors = 44
+averageFactorLength = 274520.62
+maxFactorLength = 5158310.00
+longFactors (len>8) = 42
+# renormalizations = 12078906; rmqsavoided = 12078609
+# totalRMQs = 297; averageRMQLength = 10.38
+# shortRMQs = 33; longRMQs = 262
+Time to lz factorize = 1.72 secs
+# 16:15:55 
+Test case = /random/rndA2_8Mb
+# alpha = 2; logbase2(2) = 1
+# bits = 1
+# Total 1-group Length = 8388607.00; Number of 1-groups = 2.00
+# Average 1-group Length = 4194303.50
+# Time to compute intervals = 0.66
+# allocated 6302896 bytes
+# 
+#Time to initialize RMQ = 0.14
+numfactors = 385232
+averageFactorLength = 21.78
+maxFactorLength = 42.00
+longFactors (len>8) = 385230
+# renormalizations = 8388606; rmqsavoided = 4194170
+# totalRMQs = 4194436; averageRMQLength = 95860.58
+# shortRMQs = 1100934; longRMQs = 2886027
+Time to lz factorize = 12.24 secs
+# 16:16:07 
+Test case = /random/rndA21_8Mb
+# alpha = 21; logbase2(21) = 4
+# bits = 5
+# Total 1-group Length = 8388607.00; Number of 1-groups = 21.00
+# Average 1-group Length = 399457.47
+# Time to compute intervals = 0.67
+# allocated 6302896 bytes
+# 
+#Time to initialize RMQ = 0.14
+numfactors = 1835235
+averageFactorLength = 4.57
+maxFactorLength = 9.00
+longFactors (len>8) = 1835214
+# renormalizations = 8388587; rmqsavoided = 399140
+# totalRMQs = 7989447; averageRMQLength = 4009.72
+# shortRMQs = 3281115; longRMQs = 3495591
+Time to lz factorize = 17.28 secs
+# 16:16:24 
+Test case = /dna/E.coli
+# alpha = 4; logbase2(4) = 2
+# bits = 2
+# Total 1-group Length = 4638689.00; Number of 1-groups = 4.00
+# Average 1-group Length = 1159672.25
+# Time to compute intervals = 0.32
+# allocated 3417990 bytes
+# 
+#Time to initialize RMQ = 0.08
+numfactors = 432791
+averageFactorLength = 10.72
+maxFactorLength = 2805.00
+longFactors (len>8) = 432787
+# renormalizations = 4638686; rmqsavoided = 1310868
+# totalRMQs = 3327818; averageRMQLength = 27570.17
+# shortRMQs = 1025331; longRMQs = 2047115
+Time to lz factorize = 7.40 secs
+# 16:16:32 
+Test case = /dna/chr19.dna4
+# alpha = 4; logbase2(4) = 2
+# bits = 2
+# Total 1-group Length = 63811648.00; Number of 1-groups = 4.00
+# Average 1-group Length = 15952912.00
+# Time to compute intervals = 5.50
+# allocated 49864350 bytes
+# 
+#Time to initialize RMQ = 1.09
+numfactors = 4411679
+averageFactorLength = 14.44
+maxFactorLength = 3397.00
+longFactors (len>8) = 4411675
+# renormalizations = 63811647; rmqsavoided = 23204533
+# totalRMQs = 40607114; averageRMQLength = 283033.66
+# shortRMQs = 10359409; longRMQs = 27615567
+Time to lz factorize = 161.29 secs
+# 16:19:13 
+Test case = /dna/chr22.dna4
+# alpha = 4; logbase2(4) = 2
+# bits = 2
+# Total 1-group Length = 34553756.00; Number of 1-groups = 4.00
+# Average 1-group Length = 8638439.00
+# Time to compute intervals = 2.83
+# allocated 27006592 bytes
+# 
+#Time to initialize RMQ = 0.59
+numfactors = 2554184
+averageFactorLength = 13.51
+maxFactorLength = 1768.00
+longFactors (len>8) = 2554180
+# renormalizations = 34553754; rmqsavoided = 12081421
+# totalRMQs = 22472333; averageRMQLength = 166053.61
+# shortRMQs = 6017592; longRMQs = 14935656
+Time to lz factorize = 77.89 secs
+# 16:20:31 
+Test case = /protein/p16Mb
+# alpha = 23; logbase2(23) = 4
+# bits = 5
+# Total 1-group Length = 16777215.00; Number of 1-groups = 23.00
+# Average 1-group Length = 729444.12
+# Time to compute intervals = 1.28
+# allocated 12856496 bytes
+# 
+#Time to initialize RMQ = 0.28
+numfactors = 2751023
+averageFactorLength = 6.10
+maxFactorLength = 6699.00
+longFactors (len>8) = 2751000
+# renormalizations = 16777193; rmqsavoided = 3599368
+# totalRMQs = 13177825; averageRMQLength = 9409.02
+# shortRMQs = 4412569; longRMQs = 7006339
+Time to lz factorize = 34.35 secs
+# 16:21:06 
+Test case = /protein/p32Mb
+# alpha = 24; logbase2(24) = 4
+# bits = 5
+# Total 1-group Length = 33554428.00; Number of 1-groups = 24.00
+# Average 1-group Length = 1398101.12
+# Time to compute intervals = 2.66
+# allocated 26225840 bytes
+# 
+#Time to initialize RMQ = 0.57
+numfactors = 5040051
+averageFactorLength = 6.59
+maxFactorLength = 16190.00
+longFactors (len>8) = 5040027
+# renormalizations = 33554408; rmqsavoided = 8314407
+# totalRMQs = 25240001; averageRMQLength = 16915.39
+# shortRMQs = 8200136; longRMQs = 13860422
+Time to lz factorize = 72.84 secs
+# 16:22:19 
+Test case = /english/bible
+# alpha = 63; logbase2(63) = 5
+# bits = 6
+# Total 1-group Length = 4047391.00; Number of 1-groups = 63.00
+# Average 1-group Length = 64244.30
+# Time to compute intervals = 0.25
+# allocated 2920552 bytes
+# 
+#Time to initialize RMQ = 0.07
+numfactors = 337558
+averageFactorLength = 11.99
+maxFactorLength = 549.00
+longFactors (len>8) = 337495
+# renormalizations = 4047329; rmqsavoided = 2410484
+# totalRMQs = 1636845; averageRMQLength = 1253.34
+# shortRMQs = 652415; longRMQs = 772134
+Time to lz factorize = 3.85 secs
+# 16:22:23 
+Test case = /english/howto
+# alpha = 197; logbase2(197) = 7
+# bits = 8
+# Total 1-group Length = 39422080.00; Number of 1-groups = 186.00
+# Average 1-group Length = 211946.67
+# Time to compute intervals = 2.89
+# allocated 30809992 bytes
+# 
+#Time to initialize RMQ = 0.67
+numfactors = 3063929
+averageFactorLength = 12.87
+maxFactorLength = 70718.00
+longFactors (len>8) = 3063732
+# renormalizations = 39421908; rmqsavoided = 22870367
+# totalRMQs = 16551541; averageRMQLength = 10667.77
+# shortRMQs = 5748351; longRMQs = 8992454
+Time to lz factorize = 53.70 secs
+# 17:23:09 
+Test case = /fibo/fib_s9227465
+# alpha = 2; logbase2(2) = 1
+# bits = 1
+# Total 1-group Length = 9227464.00; Number of 1-groups = 2.00
+# Average 1-group Length = 4613732.00
+# Time to compute intervals = 0.82
+# allocated 6932056 bytes
+# 
+#Time to initialize RMQ = 0.14
+numfactors = 34
+averageFactorLength = 271396.00
+maxFactorLength = 3524578.00
+longFactors (len>8) = 32
+# renormalizations = 9227463; rmqsavoided = 9227221
+# totalRMQs = 242; averageRMQLength = 5.73
+# shortRMQs = 28; longRMQs = 211
+Time to lz factorize = 1.32 secs
+# 17:23:11 
+Test case = /fibo/fib_s14930352
+# alpha = 2; logbase2(2) = 1
+# bits = 1
+# Total 1-group Length = 14930351.00; Number of 1-groups = 2.00
+# Average 1-group Length = 7465175.50
+# Time to compute intervals = 1.29
+# allocated 11209224 bytes
+# 
+#Time to initialize RMQ = 0.22
+numfactors = 35
+averageFactorLength = 426581.47
+maxFactorLength = 5702887.00
+longFactors (len>8) = 33
+# renormalizations = 14930350; rmqsavoided = 14930092
+# totalRMQs = 258; averageRMQLength = 5.97
+# shortRMQs = 28; longRMQs = 227
+Time to lz factorize = 2.12 secs
+# 17:23:14 
+Test case = /periodic/fss9
+# alpha = 2; logbase2(2) = 1
+# bits = 1
+# Total 1-group Length = 2851442.00; Number of 1-groups = 2.00
+# Average 1-group Length = 1425721.00
+# Time to compute intervals = 0.23
+# allocated 2060950 bytes
+# 
+#Time to initialize RMQ = 0.04
+numfactors = 40
+averageFactorLength = 71286.05
+maxFactorLength = 1217712.00
+longFactors (len>8) = 38
+# renormalizations = 2851441; rmqsavoided = 2851196
+# totalRMQs = 245; averageRMQLength = 9.32
+# shortRMQs = 33; longRMQs = 210
+Time to lz factorize = 0.38 secs
+# 17:23:14 
+Test case = /periodic/fss10
+# alpha = 2; logbase2(2) = 1
+# bits = 1
+# Total 1-group Length = 12078907.00; Number of 1-groups = 2.00
+# Average 1-group Length = 6039453.50
+# Time to compute intervals = 1.14
+# allocated 9070672 bytes
+# 
+#Time to initialize RMQ = 0.18
+numfactors = 44
+averageFactorLength = 274520.62
+maxFactorLength = 5158310.00
+longFactors (len>8) = 42
+# renormalizations = 12078906; rmqsavoided = 12078609
+# totalRMQs = 297; averageRMQLength = 10.38
+# shortRMQs = 33; longRMQs = 262
+Time to lz factorize = 1.75 secs
+# 17:23:17 
+Test case = /random/rndA2_8Mb
+# alpha = 2; logbase2(2) = 1
+# bits = 1
+# Total 1-group Length = 8388607.00; Number of 1-groups = 2.00
+# Average 1-group Length = 4194303.50
+# Time to compute intervals = 0.65
+# allocated 6302896 bytes
+# 
+#Time to initialize RMQ = 0.14
+numfactors = 385232
+averageFactorLength = 21.78
+maxFactorLength = 42.00
+longFactors (len>8) = 385230
+# renormalizations = 8388606; rmqsavoided = 4194170
+# totalRMQs = 4194436; averageRMQLength = 95860.58
+# shortRMQs = 1100934; longRMQs = 2886027
+Time to lz factorize = 12.16 secs
+# 17:23:30 
+Test case = /random/rndA21_8Mb
+# alpha = 21; logbase2(21) = 4
+# bits = 5
+# Total 1-group Length = 8388607.00; Number of 1-groups = 21.00
+# Average 1-group Length = 399457.47
+# Time to compute intervals = 0.65
+# allocated 6302896 bytes
+# 
+#Time to initialize RMQ = 0.14
+numfactors = 1835235
+averageFactorLength = 4.57
+maxFactorLength = 9.00
+longFactors (len>8) = 1835214
+# renormalizations = 8388587; rmqsavoided = 399140
+# totalRMQs = 7989447; averageRMQLength = 4009.72
+# shortRMQs = 3281115; longRMQs = 3495591
+Time to lz factorize = 17.75 secs
+# 17:23:48 
+Test case = /dna/E.coli
+# alpha = 4; logbase2(4) = 2
+# bits = 2
+# Total 1-group Length = 4638689.00; Number of 1-groups = 4.00
+# Average 1-group Length = 1159672.25
+# Time to compute intervals = 0.31
+# allocated 3417990 bytes
+# 
+#Time to initialize RMQ = 0.08
+numfactors = 432791
+averageFactorLength = 10.72
+maxFactorLength = 2805.00
+longFactors (len>8) = 432787
+# renormalizations = 4638686; rmqsavoided = 1310868
+# totalRMQs = 3327818; averageRMQLength = 27570.17
+# shortRMQs = 1025331; longRMQs = 2047115
+Time to lz factorize = 7.96 secs
+# 17:23:56 
+Test case = /dna/chr19.dna4
+# alpha = 4; logbase2(4) = 2
+# bits = 2
+# Total 1-group Length = 63811648.00; Number of 1-groups = 4.00
+# Average 1-group Length = 15952912.00
+# Time to compute intervals = 5.48
+# allocated 49864350 bytes
+# 
+#Time to initialize RMQ = 1.08
+numfactors = 4411679
+averageFactorLength = 14.44
+maxFactorLength = 3397.00
+longFactors (len>8) = 4411675
+# renormalizations = 63811647; rmqsavoided = 23204533
+# totalRMQs = 40607114; averageRMQLength = 283033.66
+# shortRMQs = 10359409; longRMQs = 27615567
+Time to lz factorize = 163.03 secs
+# 17:26:39 
+Test case = /dna/chr22.dna4
+# alpha = 4; logbase2(4) = 2
+# bits = 2
+# Total 1-group Length = 34553756.00; Number of 1-groups = 4.00
+# Average 1-group Length = 8638439.00
+# Time to compute intervals = 2.83
+# allocated 27006592 bytes
+# 
+#Time to initialize RMQ = 0.59
+numfactors = 2554184
+averageFactorLength = 13.51
+maxFactorLength = 1768.00
+longFactors (len>8) = 2554180
+# renormalizations = 34553754; rmqsavoided = 12081421
+# totalRMQs = 22472333; averageRMQLength = 166053.61
+# shortRMQs = 6017592; longRMQs = 14935656
+Time to lz factorize = 78.38 secs
+# 17:27:58 
+Test case = /protein/p16Mb
+# alpha = 23; logbase2(23) = 4
+# bits = 5
+# Total 1-group Length = 16777215.00; Number of 1-groups = 23.00
+# Average 1-group Length = 729444.12
+# Time to compute intervals = 1.28
+# allocated 12856496 bytes
+# 
+#Time to initialize RMQ = 0.29
+numfactors = 2751023
+averageFactorLength = 6.10
+maxFactorLength = 6699.00
+longFactors (len>8) = 2751000
+# renormalizations = 16777193; rmqsavoided = 3599368
+# totalRMQs = 13177825; averageRMQLength = 9409.02
+# shortRMQs = 4412569; longRMQs = 7006339
+Time to lz factorize = 33.04 secs
+# 17:28:31 
+Test case = /protein/p32Mb
+# alpha = 24; logbase2(24) = 4
+# bits = 5
+# Total 1-group Length = 33554428.00; Number of 1-groups = 24.00
+# Average 1-group Length = 1398101.12
+# Time to compute intervals = 2.66
+# allocated 26225840 bytes
+# 
+#Time to initialize RMQ = 0.57
+numfactors = 5040051
+averageFactorLength = 6.59
+maxFactorLength = 16190.00
+longFactors (len>8) = 5040027
+# renormalizations = 33554408; rmqsavoided = 8314407
+# totalRMQs = 25240001; averageRMQLength = 16915.39
+# shortRMQs = 8200136; longRMQs = 13860422
+Time to lz factorize = 72.69 secs
+# 17:29:44 
+Test case = /english/bible
+# alpha = 63; logbase2(63) = 5
+# bits = 6
+# Total 1-group Length = 4047391.00; Number of 1-groups = 63.00
+# Average 1-group Length = 64244.30
+# Time to compute intervals = 0.25
+# allocated 2920552 bytes
+# 
+#Time to initialize RMQ = 0.07
+numfactors = 337558
+averageFactorLength = 11.99
+maxFactorLength = 549.00
+longFactors (len>8) = 337495
+# renormalizations = 4047329; rmqsavoided = 2410484
+# totalRMQs = 1636845; averageRMQLength = 1253.34
+# shortRMQs = 652415; longRMQs = 772134
+Time to lz factorize = 3.82 secs
+# 17:29:48 
+Test case = /english/howto
+# alpha = 197; logbase2(197) = 7
+# bits = 8
+# Total 1-group Length = 39422080.00; Number of 1-groups = 186.00
+# Average 1-group Length = 211946.67
+# Time to compute intervals = 2.88
+# allocated 30809992 bytes
+# 
+#Time to initialize RMQ = 0.67
+numfactors = 3063929
+averageFactorLength = 12.87
+maxFactorLength = 70718.00
+longFactors (len>8) = 3063732
+# renormalizations = 39421908; rmqsavoided = 22870367
+# totalRMQs = 16551541; averageRMQLength = 10667.77
+# shortRMQs = 5748351; longRMQs = 8992454
+Time to lz factorize = 53.57 secs
+# 18:21:10 
+Test case = /fibo/fib_s9227465
+# alpha = 2; logbase2(2) = 1
+# bits = 1
+# Total 1-group Length = 9227464.00; Number of 1-groups = 2.00
+# Average 1-group Length = 4613732.00
+# Time to compute intervals = 0.83
+# allocated 6932056 bytes
+# 
+#Time to initialize RMQ = 0.14
+numfactors = 34
+averageFactorLength = 271396.00
+maxFactorLength = 3524578.00
+longFactors (len>8) = 32
+# renormalizations = 9227463; rmqsavoided = 9227221
+# totalRMQs = 242; averageRMQLength = 5.73
+# shortRMQs = 28; longRMQs = 211
+Time to lz factorize = 1.34 secs
+# 18:21:12 
+Test case = /fibo/fib_s14930352
+# alpha = 2; logbase2(2) = 1
+# bits = 1
+# Total 1-group Length = 14930351.00; Number of 1-groups = 2.00
+# Average 1-group Length = 7465175.50
+# Time to compute intervals = 1.43
+# allocated 11209224 bytes
+# 
+#Time to initialize RMQ = 0.21
+numfactors = 35
+averageFactorLength = 426581.47
+maxFactorLength = 5702887.00
+longFactors (len>8) = 33
+# renormalizations = 14930350; rmqsavoided = 14930092
+# totalRMQs = 258; averageRMQLength = 5.97
+# shortRMQs = 28; longRMQs = 227
+Time to lz factorize = 2.24 secs
+# 18:21:16 
+Test case = /periodic/fss9
+# alpha = 2; logbase2(2) = 1
+# bits = 1
+# Total 1-group Length = 2851442.00; Number of 1-groups = 2.00
+# Average 1-group Length = 1425721.00
+# Time to compute intervals = 0.23
+# allocated 2060950 bytes
+# 
+#Time to initialize RMQ = 0.04
+numfactors = 40
+averageFactorLength = 71286.05
+maxFactorLength = 1217712.00
+longFactors (len>8) = 38
+# renormalizations = 2851441; rmqsavoided = 2851196
+# totalRMQs = 245; averageRMQLength = 9.32
+# shortRMQs = 33; longRMQs = 210
+Time to lz factorize = 0.37 secs
+# 18:21:16 
+Test case = /periodic/fss10
+# alpha = 2; logbase2(2) = 1
+# bits = 1
+# Total 1-group Length = 12078907.00; Number of 1-groups = 2.00
+# Average 1-group Length = 6039453.50
+# Time to compute intervals = 1.10
+# allocated 9070672 bytes
+# 
+#Time to initialize RMQ = 0.18
+numfactors = 44
+averageFactorLength = 274520.62
+maxFactorLength = 5158310.00
+longFactors (len>8) = 42
+# renormalizations = 12078906; rmqsavoided = 12078609
+# totalRMQs = 297; averageRMQLength = 10.38
+# shortRMQs = 33; longRMQs = 262
+Time to lz factorize = 1.73 secs
+# 18:21:19 
+Test case = /random/rndA2_8Mb
+# alpha = 2; logbase2(2) = 1
+# bits = 1
+# Total 1-group Length = 8388607.00; Number of 1-groups = 2.00
+# Average 1-group Length = 4194303.50
+# Time to compute intervals = 0.65
+# allocated 6302896 bytes
+# 
+#Time to initialize RMQ = 0.14
+numfactors = 385232
+averageFactorLength = 21.78
+maxFactorLength = 42.00
+longFactors (len>8) = 385230
+# renormalizations = 8388606; rmqsavoided = 4194170
+# totalRMQs = 4194436; averageRMQLength = 95860.58
+# shortRMQs = 1100934; longRMQs = 2886027
+Time to lz factorize = 11.49 secs
+# 18:21:31 
+Test case = /random/rndA21_8Mb
+# alpha = 21; logbase2(21) = 4
+# bits = 5
+# Total 1-group Length = 8388607.00; Number of 1-groups = 21.00
+# Average 1-group Length = 399457.47
+# Time to compute intervals = 0.65
+# allocated 6302896 bytes
+# 
+#Time to initialize RMQ = 0.14
+numfactors = 1835235
+averageFactorLength = 4.57
+maxFactorLength = 9.00
+longFactors (len>8) = 1835214
+# renormalizations = 8388587; rmqsavoided = 399140
+# totalRMQs = 7989447; averageRMQLength = 4009.72
+# shortRMQs = 3281115; longRMQs = 3495591
+Time to lz factorize = 17.76 secs
+# 18:21:49 
+Test case = /dna/E.coli
+# alpha = 4; logbase2(4) = 2
+# bits = 2
+# Total 1-group Length = 4638689.00; Number of 1-groups = 4.00
+# Average 1-group Length = 1159672.25
+# Time to compute intervals = 0.31
+# allocated 3417990 bytes
+# 
+#Time to initialize RMQ = 0.08
+numfactors = 432791
+averageFactorLength = 10.72
+maxFactorLength = 2805.00
+longFactors (len>8) = 432787
+# renormalizations = 4638686; rmqsavoided = 1310868
+# totalRMQs = 3327818; averageRMQLength = 27570.17
+# shortRMQs = 1025331; longRMQs = 2047115
+Time to lz factorize = 7.34 secs
+# 18:21:56 
+Test case = /dna/chr19.dna4
+# alpha = 4; logbase2(4) = 2
+# bits = 2
+# Total 1-group Length = 63811648.00; Number of 1-groups = 4.00
+# Average 1-group Length = 15952912.00
+# Time to compute intervals = 5.87
+# allocated 49864350 bytes
+# 
+#Time to initialize RMQ = 1.09
+numfactors = 4411679
+averageFactorLength = 14.44
+maxFactorLength = 3397.00
+longFactors (len>8) = 4411675
+# renormalizations = 63811647; rmqsavoided = 23204533
+# totalRMQs = 40607114; averageRMQLength = 283033.66
+# shortRMQs = 10359409; longRMQs = 27615567
+Time to lz factorize = 162.59 secs
+# 18:24:42 
+Test case = /dna/chr22.dna4
+# alpha = 4; logbase2(4) = 2
+# bits = 2
+# Total 1-group Length = 34553756.00; Number of 1-groups = 4.00
+# Average 1-group Length = 8638439.00
+# Time to compute intervals = 2.85
+# allocated 27006592 bytes
+# 
+#Time to initialize RMQ = 0.59
+numfactors = 2554184
+averageFactorLength = 13.51
+maxFactorLength = 1768.00
+longFactors (len>8) = 2554180
+# renormalizations = 34553754; rmqsavoided = 12081421
+# totalRMQs = 22472333; averageRMQLength = 166053.61
+# shortRMQs = 6017592; longRMQs = 14935656
+Time to lz factorize = 78.41 secs
+# 18:26:01 
+Test case = /protein/p16Mb
+# alpha = 23; logbase2(23) = 4
+# bits = 5
+# Total 1-group Length = 16777215.00; Number of 1-groups = 23.00
+# Average 1-group Length = 729444.12
+# Time to compute intervals = 1.28
+# allocated 12856496 bytes
+# 
+#Time to initialize RMQ = 0.28
+numfactors = 2751023
+averageFactorLength = 6.10
+maxFactorLength = 6699.00
+longFactors (len>8) = 2751000
+# renormalizations = 16777193; rmqsavoided = 3599368
+# totalRMQs = 13177825; averageRMQLength = 9409.02
+# shortRMQs = 4412569; longRMQs = 7006339
+Time to lz factorize = 34.03 secs
+# 18:26:35 
+Test case = /protein/p32Mb
+# alpha = 24; logbase2(24) = 4
+# bits = 5
+# Total 1-group Length = 33554428.00; Number of 1-groups = 24.00
+# Average 1-group Length = 1398101.12
+# Time to compute intervals = 2.66
+# allocated 26225840 bytes
+# 
+#Time to initialize RMQ = 0.57
+numfactors = 5040051
+averageFactorLength = 6.59
+maxFactorLength = 16190.00
+longFactors (len>8) = 5040027
+# renormalizations = 33554408; rmqsavoided = 8314407
+# totalRMQs = 25240001; averageRMQLength = 16915.39
+# shortRMQs = 8200136; longRMQs = 13860422
+Time to lz factorize = 72.81 secs
+# 18:27:50 
+Test case = /english/bible
+# alpha = 63; logbase2(63) = 5
+# bits = 6
+# Total 1-group Length = 4047391.00; Number of 1-groups = 63.00
+# Average 1-group Length = 64244.30
+# Time to compute intervals = 0.24
+# allocated 2920552 bytes
+# 
+#Time to initialize RMQ = 0.07
+numfactors = 337558
+averageFactorLength = 11.99
+maxFactorLength = 549.00
+longFactors (len>8) = 337495
+# renormalizations = 4047329; rmqsavoided = 2410484
+# totalRMQs = 1636845; averageRMQLength = 1253.34
+# shortRMQs = 652415; longRMQs = 772134
+Time to lz factorize = 3.84 secs
+# 18:27:54 
+Test case = /english/howto
+# alpha = 197; logbase2(197) = 7
+# bits = 8
+# Total 1-group Length = 39422080.00; Number of 1-groups = 186.00
+# Average 1-group Length = 211946.67
+# Time to compute intervals = 2.99
+# allocated 30809992 bytes
+# 
+#Time to initialize RMQ = 0.67
+numfactors = 3063929
+averageFactorLength = 12.87
+maxFactorLength = 70718.00
+longFactors (len>8) = 3063732
+# renormalizations = 39421908; rmqsavoided = 22870367
+# totalRMQs = 16551541; averageRMQLength = 10667.77
+# shortRMQs = 5748351; longRMQs = 8992454
+Time to lz factorize = 54.60 secs
+# 19:19:07 
+Test case = /fibo/fib_s9227465
+# alpha = 2; logbase2(2) = 1
+# bits = 1
+# Total 1-group Length = 9227464.00; Number of 1-groups = 2.00
+# Average 1-group Length = 4613732.00
+# Time to compute intervals = 0.82
+# allocated 6932056 bytes
+# 
+#Time to initialize RMQ = 0.14
+numfactors = 34
+averageFactorLength = 271396.00
+maxFactorLength = 3524578.00
+longFactors (len>8) = 32
+# renormalizations = 9227463; rmqsavoided = 9227221
+# totalRMQs = 242; averageRMQLength = 5.73
+# shortRMQs = 28; longRMQs = 211
+Time to lz factorize = 1.32 secs
+# 19:19:09 
+Test case = /fibo/fib_s14930352
+# alpha = 2; logbase2(2) = 1
+# bits = 1
+# Total 1-group Length = 14930351.00; Number of 1-groups = 2.00
+# Average 1-group Length = 7465175.50
+# Time to compute intervals = 1.30
+# allocated 11209224 bytes
+# 
+#Time to initialize RMQ = 0.21
+numfactors = 35
+averageFactorLength = 426581.47
+maxFactorLength = 5702887.00
+longFactors (len>8) = 33
+# renormalizations = 14930350; rmqsavoided = 14930092
+# totalRMQs = 258; averageRMQLength = 5.97
+# shortRMQs = 28; longRMQs = 227
+Time to lz factorize = 2.12 secs
+# 19:19:12 
+Test case = /periodic/fss9
+# alpha = 2; logbase2(2) = 1
+# bits = 1
+# Total 1-group Length = 2851442.00; Number of 1-groups = 2.00
+# Average 1-group Length = 1425721.00
+# Time to compute intervals = 0.22
+# allocated 2060950 bytes
+# 
+#Time to initialize RMQ = 0.04
+numfactors = 40
+averageFactorLength = 71286.05
+maxFactorLength = 1217712.00
+longFactors (len>8) = 38
+# renormalizations = 2851441; rmqsavoided = 2851196
+# totalRMQs = 245; averageRMQLength = 9.32
+# shortRMQs = 33; longRMQs = 210
+Time to lz factorize = 0.37 secs
+# 19:19:13 
+Test case = /periodic/fss10
+# alpha = 2; logbase2(2) = 1
+# bits = 1
+# Total 1-group Length = 12078907.00; Number of 1-groups = 2.00
+# Average 1-group Length = 6039453.50
+# Time to compute intervals = 1.13
+# allocated 9070672 bytes
+# 
+#Time to initialize RMQ = 0.18
+numfactors = 44
+averageFactorLength = 274520.62
+maxFactorLength = 5158310.00
+longFactors (len>8) = 42
+# renormalizations = 12078906; rmqsavoided = 12078609
+# totalRMQs = 297; averageRMQLength = 10.38
+# shortRMQs = 33; longRMQs = 262
+Time to lz factorize = 1.75 secs
+# 19:19:15 
+Test case = /random/rndA2_8Mb
+# alpha = 2; logbase2(2) = 1
+# bits = 1
+# Total 1-group Length = 8388607.00; Number of 1-groups = 2.00
+# Average 1-group Length = 4194303.50
+# Time to compute intervals = 0.66
+# allocated 6302896 bytes
+# 
+#Time to initialize RMQ = 0.14
+numfactors = 385232
+averageFactorLength = 21.78
+maxFactorLength = 42.00
+longFactors (len>8) = 385230
+# renormalizations = 8388606; rmqsavoided = 4194170
+# totalRMQs = 4194436; averageRMQLength = 95860.58
+# shortRMQs = 1100934; longRMQs = 2886027
+Time to lz factorize = 12.22 secs
+# 19:19:28 
+Test case = /random/rndA21_8Mb
+# alpha = 21; logbase2(21) = 4
+# bits = 5
+# Total 1-group Length = 8388607.00; Number of 1-groups = 21.00
+# Average 1-group Length = 399457.47
+# Time to compute intervals = 0.65
+# allocated 6302896 bytes
+# 
+#Time to initialize RMQ = 0.14
+numfactors = 1835235
+averageFactorLength = 4.57
+maxFactorLength = 9.00
+longFactors (len>8) = 1835214
+# renormalizations = 8388587; rmqsavoided = 399140
+# totalRMQs = 7989447; averageRMQLength = 4009.72
+# shortRMQs = 3281115; longRMQs = 3495591
+Time to lz factorize = 17.13 secs
+# 19:19:46 
+Test case = /dna/E.coli
+# alpha = 4; logbase2(4) = 2
+# bits = 2
+# Total 1-group Length = 4638689.00; Number of 1-groups = 4.00
+# Average 1-group Length = 1159672.25
+# Time to compute intervals = 0.31
+# allocated 3417990 bytes
+# 
+#Time to initialize RMQ = 0.08
+numfactors = 432791
+averageFactorLength = 10.72
+maxFactorLength = 2805.00
+longFactors (len>8) = 432787
+# renormalizations = 4638686; rmqsavoided = 1310868
+# totalRMQs = 3327818; averageRMQLength = 27570.17
+# shortRMQs = 1025331; longRMQs = 2047115
+Time to lz factorize = 7.34 secs
+# 19:19:53 
+Test case = /dna/chr19.dna4
+# alpha = 4; logbase2(4) = 2
+# bits = 2
+# Total 1-group Length = 63811648.00; Number of 1-groups = 4.00
+# Average 1-group Length = 15952912.00
+# Time to compute intervals = 5.59
+# allocated 49864350 bytes
+# 
+#Time to initialize RMQ = 1.09
+numfactors = 4411679
+averageFactorLength = 14.44
+maxFactorLength = 3397.00
+longFactors (len>8) = 4411675
+# renormalizations = 63811647; rmqsavoided = 23204533
+# totalRMQs = 40607114; averageRMQLength = 283033.66
+# shortRMQs = 10359409; longRMQs = 27615567
+Time to lz factorize = 161.81 secs
+# 19:22:38 
+Test case = /dna/chr22.dna4
+# alpha = 4; logbase2(4) = 2
+# bits = 2
+# Total 1-group Length = 34553756.00; Number of 1-groups = 4.00
+# Average 1-group Length = 8638439.00
+# Time to compute intervals = 2.95
+# allocated 27006592 bytes
+# 
+#Time to initialize RMQ = 0.59
+numfactors = 2554184
+averageFactorLength = 13.51
+maxFactorLength = 1768.00
+longFactors (len>8) = 2554180
+# renormalizations = 34553754; rmqsavoided = 12081421
+# totalRMQs = 22472333; averageRMQLength = 166053.61
+# shortRMQs = 6017592; longRMQs = 14935656
+Time to lz factorize = 78.96 secs
+# 19:23:59 
+Test case = /protein/p16Mb
+# alpha = 23; logbase2(23) = 4
+# bits = 5
+# Total 1-group Length = 16777215.00; Number of 1-groups = 23.00
+# Average 1-group Length = 729444.12
+# Time to compute intervals = 1.27
+# allocated 12856496 bytes
+# 
+#Time to initialize RMQ = 0.29
+numfactors = 2751023
+averageFactorLength = 6.10
+maxFactorLength = 6699.00
+longFactors (len>8) = 2751000
+# renormalizations = 16777193; rmqsavoided = 3599368
+# totalRMQs = 13177825; averageRMQLength = 9409.02
+# shortRMQs = 4412569; longRMQs = 7006339
+Time to lz factorize = 34.47 secs
+# 19:24:34 
+Test case = /protein/p32Mb
+# alpha = 24; logbase2(24) = 4
+# bits = 5
+# Total 1-group Length = 33554428.00; Number of 1-groups = 24.00
+# Average 1-group Length = 1398101.12
+# Time to compute intervals = 2.66
+# allocated 26225840 bytes
+# 
+#Time to initialize RMQ = 0.57
+numfactors = 5040051
+averageFactorLength = 6.59
+maxFactorLength = 16190.00
+longFactors (len>8) = 5040027
+# renormalizations = 33554408; rmqsavoided = 8314407
+# totalRMQs = 25240001; averageRMQLength = 16915.39
+# shortRMQs = 8200136; longRMQs = 13860422
+Time to lz factorize = 72.87 secs
+# 19:25:47 
+Test case = /english/bible
+# alpha = 63; logbase2(63) = 5
+# bits = 6
+# Total 1-group Length = 4047391.00; Number of 1-groups = 63.00
+# Average 1-group Length = 64244.30
+# Time to compute intervals = 0.25
+# allocated 2920552 bytes
+# 
+#Time to initialize RMQ = 0.07
+numfactors = 337558
+averageFactorLength = 11.99
+maxFactorLength = 549.00
+longFactors (len>8) = 337495
+# renormalizations = 4047329; rmqsavoided = 2410484
+# totalRMQs = 1636845; averageRMQLength = 1253.34
+# shortRMQs = 652415; longRMQs = 772134
+Time to lz factorize = 3.81 secs
+# 19:25:51 
+Test case = /english/howto
+# alpha = 197; logbase2(197) = 7
+# bits = 8
+# Total 1-group Length = 39422080.00; Number of 1-groups = 186.00
+# Average 1-group Length = 211946.67
+# Time to compute intervals = 2.90
+# allocated 30809992 bytes
+# 
+#Time to initialize RMQ = 0.67
+numfactors = 3063929
+averageFactorLength = 12.87
+maxFactorLength = 70718.00
+longFactors (len>8) = 3063732
+# renormalizations = 39421908; rmqsavoided = 22870367
+# totalRMQs = 16551541; averageRMQLength = 10667.77
+# shortRMQs = 5748351; longRMQs = 8992454
+Time to lz factorize = 53.80 secs
+# 20:17:12 
+Test case = /fibo/fib_s9227465
+# alpha = 2; logbase2(2) = 1
+# bits = 1
+# Total 1-group Length = 9227464.00; Number of 1-groups = 2.00
+# Average 1-group Length = 4613732.00
+# Time to compute intervals = 0.84
+# allocated 6932056 bytes
+# 
+#Time to initialize RMQ = 0.14
+numfactors = 34
+averageFactorLength = 271396.00
+maxFactorLength = 3524578.00
+longFactors (len>8) = 32
+# renormalizations = 9227463; rmqsavoided = 9227221
+# totalRMQs = 242; averageRMQLength = 5.73
+# shortRMQs = 28; longRMQs = 211
+Time to lz factorize = 1.34 secs
+# 20:17:14 
+Test case = /fibo/fib_s14930352
+# alpha = 2; logbase2(2) = 1
+# bits = 1
+# Total 1-group Length = 14930351.00; Number of 1-groups = 2.00
+# Average 1-group Length = 7465175.50
+# Time to compute intervals = 1.42
+# allocated 11209224 bytes
+# 
+#Time to initialize RMQ = 0.21
+numfactors = 35
+averageFactorLength = 426581.47
+maxFactorLength = 5702887.00
+longFactors (len>8) = 33
+# renormalizations = 14930350; rmqsavoided = 14930092
+# totalRMQs = 258; averageRMQLength = 5.97
+# shortRMQs = 28; longRMQs = 227
+Time to lz factorize = 2.24 secs
+# 20:17:18 
+Test case = /periodic/fss9
+# alpha = 2; logbase2(2) = 1
+# bits = 1
+# Total 1-group Length = 2851442.00; Number of 1-groups = 2.00
+# Average 1-group Length = 1425721.00
+# Time to compute intervals = 0.23
+# allocated 2060950 bytes
+# 
+#Time to initialize RMQ = 0.04
+numfactors = 40
+averageFactorLength = 71286.05
+maxFactorLength = 1217712.00
+longFactors (len>8) = 38
+# renormalizations = 2851441; rmqsavoided = 2851196
+# totalRMQs = 245; averageRMQLength = 9.32
+# shortRMQs = 33; longRMQs = 210
+Time to lz factorize = 0.38 secs
+# 20:17:18 
+Test case = /periodic/fss10
+# alpha = 2; logbase2(2) = 1
+# bits = 1
+# Total 1-group Length = 12078907.00; Number of 1-groups = 2.00
+# Average 1-group Length = 6039453.50
+# Time to compute intervals = 1.13
+# allocated 9070672 bytes
+# 
+#Time to initialize RMQ = 0.18
+numfactors = 44
+averageFactorLength = 274520.62
+maxFactorLength = 5158310.00
+longFactors (len>8) = 42
+# renormalizations = 12078906; rmqsavoided = 12078609
+# totalRMQs = 297; averageRMQLength = 10.38
+# shortRMQs = 33; longRMQs = 262
+Time to lz factorize = 1.75 secs
+# 20:17:21 
+Test case = /random/rndA2_8Mb
+# alpha = 2; logbase2(2) = 1
+# bits = 1
+# Total 1-group Length = 8388607.00; Number of 1-groups = 2.00
+# Average 1-group Length = 4194303.50
+# Time to compute intervals = 0.66
+# allocated 6302896 bytes
+# 
+#Time to initialize RMQ = 0.14
+numfactors = 385232
+averageFactorLength = 21.78
+maxFactorLength = 42.00
+longFactors (len>8) = 385230
+# renormalizations = 8388606; rmqsavoided = 4194170
+# totalRMQs = 4194436; averageRMQLength = 95860.58
+# shortRMQs = 1100934; longRMQs = 2886027
+Time to lz factorize = 11.53 secs
+# 20:17:33 
+Test case = /random/rndA21_8Mb
+# alpha = 21; logbase2(21) = 4
+# bits = 5
+# Total 1-group Length = 8388607.00; Number of 1-groups = 21.00
+# Average 1-group Length = 399457.47
+# Time to compute intervals = 0.66
+# allocated 6302896 bytes
+# 
+#Time to initialize RMQ = 0.14
+numfactors = 1835235
+averageFactorLength = 4.57
+maxFactorLength = 9.00
+longFactors (len>8) = 1835214
+# renormalizations = 8388587; rmqsavoided = 399140
+# totalRMQs = 7989447; averageRMQLength = 4009.72
+# shortRMQs = 3281115; longRMQs = 3495591
+Time to lz factorize = 17.75 secs
+# 20:17:51 
+Test case = /dna/E.coli
+# alpha = 4; logbase2(4) = 2
+# bits = 2
+# Total 1-group Length = 4638689.00; Number of 1-groups = 4.00
+# Average 1-group Length = 1159672.25
+# Time to compute intervals = 0.31
+# allocated 3417990 bytes
+# 
+#Time to initialize RMQ = 0.08
+numfactors = 432791
+averageFactorLength = 10.72
+maxFactorLength = 2805.00
+longFactors (len>8) = 432787
+# renormalizations = 4638686; rmqsavoided = 1310868
+# totalRMQs = 3327818; averageRMQLength = 27570.17
+# shortRMQs = 1025331; longRMQs = 2047115
+Time to lz factorize = 8.02 secs
+# 20:17:59 
+Test case = /dna/chr19.dna4
+# alpha = 4; logbase2(4) = 2
+# bits = 2
+# Total 1-group Length = 63811648.00; Number of 1-groups = 4.00
+# Average 1-group Length = 15952912.00
+# Time to compute intervals = 6.01
+# allocated 49864350 bytes
+# 
+#Time to initialize RMQ = 1.44
+numfactors = 4411679
+averageFactorLength = 14.44
+maxFactorLength = 3397.00
+longFactors (len>8) = 4411675
+# renormalizations = 63811647; rmqsavoided = 23204533
+# totalRMQs = 40607114; averageRMQLength = 283033.66
+# shortRMQs = 10359409; longRMQs = 27615567
+Time to lz factorize = 161.55 secs
+# 20:20:45 
+Test case = /dna/chr22.dna4
+# alpha = 4; logbase2(4) = 2
+# bits = 2
+# Total 1-group Length = 34553756.00; Number of 1-groups = 4.00
+# Average 1-group Length = 8638439.00
+# Time to compute intervals = 2.85
+# allocated 27006592 bytes
+# 
+#Time to initialize RMQ = 0.59
+numfactors = 2554184
+averageFactorLength = 13.51
+maxFactorLength = 1768.00
+longFactors (len>8) = 2554180
+# renormalizations = 34553754; rmqsavoided = 12081421
+# totalRMQs = 22472333; averageRMQLength = 166053.61
+# shortRMQs = 6017592; longRMQs = 14935656
+Time to lz factorize = 78.00 secs
+# 20:22:03 
+Test case = /protein/p16Mb
+# alpha = 23; logbase2(23) = 4
+# bits = 5
+# Total 1-group Length = 16777215.00; Number of 1-groups = 23.00
+# Average 1-group Length = 729444.12
+# Time to compute intervals = 1.28
+# allocated 12856496 bytes
+# 
+#Time to initialize RMQ = 0.28
+numfactors = 2751023
+averageFactorLength = 6.10
+maxFactorLength = 6699.00
+longFactors (len>8) = 2751000
+# renormalizations = 16777193; rmqsavoided = 3599368
+# totalRMQs = 13177825; averageRMQLength = 9409.02
+# shortRMQs = 4412569; longRMQs = 7006339
+Time to lz factorize = 34.35 secs
+# 20:22:38 
+Test case = /protein/p32Mb
+# alpha = 24; logbase2(24) = 4
+# bits = 5
+# Total 1-group Length = 33554428.00; Number of 1-groups = 24.00
+# Average 1-group Length = 1398101.12
+# Time to compute intervals = 2.84
+# allocated 26225840 bytes
+# 
+#Time to initialize RMQ = 0.57
+numfactors = 5040051
+averageFactorLength = 6.59
+maxFactorLength = 16190.00
+longFactors (len>8) = 5040027
+# renormalizations = 33554408; rmqsavoided = 8314407
+# totalRMQs = 25240001; averageRMQLength = 16915.39
+# shortRMQs = 8200136; longRMQs = 13860422
+Time to lz factorize = 73.34 secs
+# 20:23:53 
+Test case = /english/bible
+# alpha = 63; logbase2(63) = 5
+# bits = 6
+# Total 1-group Length = 4047391.00; Number of 1-groups = 63.00
+# Average 1-group Length = 64244.30
+# Time to compute intervals = 0.25
+# allocated 2920552 bytes
+# 
+#Time to initialize RMQ = 0.07
+numfactors = 337558
+averageFactorLength = 11.99
+maxFactorLength = 549.00
+longFactors (len>8) = 337495
+# renormalizations = 4047329; rmqsavoided = 2410484
+# totalRMQs = 1636845; averageRMQLength = 1253.34
+# shortRMQs = 652415; longRMQs = 772134
+Time to lz factorize = 3.83 secs
+# 20:23:57 
+Test case = /english/howto
+# alpha = 197; logbase2(197) = 7
+# bits = 8
+# Total 1-group Length = 39422080.00; Number of 1-groups = 186.00
+# Average 1-group Length = 211946.67
+# Time to compute intervals = 3.02
+# allocated 30809992 bytes
+# 
+#Time to initialize RMQ = 0.67
+numfactors = 3063929
+averageFactorLength = 12.87
+maxFactorLength = 70718.00
+longFactors (len>8) = 3063732
+# renormalizations = 39421908; rmqsavoided = 22870367
+# totalRMQs = 16551541; averageRMQLength = 10667.77
+# shortRMQs = 5748351; longRMQs = 8992454
+Time to lz factorize = 54.73 secs
+# 21:15:07 
+Test case = /fibo/fib_s9227465
+# alpha = 2; logbase2(2) = 1
+# bits = 1
+# Total 1-group Length = 9227464.00; Number of 1-groups = 2.00
+# Average 1-group Length = 4613732.00
+# Time to compute intervals = 0.82
+# allocated 6932056 bytes
+# 
+#Time to initialize RMQ = 0.14
+numfactors = 34
+averageFactorLength = 271396.00
+maxFactorLength = 3524578.00
+longFactors (len>8) = 32
+# renormalizations = 9227463; rmqsavoided = 9227221
+# totalRMQs = 242; averageRMQLength = 5.73
+# shortRMQs = 28; longRMQs = 211
+Time to lz factorize = 1.32 secs
+# 21:15:09 
+Test case = /fibo/fib_s14930352
+# alpha = 2; logbase2(2) = 1
+# bits = 1
+# Total 1-group Length = 14930351.00; Number of 1-groups = 2.00
+# Average 1-group Length = 7465175.50
+# Time to compute intervals = 1.30
+# allocated 11209224 bytes
+# 
+#Time to initialize RMQ = 0.21
+numfactors = 35
+averageFactorLength = 426581.47
+maxFactorLength = 5702887.00
+longFactors (len>8) = 33
+# renormalizations = 14930350; rmqsavoided = 14930092
+# totalRMQs = 258; averageRMQLength = 5.97
+# shortRMQs = 28; longRMQs = 227
+Time to lz factorize = 2.11 secs
+# 21:15:12 
+Test case = /periodic/fss9
+# alpha = 2; logbase2(2) = 1
+# bits = 1
+# Total 1-group Length = 2851442.00; Number of 1-groups = 2.00
+# Average 1-group Length = 1425721.00
+# Time to compute intervals = 0.23
+# allocated 2060950 bytes
+# 
+#Time to initialize RMQ = 0.04
+numfactors = 40
+averageFactorLength = 71286.05
+maxFactorLength = 1217712.00
+longFactors (len>8) = 38
+# renormalizations = 2851441; rmqsavoided = 2851196
+# totalRMQs = 245; averageRMQLength = 9.32
+# shortRMQs = 33; longRMQs = 210
+Time to lz factorize = 0.38 secs
+# 21:15:13 
+Test case = /periodic/fss10
+# alpha = 2; logbase2(2) = 1
+# bits = 1
+# Total 1-group Length = 12078907.00; Number of 1-groups = 2.00
+# Average 1-group Length = 6039453.50
+# Time to compute intervals = 1.13
+# allocated 9070672 bytes
+# 
+#Time to initialize RMQ = 0.18
+numfactors = 44
+averageFactorLength = 274520.62
+maxFactorLength = 5158310.00
+longFactors (len>8) = 42
+# renormalizations = 12078906; rmqsavoided = 12078609
+# totalRMQs = 297; averageRMQLength = 10.38
+# shortRMQs = 33; longRMQs = 262
+Time to lz factorize = 1.74 secs
+# 21:15:15 
+Test case = /random/rndA2_8Mb
+# alpha = 2; logbase2(2) = 1
+# bits = 1
+# Total 1-group Length = 8388607.00; Number of 1-groups = 2.00
+# Average 1-group Length = 4194303.50
+# Time to compute intervals = 0.65
+# allocated 6302896 bytes
+# 
+#Time to initialize RMQ = 0.14
+numfactors = 385232
+averageFactorLength = 21.78
+maxFactorLength = 42.00
+longFactors (len>8) = 385230
+# renormalizations = 8388606; rmqsavoided = 4194170
+# totalRMQs = 4194436; averageRMQLength = 95860.58
+# shortRMQs = 1100934; longRMQs = 2886027
+Time to lz factorize = 11.53 secs
+# 21:15:27 
+Test case = /random/rndA21_8Mb
+# alpha = 21; logbase2(21) = 4
+# bits = 5
+# Total 1-group Length = 8388607.00; Number of 1-groups = 21.00
+# Average 1-group Length = 399457.47
+# Time to compute intervals = 0.66
+# allocated 6302896 bytes
+# 
+#Time to initialize RMQ = 0.14
+numfactors = 1835235
+averageFactorLength = 4.57
+maxFactorLength = 9.00
+longFactors (len>8) = 1835214
+# renormalizations = 8388587; rmqsavoided = 399140
+# totalRMQs = 7989447; averageRMQLength = 4009.72
+# shortRMQs = 3281115; longRMQs = 3495591
+Time to lz factorize = 17.19 secs
+# 21:15:45 
+Test case = /dna/E.coli
+# alpha = 4; logbase2(4) = 2
+# bits = 2
+# Total 1-group Length = 4638689.00; Number of 1-groups = 4.00
+# Average 1-group Length = 1159672.25
+# Time to compute intervals = 0.31
+# allocated 3417990 bytes
+# 
+#Time to initialize RMQ = 0.08
+numfactors = 432791
+averageFactorLength = 10.72
+maxFactorLength = 2805.00
+longFactors (len>8) = 432787
+# renormalizations = 4638686; rmqsavoided = 1310868
+# totalRMQs = 3327818; averageRMQLength = 27570.17
+# shortRMQs = 1025331; longRMQs = 2047115
+Time to lz factorize = 8.01 secs
+# 21:15:53 
+Test case = /dna/chr19.dna4
+# alpha = 4; logbase2(4) = 2
+# bits = 2
+# Total 1-group Length = 63811648.00; Number of 1-groups = 4.00
+# Average 1-group Length = 15952912.00
+# Time to compute intervals = 5.48
+# allocated 49864350 bytes
+# 
+#Time to initialize RMQ = 1.09
+numfactors = 4411679
+averageFactorLength = 14.44
+maxFactorLength = 3397.00
+longFactors (len>8) = 4411675
+# renormalizations = 63811647; rmqsavoided = 23204533
+# totalRMQs = 40607114; averageRMQLength = 283033.66
+# shortRMQs = 10359409; longRMQs = 27615567
+Time to lz factorize = 159.91 secs
+# 21:18:34 
+Test case = /dna/chr22.dna4
+# alpha = 4; logbase2(4) = 2
+# bits = 2
+# Total 1-group Length = 34553756.00; Number of 1-groups = 4.00
+# Average 1-group Length = 8638439.00
+# Time to compute intervals = 2.84
+# allocated 27006592 bytes
+# 
+#Time to initialize RMQ = 0.59
+numfactors = 2554184
+averageFactorLength = 13.51
+maxFactorLength = 1768.00
+longFactors (len>8) = 2554180
+# renormalizations = 34553754; rmqsavoided = 12081421
+# totalRMQs = 22472333; averageRMQLength = 166053.61
+# shortRMQs = 6017592; longRMQs = 14935656
+Time to lz factorize = 77.97 secs
+# 21:19:54 
+Test case = /protein/p16Mb
+# alpha = 23; logbase2(23) = 4
+# bits = 5
+# Total 1-group Length = 16777215.00; Number of 1-groups = 23.00
+# Average 1-group Length = 729444.12
+# Time to compute intervals = 1.28
+# allocated 12856496 bytes
+# 
+#Time to initialize RMQ = 0.29
+numfactors = 2751023
+averageFactorLength = 6.10
+maxFactorLength = 6699.00
+longFactors (len>8) = 2751000
+# renormalizations = 16777193; rmqsavoided = 3599368
+# totalRMQs = 13177825; averageRMQLength = 9409.02
+# shortRMQs = 4412569; longRMQs = 7006339
+Time to lz factorize = 34.43 secs
+# 21:20:28 
+Test case = /protein/p32Mb
+# alpha = 24; logbase2(24) = 4
+# bits = 5
+# Total 1-group Length = 33554428.00; Number of 1-groups = 24.00
+# Average 1-group Length = 1398101.12
+# Time to compute intervals = 2.66
+# allocated 26225840 bytes
+# 
+#Time to initialize RMQ = 0.57
+numfactors = 5040051
+averageFactorLength = 6.59
+maxFactorLength = 16190.00
+longFactors (len>8) = 5040027
+# renormalizations = 33554408; rmqsavoided = 8314407
+# totalRMQs = 25240001; averageRMQLength = 16915.39
+# shortRMQs = 8200136; longRMQs = 13860422
+Time to lz factorize = 73.22 secs
+# 21:21:42 
+Test case = /english/bible
+# alpha = 63; logbase2(63) = 5
+# bits = 6
+# Total 1-group Length = 4047391.00; Number of 1-groups = 63.00
+# Average 1-group Length = 64244.30
+# Time to compute intervals = 0.24
+# allocated 2920552 bytes
+# 
+#Time to initialize RMQ = 0.07
+numfactors = 337558
+averageFactorLength = 11.99
+maxFactorLength = 549.00
+longFactors (len>8) = 337495
+# renormalizations = 4047329; rmqsavoided = 2410484
+# totalRMQs = 1636845; averageRMQLength = 1253.34
+# shortRMQs = 652415; longRMQs = 772134
+Time to lz factorize = 3.86 secs
+# 21:21:45 
+Test case = /english/howto
+# alpha = 197; logbase2(197) = 7
+# bits = 8
+# Total 1-group Length = 39422080.00; Number of 1-groups = 186.00
+# Average 1-group Length = 211946.67
+# Time to compute intervals = 2.89
+# allocated 30809992 bytes
+# 
+#Time to initialize RMQ = 0.67
+numfactors = 3063929
+averageFactorLength = 12.87
+maxFactorLength = 70718.00
+longFactors (len>8) = 3063732
+# renormalizations = 39421908; rmqsavoided = 22870367
+# totalRMQs = 16551541; averageRMQLength = 10667.77
+# shortRMQs = 5748351; longRMQs = 8992454
+Time to lz factorize = 54.00 secs
+# 22:12:58 
+Test case = /fibo/fib_s9227465
+# alpha = 2; logbase2(2) = 1
+# bits = 1
+# Total 1-group Length = 9227464.00; Number of 1-groups = 2.00
+# Average 1-group Length = 4613732.00
+# Time to compute intervals = 0.97
+# allocated 6932056 bytes
+# 
+#Time to initialize RMQ = 0.14
+numfactors = 34
+averageFactorLength = 271396.00
+maxFactorLength = 3524578.00
+longFactors (len>8) = 32
+# renormalizations = 9227463; rmqsavoided = 9227221
+# totalRMQs = 242; averageRMQLength = 5.73
+# shortRMQs = 28; longRMQs = 211
+Time to lz factorize = 1.50 secs
+# 22:13:00 
+Test case = /fibo/fib_s14930352
+# alpha = 2; logbase2(2) = 1
+# bits = 1
+# Total 1-group Length = 14930351.00; Number of 1-groups = 2.00
+# Average 1-group Length = 7465175.50
+# Time to compute intervals = 1.43
+# allocated 11209224 bytes
+# 
+#Time to initialize RMQ = 0.21
+numfactors = 35
+averageFactorLength = 426581.47
+maxFactorLength = 5702887.00
+longFactors (len>8) = 33
+# renormalizations = 14930350; rmqsavoided = 14930092
+# totalRMQs = 258; averageRMQLength = 5.97
+# shortRMQs = 28; longRMQs = 227
+Time to lz factorize = 2.26 secs
+# 22:13:03 
+Test case = /periodic/fss9
+# alpha = 2; logbase2(2) = 1
+# bits = 1
+# Total 1-group Length = 2851442.00; Number of 1-groups = 2.00
+# Average 1-group Length = 1425721.00
+# Time to compute intervals = 0.22
+# allocated 2060950 bytes
+# 
+#Time to initialize RMQ = 0.04
+numfactors = 40
+averageFactorLength = 71286.05
+maxFactorLength = 1217712.00
+longFactors (len>8) = 38
+# renormalizations = 2851441; rmqsavoided = 2851196
+# totalRMQs = 245; averageRMQLength = 9.32
+# shortRMQs = 33; longRMQs = 210
+Time to lz factorize = 0.37 secs
+# 22:13:04 
+Test case = /periodic/fss10
+# alpha = 2; logbase2(2) = 1
+# bits = 1
+# Total 1-group Length = 12078907.00; Number of 1-groups = 2.00
+# Average 1-group Length = 6039453.50
+# Time to compute intervals = 1.10
+# allocated 9070672 bytes
+# 
+#Time to initialize RMQ = 0.18
+numfactors = 44
+averageFactorLength = 274520.62
+maxFactorLength = 5158310.00
+longFactors (len>8) = 42
+# renormalizations = 12078906; rmqsavoided = 12078609
+# totalRMQs = 297; averageRMQLength = 10.38
+# shortRMQs = 33; longRMQs = 262
+Time to lz factorize = 1.72 secs
+# 22:13:05 
+Test case = /random/rndA2_8Mb
+# alpha = 2; logbase2(2) = 1
+# bits = 1
+# Total 1-group Length = 8388607.00; Number of 1-groups = 2.00
+# Average 1-group Length = 4194303.50
+# Time to compute intervals = 0.66
+# allocated 6302896 bytes
+# 
+#Time to initialize RMQ = 0.14
+numfactors = 385232
+averageFactorLength = 21.78
+maxFactorLength = 42.00
+longFactors (len>8) = 385230
+# renormalizations = 8388606; rmqsavoided = 4194170
+# totalRMQs = 4194436; averageRMQLength = 95860.58
+# shortRMQs = 1100934; longRMQs = 2886027
+Time to lz factorize = 11.56 secs
+# 22:13:17 
+Test case = /random/rndA21_8Mb
+# alpha = 21; logbase2(21) = 4
+# bits = 5
+# Total 1-group Length = 8388607.00; Number of 1-groups = 21.00
+# Average 1-group Length = 399457.47
+# Time to compute intervals = 0.65
+# allocated 6302896 bytes
+# 
+#Time to initialize RMQ = 0.14
+numfactors = 1835235
+averageFactorLength = 4.57
+maxFactorLength = 9.00
+longFactors (len>8) = 1835214
+# renormalizations = 8388587; rmqsavoided = 399140
+# totalRMQs = 7989447; averageRMQLength = 4009.72
+# shortRMQs = 3281115; longRMQs = 3495591
+Time to lz factorize = 17.11 secs
+# 22:13:34 
+Test case = /dna/E.coli
+# alpha = 4; logbase2(4) = 2
+# bits = 2
+# Total 1-group Length = 4638689.00; Number of 1-groups = 4.00
+# Average 1-group Length = 1159672.25
+# Time to compute intervals = 0.31
+# allocated 3417990 bytes
+# 
+#Time to initialize RMQ = 0.08
+numfactors = 432791
+averageFactorLength = 10.72
+maxFactorLength = 2805.00
+longFactors (len>8) = 432787
+# renormalizations = 4638686; rmqsavoided = 1310868
+# totalRMQs = 3327818; averageRMQLength = 27570.17
+# shortRMQs = 1025331; longRMQs = 2047115
+Time to lz factorize = 7.36 secs
+# 22:13:42 
+Test case = /dna/chr19.dna4
+# alpha = 4; logbase2(4) = 2
+# bits = 2
+# Total 1-group Length = 63811648.00; Number of 1-groups = 4.00
+# Average 1-group Length = 15952912.00
+# Time to compute intervals = 6.04
+# allocated 49864350 bytes
+# 
+#Time to initialize RMQ = 1.08
+numfactors = 4411679
+averageFactorLength = 14.44
+maxFactorLength = 3397.00
+longFactors (len>8) = 4411675
+# renormalizations = 63811647; rmqsavoided = 23204533
+# totalRMQs = 40607114; averageRMQLength = 283033.66
+# shortRMQs = 10359409; longRMQs = 27615567
+Time to lz factorize = 161.47 secs
+# 22:16:26 
+Test case = /dna/chr22.dna4
+# alpha = 4; logbase2(4) = 2
+# bits = 2
+# Total 1-group Length = 34553756.00; Number of 1-groups = 4.00
+# Average 1-group Length = 8638439.00
+# Time to compute intervals = 2.86
+# allocated 27006592 bytes
+# 
+#Time to initialize RMQ = 0.59
+numfactors = 2554184
+averageFactorLength = 13.51
+maxFactorLength = 1768.00
+longFactors (len>8) = 2554180
+# renormalizations = 34553754; rmqsavoided = 12081421
+# totalRMQs = 22472333; averageRMQLength = 166053.61
+# shortRMQs = 6017592; longRMQs = 14935656
+Time to lz factorize = 77.40 secs
+# 22:17:44 
+Test case = /protein/p16Mb
+# alpha = 23; logbase2(23) = 4
+# bits = 5
+# Total 1-group Length = 16777215.00; Number of 1-groups = 23.00
+# Average 1-group Length = 729444.12
+# Time to compute intervals = 1.29
+# allocated 12856496 bytes
+# 
+#Time to initialize RMQ = 0.29
+numfactors = 2751023
+averageFactorLength = 6.10
+maxFactorLength = 6699.00
+longFactors (len>8) = 2751000
+# renormalizations = 16777193; rmqsavoided = 3599368
+# totalRMQs = 13177825; averageRMQLength = 9409.02
+# shortRMQs = 4412569; longRMQs = 7006339
+Time to lz factorize = 34.56 secs
+# 22:18:18 
+Test case = /protein/p32Mb
+# alpha = 24; logbase2(24) = 4
+# bits = 5
+# Total 1-group Length = 33554428.00; Number of 1-groups = 24.00
+# Average 1-group Length = 1398101.12
+# Time to compute intervals = 2.97
+# allocated 26225840 bytes
+# 
+#Time to initialize RMQ = 0.57
+numfactors = 5040051
+averageFactorLength = 6.59
+maxFactorLength = 16190.00
+longFactors (len>8) = 5040027
+# renormalizations = 33554408; rmqsavoided = 8314407
+# totalRMQs = 25240001; averageRMQLength = 16915.39
+# shortRMQs = 8200136; longRMQs = 13860422
+Time to lz factorize = 73.53 secs
+# 22:19:34 
+Test case = /english/bible
+# alpha = 63; logbase2(63) = 5
+# bits = 6
+# Total 1-group Length = 4047391.00; Number of 1-groups = 63.00
+# Average 1-group Length = 64244.30
+# Time to compute intervals = 0.24
+# allocated 2920552 bytes
+# 
+#Time to initialize RMQ = 0.07
+numfactors = 337558
+averageFactorLength = 11.99
+maxFactorLength = 549.00
+longFactors (len>8) = 337495
+# renormalizations = 4047329; rmqsavoided = 2410484
+# totalRMQs = 1636845; averageRMQLength = 1253.34
+# shortRMQs = 652415; longRMQs = 772134
+Time to lz factorize = 3.87 secs
+# 22:19:38 
+Test case = /english/howto
+# alpha = 197; logbase2(197) = 7
+# bits = 8
+# Total 1-group Length = 39422080.00; Number of 1-groups = 186.00
+# Average 1-group Length = 211946.67
+# Time to compute intervals = 2.89
+# allocated 30809992 bytes
+# 
+#Time to initialize RMQ = 0.67
+numfactors = 3063929
+averageFactorLength = 12.87
+maxFactorLength = 70718.00
+longFactors (len>8) = 3063732
+# renormalizations = 39421908; rmqsavoided = 22870367
+# totalRMQs = 16551541; averageRMQLength = 10667.77
+# shortRMQs = 5748351; longRMQs = 8992454
+Time to lz factorize = 53.71 secs
+# 23:10:47 
+Test case = /fibo/fib_s9227465
+# alpha = 2; logbase2(2) = 1
+# bits = 1
+# Total 1-group Length = 9227464.00; Number of 1-groups = 2.00
+# Average 1-group Length = 4613732.00
+# Time to compute intervals = 0.81
+# allocated 6932056 bytes
+# 
+#Time to initialize RMQ = 0.14
+numfactors = 34
+averageFactorLength = 271396.00
+maxFactorLength = 3524578.00
+longFactors (len>8) = 32
+# renormalizations = 9227463; rmqsavoided = 9227221
+# totalRMQs = 242; averageRMQLength = 5.73
+# shortRMQs = 28; longRMQs = 211
+Time to lz factorize = 1.32 secs
+# 23:10:49 
+Test case = /fibo/fib_s14930352
+# alpha = 2; logbase2(2) = 1
+# bits = 1
+# Total 1-group Length = 14930351.00; Number of 1-groups = 2.00
+# Average 1-group Length = 7465175.50
+# Time to compute intervals = 1.30
+# allocated 11209224 bytes
+# 
+#Time to initialize RMQ = 0.21
+numfactors = 35
+averageFactorLength = 426581.47
+maxFactorLength = 5702887.00
+longFactors (len>8) = 33
+# renormalizations = 14930350; rmqsavoided = 14930092
+# totalRMQs = 258; averageRMQLength = 5.97
+# shortRMQs = 28; longRMQs = 227
+Time to lz factorize = 2.11 secs
+# 23:10:52 
+Test case = /periodic/fss9
+# alpha = 2; logbase2(2) = 1
+# bits = 1
+# Total 1-group Length = 2851442.00; Number of 1-groups = 2.00
+# Average 1-group Length = 1425721.00
+# Time to compute intervals = 0.22
+# allocated 2060950 bytes
+# 
+#Time to initialize RMQ = 0.04
+numfactors = 40
+averageFactorLength = 71286.05
+maxFactorLength = 1217712.00
+longFactors (len>8) = 38
+# renormalizations = 2851441; rmqsavoided = 2851196
+# totalRMQs = 245; averageRMQLength = 9.32
+# shortRMQs = 33; longRMQs = 210
+Time to lz factorize = 0.37 secs
+# 23:10:52 
+Test case = /periodic/fss10
+# alpha = 2; logbase2(2) = 1
+# bits = 1
+# Total 1-group Length = 12078907.00; Number of 1-groups = 2.00
+# Average 1-group Length = 6039453.50
+# Time to compute intervals = 1.12
+# allocated 9070672 bytes
+# 
+#Time to initialize RMQ = 0.18
+numfactors = 44
+averageFactorLength = 274520.62
+maxFactorLength = 5158310.00
+longFactors (len>8) = 42
+# renormalizations = 12078906; rmqsavoided = 12078609
+# totalRMQs = 297; averageRMQLength = 10.38
+# shortRMQs = 33; longRMQs = 262
+Time to lz factorize = 1.74 secs
+# 23:10:55 
+Test case = /random/rndA2_8Mb
+# alpha = 2; logbase2(2) = 1
+# bits = 1
+# Total 1-group Length = 8388607.00; Number of 1-groups = 2.00
+# Average 1-group Length = 4194303.50
+# Time to compute intervals = 0.65
+# allocated 6302896 bytes
+# 
+#Time to initialize RMQ = 0.14
+numfactors = 385232
+averageFactorLength = 21.78
+maxFactorLength = 42.00
+longFactors (len>8) = 385230
+# renormalizations = 8388606; rmqsavoided = 4194170
+# totalRMQs = 4194436; averageRMQLength = 95860.58
+# shortRMQs = 1100934; longRMQs = 2886027
+Time to lz factorize = 11.56 secs
+# 23:11:07 
+Test case = /random/rndA21_8Mb
+# alpha = 21; logbase2(21) = 4
+# bits = 5
+# Total 1-group Length = 8388607.00; Number of 1-groups = 21.00
+# Average 1-group Length = 399457.47
+# Time to compute intervals = 0.66
+# allocated 6302896 bytes
+# 
+#Time to initialize RMQ = 0.14
+numfactors = 1835235
+averageFactorLength = 4.57
+maxFactorLength = 9.00
+longFactors (len>8) = 1835214
+# renormalizations = 8388587; rmqsavoided = 399140
+# totalRMQs = 7989447; averageRMQLength = 4009.72
+# shortRMQs = 3281115; longRMQs = 3495591
+Time to lz factorize = 17.76 secs
+# 23:11:25 
+Test case = /dna/E.coli
+# alpha = 4; logbase2(4) = 2
+# bits = 2
+# Total 1-group Length = 4638689.00; Number of 1-groups = 4.00
+# Average 1-group Length = 1159672.25
+# Time to compute intervals = 0.32
+# allocated 3417990 bytes
+# 
+#Time to initialize RMQ = 0.08
+numfactors = 432791
+averageFactorLength = 10.72
+maxFactorLength = 2805.00
+longFactors (len>8) = 432787
+# renormalizations = 4638686; rmqsavoided = 1310868
+# totalRMQs = 3327818; averageRMQLength = 27570.17
+# shortRMQs = 1025331; longRMQs = 2047115
+Time to lz factorize = 7.36 secs
+# 23:11:33 
+Test case = /dna/chr19.dna4
+# alpha = 4; logbase2(4) = 2
+# bits = 2
+# Total 1-group Length = 63811648.00; Number of 1-groups = 4.00
+# Average 1-group Length = 15952912.00
+# Time to compute intervals = 5.55
+# allocated 49864350 bytes
+# 
+#Time to initialize RMQ = 1.24
+numfactors = 4411679
+averageFactorLength = 14.44
+maxFactorLength = 3397.00
+longFactors (len>8) = 4411675
+# renormalizations = 63811647; rmqsavoided = 23204533
+# totalRMQs = 40607114; averageRMQLength = 283033.66
+# shortRMQs = 10359409; longRMQs = 27615567
+Time to lz factorize = 161.95 secs
+# 23:14:17 
+Test case = /dna/chr22.dna4
+# alpha = 4; logbase2(4) = 2
+# bits = 2
+# Total 1-group Length = 34553756.00; Number of 1-groups = 4.00
+# Average 1-group Length = 8638439.00
+# Time to compute intervals = 3.10
+# allocated 27006592 bytes
+# 
+#Time to initialize RMQ = 0.59
+numfactors = 2554184
+averageFactorLength = 13.51
+maxFactorLength = 1768.00
+longFactors (len>8) = 2554180
+# renormalizations = 34553754; rmqsavoided = 12081421
+# totalRMQs = 22472333; averageRMQLength = 166053.61
+# shortRMQs = 6017592; longRMQs = 14935656
+Time to lz factorize = 78.31 secs
+# 23:15:37 
+Test case = /protein/p16Mb
+# alpha = 23; logbase2(23) = 4
+# bits = 5
+# Total 1-group Length = 16777215.00; Number of 1-groups = 23.00
+# Average 1-group Length = 729444.12
+# Time to compute intervals = 1.28
+# allocated 12856496 bytes
+# 
+#Time to initialize RMQ = 0.28
+numfactors = 2751023
+averageFactorLength = 6.10
+maxFactorLength = 6699.00
+longFactors (len>8) = 2751000
+# renormalizations = 16777193; rmqsavoided = 3599368
+# totalRMQs = 13177825; averageRMQLength = 9409.02
+# shortRMQs = 4412569; longRMQs = 7006339
+Time to lz factorize = 34.49 secs
+# 23:16:12 
+Test case = /protein/p32Mb
+# alpha = 24; logbase2(24) = 4
+# bits = 5
+# Total 1-group Length = 33554428.00; Number of 1-groups = 24.00
+# Average 1-group Length = 1398101.12
+# Time to compute intervals = 2.66
+# allocated 26225840 bytes
+# 
+#Time to initialize RMQ = 0.57
+numfactors = 5040051
+averageFactorLength = 6.59
+maxFactorLength = 16190.00
+longFactors (len>8) = 5040027
+# renormalizations = 33554408; rmqsavoided = 8314407
+# totalRMQs = 25240001; averageRMQLength = 16915.39
+# shortRMQs = 8200136; longRMQs = 13860422
+Time to lz factorize = 72.34 secs
+# 23:17:25 
+Test case = /english/bible
+# alpha = 63; logbase2(63) = 5
+# bits = 6
+# Total 1-group Length = 4047391.00; Number of 1-groups = 63.00
+# Average 1-group Length = 64244.30
+# Time to compute intervals = 0.24
+# allocated 2920552 bytes
+# 
+#Time to initialize RMQ = 0.07
+numfactors = 337558
+averageFactorLength = 11.99
+maxFactorLength = 549.00
+longFactors (len>8) = 337495
+# renormalizations = 4047329; rmqsavoided = 2410484
+# totalRMQs = 1636845; averageRMQLength = 1253.34
+# shortRMQs = 652415; longRMQs = 772134
+Time to lz factorize = 3.82 secs
+# 23:17:29 
+Test case = /english/howto
+# alpha = 197; logbase2(197) = 7
+# bits = 8
+# Total 1-group Length = 39422080.00; Number of 1-groups = 186.00
+# Average 1-group Length = 211946.67
+# Time to compute intervals = 2.90
+# allocated 30809992 bytes
+# 
+#Time to initialize RMQ = 0.67
+numfactors = 3063929
+averageFactorLength = 12.87
+maxFactorLength = 70718.00
+longFactors (len>8) = 3063732
+# renormalizations = 39421908; rmqsavoided = 22870367
+# totalRMQs = 16551541; averageRMQLength = 10667.77
+# shortRMQs = 5748351; longRMQs = 8992454
+Time to lz factorize = 53.87 secs
+# 00:08:40 
+Test case = /fibo/fib_s9227465
+# alpha = 2; logbase2(2) = 1
+# bits = 1
+# Total 1-group Length = 9227464.00; Number of 1-groups = 2.00
+# Average 1-group Length = 4613732.00
+# Time to compute intervals = 0.83
+# allocated 6932056 bytes
+# 
+#Time to initialize RMQ = 0.14
+numfactors = 34
+averageFactorLength = 271396.00
+maxFactorLength = 3524578.00
+longFactors (len>8) = 32
+# renormalizations = 9227463; rmqsavoided = 9227221
+# totalRMQs = 242; averageRMQLength = 5.73
+# shortRMQs = 28; longRMQs = 211
+Time to lz factorize = 1.35 secs
+# 00:08:42 
+Test case = /fibo/fib_s14930352
+# alpha = 2; logbase2(2) = 1
+# bits = 1
+# Total 1-group Length = 14930351.00; Number of 1-groups = 2.00
+# Average 1-group Length = 7465175.50
+# Time to compute intervals = 1.30
+# allocated 11209224 bytes
+# 
+#Time to initialize RMQ = 0.21
+numfactors = 35
+averageFactorLength = 426581.47
+maxFactorLength = 5702887.00
+longFactors (len>8) = 33
+# renormalizations = 14930350; rmqsavoided = 14930092
+# totalRMQs = 258; averageRMQLength = 5.97
+# shortRMQs = 28; longRMQs = 227
+Time to lz factorize = 2.11 secs
+# 00:08:45 
+Test case = /periodic/fss9
+# alpha = 2; logbase2(2) = 1
+# bits = 1
+# Total 1-group Length = 2851442.00; Number of 1-groups = 2.00
+# Average 1-group Length = 1425721.00
+# Time to compute intervals = 0.22
+# allocated 2060950 bytes
+# 
+#Time to initialize RMQ = 0.04
+numfactors = 40
+averageFactorLength = 71286.05
+maxFactorLength = 1217712.00
+longFactors (len>8) = 38
+# renormalizations = 2851441; rmqsavoided = 2851196
+# totalRMQs = 245; averageRMQLength = 9.32
+# shortRMQs = 33; longRMQs = 210
+Time to lz factorize = 0.37 secs
+# 00:08:45 
+Test case = /periodic/fss10
+# alpha = 2; logbase2(2) = 1
+# bits = 1
+# Total 1-group Length = 12078907.00; Number of 1-groups = 2.00
+# Average 1-group Length = 6039453.50
+# Time to compute intervals = 1.13
+# allocated 9070672 bytes
+# 
+#Time to initialize RMQ = 0.18
+numfactors = 44
+averageFactorLength = 274520.62
+maxFactorLength = 5158310.00
+longFactors (len>8) = 42
+# renormalizations = 12078906; rmqsavoided = 12078609
+# totalRMQs = 297; averageRMQLength = 10.38
+# shortRMQs = 33; longRMQs = 262
+Time to lz factorize = 1.74 secs
+# 00:08:48 
+Test case = /random/rndA2_8Mb
+# alpha = 2; logbase2(2) = 1
+# bits = 1
+# Total 1-group Length = 8388607.00; Number of 1-groups = 2.00
+# Average 1-group Length = 4194303.50
+# Time to compute intervals = 0.66
+# allocated 6302896 bytes
+# 
+#Time to initialize RMQ = 0.14
+numfactors = 385232
+averageFactorLength = 21.78
+maxFactorLength = 42.00
+longFactors (len>8) = 385230
+# renormalizations = 8388606; rmqsavoided = 4194170
+# totalRMQs = 4194436; averageRMQLength = 95860.58
+# shortRMQs = 1100934; longRMQs = 2886027
+Time to lz factorize = 11.56 secs
+# 00:08:59 
+Test case = /random/rndA21_8Mb
+# alpha = 21; logbase2(21) = 4
+# bits = 5
+# Total 1-group Length = 8388607.00; Number of 1-groups = 21.00
+# Average 1-group Length = 399457.47
+# Time to compute intervals = 0.66
+# allocated 6302896 bytes
+# 
+#Time to initialize RMQ = 0.14
+numfactors = 1835235
+averageFactorLength = 4.57
+maxFactorLength = 9.00
+longFactors (len>8) = 1835214
+# renormalizations = 8388587; rmqsavoided = 399140
+# totalRMQs = 7989447; averageRMQLength = 4009.72
+# shortRMQs = 3281115; longRMQs = 3495591
+Time to lz factorize = 17.15 secs
+# 00:09:17 
+Test case = /dna/E.coli
+# alpha = 4; logbase2(4) = 2
+# bits = 2
+# Total 1-group Length = 4638689.00; Number of 1-groups = 4.00
+# Average 1-group Length = 1159672.25
+# Time to compute intervals = 0.32
+# allocated 3417990 bytes
+# 
+#Time to initialize RMQ = 0.08
+numfactors = 432791
+averageFactorLength = 10.72
+maxFactorLength = 2805.00
+longFactors (len>8) = 432787
+# renormalizations = 4638686; rmqsavoided = 1310868
+# totalRMQs = 3327818; averageRMQLength = 27570.17
+# shortRMQs = 1025331; longRMQs = 2047115
+Time to lz factorize = 7.39 secs
+# 00:09:24 
+Test case = /dna/chr19.dna4
+# alpha = 4; logbase2(4) = 2
+# bits = 2
+# Total 1-group Length = 63811648.00; Number of 1-groups = 4.00
+# Average 1-group Length = 15952912.00
+# Time to compute intervals = 5.53
+# allocated 49864350 bytes
+# 
+#Time to initialize RMQ = 1.09
+numfactors = 4411679
+averageFactorLength = 14.44
+maxFactorLength = 3397.00
+longFactors (len>8) = 4411675
+# renormalizations = 63811647; rmqsavoided = 23204533
+# totalRMQs = 40607114; averageRMQLength = 283033.66
+# shortRMQs = 10359409; longRMQs = 27615567
+Time to lz factorize = 160.17 secs
+# 00:12:06 
+Test case = /dna/chr22.dna4
+# alpha = 4; logbase2(4) = 2
+# bits = 2
+# Total 1-group Length = 34553756.00; Number of 1-groups = 4.00
+# Average 1-group Length = 8638439.00
+# Time to compute intervals = 2.87
+# allocated 27006592 bytes
+# 
+#Time to initialize RMQ = 0.59
+numfactors = 2554184
+averageFactorLength = 13.51
+maxFactorLength = 1768.00
+longFactors (len>8) = 2554180
+# renormalizations = 34553754; rmqsavoided = 12081421
+# totalRMQs = 22472333; averageRMQLength = 166053.61
+# shortRMQs = 6017592; longRMQs = 14935656
+Time to lz factorize = 78.19 secs
+# 00:13:24 
+Test case = /protein/p16Mb
+# alpha = 23; logbase2(23) = 4
+# bits = 5
+# Total 1-group Length = 16777215.00; Number of 1-groups = 23.00
+# Average 1-group Length = 729444.12
+# Time to compute intervals = 1.29
+# allocated 12856496 bytes
+# 
+#Time to initialize RMQ = 0.28
+numfactors = 2751023
+averageFactorLength = 6.10
+maxFactorLength = 6699.00
+longFactors (len>8) = 2751000
+# renormalizations = 16777193; rmqsavoided = 3599368
+# totalRMQs = 13177825; averageRMQLength = 9409.02
+# shortRMQs = 4412569; longRMQs = 7006339
+Time to lz factorize = 34.49 secs
+# 00:14:00 
+Test case = /protein/p32Mb
+# alpha = 24; logbase2(24) = 4
+# bits = 5
+# Total 1-group Length = 33554428.00; Number of 1-groups = 24.00
+# Average 1-group Length = 1398101.12
+# Time to compute intervals = 2.67
+# allocated 26225840 bytes
+# 
+#Time to initialize RMQ = 0.57
+numfactors = 5040051
+averageFactorLength = 6.59
+maxFactorLength = 16190.00
+longFactors (len>8) = 5040027
+# renormalizations = 33554408; rmqsavoided = 8314407
+# totalRMQs = 25240001; averageRMQLength = 16915.39
+# shortRMQs = 8200136; longRMQs = 13860422
+Time to lz factorize = 72.54 secs
+# 00:15:12 
+Test case = /english/bible
+# alpha = 63; logbase2(63) = 5
+# bits = 6
+# Total 1-group Length = 4047391.00; Number of 1-groups = 63.00
+# Average 1-group Length = 64244.30
+# Time to compute intervals = 0.24
+# allocated 2920552 bytes
+# 
+#Time to initialize RMQ = 0.07
+numfactors = 337558
+averageFactorLength = 11.99
+maxFactorLength = 549.00
+longFactors (len>8) = 337495
+# renormalizations = 4047329; rmqsavoided = 2410484
+# totalRMQs = 1636845; averageRMQLength = 1253.34
+# shortRMQs = 652415; longRMQs = 772134
+Time to lz factorize = 3.86 secs
+# 00:15:16 
+Test case = /english/howto
+# alpha = 197; logbase2(197) = 7
+# bits = 8
+# Total 1-group Length = 39422080.00; Number of 1-groups = 186.00
+# Average 1-group Length = 211946.67
+# Time to compute intervals = 2.90
+# allocated 30809992 bytes
+# 
+#Time to initialize RMQ = 0.67
+numfactors = 3063929
+averageFactorLength = 12.87
+maxFactorLength = 70718.00
+longFactors (len>8) = 3063732
+# renormalizations = 39421908; rmqsavoided = 22870367
+# totalRMQs = 16551541; averageRMQLength = 10667.77
+# shortRMQs = 5748351; longRMQs = 8992454
+Time to lz factorize = 53.98 secs
