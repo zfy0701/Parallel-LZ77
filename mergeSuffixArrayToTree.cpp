@@ -73,11 +73,10 @@ inline void setNode(node *nodes, stNode<int>* stnodes, int *s,
   int parent = nodes[j].parent;
   int parentDepth = nodes[parent].value;
 //  int offset = position + parentDepth; //julian please look at this original code !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
   int offset = position;
-  int length = nodes[j].value - parentDepth;
-  stnodes[i].setValues(parent,s[offset],j,offset,length);
-  stnodes[i].depth = nodes[j].value;
+//  int length = nodes[j].value - parentDepth;
+  stnodes[i].setValues(parent,offset,nodes[j].value);
+//  stnodes[i].depth = nodes[j].value;
 }
 
 suffixTree suffixArrayToTree (int* SA, int* LCP, int n, int* s){
@@ -147,8 +146,8 @@ suffixTree suffixArrayToTree (int* SA, int* LCP, int n, int* s){
   // cout<<"n+nm="<<n+nm<<endl;
   parallel_for(int i = 0; i < n+nm; i++) {
     int pid = stnodes[i].parentID;
-    stnodes[i].parentID = (pid == -1) ? -1 : newid[pid];
-    if(newid[pid] == -1000) {cout<<"screwed up "<< i<<" "<<pid<<endl;abort();}
+    stnodes[i].parentID = newid[pid];
+    // if(newid[pid] == -1000) {cout<<"screwed up "<< i<<" "<<pid<<endl;abort();}
     // if ( stnodes[i].parentID == -1) {
     //   printf("@%d %d %d\t", i, pid, stnodes[i].parentID);
     // }

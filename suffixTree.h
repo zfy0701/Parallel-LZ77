@@ -32,48 +32,24 @@ struct notNeg {
 
 template <class strElt>
 struct stNode {
-  int parentID;     //my feeling is that the parentID is not working for stNode
-  strElt edgeFirstChar;
-  int pointingTo;
+  int parentID;
+//  strElt edgeFirstChar;
+//  int pointingTo;
   int locationInOriginalArray;
-  int edgeLength;
+//  int edgeLength;
   int depth;
   
-  void setValues(int _parentID, strElt _edgeFirstChar,
-                 int _pointingTo, int _location, int _edgeLength) {
+  void setValues(int _parentID, /*strElt _edgeFirstChar,
+                 int _pointingTo,*/ int _location, int _depth /*, int _edgeLength*/) {
     parentID = _parentID;
-    edgeFirstChar = _edgeFirstChar;
-    pointingTo = _pointingTo;
+//    edgeFirstChar = _edgeFirstChar;
+//    pointingTo = _pointingTo;
     locationInOriginalArray = _location;
-    edgeLength = _edgeLength;
+    depth = _depth;
+ //   edgeLength = _edgeLength;
   }
 };
 
-struct stNodeHash {
-  unsigned int operator() (stNode<int> *stn) {
-    unsigned int seed = utils::hash(stn->parentID);
-    seed ^= utils::hash(stn->edgeFirstChar) +
-            0x9e3779b9 + (seed << 6) + (seed >> 2);
-    return seed;
-  }
-};
-
-struct stNodeCmp {
-  int operator() (stNode<int> *a, stNode<int> *b) {
-    if (a->parentID > b->parentID) return 1;
-    else if (a->parentID < b->parentID) return -1;
-    else return (a->edgeFirstChar > b->edgeFirstChar)
-                  ? 1 : ((a->edgeFirstChar == b->edgeFirstChar) ? 0 : -1);
-  }
-};
-
-typedef Table<stNode<int>*, stNodeCmp, stNodeHash> stNodeTable;
-
-static stNodeTable makeStNodeTable(int m) {
-  return stNodeTable(m, stNodeCmp(), stNodeHash(), (stNode<int> *) NULL);
-}
-
-//TODO: delay the stNodeTable computation
 struct suffixTree {
   int n; // number of leaves
   int m; // total number of nodes (leaves and internal)
@@ -87,9 +63,6 @@ suffixTree(int _n, int _m, int *_s, stNode<int> *_nodes,int _root) :
     free(nodes);
   }
 
-  bool isLeaf(int i) {
-    return i < n;
-  }
 };
 
 suffixTree suffixArrayToTree (int *SA, int *LCP, int n, int *s);

@@ -24,7 +24,7 @@ pair<int *, int> ParallelLZ77(int *s, int n) {
     nextTime("\tSuffix Tree");
     //references
     stNode<int> *nodes = st.nodes;
-    int root = st.root; //I'm not sure!
+    int root = st.root;
 
     int *minLabel = new int[st.m];
     parallel_for (int i = n; i < st.m; i++) {
@@ -85,7 +85,6 @@ pair<int *, int> ParallelLZ77(int *s, int n) {
     //compute lpf by binary search
     int *lpf = new int[n];
 
-    //the efficience of following code can be improved by using additional spaces
     parallel_for (int i = 0; i < n; i++) {
         int cur = nodes[i].parentID;
         int pos = minLabel[cur];;
@@ -105,7 +104,6 @@ pair<int *, int> ParallelLZ77(int *s, int n) {
         if (minLabel[cur] == minLabel[i] && cur != root) {
             cur = nodes[cur].parentID;
         }
-        // if (cur1 != cur) printf("%d %d\n", cur1, cur);
         pos = minLabel[cur];
 
         int len = nodes[cur].depth - 1; //nodes depth -1 = the length of the string path

@@ -116,6 +116,11 @@ inline int test_main(int argc, char *argv[], char * algoname, std::pair<int *, i
 		generateText(a, n, sigma);
 	} else {
 		printf(" * Data from file: %s\n", path);
+		int size =  get_file_size(path);
+		if (n > size) {
+			perror("The file is not as large as the size specified.");
+			exit(1);
+		}
 		readText(a, n, path);
 	}
 
