@@ -91,7 +91,7 @@ pair<int *, int> ParallelLZ77(int *s, int n) {
 
     //compute minup
     parallel_for (int i = 0; i < st.m; i++) {
-        minup[0][i] = minLabel[i];
+        minup[0][i] = min(minLabel[i], minLabel[up[0][i]]);
     }
     for (int d = 1; d < dep; d++) {
         parallel_for (int i = 0; i < st.m; i++) {
@@ -120,7 +120,7 @@ pair<int *, int> ParallelLZ77(int *s, int n) {
         int val = i;
 
         int d = dep - 1;
-        while (d > 0 && cur != root) {
+        while (d > 1 && cur != root) {
             if (minup[d][cur] < i) {
                 val = minup[d][cur];
                 d--;    //scala down the scope
