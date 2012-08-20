@@ -77,22 +77,50 @@ suffixTree suffixArrayToTree (int* SA, int* LCP, int n, int* s){
   int nm = sequence::filter(flags,oout,n,notNeg());
   delete flags;
 
+  int * newid = new int[2*n];
+
   // shortcut to roots of each cluster
-  parallel_for(int i=1;i<2*n;i++)
+  parallel_for(int i=1;i<2*n;i++) {
     nodes[i].parent = getRoot(nodes, i);
+  }
 
   // copy leaves to hash structure
-  stNode<int>* stnodes = new stNode<int>[n+nm];
+  stNode<int>* stnodes = new stNode<int>[n+nm+1];
+  newid[0] = n+nm;
+  stnodes[n+nm].parentID = n+nm;
+
   parallel_for(int i=0;i<n;i++){
     int j = 2*i+1;
     setNode(nodes,stnodes,s,i,j,(n-nodes[j].value+1));
+    newid[j] = i;
   }
 
   // copy internal nodes to hash structure
   parallel_for(int i=0;i<nm;i++){
     int j = oout[i];
+    newid[j] = n + i;
     setNode(nodes,stnodes,s,n+i,j,(n-nodes[j-1].value+1));
   }
+
+  // for (int i = 0; i < n; i++) {
+  //   printf("%d ", s[i]);
+  // }
+  // printf("end str\n");
+  // for (int i = 0; i < n + nm; i++) {
+  //   printf("%d ", newid[i]);
+  // }
+  // printf("end\n");
+
+  parallel_for(int i = 0; i < n+nm; i++) {
+    int pid = stnodes[i].parentID;
+    stnodes[i].parentID = newid[stnodes[i].parentID];
+    if ( stnodes[i].parentID == -1) {
+      printf("@%d %d %d\t", i, pid, stnodes[i].parentID);
+    }
+  }
+//    printf("\n");
+
+  delete newid;
   delete oout;  delete nodes;
 
   // insert into hash table
@@ -102,5 +130,5 @@ suffixTree suffixArrayToTree (int* SA, int* LCP, int n, int* s){
     ST->insert(stnodes+i);
   }
 
-  return suffixTree(n,n+nm,table,s,stnodes);
+  return suffixTree(n,n+nm+1,table,s,stnodes);
 }

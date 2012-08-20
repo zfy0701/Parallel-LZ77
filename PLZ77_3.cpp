@@ -1,4 +1,4 @@
-/*
+/*z
  * Parallel suffix tree + sequential searching
  * Current version doesn't work. We need to compute
  * minimum index at each internal node of suffix
@@ -24,8 +24,9 @@ pair<int *, int> ParallelLZ77(int *s, int n) {
     nextTime("\tSuffix Tree");
     //references
     stNode<int> *nodes = st.nodes;
-    int root = st.getRoot(); //I'm not sure!
+    int root = st.root; //I'm not sure!
     nextTime("\tSuffix Tree root");
+    printf("root is : %d\n",root);
 
     int *minLabel = new int[st.m];
     parallel_for (int i = n; i < st.m; i++) {
@@ -37,6 +38,9 @@ pair<int *, int> ParallelLZ77(int *s, int n) {
     parallel_for (int i = 0; i < n; i++) { //does it really gurantee i is ith suffix?
         minLabel[i] = i;
         int pid = nodes[i].parentID;
+        if (pid == -1 || pid >= st.m) {
+            printf("pid wrong %d %d\n", i, pid);
+        }
         utils::writeMin(minLabel + pid, i);
     }
     nextTime("\tInitial Contraction");
@@ -61,8 +65,9 @@ pair<int *, int> ParallelLZ77(int *s, int n) {
         minup[i] = new int[st.m]; 
     }
 
+    nextTime("intial up and minup");
     //compute up
-    parallel_for (int i = 1; i < st.m; i++) {
+    parallel_for (int i = 0; i < st.m; i++) {
         up[0][i] = nodes[i].parentID;
     }
 
@@ -71,6 +76,7 @@ pair<int *, int> ParallelLZ77(int *s, int n) {
             up[d][i] = up[d-1][up[d-1][i]];
         }   
     }
+    nextTime("get up");
 
     //compute minup
     parallel_for (int i = 0; i < dep; i++) {
@@ -82,6 +88,7 @@ pair<int *, int> ParallelLZ77(int *s, int n) {
             minup[d][i] = min(minup[d-1][i], minup[d-1][up[d-1][i]]); 
         } 
     }
+    nextTime("get minup");
 
     //compute lpf by binary search
     int * lpf = new int[n];
@@ -102,6 +109,7 @@ pair<int *, int> ParallelLZ77(int *s, int n) {
         }
         lpf[i] = val;
     }
+    nextTime("get lpf");
     delete minLabel;
     delete up;
     delete minup;

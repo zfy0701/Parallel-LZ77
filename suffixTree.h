@@ -76,11 +76,18 @@ static stNodeTable makeStNodeTable(int m) {
 struct suffixTree {
   int n; // number of leaves
   int m; // total number of nodes (leaves and internal)
+  int root;
   stNodeTable table;
   int *s;
   stNode<int> *nodes;
   suffixTree(int _n, int _m, stNodeTable _table, int *_s, stNode<int> *_nodes) :
-    n(_n), m(_m), table(_table), s(_s), nodes(_nodes) {}
+    n(_n), m(_m), table(_table), s(_s), nodes(_nodes) {
+
+    this->root = 0;
+    while (nodes[this->root].parentID != this->root) {
+      this->root = nodes[this->root].parentID;
+    }
+  }
   void del() {
     table.del();
     free(s);
@@ -113,17 +120,6 @@ struct suffixTree {
         currentNode.parentID = b->pointingTo;
       }
     }
-  }
-
-  int getRoot() {   //check with julian
-    int root = 0;
-    printf("%d %d\n", n, m);
-    while (nodes[root].parentID != root && nodes[root].parentID != 0) {
-      root = nodes[root].parentID;
-      printf("%d\n", root);
-    }
-    nodes[root].parentID = root;
-    return root;
   }
 
   bool isLeaf(int i) {

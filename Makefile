@@ -56,7 +56,7 @@ LZ77_3.o: LZ77_3.cpp test.h
 lz77_3: LZ77_3.o rangeMin.o
 	$(PCC) $(CFLAGS) -o $@ $^
 
-lpf_lz.o: lpf_lz.cpp
+lpf_lz.o: LPF_LZ.cpp
 	$(PCC) $(CFLAGS) -c $<
 
 PLZ77_1.o: PLZ77_1.cpp test.h
