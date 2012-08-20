@@ -76,14 +76,15 @@ suffixTree suffixArrayToTree (int* SA, int* LCP, int n, int* s){
   int* oout = new int[n];
   int nm = sequence::filter(flags,oout,n,notNeg());
   delete flags;
-
   int * newid = new int[2*n];
 
+  int realRoot = -1;
   // shortcut to roots of each cluster
   parallel_for(int i=1;i<2*n;i++) {
-    nodes[i].parent = getRoot(nodes, i);
+    if(nodes[i].parent == 0) realRoot = i;
+    else nodes[i].parent = getRoot(nodes, i);
   }
-
+  nodes[realRoot].parent = -1;
   // copy leaves to hash structure
   stNode<int>* stnodes = new stNode<int>[n+nm+1];
   newid[0] = n+nm;
