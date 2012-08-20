@@ -128,7 +128,7 @@ inline int test_main(int argc, char *argv[], char * algoname, std::pair<int *, i
 	testTm.start();
 
 	std::pair<int *, int> res = lz77(a, n);
-	int maxoffset = 0;
+	int maxoffset = n - res.first[res.second-1];
 	for (int i = 0; i < res.second - 1; i++) {
 		maxoffset = std::max(maxoffset, res.first[i+1] - res.first[i]);
 	}

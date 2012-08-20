@@ -27,7 +27,7 @@ pair<int *, int> ParallelLZ77(int *s, int n) {
     int root = st.root; //I'm not sure!
     nodes[root].parentID = root; //remove it later
     nextTime("\tSuffix Tree root");
-    printf("root is : %d\n",root);
+    printf("root is : %d\n", root);
 
     int *minLabel = new int[st.m];
     parallel_for (int i = n; i < st.m; i++) {
@@ -60,10 +60,10 @@ pair<int *, int> ParallelLZ77(int *s, int n) {
     int dep = getDepth(st.m);
     int **up = new int*[dep];
     int **minup = new int*[dep];
-    
+
     for (int i = 0; i < dep; i++) {
         up[i] = new int[st.m];  //this should be computed for all nodes
-        minup[i] = new int[st.m]; 
+        minup[i] = new int[st.m];
     }
 
     nextTime("intial up and minup");
@@ -71,28 +71,48 @@ pair<int *, int> ParallelLZ77(int *s, int n) {
     parallel_for (int i = 0; i < st.m; i++) {
         up[0][i] = nodes[i].parentID;
     }
-
     for (int d = 1; d < dep; d++) {
         parallel_for (int i = 0; i < st.m; i++) {
-            up[d][i] = up[d-1][up[d-1][i]];
-        }   
+            up[d][i] = up[d - 1][up[d - 1][i]];
+        }
     }
     nextTime("get up");
 
-    //compute minup
-    parallel_for (int i = 0; i < dep; i++) {
-       minup[0][i] = minLabel[i];
+    for (int d = 0; d < dep; d++) {
+        printf("level %d\n", d);
+
+        for (int i = 0; i < st.m; i++) {
+            printf("%d\t", up[d][i]);
+        }
+            printf("\n");
+
     }
 
+
+    //compute minup
+    parallel_for (int i = 0; i < st.m; i++) {
+        minup[0][i] = minLabel[i];
+    }
     for (int d = 1; d < dep; d++) {
         parallel_for (int i = 0; i < st.m; i++) {
-            minup[d][i] = min(minup[d-1][i], minup[d-1][up[d-1][i]]); 
-        } 
+            minup[d][i] = min(minup[d - 1][i], minup[d - 1][up[d - 1][i]]);
+        }
     }
-    nextTime("get minup");
+
+    nextTime("get minup");    
+    for (int d = 0; d < dep; d++) {
+        printf("level %d\n", d);
+
+        for (int i = 0; i < st.m; i++) {
+            printf("%d\t", minup[d][i]);
+        }
+                printf("\n");
+    }
+
+
 
     //compute lpf by binary search
-    int * lpf = new int[n];
+    int *lpf = new int[n];
 
     //the efficience of following code can be improved by using additional spaces
     parallel_for (int i = 0; i < n; i++) {
@@ -100,12 +120,12 @@ pair<int *, int> ParallelLZ77(int *s, int n) {
         int val = i;
 
         int d = dep - 1;
-        while(d > 0 && cur != root) {
+        while (d > 0 && cur != root) {
             if (minup[d][cur] < i) {
-                val = minup[d][cur];        
+                val = minup[d][cur];
                 d--;    //scala down the scope
             } else {
-                cur = up[d-1][cur];
+                cur = up[d - 1][cur];
             }
         }
         lpf[i] = val;
