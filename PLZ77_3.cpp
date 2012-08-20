@@ -117,7 +117,7 @@ pair<int *, int> ParallelLZ77(int *s, int n) {
     //the efficience of following code can be improved by using additional spaces
     parallel_for (int i = 0; i < n; i++) {
         int cur = i;
-        int val = i;
+        int val = 0;
 
         int d = dep - 1;
         while (d > 1 && cur != root) {
