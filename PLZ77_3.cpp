@@ -130,7 +130,14 @@ pair<int *, int> ParallelLZ77(int *s, int n) {
         }
         lpf[i] = val;
     }
+
+ 
     nextTime("get lpf");
+
+       for (int i = 0; i< n; i++)
+        printf("%d\t", i);
+
+    printf("\n");
     delete minLabel;
     delete up;
     delete minup;
