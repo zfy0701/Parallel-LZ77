@@ -33,9 +33,37 @@
 using namespace std;
 #define CHECK 0
 
-inline int getRoot(node* nodes, int i) {
+void printTree(stNode<int>* stnodes, int nnm){
+  for(int i=0;i<nnm;i++)cout<<"("<<i<<","<<stnodes[i].parentID<<") ";
+  cout<<endl;
+}
+
+//check
+void verifyTree(stNode<int>* stnodes, int nnm, int n){
+  //one root
+  int numRoots = 0;
+  for(int i=0;i<nnm;i++) if(stnodes[i].parentID == -1) numRoots++;
+  if(numRoots != 1) {cout<<"screwed up\n";abort();}
+
+  //everyone has a parent in tree
+  for(int i=0;i<nnm;i++)
+    if(stnodes[i].parentID < -1 || stnodes[i].parentID >= nnm){cout<<"screwed up again\n"; abort();}
+
+  int* numChildren = new int[nnm]; 
+  for(int i=0;i<nnm;i++) numChildren[i]=0;
+  for(int i=0;i<nnm;i++) {if(stnodes[i].parentID != -1) {
+      numChildren[stnodes[i].parentID]++;
+      if(stnodes[i].parentID < n) cout<<i<<" "<<stnodes[i].parentID<<" can't point to child\n"; }
+  }
+  for(int i=n;i<nnm;i++) if(numChildren[i]==0) {cout<<"internal node"<< i<<" has no children\n";abort();} 
+  cout<<"tree verified\n";
+  delete [] numChildren;
+}
+
+
+inline int getRoot(node* nodes, int i, int realRoot) {
   int root = nodes[i].parent;
-  while (root != 0 && nodes[nodes[root].parent].value == nodes[root].value)
+  while (root != realRoot && nodes[nodes[root].parent].value == nodes[root].value)
     root = nodes[root].parent;
   return root;
 }
@@ -57,12 +85,24 @@ suffixTree suffixArrayToTree (int* SA, int* LCP, int n, int* s){
     nodes[2*i+1].value = n-SA[i]+1;
     nodes[2*i].parent = nodes[2*i+1].parent = 0;
   }
-  nodes[0].value = 0;
+
   nodes[1].value = n-SA[0]+1;
-  nodes[0].parent = nodes[1].parent = 0;
+  nodes[1].parent = 0;
   delete [] SA;  delete [] LCP;
 
   cartesianTree(nodes,1,2*n-1);
+  int realRoot = -1;
+
+  parallel_for(int i=1;i<2*n;i++) 
+    if(nodes[i].parent == 0) {
+      realRoot = i;
+      nodes[i].parent = i;
+  }
+
+  // shortcut to roots of each cluster
+  parallel_for(int i=1;i<2*n;i++) {
+    nodes[i].parent = getRoot(nodes, i, realRoot);
+  }
 
   // Filter out non-root internal nodes
   int* flags = new int[n];
@@ -72,26 +112,24 @@ suffixTree suffixArrayToTree (int* SA, int* LCP, int n, int* s){
     int p = nodes[j].parent;
     if (nodes[j].value > nodes[p].value) flags[i] = j;
     else flags[i] = -1;
-  }  
+  }
+
+  nodes[realRoot].parent = -1;
+  flags[realRoot/2] = realRoot; //keep the real root
+
   int* oout = new int[n];
   int nm = sequence::filter(flags,oout,n,notNeg());
   delete flags;
   int * newid = new int[2*n];
 
-  int realRoot = -1;
-  // shortcut to roots of each cluster
-  parallel_for(int i=1;i<2*n;i++) {
-    if(nodes[i].parent == 0) realRoot = i;
-    else nodes[i].parent = getRoot(nodes, i);
-  }
-  nodes[realRoot].parent = -1;
-  // copy leaves to hash structure
-  stNode<int>* stnodes = new stNode<int>[n+nm+1];
-  newid[0] = n+nm;
-  stnodes[n+nm].parentID = n+nm;
 
+  // copy leaves to stnodes
+  stNode<int>* stnodes = new stNode<int>[n+nm];
+  //newid[0] = n+nm;
+  //stnodes[n+nm].parentID = n+nm;
+  for(int i=0;i<2*n;i++)newid[i]=-1000;
   parallel_for(int i=0;i<n;i++){
-    int j = 2*i+1;
+    int j = 2*i+1; 
     setNode(nodes,stnodes,s,i,j,(n-nodes[j].value+1));
     newid[j] = i;
   }
@@ -102,34 +140,21 @@ suffixTree suffixArrayToTree (int* SA, int* LCP, int n, int* s){
     newid[j] = n + i;
     setNode(nodes,stnodes,s,n+i,j,(n-nodes[j-1].value+1));
   }
-
-  // for (int i = 0; i < n; i++) {
-  //   printf("%d ", s[i]);
-  // }
-  // printf("end str\n");
-  // for (int i = 0; i < n + nm; i++) {
-  //   printf("%d ", newid[i]);
-  // }
-  // printf("end\n");
-
+  cout<<"root = "<<realRoot<<", new id = "<<newid[realRoot]<<endl;
+  cout<<"n+nm="<<n+nm<<endl;
   parallel_for(int i = 0; i < n+nm; i++) {
     int pid = stnodes[i].parentID;
-    stnodes[i].parentID = newid[stnodes[i].parentID];
-    if ( stnodes[i].parentID == -1) {
-      printf("@%d %d %d\t", i, pid, stnodes[i].parentID);
-    }
+    stnodes[i].parentID = (pid == -1) ? -1 : newid[pid];
+    if(newid[pid] == -1000) {cout<<"screwed up "<< i<<" "<<pid<<endl;abort();}
+    // if ( stnodes[i].parentID == -1) {
+    //   printf("@%d %d %d\t", i, pid, stnodes[i].parentID);
+    // }
   }
-//    printf("\n");
 
+  realRoot = newid[realRoot];
   delete newid;
   delete oout;  delete nodes;
+  verifyTree(stnodes,n+nm,n); //comment this out later 
 
-  // insert into hash table
-  stNodeTable table = makeStNodeTable(3*(n+nm)/4);
-  stNodeTable* ST = &table;
-  parallel_for(int i=0; i<n+nm; i++) {
-    ST->insert(stnodes+i);
-  }
-
-  return suffixTree(n,n+nm+1,table,s,stnodes);
+  return suffixTree(n,n+nm+1,s,stnodes,realRoot);
 }

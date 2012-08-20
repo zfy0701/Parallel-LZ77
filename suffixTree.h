@@ -77,49 +77,13 @@ struct suffixTree {
   int n; // number of leaves
   int m; // total number of nodes (leaves and internal)
   int root;
-  stNodeTable table;
   int *s;
   stNode<int> *nodes;
-  suffixTree(int _n, int _m, stNodeTable _table, int *_s, stNode<int> *_nodes) :
-    n(_n), m(_m), table(_table), s(_s), nodes(_nodes) {
-
-    this->root = 0;
-    while (nodes[this->root].parentID != this->root) {
-      this->root = nodes[this->root].parentID;
-    }
-  }
+suffixTree(int _n, int _m, int *_s, stNode<int> *_nodes,int _root) :
+  n(_n), m(_m), s(_s), nodes(_nodes), root(_root) {}
   void del() {
-    table.del();
     free(s);
     free(nodes);
-  }
-
-  int search(int *string) {
-    //stNode for searching
-    stNode<int> currentNode;
-    int position = 0;
-    currentNode.parentID = 0;
-    if (string[0] == 0) return 0;
-
-    while (1) {
-      currentNode.edgeFirstChar = string[position];
-      stNode<int> *b = table.find(&currentNode);
-      if (b == NULL) return -1;
-      else {
-        int length = b->edgeLength;
-        int stLocation = b->locationInOriginalArray;
-
-        // don't need to test first position since matched in hash table
-        for (int i = 1; i < length; i++) {
-          if (string[position + i] == 0) return stLocation - position;
-          if (string[position + i] != s[stLocation + i]) return -1;
-        }
-
-        if (string[position + length] == 0) return stLocation - position;
-        position += length;
-        currentNode.parentID = b->pointingTo;
-      }
-    }
   }
 
   bool isLeaf(int i) {
