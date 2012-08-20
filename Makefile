@@ -16,7 +16,7 @@ CFLAGS = -g
 endif
 
 
-all: plz77_1 plz77_2 plz77_3 lz77_1 lz77_2 lz77_3
+all: plz77_1 plz77_3 lz77_1 lz77_2 lz77_3
 
 .PHONY: clean
 
@@ -65,11 +65,11 @@ PLZ77_1.o: PLZ77_1.cpp test.h
 plz77_1: PLZ77_1.o ANSV.o rangeMin.o suffixArray.o segmentTree.o lpf_lz.o
 	$(PCC) $(CFLAGS) -o $@ $^
 
-PLZ77_2.o: PLZ77_2.cpp test.h
-	$(PCC) $(CFLAGS) -c $<
+# PLZ77_2.o: PLZ77_2.cpp test.h
+# 	$(PCC) $(CFLAGS) -c $<
 	
-plz77_2: PLZ77_2.o rangeMin.o suffixArray.o mergeSuffixArrayToTree.o
-	$(PCC) $(CFLAGS) -o $@ $^
+# plz77_2: PLZ77_2.o rangeMin.o suffixArray.o mergeSuffixArrayToTree.o
+# 	$(PCC) $(CFLAGS) -o $@ $^
 
 PLZ77_3.o: PLZ77_3.cpp test.h
 	$(PCC) $(CFLAGS) -c $<
