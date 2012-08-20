@@ -129,7 +129,7 @@ suffixTree suffixArrayToTree (int* SA, int* LCP, int n, int* s){
   stNode<int>* stnodes = new stNode<int>[n+nm];
   //newid[0] = n+nm;
   //stnodes[n+nm].parentID = n+nm;
-  for(int i=0;i<2*n;i++)newid[i]=-1000;
+  //for(int i=0;i<2*n;i++)newid[i]=-1000;
   parallel_for(int i=0;i<n;i++){
     int j = 2*i+1; 
     setNode(nodes,stnodes,s,i,j,(n-nodes[j].value+1));
