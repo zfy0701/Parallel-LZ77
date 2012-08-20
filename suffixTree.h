@@ -37,7 +37,8 @@ struct stNode {
   int pointingTo;
   int locationInOriginalArray;
   int edgeLength;
-
+  int depth;
+  
   void setValues(int _parentID, strElt _edgeFirstChar,
                  int _pointingTo, int _location, int _edgeLength) {
     parentID = _parentID;

@@ -72,9 +72,12 @@ inline void setNode(node *nodes, stNode<int>* stnodes, int *s,
 		    int i, int j, int position) {
   int parent = nodes[j].parent;
   int parentDepth = nodes[parent].value;
-  int offset = position + parentDepth;
+//  int offset = position + parentDepth; //julian please look at this original code !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+  int offset = position;
   int length = nodes[j].value - parentDepth;
   stnodes[i].setValues(parent,s[offset],j,offset,length);
+  stnodes[i].depth = nodes[j].value;
 }
 
 suffixTree suffixArrayToTree (int* SA, int* LCP, int n, int* s){
@@ -114,7 +117,7 @@ suffixTree suffixArrayToTree (int* SA, int* LCP, int n, int* s){
     else flags[i] = -1;
   }
 
-  nodes[realRoot].parent = -1;
+  nodes[realRoot].parent = realRoot;
   flags[realRoot/2] = realRoot; //keep the real root
 
   int* oout = new int[n];
@@ -140,8 +143,8 @@ suffixTree suffixArrayToTree (int* SA, int* LCP, int n, int* s){
     newid[j] = n + i;
     setNode(nodes,stnodes,s,n+i,j,(n-nodes[j-1].value+1));
   }
-  cout<<"root = "<<realRoot<<", new id = "<<newid[realRoot]<<endl;
-  cout<<"n+nm="<<n+nm<<endl;
+  // cout<<"root = "<<realRoot<<", new id = "<<newid[realRoot]<<endl;
+  // cout<<"n+nm="<<n+nm<<endl;
   parallel_for(int i = 0; i < n+nm; i++) {
     int pid = stnodes[i].parentID;
     stnodes[i].parentID = (pid == -1) ? -1 : newid[pid];
@@ -154,7 +157,7 @@ suffixTree suffixArrayToTree (int* SA, int* LCP, int n, int* s){
   realRoot = newid[realRoot];
   delete newid;
   delete oout;  delete nodes;
-  verifyTree(stnodes,n+nm,n); //comment this out later 
+  //verifyTree(stnodes,n+nm,n); //comment this out later 
 
   return suffixTree(n,n+nm,s,stnodes,realRoot);
 }

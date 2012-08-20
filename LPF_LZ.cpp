@@ -11,6 +11,12 @@ using namespace std;
 //not test for n < 8
 
 pair<int *, int> ParallelLPFtoLZ(int *lpf, int n) {
+
+    // if(n <= 16)
+    // for (int i = 0; i< n; i++)
+    //     printf("%d\t", lpf[i]);
+
+    printf("\n");
     int l2 = cflog2(n);
     int depth = l2 + 1;
     int nn = 1 << l2;

@@ -25,26 +25,18 @@ pair<int *, int> ParallelLZ77(int *s, int n) {
     //references
     stNode<int> *nodes = st.nodes;
     int root = st.root; //I'm not sure!
-    nodes[root].parentID = root; //remove it later
-    nextTime("\tSuffix Tree root");
-    printf("root is : %d\n", root);
 
     int *minLabel = new int[st.m];
     parallel_for (int i = n; i < st.m; i++) {
         minLabel[i] = n;
     }
-    nextTime("\tInitial labeling");
 
     //first round rake, only for children
-    parallel_for (int i = 0; i < n; i++) { //does it really gurantee i is ith suffix?
-        minLabel[i] = i;
+    parallel_for (int i = 0; i < n; i++) {
+        minLabel[i] = nodes[i].locationInOriginalArray;
         int pid = nodes[i].parentID;
-        // if (pid == -1 || pid >= st.m) {
-        //     printf("pid wrong %d %d\n", i, pid);
-        // }
-        utils::writeMin(minLabel + pid, i);
+        utils::writeMin(minLabel + pid, minLabel[i]);
     }
-    nextTime("\tInitial Contraction");
 
     bool changed = true;
     while (changed) {
@@ -57,6 +49,12 @@ pair<int *, int> ParallelLZ77(int *s, int n) {
     }
     nextTime("\tTree Contraction");
 
+    // if (n <= 16)
+    //     for (int i = 0; i < st.m; i++) {
+    //         printf("[%d %d %d]\t", minLabel[i], nodes[i].depth, nodes[i].edgeLength );
+    //     }
+    // printf("\n");
+
     int dep = getDepth(st.m);
     int **up = new int*[dep];
     int **minup = new int*[dep];
@@ -66,7 +64,6 @@ pair<int *, int> ParallelLZ77(int *s, int n) {
         minup[i] = new int[st.m];
     }
 
-    nextTime("intial up and minup");
     //compute up
     parallel_for (int i = 0; i < st.m; i++) {
         up[0][i] = nodes[i].parentID;
@@ -76,17 +73,15 @@ pair<int *, int> ParallelLZ77(int *s, int n) {
             up[d][i] = up[d - 1][up[d - 1][i]];
         }
     }
-    nextTime("get up");
+    // if (n <= 16)
+    //     for (int d = 0; d < dep; d++) {
+    //         printf("level %d\n", d);
 
-    for (int d = 0; d < dep; d++) {
-        printf("level %d\n", d);
-
-        for (int i = 0; i < st.m; i++) {
-            printf("%d\t", up[d][i]);
-        }
-            printf("\n");
-
-    }
+    //         for (int i = 0; i < st.m; i++) {
+    //             printf("%d\t", up[d][i]);
+    //         }
+    //         printf("\n");
+    //     }
 
 
     //compute minup
@@ -99,45 +94,54 @@ pair<int *, int> ParallelLZ77(int *s, int n) {
         }
     }
 
-    nextTime("get minup");    
-    for (int d = 0; d < dep; d++) {
-        printf("level %d\n", d);
-
-        for (int i = 0; i < st.m; i++) {
-            printf("%d\t", minup[d][i]);
-        }
-                printf("\n");
-    }
-
-
+    nextTime("get minup and up");
+    // if (n <= 16)
+    //     for (int d = 0; d < dep; d++) {
+    //         printf("level %d\n", d);
+    //         for (int i = 0; i < st.m; i++) {
+    //             printf("%d\t", minup[d][i]);
+    //         }
+    //         printf("\n");
+    //     }
 
     //compute lpf by binary search
     int *lpf = new int[n];
 
     //the efficience of following code can be improved by using additional spaces
     parallel_for (int i = 0; i < n; i++) {
-        int cur = i;
-        int val = 0;
+        int cur = nodes[i].parentID;
+        int pos = minLabel[cur];;
 
         int d = dep - 1;
-        while (d > 1 && cur != root) {
-            if (minup[d][cur] < i) {
-                val = minup[d][cur];
+        while (d > 0 && cur != root) {
+            if (minup[d][cur] < minLabel[i]) {
                 d--;    //scala down the scope
+                if (minup[d][cur] == minLabel[i])
+                    cur = up[d][cur];
             } else {
-                cur = up[d - 1][cur];
+                break;
             }
         }
-        lpf[i] = val;
-    }
 
- 
+        //adjusting
+        if (minLabel[cur] == minLabel[i] && cur != root) {
+            cur = nodes[cur].parentID;
+        }
+        // if (cur1 != cur) printf("%d %d\n", cur1, cur);
+        pos = minLabel[cur];
+
+        int len = nodes[cur].depth - 1; //nodes depth -1 = the length of the string path
+
+        //fix for the un normal structure
+        if (s[pos + len] == s[minLabel[i] + len] && pos + len < n && minLabel[i] + len < n) len++;
+
+        lpf[minLabel[i]] = len;
+    }
+    lpf[0] = 0;
+
+
     nextTime("get lpf");
 
-       for (int i = 0; i< n; i++)
-        printf("%d\t", i);
-
-    printf("\n");
     delete minLabel;
     delete up;
     delete minup;
