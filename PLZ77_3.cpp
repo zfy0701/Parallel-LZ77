@@ -25,6 +25,7 @@ pair<int *, int> ParallelLZ77(int *s, int n) {
     //references
     stNode<int> *nodes = st.nodes;
     int root = st.root; //I'm not sure!
+    nodes[root].parentID = root; //remove it later
     nextTime("\tSuffix Tree root");
     printf("root is : %d\n",root);
 
@@ -41,7 +42,7 @@ pair<int *, int> ParallelLZ77(int *s, int n) {
         // if (pid == -1 || pid >= st.m) {
         //     printf("pid wrong %d %d\n", i, pid);
         // }
-        // utils::writeMin(minLabel + pid, i);
+        utils::writeMin(minLabel + pid, i);
     }
     nextTime("\tInitial Contraction");
 
