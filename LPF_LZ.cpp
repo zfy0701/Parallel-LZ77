@@ -15,8 +15,7 @@ pair<int *, int> ParallelLPFtoLZ(int *lpf, int n) {
     // if(n <= 16)
     // for (int i = 0; i< n; i++)
     //     printf("%d\t", lpf[i]);
-
-    printf("\n");
+    //    printf("\n");
     int l2 = cflog2(n);
     int depth = l2 + 1;
     int nn = 1 << l2;
@@ -34,7 +33,7 @@ pair<int *, int> ParallelLPFtoLZ(int *lpf, int n) {
     }
     flag[n] = 0;
     
-    nextTime("\tprepare"); //combine performance would be better due to cache miss
+//    nextTime("\tprepare"); //combine performance would be better due to cache miss
 
     l2 = max(l2, 256);
     int sn = (n + l2 - 1) / l2;
@@ -79,11 +78,11 @@ pair<int *, int> ParallelLPFtoLZ(int *lpf, int n) {
         }
     }
 
-    nextTime("\tpoint jump");
+//    nextTime("\tpoint jump");
     
     sequence::scan(flag, flag, n+1, utils::addF<int>(),0);
 
-    nextTime("\tprefix sum");
+//    nextTime("\tprefix sum");
     
     int m = flag[n];
     int * lz = new int[m];

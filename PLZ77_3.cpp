@@ -49,11 +49,7 @@ pair<int *, int> ParallelLZ77(int *s, int n) {
     }
     nextTime("\tTree Contraction");
 
-    // if (n <= 16)
-    //     for (int i = 0; i < st.m; i++) {
-    //         printf("[%d %d %d]\t", minLabel[i], nodes[i].depth, nodes[i].edgeLength );
-    //     }
-    // printf("\n");
+    // if (n <= 16) for (int i = 0; i < st.m; i++) {printf("[%d %d %d]\t", minLabel[i], nodes[i].depth, nodes[i].edgeLength ); }  printf("\n");
 
     int dep = getDepth(st.m);
     int **up = new int*[dep];
@@ -73,16 +69,6 @@ pair<int *, int> ParallelLZ77(int *s, int n) {
             up[d][i] = up[d - 1][up[d - 1][i]];
         }
     }
-    // if (n <= 16)
-    //     for (int d = 0; d < dep; d++) {
-    //         printf("level %d\n", d);
-
-    //         for (int i = 0; i < st.m; i++) {
-    //             printf("%d\t", up[d][i]);
-    //         }
-    //         printf("\n");
-    //     }
-
 
     //compute minup
     parallel_for (int i = 0; i < st.m; i++) {
@@ -94,15 +80,7 @@ pair<int *, int> ParallelLZ77(int *s, int n) {
         }
     }
 
-    nextTime("get minup and up");
-    // if (n <= 16)
-    //     for (int d = 0; d < dep; d++) {
-    //         printf("level %d\n", d);
-    //         for (int i = 0; i < st.m; i++) {
-    //             printf("%d\t", minup[d][i]);
-    //         }
-    //         printf("\n");
-    //     }
+    nextTime("\tget minup and up");
 
     //compute lpf by binary search
     int *lpf = new int[n];
@@ -140,13 +118,15 @@ pair<int *, int> ParallelLZ77(int *s, int n) {
     lpf[0] = 0;
 
 
-    nextTime("get lpf");
+    nextTime("\tget lpf");
 
     delete minLabel;
     delete up;
     delete minup;
     st.del();
     pair<int *, int> r = ParallelLPFtoLZ(lpf, n);
+    nextTime("\tget lz");
+
     delete lpf;
     return r;
 }
