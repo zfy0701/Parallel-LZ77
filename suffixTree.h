@@ -82,7 +82,7 @@ struct suffixTree {
 suffixTree(int _n, int _m, int *_s, stNode<int> *_nodes,int _root) :
   n(_n), m(_m), s(_s), nodes(_nodes), root(_root) {}
   void del() {
-    free(s);
+//    free(s);
     free(nodes);
   }
 

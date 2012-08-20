@@ -38,10 +38,10 @@ pair<int *, int> ParallelLZ77(int *s, int n) {
     parallel_for (int i = 0; i < n; i++) { //does it really gurantee i is ith suffix?
         minLabel[i] = i;
         int pid = nodes[i].parentID;
-        if (pid == -1 || pid >= st.m) {
-            printf("pid wrong %d %d\n", i, pid);
-        }
-        utils::writeMin(minLabel + pid, i);
+        // if (pid == -1 || pid >= st.m) {
+        //     printf("pid wrong %d %d\n", i, pid);
+        // }
+        // utils::writeMin(minLabel + pid, i);
     }
     nextTime("\tInitial Contraction");
 
@@ -98,8 +98,8 @@ pair<int *, int> ParallelLZ77(int *s, int n) {
         int cur = i;
         int val = i;
 
-        int d = dep;
-        while(d >= 0 && cur != root) {
+        int d = dep - 1;
+        while(d > 0 && cur != root) {
             if (minup[d][cur] < i) {
                 val = minup[d][cur];        
                 d--;    //scala down the scope

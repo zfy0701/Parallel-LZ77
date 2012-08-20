@@ -156,5 +156,5 @@ suffixTree suffixArrayToTree (int* SA, int* LCP, int n, int* s){
   delete oout;  delete nodes;
   verifyTree(stnodes,n+nm,n); //comment this out later 
 
-  return suffixTree(n,n+nm+1,s,stnodes,realRoot);
+  return suffixTree(n,n+nm,s,stnodes,realRoot);
 }
