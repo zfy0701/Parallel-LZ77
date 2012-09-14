@@ -1,5 +1,5 @@
 /*
- * The sequential algirthm for Lempel-ziv 77 compression
+ * The sequential algorithm for Lempel-ziv 77 compression
  */
 
 #include <iostream>

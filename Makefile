@@ -9,7 +9,7 @@ PCC = $(CC)
 CFLAGS = -O2 -lcilkrts -DCILK
 else ifdef CILKP
 PCC = icpc
-CFLAGS = -O2 -DCILKP -fvisibility=hidden
+CFLAGS = -O2 -DCILKP #-fvisibility=hidden
 else 
 PCC = $(CC)
 CFLAGS = -g
@@ -53,7 +53,7 @@ lz77_2: LZ77_2.o suffixArray.o rangeMin.o
 LZ77_3.o: LZ77_3.cpp test.h
 	$(PCC) $(CFLAGS) -c $<
 
-lz77_3: LZ77_3.o rangeMin.o
+lz77_3: LZ77_3.o rangeMin.o suffixArray.o
 	$(PCC) $(CFLAGS) -o $@ $^
 
 LPF_LZ.o: LPF_LZ.cpp
@@ -61,18 +61,18 @@ LPF_LZ.o: LPF_LZ.cpp
 
 PLZ77_1.o: PLZ77_1.cpp test.h
 	$(PCC) $(CFLAGS) -c $<
-	
+
 plz77_1: PLZ77_1.o ANSV.o rangeMin.o suffixArray.o segmentTree.o LPF_LZ.o
 	$(PCC) $(CFLAGS) -o $@ $^
 
 # PLZ77_2.o: PLZ77_2.cpp test.h
 # 	$(PCC) $(CFLAGS) -c $<
-	
+
 # plz77_2: PLZ77_2.o rangeMin.o suffixArray.o mergeSuffixArrayToTree.o
 # 	$(PCC) $(CFLAGS) -o $@ $^
 
 PLZ77_3.o: PLZ77_3.cpp test.h
 	$(PCC) $(CFLAGS) -c $<
-	
+
 plz77_3: PLZ77_3.o rangeMin.o suffixArray.o mergeSuffixArrayToTree.o LPF_LZ.o
 	$(PCC) $(CFLAGS) -o $@ $^

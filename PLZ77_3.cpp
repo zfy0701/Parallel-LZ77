@@ -1,4 +1,4 @@
-/*z
+/*
  * Parallel suffix tree + sequential searching
  * Current version doesn't work. We need to compute
  * minimum index at each internal node of suffix
@@ -44,7 +44,7 @@ pair<int *, int> ParallelLZ77(int *s, int n) {
         parallel_for (int i = n; i < st.m; i++) {
             int pid = nodes[i].parentID;
             if (utils::writeMin(minLabel + pid, minLabel[i]))
-                changed = true;
+	      changed = true; //fix this -- don't write to global in parallel
         }
     }
     nextTime("\tTree Contraction");
