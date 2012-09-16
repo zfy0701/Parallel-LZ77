@@ -42,7 +42,7 @@ pair<int*,int> LempelZiv(int *s, int n) {
     int *SA = res.first;
     lzTm.reportNext("\tsuffix array");
 
-    for(int i=0;i<n;i++) cout<<SA[i]<<" ";cout<<endl;
+    //for(int i=0;i<n;i++) cout<<SA[i]<<" ";cout<<endl;
     
     // //begin bullshit
     // int* LPS = new int[n];
@@ -76,8 +76,8 @@ pair<int*,int> LempelZiv(int *s, int n) {
       phi[SA[i]] = SA[i-1];
     }
     phi[n] = SA[n-1];
-    for(int i=0;i<san;i++)cout<<phi[i]<<" ";cout<<endl;
-    int *LPS = new int[n];
+    //for(int i=0;i<san;i++)cout<<phi[i]<<" ";cout<<endl;
+    int *LPS = new int[san];
     // sa holds now LPS
     for(int i=0; i<san; ++i)
       LPS[i] = n;	   
@@ -110,14 +110,26 @@ pair<int*,int> LempelZiv(int *s, int n) {
       if( l > 0 ) --l;	 
     }
 
-    for(int i=0;i<n;i++) cout<<LPS[SA[i]]<<" ";cout<<endl;
-    for(int i=0;i<n;i++) cout<<prev_occ[SA[i]]<<" ";cout<<endl;
+    //for(int i=0;i<n;i++) cout<<LPS[i]<<" ";cout<<endl;
+    //for(int i=0;i<n;i++) cout<<prev_occ[i]<<" ";cout<<endl;
+
+    lzTm.reportNext("\tLPF");
 
 
+    delete prev_occ; delete phi;
+    free(SA);
 
-    int k  = 0;
-    int * LZ = new int[n];
-    return make_pair(LZ, k);
+    //compute LZ array
+    int* LZ = newA(int,n);
+    LZ[0] = 0;
+    int j = 0;
+    while(LZ[j] < n){
+      LZ[j+1] = LZ[j] + max(1,LPS[LZ[j]]);
+      j++;
+    }
+    lzTm.reportNext("\tLZ");
+    delete LPS;
+    return make_pair(LZ, j);
 }
 
 int main(int argc, char *argv[]) {
