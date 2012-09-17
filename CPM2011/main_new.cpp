@@ -5,13 +5,11 @@
 #include <sys/resource.h>
 #include <assert.h>
 #include "utils.h"
+#include "divsufsort.h"
 
 void sop(int i, int l, int j, int *lps, int *prev_occ, int bot){
-//	printf("i = %d, j = %d, l=%d\n",i,j,l);
 	if( j == 0 and l ==0 and i==0 )
 		return;
-//	if( l == 0 )
-//		return;
 	assert(i>j);
 	assert(i!=j);
 	if( lps[i] == bot ){
@@ -63,6 +61,10 @@ int main(int argc, char **argv){
    x[n] = 0;
    fclose(infile);   
 
+   int * sa = new int[n];
+   divsufsort(x, sa, n);
+   //for(int i=n-100;i<n;i++)printf("%d ",sa[i]);printf("\n");
+/*
    //read the suffix array
    char safilename[256];
    sprintf(safilename,"%s.sa",argv[1]);
@@ -81,45 +83,38 @@ int main(int argc, char **argv){
       exit(1);
    }
    fclose(infile);
+*/
 
    //compute LZ factorization
    double tlz = getTime();
-//   lzFactorize(x,sa,n);
-//   fprintf(stderr,"Time to lz factorize = %.2f secs\n",getTime()-tlz);
-//   exit(0);
    // compute PHI
-   int *phi = new int [san];
-   int *prev_occ = new int [san];
-   for(int i=0; i<san; ++i)
+   int *phi = new int [n];
+   int *prev_occ = new int [n];
+   for(int i=0; i<n; ++i)
 	   prev_occ[i] = x[i];
-   int to_add[2] = {-1,san-1};
-   for(int i=0; i<san; ++i){
-//	  if( i<20 )
-//		 printf("%d %d %d\n",i,sa[i],san-1); 
-//	  if(sa[i]==0){
-//		 printf("%d %d %d\n",i,sa[i],san-1); 
-//	  }
+   int to_add[2] = {-1,n-1};
+   for(int i=0; i<n; ++i){
    	 phi[sa[i]] = sa[i+to_add[i==0]];
    }
+   //for(int i=0;i<100;i++)printf("%d ",prev_occ[i]);printf("\n");
    fprintf(stderr,"# Time to calc phi = %.2f secs\n",getTime()-tlz);
    double tlz2 = getTime();
    // sa holds now LPS
-   for(int i=0; i<san; ++i)
-     sa[i] = n;	   
+   for(int i=0; i<n; ++i)
+     sa[i] = -1;	   
 
    int maxFactorLength = 0;
    int l = 0;
-   for(int i=0; i<n; ++i){
-//	 printf("i=%d, l=%d\n",i,l);  
+   for(int i=0; i<n; ++i){ 
      int j = phi[i];
 	 while( x[i+l] == x[j+l] ) ++l;
-/*	
-	 if(i > j)
-	 	sop(i, l, j, sa, prev_occ, n);	 
-	 else
-	 	sop(j, l, i, sa, prev_occ, n);	 
-*/		
-///*	 
+	 
+	 if( i>j ){
+	 	sop(i,l,j,sa,prev_occ,-1);
+	 }else{
+	 	sop(j,l,i,sa,prev_occ,-1);
+	 }
+/*	 
 	 int ii = 0, jj = 0;
 	 if( i > j){
 	 	ii = i; jj = j;
@@ -128,8 +123,6 @@ int main(int argc, char **argv){
 	 }
 	 int ll = l;
 	 while( sa[ii] != n ){
-//	 printf("ii=%d, ll=%d,jj=%d\n",ii,ll,jj);  
-//	assert(ii!=jj);	
 		int iii = (prev_occ[ii] > jj) ? prev_occ[ii] : jj;
 		int jjj = (prev_occ[ii] > jj) ? jj : prev_occ[ii];
 		if( sa[ii] < ll ){
@@ -142,7 +135,7 @@ int main(int argc, char **argv){
 		jj = jjj;
 	 }
 	 sa[ii] = ll; prev_occ[ii] = jj;
-//*/
+*/	 
 //	 if( l > maxFactorLength) 
 //		 maxFactorLength = l;
      if( l > 0 ) --l;	 
@@ -156,7 +149,6 @@ int main(int argc, char **argv){
    }
    sa[0] = 0;
    for(int i=0; i<n; ){
-//	  printf("%d %d %d\n",i,sa[i],n); 
 	 ++numfactors;
 	 if( sa[i] > maxFactorLength )
 		 maxFactorLength = sa[i];
@@ -164,20 +156,20 @@ int main(int argc, char **argv){
 		 ++longFactors;
      if( sa[i] < 1 ){
 		if( printlz ){
-			printf("%d %d ", sa[i], x[i]);
+			printf("(%d %c) ", sa[i], x[i]);
 		}
-		++i; 
 		averageFactorLength += 1;
+		++i; 
 	 }else{
 		if( printlz ){
-			printf("%d %d ", sa[i], prev_occ[i]);
+			printf("(%d %d) ", sa[i], prev_occ[i]);
 		}
-	 	i += sa[i];
 		averageFactorLength += sa[i];
+	 	i += sa[i];
 	 }
    }
    if( printlz )
-	   printf("0 0\n");
+	   printf("(0 0)\n");
    double tlz3 = getTime();
    fprintf(stderr,"# Time to calc plcp = %.2f secs\n",tlz3-tlz2);
    printf("Time to calc lz = %.2f secs\n", tlz3-tlz);

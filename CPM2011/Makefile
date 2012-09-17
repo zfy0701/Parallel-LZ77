@@ -5,7 +5,7 @@ CC = g++
 #CFLAGS = -g -pg
 CFLAGS = -O3 -DNDEBUG
 LIBS = -lm
-OBJS = utils.o RMQ_succinct.o mmsearch.o main.o 
+OBJS = utils.o RMQ_succinct.o mmsearch.o main.o divsufsort.o
 
 EXEC = lz
 
@@ -17,8 +17,8 @@ all: $(EXEC) lz_new lz_new_bwd lz_new_bwd1 lz_new_bwd2 lz_new_bwd4 lz_new_bwd8 l
 lz: $(OBJS)
 	$(CC) $(CFLAGS) -o $(EXEC) $(OBJS) $(LIBS)
 
-lz_new: main_new.o utils.o
-	$(CC) $(CFLAGS) -o lz_new main_new.o utils.o 
+lz_new: main_new.o utils.o divsufsort.o
+	$(CC) $(CFLAGS) -o lz_new main_new.o utils.o divsufsort.o
 
 #lz_new_bwd: 
 #	$(CC) $(CFLAGS) -DSA_K=4 -I/home/gog/sdsl2/build/include/ -c main_new_bwd.cpp -o main_new_bwd4.o

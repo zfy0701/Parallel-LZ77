@@ -1,5 +1,5 @@
 CC = g++
-CFLAGS = -O2
+CFLAGS = -O3
 
 ifdef OPENMP
 PCC = $(CC)
@@ -12,7 +12,7 @@ PCC = icpc
 CFLAGS = -O2 -DCILKP #-fvisibility=hidden
 else 
 PCC = $(CC)
-CFLAGS = -g
+#CFLAGS = -g
 endif
 
 
