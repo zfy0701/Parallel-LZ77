@@ -1,5 +1,5 @@
 CC = g++
-CFLAGS = -O3
+CFLAGS = -O2
 
 ifdef OPENMP
 PCC = $(CC)
