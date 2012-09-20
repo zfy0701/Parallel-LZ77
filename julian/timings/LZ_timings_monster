@@ -1,0 +1,526 @@
+rm -rf plz77_? lz77_? *~ *.o *.exe suffixArray
+g++ -O2 -c PLZ77_1.cpp
+g++ -O2 -c ANSV.cpp
+g++ -O2 -c rangeMin.cpp
+g++ -O2 -c suffixArray.cpp
+g++ -O2 -c segmentTree.cpp
+g++ -O2 -c LPF_LZ.cpp
+g++  -o plz77_1 PLZ77_1.o ANSV.o rangeMin.o suffixArray.o segmentTree.o LPF_LZ.o
+g++ -O2 -c PLZ77_3.cpp
+g++ -O2 -c mergeSuffixArrayToTree.cpp
+g++  -o plz77_3 PLZ77_3.o rangeMin.o suffixArray.o mergeSuffixArrayToTree.o LPF_LZ.o
+g++ -O2 -c LZ77_1.cpp
+g++  -o lz77_1 LZ77_1.o suffixArray.o rangeMin.o ANSV.o
+g++ -O2 -c LZ77_2.cpp
+g++  -o lz77_2 LZ77_2.o suffixArray.o rangeMin.o
+g++ -O2 -c LZ77_3.cpp
+g++  -o lz77_3 LZ77_3.o rangeMin.o suffixArray.o
+g++ -O2 -c suffixArrayTest.C
+g++  -o suffixArray suffixArrayTest.o suffixArray.o rangeMin.o
+lz77_1 10Midentical
+***************** TEST BEGIN *****************
+ * Data from file: testData/10Midentical
+ * Data size: 10000000
+ * Algorithm: Seq LZ77 with ANSV
+	suffix array : 1.71 seconds
+	ANSV : 0.104 seconds
+	lpf : 0.0336 seconds
+ * result: size = 2, max offset = 9999999
+ * Total time: : 1.85 seconds
+***************** TEST ENDED *****************
+
+
+lz77_1 10Mrandom
+***************** TEST BEGIN *****************
+ * Data from file: testData/10Mrandom
+ * Data size: 10000000
+ * Algorithm: Seq LZ77 with ANSV
+	suffix array : 3.76 seconds
+	ANSV : 0.314 seconds
+	lpf : 0.804 seconds
+ * result: size = 1426311, max offset = 14
+ * Total time: : 4.88 seconds
+***************** TEST ENDED *****************
+
+
+lz77_1 10Msqrtn
+***************** TEST BEGIN *****************
+ * Data from file: testData/10Msqrtn
+ * Data size: 10000000
+ * Algorithm: Seq LZ77 with ANSV
+	suffix array : 2.47 seconds
+	ANSV : 0.133 seconds
+	lpf : 0.158 seconds
+ * result: size = 4, max offset = 9996838
+ * Total time: : 2.76 seconds
+***************** TEST ENDED *****************
+
+
+lz77_1 chr22.dna
+***************** TEST BEGIN *****************
+ * Data from file: testData/chr22.dna
+ * Data size: 34553758
+ * Algorithm: Seq LZ77 with ANSV
+	suffix array : 20.1 seconds
+	ANSV : 0.919 seconds
+	lpf : 2.27 seconds
+ * result: size = 2461478, max offset = 150004
+ * Total time: : 23.3 seconds
+***************** TEST ENDED *****************
+
+
+lz77_1 etext99
+***************** TEST BEGIN *****************
+ * Data from file: testData/etext99
+ * Data size: 105277340
+ * Algorithm: Seq LZ77 with ANSV
+	suffix array : 73.4 seconds
+	ANSV : 2.85 seconds
+	lpf : 7.83 seconds
+ * result: size = 8306413, max offset = 286350
+ * Total time: : 84.1 seconds
+***************** TEST ENDED *****************
+
+
+lz77_1 howto.txt
+***************** TEST BEGIN *****************
+ * Data from file: testData/howto.txt
+ * Data size: 39422105
+ * Algorithm: Seq LZ77 with ANSV
+	suffix array : 24.6 seconds
+	ANSV : 1.06 seconds
+	lpf : 2.34 seconds
+ * result: size = 3063929, max offset = 70718
+ * Total time: : 28 seconds
+***************** TEST ENDED *****************
+
+
+lz77_1 jdk13c
+***************** TEST BEGIN *****************
+ * Data from file: testData/jdk13c
+ * Data size: 69728899
+ * Algorithm: Seq LZ77 with ANSV
+	suffix array : 43.3 seconds
+	ANSV : 1.53 seconds
+	lpf : 2.24 seconds
+ * result: size = 1209676, max offset = 37256
+ * Total time: : 47.1 seconds
+***************** TEST ENDED *****************
+
+
+lz77_1 rctail96
+***************** TEST BEGIN *****************
+ * Data from file: testData/rctail96
+ * Data size: 114711151
+ * Algorithm: Seq LZ77 with ANSV
+	suffix array : 75.5 seconds
+	ANSV : 2.76 seconds
+	lpf : 5.39 seconds
+ * result: size = 3905843, max offset = 26595
+ * Total time: : 83.7 seconds
+***************** TEST ENDED *****************
+
+
+lz77_1 rfc
+***************** TEST BEGIN *****************
+ * Data from file: testData/rfc
+ * Data size: 116421901
+ * Algorithm: Seq LZ77 with ANSV
+	suffix array : 76.6 seconds
+	ANSV : 3.09 seconds
+	lpf : 6.24 seconds
+ * result: size = 5656068, max offset = 3371
+ * Total time: : 86 seconds
+***************** TEST ENDED *****************
+
+
+lz77_1 sprot34.dat
+***************** TEST BEGIN *****************
+ * Data from file: testData/sprot34.dat
+ * Data size: 109617186
+ * Algorithm: Seq LZ77 with ANSV
+	suffix array : 73.1 seconds
+	ANSV : 2.91 seconds
+	lpf : 6.23 seconds
+ * result: size = 6395921, max offset = 7360
+ * Total time: : 82.3 seconds
+***************** TEST ENDED *****************
+
+
+lz77_1 thesaurus.doc
+***************** TEST BEGIN *****************
+ * Data from file: testData/thesaurus.doc
+ * Data size: 11220480
+ * Algorithm: Seq LZ77 with ANSV
+	suffix array : 4.77 seconds
+	ANSV : 0.318 seconds
+	lpf : 0.363 seconds
+ * result: size = 1140215, max offset = 15786
+ * Total time: : 5.46 seconds
+***************** TEST ENDED *****************
+
+
+lz77_1 w3c2
+***************** TEST BEGIN *****************
+ * Data from file: testData/w3c2
+ * Data size: 104201579
+ * Algorithm: Seq LZ77 with ANSV
+	suffix array : 66.8 seconds
+	ANSV : 2.44 seconds
+	lpf : 3.43 seconds
+ * result: size = 2340638, max offset = 990036
+ * Total time: : 72.6 seconds
+***************** TEST ENDED *****************
+
+
+lz77_1 wikisamp.xml
+***************** TEST BEGIN *****************
+ * Data from file: testData/wikisamp.xml
+ * Data size: 100000000
+ * Algorithm: Seq LZ77 with ANSV
+	suffix array : 62.1 seconds
+	ANSV : 2.68 seconds
+	lpf : 4.09 seconds
+ * result: size = 2888810, max offset = 1253
+ * Total time: : 68.9 seconds
+***************** TEST ENDED *****************
+
+
+lz77_2 10Midentical
+***************** TEST BEGIN *****************
+ * Data from file: testData/10Midentical
+ * Data size: 10000000
+ * Algorithm: Seq LZ77 DCC 2008
+	suffix array time: : 1.73 seconds
+	lcp time: : 0.0657 seconds
+	lpf && lz : 0.092 seconds
+ * result: size = 2, max offset = 9999999
+ * Total time: : 1.89 seconds
+***************** TEST ENDED *****************
+
+
+lz77_2 10Mrandom
+***************** TEST BEGIN *****************
+ * Data from file: testData/10Mrandom
+ * Data size: 10000000
+ * Algorithm: Seq LZ77 DCC 2008
+	suffix array time: : 3.73 seconds
+	lcp time: : 1.03 seconds
+	lpf && lz : 0.867 seconds
+ * result: size = 1426311, max offset = 14
+ * Total time: : 5.63 seconds
+***************** TEST ENDED *****************
+
+
+lz77_2 10Msqrtn
+***************** TEST BEGIN *****************
+ * Data from file: testData/10Msqrtn
+ * Data size: 10000000
+ * Algorithm: Seq LZ77 DCC 2008
+	suffix array time: : 2.47 seconds
+	lcp time: : 0.432 seconds
+	lpf && lz : 0.266 seconds
+ * result: size = 4, max offset = 9996838
+ * Total time: : 3.17 seconds
+***************** TEST ENDED *****************
+
+
+lz77_2 chr22.dna
+***************** TEST BEGIN *****************
+ * Data from file: testData/chr22.dna
+ * Data size: 34553758
+ * Algorithm: Seq LZ77 DCC 2008
+	suffix array time: : 20 seconds
+	lcp time: : 3.51 seconds
+	lpf && lz : 4.07 seconds
+ * result: size = 2461478, max offset = 150004
+ * Total time: : 27.6 seconds
+***************** TEST ENDED *****************
+
+
+lz77_2 etext99
+***************** TEST BEGIN *****************
+ * Data from file: testData/etext99
+ * Data size: 105277340
+ * Algorithm: Seq LZ77 DCC 2008
+	suffix array time: : 73.5 seconds
+	lcp time: : 11.2 seconds
+	lpf && lz : 14.6 seconds
+ * result: size = 7568260, max offset = 9476392
+ * Total time: : 99.3 seconds
+***************** TEST ENDED *****************
+
+
+lz77_2 howto.txt
+***************** TEST BEGIN *****************
+ * Data from file: testData/howto.txt
+ * Data size: 39422105
+ * Algorithm: Seq LZ77 DCC 2008
+	suffix array time: : 24.6 seconds
+	lcp time: : 3.28 seconds
+	lpf && lz : 4.63 seconds
+ * result: size = 1876292, max offset = 17285155
+ * Total time: : 32.5 seconds
+***************** TEST ENDED *****************
+
+
+lz77_2 jdk13c
+***************** TEST BEGIN *****************
+ * Data from file: testData/jdk13c
+ * Data size: 69728899
+ * Algorithm: Seq LZ77 DCC 2008
+	suffix array time: : 43 seconds
+	lcp time: : 4.7 seconds
+	lpf && lz : 7.8 seconds
+ * result: size = 665412, max offset = 21264334
+ * Total time: : 55.5 seconds
+***************** TEST ENDED *****************
+
+
+lz77_2 rctail96
+***************** TEST BEGIN *****************
+ * Data from file: testData/rctail96
+ * Data size: 114711151
+ * Algorithm: Seq LZ77 DCC 2008
+	suffix array time: : 75.3 seconds
+	lcp time: : 10.1 seconds
+	lpf && lz : 14.9 seconds
+ * result: size = 2450784, max offset = 46927384
+ * Total time: : 100 seconds
+***************** TEST ENDED *****************
+
+
+lz77_2 rfc
+***************** TEST BEGIN *****************
+ * Data from file: testData/rfc
+ * Data size: 116421901
+ * Algorithm: Seq LZ77 DCC 2008
+	suffix array time: : 76.5 seconds
+	lcp time: : 10.1 seconds
+	lpf && lz : 15.3 seconds
+ * result: size = 5616188, max offset = 820872
+ * Total time: : 102 seconds
+***************** TEST ENDED *****************
+
+
+lz77_2 sprot34.dat
+***************** TEST BEGIN *****************
+ * Data from file: testData/sprot34.dat
+ * Data size: 109617186
+ * Algorithm: Seq LZ77 DCC 2008
+	suffix array time: : 73.1 seconds
+	lcp time: : 10.3 seconds
+	lpf && lz : 14.8 seconds
+ * result: size = 6395921, max offset = 7360
+ * Total time: : 98.2 seconds
+***************** TEST ENDED *****************
+
+
+lz77_2 thesaurus.doc
+***************** TEST BEGIN *****************
+ * Data from file: testData/thesaurus.doc
+ * Data size: 11220480
+ * Algorithm: Seq LZ77 DCC 2008
+	suffix array time: : 4.76 seconds
+	lcp time: : 0.538 seconds
+	lpf && lz : 0.601 seconds
+ * result: size = 1140214, max offset = 15786
+ * Total time: : 5.9 seconds
+***************** TEST ENDED *****************
+
+
+lz77_2 w3c2
+***************** TEST BEGIN *****************
+ * Data from file: testData/w3c2
+ * Data size: 104201579
+ * Algorithm: Seq LZ77 DCC 2008
+	suffix array time: : 66.8 seconds
+	lcp time: : 7.17 seconds
+	lpf && lz : 13.1 seconds
+ * result: size = 1814089, max offset = 18683995
+ * Total time: : 87.1 seconds
+***************** TEST ENDED *****************
+
+
+lz77_2 wikisamp.xml
+***************** TEST BEGIN *****************
+ * Data from file: testData/wikisamp.xml
+ * Data size: 100000000
+ * Algorithm: Seq LZ77 DCC 2008
+	suffix array time: : 62.2 seconds
+	lcp time: : 7.23 seconds
+	lpf && lz : 14 seconds
+ * result: size = 2641516, max offset = 8457700
+ * Total time: : 83.5 seconds
+***************** TEST ENDED *****************
+
+
+lz77_3 10Midentical
+***************** TEST BEGIN *****************
+ * Data from file: testData/10Midentical
+ * Data size: 10000000
+ * Algorithm: Seq LZ77 CPM2011
+	suffix array : 1.69 seconds
+	LPF : 0.189 seconds
+	LZ : 5.2e-05 seconds
+ * result: size = 2, max offset = 9999999
+ * Total time: : 1.88 seconds
+***************** TEST ENDED *****************
+
+
+lz77_3 10Mrandom
+***************** TEST BEGIN *****************
+ * Data from file: testData/10Mrandom
+ * Data size: 10000000
+ * Algorithm: Seq LZ77 CPM2011
+	suffix array : 3.73 seconds
+	LPF : 1.98 seconds
+	LZ : 0.0207 seconds
+ * result: size = 1426311, max offset = 14
+ * Total time: : 5.74 seconds
+***************** TEST ENDED *****************
+
+
+lz77_3 10Msqrtn
+***************** TEST BEGIN *****************
+ * Data from file: testData/10Msqrtn
+ * Data size: 10000000
+ * Algorithm: Seq LZ77 CPM2011
+	suffix array : 2.45 seconds
+	LPF : 0.689 seconds
+	LZ : 5.01e-05 seconds
+ * result: size = 4, max offset = 9996838
+ * Total time: : 3.14 seconds
+***************** TEST ENDED *****************
+
+
+lz77_3 chr22.dna
+***************** TEST BEGIN *****************
+ * Data from file: testData/chr22.dna
+ * Data size: 34553758
+ * Algorithm: Seq LZ77 CPM2011
+	suffix array : 20.2 seconds
+	LPF : 6.17 seconds
+	LZ : 0.0872 seconds
+ * result: size = 2461478, max offset = 150004
+ * Total time: : 26.4 seconds
+***************** TEST ENDED *****************
+
+
+lz77_3 etext99
+***************** TEST BEGIN *****************
+ * Data from file: testData/etext99
+ * Data size: 105277340
+ * Algorithm: Seq LZ77 CPM2011
+	suffix array : 73.5 seconds
+	LPF : 16.5 seconds
+	LZ : 0.165 seconds
+ * result: size = 8306413, max offset = 286350
+ * Total time: : 90.3 seconds
+***************** TEST ENDED *****************
+
+
+lz77_3 howto.txt
+***************** TEST BEGIN *****************
+ * Data from file: testData/howto.txt
+ * Data size: 39422105
+ * Algorithm: Seq LZ77 CPM2011
+	suffix array : 24.4 seconds
+	LPF : 4.92 seconds
+	LZ : 0.115 seconds
+ * result: size = 3063929, max offset = 70718
+ * Total time: : 29.5 seconds
+***************** TEST ENDED *****************
+
+
+lz77_3 jdk13c
+***************** TEST BEGIN *****************
+ * Data from file: testData/jdk13c
+ * Data size: 69728899
+ * Algorithm: Seq LZ77 CPM2011
+	suffix array : 43.1 seconds
+	LPF : 4.86 seconds
+	LZ : 0.1 seconds
+ * result: size = 1209676, max offset = 37256
+ * Total time: : 48.1 seconds
+***************** TEST ENDED *****************
+
+
+lz77_3 rctail96
+***************** TEST BEGIN *****************
+ * Data from file: testData/rctail96
+ * Data size: 114711151
+ * Algorithm: Seq LZ77 CPM2011
+	suffix array : 75.4 seconds
+	LPF : 11.3 seconds
+	LZ : 0.216 seconds
+ * result: size = 3905843, max offset = 26595
+ * Total time: : 86.9 seconds
+***************** TEST ENDED *****************
+
+
+lz77_3 rfc
+***************** TEST BEGIN *****************
+ * Data from file: testData/rfc
+ * Data size: 116421901
+ * Algorithm: Seq LZ77 CPM2011
+	suffix array : 76.5 seconds
+	LPF : 13.3 seconds
+	LZ : 0.339 seconds
+ * result: size = 5656068, max offset = 3371
+ * Total time: : 90.1 seconds
+***************** TEST ENDED *****************
+
+
+lz77_3 sprot34.dat
+***************** TEST BEGIN *****************
+ * Data from file: testData/sprot34.dat
+ * Data size: 109617186
+ * Algorithm: Seq LZ77 CPM2011
+	suffix array : 72.7 seconds
+	LPF : 12.6 seconds
+	LZ : 0.298 seconds
+ * result: size = 6395921, max offset = 7360
+ * Total time: : 85.6 seconds
+***************** TEST ENDED *****************
+
+
+lz77_3 thesaurus.doc
+***************** TEST BEGIN *****************
+ * Data from file: testData/thesaurus.doc
+ * Data size: 11220480
+ * Algorithm: Seq LZ77 CPM2011
+	suffix array : 4.74 seconds
+	LPF : 0.687 seconds
+	LZ : 0.0202 seconds
+ * result: size = 1140214, max offset = 15786
+ * Total time: : 5.45 seconds
+***************** TEST ENDED *****************
+
+
+lz77_3 w3c2
+***************** TEST BEGIN *****************
+ * Data from file: testData/w3c2
+ * Data size: 104201579
+ * Algorithm: Seq LZ77 CPM2011
+	suffix array : 67.1 seconds
+	LPF : 7.4 seconds
+	LZ : 0.166 seconds
+ * result: size = 2340638, max offset = 990036
+ * Total time: : 74.6 seconds
+***************** TEST ENDED *****************
+
+
+lz77_3 wikisamp.xml
+***************** TEST BEGIN *****************
+ * Data from file: testData/wikisamp.xml
+ * Data size: 100000000
+ * Algorithm: Seq LZ77 CPM2011
+	suffix array : 62.3 seconds
+	LPF : 8.18 seconds
+	LZ : 0.222 seconds
+ * result: size = 2888810, max offset = 1253
+ * Total time: : 70.7 seconds
+***************** TEST ENDED *****************
+
+
