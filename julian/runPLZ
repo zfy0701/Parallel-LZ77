@@ -1,0 +1,53 @@
+#!/usr/bin/python
+#
+# run all tests
+#
+
+import os
+import sys
+import signal
+import time
+import subprocess
+
+
+os.system("make clean;unset CILK;export CILKP=1;make plz77_1;")
+
+def signal_handler(signal,frame):
+  print "bye\n"
+  sys.exit(0)
+signal.signal(signal.SIGINT,signal_handler)
+
+def shellGetOutput(str) :
+  process = subprocess.Popen(str,shell=True,stdout=subprocess.PIPE,
+                             stderr=subprocess.PIPE)
+  output, err = process.communicate()
+  
+  if (len(err) > 0):
+      raise NameError(str+"\n"+output+err)
+  return output
+
+#testfiles = []
+testfiles = ["10Midentical","10Mrandom","10Msqrtn","chr22.dna","etext99","howto.txt","jdk13c","rctail96","rfc","sprot34.dat","thesaurus.doc","w3c2","wikisamp.xml"]
+#testfiles = ["10Mrandom"]
+
+processors = [1,2,4]+range(8,64+1,8)
+
+if (len(sys.argv) > 1) :
+  tests = [test for test in tests if test[0] in sys.argv]
+
+for testfile in testfiles :
+  for p in processors :
+    ss = "./plz77_1 -i testData/"+testfile+" -p "+`p`+" -f 0"
+    print `p` + " -f 0 " + testfile 
+    print shellGetOutput(ss)
+    sys.stdout.flush()
+  for p in processors :
+    ss = "./plz77_1 -i testData/"+testfile+" -p "+`p`+" -f 1"
+    print `p` + " -f 1 " + testfile 
+    print shellGetOutput(ss)
+    sys.stdout.flush()
+  for p in processors :
+    ss = "./plz77_1 -i testData/"+testfile+" -p "+`p`+" -f 2"
+    print `p` + " -f 2 " + testfile 
+    print shellGetOutput(ss)
+    sys.stdout.flush()
