@@ -31,7 +31,7 @@ testfiles = ["10Midentical","10Mrandom","10Msqrtn","chr22.dna","etext99","howto.
 #testfiles = ["10Mrandom"]
 
 processors = [1,2,4]+range(8,64+1,8)
-
+#processors= [64]
 if (len(sys.argv) > 1) :
   tests = [test for test in tests if test[0] in sys.argv]
 
@@ -41,11 +41,13 @@ for testfile in testfiles :
     print `p` + " -f 0 " + testfile 
     print shellGetOutput(ss)
     sys.stdout.flush()
+for testfile in testfiles:
   for p in processors :
     ss = "./plz77_1 -i testData/"+testfile+" -p "+`p`+" -f 1"
     print `p` + " -f 1 " + testfile 
     print shellGetOutput(ss)
     sys.stdout.flush()
+for testfile in testfiles:
   for p in processors :
     ss = "./plz77_1 -i testData/"+testfile+" -p "+`p`+" -f 2"
     print `p` + " -f 2 " + testfile 
