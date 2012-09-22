@@ -1,0 +1,58 @@
+rm -rf plz77_? lz77_? *~ *.o *.exe suffixArray
+g++ -O2 -c PLZ77_1.cpp
+g++ -O2 -c ANSV.cpp
+g++ -O2 -c rangeMin.cpp
+g++ -O2 -c suffixArray.cpp
+g++ -O2 -c segmentTree.cpp
+g++ -O2 -c LPF_LZ.cpp
+g++  -o plz77_1 PLZ77_1.o ANSV.o rangeMin.o suffixArray.o segmentTree.o LPF_LZ.o
+g++ -O2 -c PLZ77_3.cpp
+g++ -O2 -c mergeSuffixArrayToTree.cpp
+g++  -o plz77_3 PLZ77_3.o rangeMin.o suffixArray.o mergeSuffixArrayToTree.o LPF_LZ.o
+g++ -O2 -c LZ77_1.cpp
+g++  -o lz77_1 LZ77_1.o suffixArray.o rangeMin.o ANSV.o
+g++ -O2 -c LZ77_2.cpp
+g++  -o lz77_2 LZ77_2.o suffixArray.o rangeMin.o
+g++ -O2 -c LZ77_3.cpp
+g++  -o lz77_3 LZ77_3.o rangeMin.o suffixArray.o
+g++ -O2 -c suffixArrayTest.C
+g++  -o suffixArray suffixArrayTest.o suffixArray.o rangeMin.o
+lz77_1 wikisamp9.xml
+***************** TEST BEGIN *****************
+ * Data from file: testData/wikisamp9.xml
+ * Data size: 1000000000
+ * Algorithm: Seq LZ77 with ANSV
+	suffix array : 590 seconds
+	ANSV : 23.9 seconds
+	lpf : 35 seconds
+ * result: size = 25970983, max offset = 1831
+ * Total time: : 649 seconds
+***************** TEST ENDED *****************
+
+
+lz77_2 wikisamp9.xml
+***************** TEST BEGIN *****************
+ * Data from file: testData/wikisamp9.xml
+ * Data size: 1000000000
+ * Algorithm: Seq LZ77 DCC 2008
+	suffix array time: : 588 seconds
+	lcp time: : 59.9 seconds
+	lpf && lz : 137 seconds
+ * result: size = 24917615, max offset = 41560964
+ * Total time: : 785 seconds
+***************** TEST ENDED *****************
+
+
+lz77_3 wikisamp9.xml
+***************** TEST BEGIN *****************
+ * Data from file: testData/wikisamp9.xml
+ * Data size: 1000000000
+ * Algorithm: Seq LZ77 CPM2011
+	suffix array : 590 seconds
+	LPF : 75.6 seconds
+	LZ : 2.15 seconds
+ * result: size = 25970983, max offset = 1831
+ * Total time: : 668 seconds
+***************** TEST ENDED *****************
+
+

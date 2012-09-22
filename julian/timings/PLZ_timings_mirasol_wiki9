@@ -1,2 +1,606 @@
 rm -rf plz77_? lz77_? *~ *.o *.exe suffixArray
 icpc -O2 -DCILKP  -c PLZ77_1.cpp
+icpc -O2 -DCILKP  -c ANSV.cpp
+icpc -O2 -DCILKP  -c rangeMin.cpp
+icpc -O2 -DCILKP  -c suffixArray.cpp
+icpc -O2 -DCILKP  -c segmentTree.cpp
+icpc -O2 -DCILKP  -c LPF_LZ.cpp
+icpc  -o plz77_1 PLZ77_1.o ANSV.o rangeMin.o suffixArray.o segmentTree.o LPF_LZ.o
+1 -f 0 wikisamp9.xml
+***************** TEST BEGIN *****************
+ * Data from file: testData/wikisamp9.xml
+ * Data size: 1000000000
+ * Algorithm: Parallel LZ77 using suffix array
+ * Threads num: 1
+	suffix array : 1.05e+03 seconds
+	checkpoint : 1.69 seconds
+	ansn : 33.6 seconds
+	lpf : 168 seconds
+ * result: size = 25970983, max offset = 1831
+ * Total time: : 1.27e+03 seconds
+***************** TEST ENDED *****************
+
+
+2 -f 0 wikisamp9.xml
+***************** TEST BEGIN *****************
+ * Data from file: testData/wikisamp9.xml
+ * Data size: 1000000000
+ * Algorithm: Parallel LZ77 using suffix array
+ * Threads num: 2
+	suffix array : 642 seconds
+	checkpoint : 0.956 seconds
+	ansn : 18.7 seconds
+	lpf : 102 seconds
+ * result: size = 25970983, max offset = 1831
+ * Total time: : 773 seconds
+***************** TEST ENDED *****************
+
+
+4 -f 0 wikisamp9.xml
+***************** TEST BEGIN *****************
+ * Data from file: testData/wikisamp9.xml
+ * Data size: 1000000000
+ * Algorithm: Parallel LZ77 using suffix array
+ * Threads num: 4
+	suffix array : 341 seconds
+	checkpoint : 0.538 seconds
+	ansn : 10.1 seconds
+	lpf : 54.5 seconds
+ * result: size = 25970983, max offset = 1831
+ * Total time: : 412 seconds
+***************** TEST ENDED *****************
+
+
+8 -f 0 wikisamp9.xml
+***************** TEST BEGIN *****************
+ * Data from file: testData/wikisamp9.xml
+ * Data size: 1000000000
+ * Algorithm: Parallel LZ77 using suffix array
+ * Threads num: 8
+	suffix array : 174 seconds
+	checkpoint : 0.3 seconds
+	ansn : 5.1 seconds
+	lpf : 27.2 seconds
+ * result: size = 25970983, max offset = 1831
+ * Total time: : 209 seconds
+***************** TEST ENDED *****************
+
+
+16 -f 0 wikisamp9.xml
+***************** TEST BEGIN *****************
+ * Data from file: testData/wikisamp9.xml
+ * Data size: 1000000000
+ * Algorithm: Parallel LZ77 using suffix array
+ * Threads num: 16
+	suffix array : 95 seconds
+	checkpoint : 0.215 seconds
+	ansn : 2.58 seconds
+	lpf : 13.6 seconds
+ * result: size = 25970983, max offset = 1831
+ * Total time: : 113 seconds
+***************** TEST ENDED *****************
+
+
+24 -f 0 wikisamp9.xml
+***************** TEST BEGIN *****************
+ * Data from file: testData/wikisamp9.xml
+ * Data size: 1000000000
+ * Algorithm: Parallel LZ77 using suffix array
+ * Threads num: 24
+	suffix array : 70.4 seconds
+	checkpoint : 0.179 seconds
+	ansn : 1.78 seconds
+	lpf : 9.13 seconds
+ * result: size = 25970983, max offset = 1831
+ * Total time: : 82.7 seconds
+***************** TEST ENDED *****************
+
+
+32 -f 0 wikisamp9.xml
+***************** TEST BEGIN *****************
+ * Data from file: testData/wikisamp9.xml
+ * Data size: 1000000000
+ * Algorithm: Parallel LZ77 using suffix array
+ * Threads num: 32
+	suffix array : 58.2 seconds
+	checkpoint : 0.175 seconds
+	ansn : 1.37 seconds
+	lpf : 6.95 seconds
+ * result: size = 25970983, max offset = 1831
+ * Total time: : 67.7 seconds
+***************** TEST ENDED *****************
+
+
+40 -f 0 wikisamp9.xml
+***************** TEST BEGIN *****************
+ * Data from file: testData/wikisamp9.xml
+ * Data size: 1000000000
+ * Algorithm: Parallel LZ77 using suffix array
+ * Threads num: 40
+	suffix array : 56.9 seconds
+	checkpoint : 0.179 seconds
+	ansn : 1.16 seconds
+	lpf : 5.7 seconds
+ * result: size = 25970983, max offset = 1831
+ * Total time: : 64.9 seconds
+***************** TEST ENDED *****************
+
+
+48 -f 0 wikisamp9.xml
+***************** TEST BEGIN *****************
+ * Data from file: testData/wikisamp9.xml
+ * Data size: 1000000000
+ * Algorithm: Parallel LZ77 using suffix array
+ * Threads num: 48
+	suffix array : 50.7 seconds
+	checkpoint : 0.175 seconds
+	ansn : 1.12 seconds
+	lpf : 4.93 seconds
+ * result: size = 25970983, max offset = 1831
+ * Total time: : 57.8 seconds
+***************** TEST ENDED *****************
+
+
+56 -f 0 wikisamp9.xml
+***************** TEST BEGIN *****************
+ * Data from file: testData/wikisamp9.xml
+ * Data size: 1000000000
+ * Algorithm: Parallel LZ77 using suffix array
+ * Threads num: 56
+	suffix array : 50.2 seconds
+	checkpoint : 0.176 seconds
+	ansn : 1.02 seconds
+	lpf : 4.38 seconds
+ * result: size = 25970983, max offset = 1831
+ * Total time: : 56.7 seconds
+***************** TEST ENDED *****************
+
+
+64 -f 0 wikisamp9.xml
+***************** TEST BEGIN *****************
+ * Data from file: testData/wikisamp9.xml
+ * Data size: 1000000000
+ * Algorithm: Parallel LZ77 using suffix array
+ * Threads num: 64
+	suffix array : 48.8 seconds
+	checkpoint : 0.161 seconds
+	ansn : 0.97 seconds
+	lpf : 3.99 seconds
+ * result: size = 25970983, max offset = 1831
+ * Total time: : 54.7 seconds
+***************** TEST ENDED *****************
+
+
+72 -f 0 wikisamp9.xml
+***************** TEST BEGIN *****************
+ * Data from file: testData/wikisamp9.xml
+ * Data size: 1000000000
+ * Algorithm: Parallel LZ77 using suffix array
+ * Threads num: 72
+	suffix array : 49.2 seconds
+	checkpoint : 0.205 seconds
+	ansn : 0.916 seconds
+	lpf : 3.82 seconds
+ * result: size = 25970983, max offset = 1831
+ * Total time: : 55 seconds
+***************** TEST ENDED *****************
+
+
+80 -f 0 wikisamp9.xml
+***************** TEST BEGIN *****************
+ * Data from file: testData/wikisamp9.xml
+ * Data size: 1000000000
+ * Algorithm: Parallel LZ77 using suffix array
+ * Threads num: 80
+	suffix array : 47.3 seconds
+	checkpoint : 0.177 seconds
+	ansn : 0.852 seconds
+	lpf : 3.43 seconds
+ * result: size = 25970983, max offset = 1831
+ * Total time: : 52.6 seconds
+***************** TEST ENDED *****************
+
+
+1 -f 1 wikisamp9.xml
+***************** TEST BEGIN *****************
+ * Data from file: testData/wikisamp9.xml
+ * Data size: 1000000000
+ * Algorithm: Parallel LZ77 using suffix array
+ * Threads num: 1
+	suffix array : 1.04e+03 seconds
+	checkpoint : 1.67 seconds
+	ansn : 33.7 seconds
+	build tree : 3.62 seconds
+	lpf : 135 seconds
+ * result: size = 25970983, max offset = 1831
+ * Total time: : 1.23e+03 seconds
+***************** TEST ENDED *****************
+
+
+2 -f 1 wikisamp9.xml
+***************** TEST BEGIN *****************
+ * Data from file: testData/wikisamp9.xml
+ * Data size: 1000000000
+ * Algorithm: Parallel LZ77 using suffix array
+ * Threads num: 2
+	suffix array : 638 seconds
+	checkpoint : 0.886 seconds
+	ansn : 18.7 seconds
+	build tree : 2.14 seconds
+	lpf : 83.6 seconds
+ * result: size = 25970983, max offset = 1831
+ * Total time: : 753 seconds
+***************** TEST ENDED *****************
+
+
+4 -f 1 wikisamp9.xml
+***************** TEST BEGIN *****************
+ * Data from file: testData/wikisamp9.xml
+ * Data size: 1000000000
+ * Algorithm: Parallel LZ77 using suffix array
+ * Threads num: 4
+	suffix array : 341 seconds
+	checkpoint : 0.564 seconds
+	ansn : 10.2 seconds
+	build tree : 1.14 seconds
+	lpf : 44.9 seconds
+ * result: size = 25970983, max offset = 1831
+ * Total time: : 403 seconds
+***************** TEST ENDED *****************
+
+
+8 -f 1 wikisamp9.xml
+***************** TEST BEGIN *****************
+ * Data from file: testData/wikisamp9.xml
+ * Data size: 1000000000
+ * Algorithm: Parallel LZ77 using suffix array
+ * Threads num: 8
+	suffix array : 174 seconds
+	checkpoint : 0.307 seconds
+	ansn : 5.2 seconds
+	build tree : 0.594 seconds
+	lpf : 22.9 seconds
+ * result: size = 25970983, max offset = 1831
+ * Total time: : 206 seconds
+***************** TEST ENDED *****************
+
+
+16 -f 1 wikisamp9.xml
+***************** TEST BEGIN *****************
+ * Data from file: testData/wikisamp9.xml
+ * Data size: 1000000000
+ * Algorithm: Parallel LZ77 using suffix array
+ * Threads num: 16
+	suffix array : 97.7 seconds
+	checkpoint : 0.212 seconds
+	ansn : 2.56 seconds
+	build tree : 0.343 seconds
+	lpf : 12.5 seconds
+ * result: size = 25970983, max offset = 1831
+ * Total time: : 115 seconds
+***************** TEST ENDED *****************
+
+
+24 -f 1 wikisamp9.xml
+***************** TEST BEGIN *****************
+ * Data from file: testData/wikisamp9.xml
+ * Data size: 1000000000
+ * Algorithm: Parallel LZ77 using suffix array
+ * Threads num: 24
+	suffix array : 69.7 seconds
+	checkpoint : 0.196 seconds
+	ansn : 1.78 seconds
+	build tree : 0.26 seconds
+	lpf : 8.85 seconds
+ * result: size = 25970983, max offset = 1831
+ * Total time: : 81.9 seconds
+***************** TEST ENDED *****************
+
+
+32 -f 1 wikisamp9.xml
+***************** TEST BEGIN *****************
+ * Data from file: testData/wikisamp9.xml
+ * Data size: 1000000000
+ * Algorithm: Parallel LZ77 using suffix array
+ * Threads num: 32
+	suffix array : 58.9 seconds
+	checkpoint : 0.187 seconds
+	ansn : 1.37 seconds
+	build tree : 0.259 seconds
+	lpf : 7.24 seconds
+ * result: size = 25970983, max offset = 1831
+ * Total time: : 69 seconds
+***************** TEST ENDED *****************
+
+
+40 -f 1 wikisamp9.xml
+***************** TEST BEGIN *****************
+ * Data from file: testData/wikisamp9.xml
+ * Data size: 1000000000
+ * Algorithm: Parallel LZ77 using suffix array
+ * Threads num: 40
+	suffix array : 53.1 seconds
+	checkpoint : 0.193 seconds
+	ansn : 1.15 seconds
+	build tree : 0.238 seconds
+	lpf : 6.25 seconds
+ * result: size = 25970983, max offset = 1831
+ * Total time: : 61.8 seconds
+***************** TEST ENDED *****************
+
+
+48 -f 1 wikisamp9.xml
+***************** TEST BEGIN *****************
+ * Data from file: testData/wikisamp9.xml
+ * Data size: 1000000000
+ * Algorithm: Parallel LZ77 using suffix array
+ * Threads num: 48
+	suffix array : 51.3 seconds
+	checkpoint : 0.183 seconds
+	ansn : 1.1 seconds
+	build tree : 0.23 seconds
+	lpf : 6.13 seconds
+ * result: size = 25970983, max offset = 1831
+ * Total time: : 59.8 seconds
+***************** TEST ENDED *****************
+
+
+56 -f 1 wikisamp9.xml
+***************** TEST BEGIN *****************
+ * Data from file: testData/wikisamp9.xml
+ * Data size: 1000000000
+ * Algorithm: Parallel LZ77 using suffix array
+ * Threads num: 56
+	suffix array : 50.1 seconds
+	checkpoint : 0.194 seconds
+	ansn : 1.01 seconds
+	build tree : 0.231 seconds
+	lpf : 6.02 seconds
+ * result: size = 25970983, max offset = 1831
+ * Total time: : 58.4 seconds
+***************** TEST ENDED *****************
+
+
+64 -f 1 wikisamp9.xml
+***************** TEST BEGIN *****************
+ * Data from file: testData/wikisamp9.xml
+ * Data size: 1000000000
+ * Algorithm: Parallel LZ77 using suffix array
+ * Threads num: 64
+	suffix array : 49.3 seconds
+	checkpoint : 0.162 seconds
+	ansn : 1.04 seconds
+	build tree : 0.244 seconds
+	lpf : 5.8 seconds
+ * result: size = 25970983, max offset = 1831
+ * Total time: : 57.4 seconds
+***************** TEST ENDED *****************
+
+
+72 -f 1 wikisamp9.xml
+***************** TEST BEGIN *****************
+ * Data from file: testData/wikisamp9.xml
+ * Data size: 1000000000
+ * Algorithm: Parallel LZ77 using suffix array
+ * Threads num: 72
+	suffix array : 49.2 seconds
+	checkpoint : 0.201 seconds
+	ansn : 0.92 seconds
+	build tree : 0.24 seconds
+	lpf : 5.59 seconds
+ * result: size = 25970983, max offset = 1831
+ * Total time: : 56.9 seconds
+***************** TEST ENDED *****************
+
+
+80 -f 1 wikisamp9.xml
+***************** TEST BEGIN *****************
+ * Data from file: testData/wikisamp9.xml
+ * Data size: 1000000000
+ * Algorithm: Parallel LZ77 using suffix array
+ * Threads num: 80
+	suffix array : 48.3 seconds
+	checkpoint : 0.192 seconds
+	ansn : 0.877 seconds
+	build tree : 0.233 seconds
+	lpf : 5.57 seconds
+ * result: size = 25970983, max offset = 1831
+ * Total time: : 56 seconds
+***************** TEST ENDED *****************
+
+
+1 -f 2 wikisamp9.xml
+***************** TEST BEGIN *****************
+ * Data from file: testData/wikisamp9.xml
+ * Data size: 1000000000
+ * Algorithm: Parallel LZ77 using suffix array
+ * Threads num: 1
+	suffix array : 670 seconds
+	checkpoint : 0.000154 seconds
+	ansn : 33.4 seconds
+	lpf : 135 seconds
+ * result: size = 25970983, max offset = 1831
+ * Total time: : 854 seconds
+***************** TEST ENDED *****************
+
+
+2 -f 2 wikisamp9.xml
+***************** TEST BEGIN *****************
+ * Data from file: testData/wikisamp9.xml
+ * Data size: 1000000000
+ * Algorithm: Parallel LZ77 using suffix array
+ * Threads num: 2
+	suffix array : 398 seconds
+	checkpoint : 0.000205 seconds
+	ansn : 18.2 seconds
+	lpf : 83.8 seconds
+ * result: size = 25970983, max offset = 1831
+ * Total time: : 510 seconds
+***************** TEST ENDED *****************
+
+
+4 -f 2 wikisamp9.xml
+***************** TEST BEGIN *****************
+ * Data from file: testData/wikisamp9.xml
+ * Data size: 1000000000
+ * Algorithm: Parallel LZ77 using suffix array
+ * Threads num: 4
+	suffix array : 216 seconds
+	checkpoint : 0.00021 seconds
+	ansn : 9.83 seconds
+	lpf : 46.1 seconds
+ * result: size = 25970983, max offset = 1831
+ * Total time: : 277 seconds
+***************** TEST ENDED *****************
+
+
+8 -f 2 wikisamp9.xml
+***************** TEST BEGIN *****************
+ * Data from file: testData/wikisamp9.xml
+ * Data size: 1000000000
+ * Algorithm: Parallel LZ77 using suffix array
+ * Threads num: 8
+	suffix array : 111 seconds
+	checkpoint : 0.000186 seconds
+	ansn : 4.99 seconds
+	lpf : 23 seconds
+ * result: size = 25970983, max offset = 1831
+ * Total time: : 142 seconds
+***************** TEST ENDED *****************
+
+
+16 -f 2 wikisamp9.xml
+***************** TEST BEGIN *****************
+ * Data from file: testData/wikisamp9.xml
+ * Data size: 1000000000
+ * Algorithm: Parallel LZ77 using suffix array
+ * Threads num: 16
+	suffix array : 62.1 seconds
+	checkpoint : 0.00022 seconds
+	ansn : 2.54 seconds
+	lpf : 12.2 seconds
+ * result: size = 25970983, max offset = 1831
+ * Total time: : 78.3 seconds
+***************** TEST ENDED *****************
+
+
+24 -f 2 wikisamp9.xml
+***************** TEST BEGIN *****************
+ * Data from file: testData/wikisamp9.xml
+ * Data size: 1000000000
+ * Algorithm: Parallel LZ77 using suffix array
+ * Threads num: 24
+	suffix array : 50.5 seconds
+	checkpoint : 0.000885 seconds
+	ansn : 1.75 seconds
+	lpf : 9.42 seconds
+ * result: size = 25970983, max offset = 1831
+ * Total time: : 62.8 seconds
+***************** TEST ENDED *****************
+
+
+32 -f 2 wikisamp9.xml
+***************** TEST BEGIN *****************
+ * Data from file: testData/wikisamp9.xml
+ * Data size: 1000000000
+ * Algorithm: Parallel LZ77 using suffix array
+ * Threads num: 32
+	suffix array : 43.8 seconds
+	checkpoint : 0.000222 seconds
+	ansn : 1.34 seconds
+	lpf : 7.25 seconds
+ * result: size = 25970983, max offset = 1831
+ * Total time: : 53.3 seconds
+***************** TEST ENDED *****************
+
+
+40 -f 2 wikisamp9.xml
+***************** TEST BEGIN *****************
+ * Data from file: testData/wikisamp9.xml
+ * Data size: 1000000000
+ * Algorithm: Parallel LZ77 using suffix array
+ * Threads num: 40
+	suffix array : 37.9 seconds
+	checkpoint : 0.00021 seconds
+	ansn : 1.13 seconds
+	lpf : 6.13 seconds
+ * result: size = 25970983, max offset = 1831
+ * Total time: : 46 seconds
+***************** TEST ENDED *****************
+
+
+48 -f 2 wikisamp9.xml
+***************** TEST BEGIN *****************
+ * Data from file: testData/wikisamp9.xml
+ * Data size: 1000000000
+ * Algorithm: Parallel LZ77 using suffix array
+ * Threads num: 48
+	suffix array : 38.3 seconds
+	checkpoint : 0.000195 seconds
+	ansn : 1.09 seconds
+	lpf : 7.35 seconds
+ * result: size = 25970983, max offset = 1831
+ * Total time: : 47.6 seconds
+***************** TEST ENDED *****************
+
+
+56 -f 2 wikisamp9.xml
+***************** TEST BEGIN *****************
+ * Data from file: testData/wikisamp9.xml
+ * Data size: 1000000000
+ * Algorithm: Parallel LZ77 using suffix array
+ * Threads num: 56
+	suffix array : 39.3 seconds
+	checkpoint : 0.000141 seconds
+	ansn : 1.16 seconds
+	lpf : 6.69 seconds
+ * result: size = 25970983, max offset = 1831
+ * Total time: : 48 seconds
+***************** TEST ENDED *****************
+
+
+64 -f 2 wikisamp9.xml
+***************** TEST BEGIN *****************
+ * Data from file: testData/wikisamp9.xml
+ * Data size: 1000000000
+ * Algorithm: Parallel LZ77 using suffix array
+ * Threads num: 64
+	suffix array : 35.4 seconds
+	checkpoint : 0.000237 seconds
+	ansn : 1.01 seconds
+	lpf : 6.1 seconds
+ * result: size = 25970983, max offset = 1831
+ * Total time: : 43.3 seconds
+***************** TEST ENDED *****************
+
+
+72 -f 2 wikisamp9.xml
+***************** TEST BEGIN *****************
+ * Data from file: testData/wikisamp9.xml
+ * Data size: 1000000000
+ * Algorithm: Parallel LZ77 using suffix array
+ * Threads num: 72
+	suffix array : 33.9 seconds
+	checkpoint : 0.000195 seconds
+	ansn : 0.902 seconds
+	lpf : 5.66 seconds
+ * result: size = 25970983, max offset = 1831
+ * Total time: : 41.3 seconds
+***************** TEST ENDED *****************
+
+
+80 -f 2 wikisamp9.xml
+***************** TEST BEGIN *****************
+ * Data from file: testData/wikisamp9.xml
+ * Data size: 1000000000
+ * Algorithm: Parallel LZ77 using suffix array
+ * Threads num: 80
+	suffix array : 33.7 seconds
+	checkpoint : 0.000247 seconds
+	ansn : 0.866 seconds
+	lpf : 5.5 seconds
+ * result: size = 25970983, max offset = 1831
+ * Total time: : 40.8 seconds
+***************** TEST ENDED *****************
+
+
