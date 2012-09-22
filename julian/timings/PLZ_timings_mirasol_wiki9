@@ -1,0 +1,2 @@
+rm -rf plz77_? lz77_? *~ *.o *.exe suffixArray
+icpc -O2 -DCILKP  -c PLZ77_1.cpp

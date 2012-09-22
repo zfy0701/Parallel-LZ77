@@ -1,0 +1,176 @@
+PLZ for file of size 10000000
+***************** TEST BEGIN *****************
+ * Data from file: tmp
+ * Data size: 10000001
+ * Algorithm: Parallel LZ77 using suffix array
+ * Threads num: 80
+	suffix array : 0.502 seconds
+	checkpoint : 0.00274 seconds
+	ansn : 0.0169 seconds
+	lpf : 0.0607 seconds
+ * result: size = 1426461, max offset = 13
+ * Total time: : 0.599 seconds
+***************** TEST ENDED *****************
+
+
+
+PLZ for file of size 20000000
+***************** TEST BEGIN *****************
+ * Data from file: tmp
+ * Data size: 20000001
+ * Algorithm: Parallel LZ77 using suffix array
+ * Threads num: 80
+	suffix array : 0.754 seconds
+	checkpoint : 0.00429 seconds
+	ansn : 0.0238 seconds
+	lpf : 0.0866 seconds
+ * result: size = 2724671, max offset = 14
+ * Total time: : 0.894 seconds
+***************** TEST ENDED *****************
+
+
+
+PLZ for file of size 40000000
+***************** TEST BEGIN *****************
+ * Data from file: tmp
+ * Data size: 40000001
+ * Algorithm: Parallel LZ77 using suffix array
+ * Threads num: 80
+	suffix array : 1.4 seconds
+	checkpoint : 0.007 seconds
+	ansn : 0.0443 seconds
+	lpf : 0.175 seconds
+ * result: size = 5208502, max offset = 16
+ * Total time: : 1.68 seconds
+***************** TEST ENDED *****************
+
+
+
+PLZ for file of size 80000000
+***************** TEST BEGIN *****************
+ * Data from file: tmp
+ * Data size: 80000001
+ * Algorithm: Parallel LZ77 using suffix array
+ * Threads num: 80
+	suffix array : 2.47 seconds
+	checkpoint : 0.0146 seconds
+	ansn : 0.0779 seconds
+	lpf : 0.316 seconds
+ * result: size = 9979671, max offset = 17
+ * Total time: : 2.98 seconds
+***************** TEST ENDED *****************
+
+
+
+PLZ for file of size 160000000
+***************** TEST BEGIN *****************
+ * Data from file: tmp
+ * Data size: 160000001
+ * Algorithm: Parallel LZ77 using suffix array
+ * Threads num: 80
+	suffix array : 4.8 seconds
+	checkpoint : 0.0273 seconds
+	ansn : 0.144 seconds
+	lpf : 0.593 seconds
+ * result: size = 19171262, max offset = 17
+ * Total time: : 5.77 seconds
+***************** TEST ENDED *****************
+
+
+
+PLZ for file of size 240000000
+***************** TEST BEGIN *****************
+ * Data from file: tmp
+ * Data size: 240000001
+ * Algorithm: Parallel LZ77 using suffix array
+ * Threads num: 80
+	suffix array : 7.21 seconds
+	checkpoint : 0.0442 seconds
+	ansn : 0.22 seconds
+	lpf : 0.878 seconds
+ * result: size = 28093210, max offset = 18
+ * Total time: : 8.63 seconds
+***************** TEST ENDED *****************
+
+
+
+PLZ for file of size 320000000
+***************** TEST BEGIN *****************
+ * Data from file: tmp
+ * Data size: 320000001
+ * Algorithm: Parallel LZ77 using suffix array
+ * Threads num: 80
+	suffix array : 9.24 seconds
+	checkpoint : 0.0545 seconds
+	ansn : 0.294 seconds
+	lpf : 1.14 seconds
+ * result: size = 36845817, max offset = 18
+ * Total time: : 11.1 seconds
+***************** TEST ENDED *****************
+
+
+
+PLZ for file of size 480000000
+***************** TEST BEGIN *****************
+ * Data from file: tmp
+ * Data size: 480000001
+ * Algorithm: Parallel LZ77 using suffix array
+ * Threads num: 80
+	suffix array : 13.7 seconds
+	checkpoint : 0.0769 seconds
+	ansn : 0.434 seconds
+	lpf : 1.68 seconds
+ * result: size = 54034815, max offset = 18
+ * Total time: : 16.4 seconds
+***************** TEST ENDED *****************
+
+
+
+PLZ for file of size 640000000
+***************** TEST BEGIN *****************
+ * Data from file: tmp
+ * Data size: 640000001
+ * Algorithm: Parallel LZ77 using suffix array
+ * Threads num: 80
+	suffix array : 18.2 seconds
+	checkpoint : 0.104 seconds
+	ansn : 0.557 seconds
+	lpf : 2.2 seconds
+ * result: size = 70944904, max offset = 18
+ * Total time: : 21.9 seconds
+***************** TEST ENDED *****************
+
+
+
+PLZ for file of size 800000000
+***************** TEST BEGIN *****************
+ * Data from file: tmp
+ * Data size: 800000001
+ * Algorithm: Parallel LZ77 using suffix array
+ * Threads num: 80
+	suffix array : 22.8 seconds
+	checkpoint : 0.135 seconds
+	ansn : 0.726 seconds
+	lpf : 2.81 seconds
+ * result: size = 87654370, max offset = 18
+ * Total time: : 27.5 seconds
+***************** TEST ENDED *****************
+
+
+
+PLZ for file of size 1000000000
+***************** TEST BEGIN *****************
+ * Data from file: tmp
+ * Data size: 1000000001
+ * Algorithm: Parallel LZ77 using suffix array
+ * Threads num: 80
+	suffix array : 28.4 seconds
+	checkpoint : 0.183 seconds
+	ansn : 0.864 seconds
+	lpf : 3.48 seconds
+ * result: size = 108316515, max offset = 18
+ * Total time: : 34.1 seconds
+***************** TEST ENDED *****************
+
+
+

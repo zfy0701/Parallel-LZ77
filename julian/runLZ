@@ -31,8 +31,6 @@ testfiles = ["wikisamp9.xml"]
 
 
 apps = ["lz77_1","lz77_2","lz77_3"]
-if (len(sys.argv) > 1) :
-  tests = [test for test in tests if test[0] in sys.argv]
 
 for app in apps:
   for testfile in testfiles :
