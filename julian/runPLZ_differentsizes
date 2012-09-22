@@ -1,0 +1,11 @@
+testfile=1000Mrandom
+sizes=(10000000 20000000 40000000 80000000 160000000 240000000 320000000 480000000 640000000 800000000 1000000000)
+
+for size in "${sizes[@]}"
+do
+	echo "PLZ for file of size $size"
+	cut -c1-$size testData/$testfile > tmp
+	./plz77_1 -i tmp -p 80
+	rm tmp
+	echo -e "\n"
+done

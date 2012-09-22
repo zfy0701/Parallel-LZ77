@@ -11,7 +11,7 @@ import subprocess
 
 
 os.system("make clean;unset CILK;export CILKP=1;make plz77_1;")
-
+#os.system("make clean;export CILK=1;make plz77_1;")
 def signal_handler(signal,frame):
   print "bye\n"
   sys.exit(0)
@@ -28,28 +28,28 @@ def shellGetOutput(str) :
 
 #testfiles = []
 testfiles = ["10Midentical","10Mrandom","10Msqrtn","chr22.dna","etext99","howto.txt","jdk13c","rctail96","rfc","sprot34.dat","thesaurus.doc","w3c2","wikisamp.xml"]
-#testfiles = ["10Mrandom"]
+testfiles = ["wikisamp9.xml"]
 
-processors = [1,2,4]+range(8,64+1,8)
-#processors= [64]
+processors = [1,2,4]+range(8,80+1,8)
+%processors= [64]
 if (len(sys.argv) > 1) :
   tests = [test for test in tests if test[0] in sys.argv]
 
 for testfile in testfiles :
   for p in processors :
-    ss = "./plz77_1 -i testData/"+testfile+" -p "+`p`+" -f 0"
+    ss = "./plz77_1 -i testData/"+testfile+" -p "+`p`+" -f 0 "#+" -cilk_set_worker_count "+`p`
     print `p` + " -f 0 " + testfile 
     print shellGetOutput(ss)
     sys.stdout.flush()
 for testfile in testfiles:
   for p in processors :
-    ss = "./plz77_1 -i testData/"+testfile+" -p "+`p`+" -f 1"
+    ss = "./plz77_1 -i testData/"+testfile+" -p "+`p`+" -f 1 "#+" -cilk_set_worker_count "+`p`
     print `p` + " -f 1 " + testfile 
     print shellGetOutput(ss)
     sys.stdout.flush()
 for testfile in testfiles:
   for p in processors :
-    ss = "./plz77_1 -i testData/"+testfile+" -p "+`p`+" -f 2"
+    ss = "./plz77_1 -i testData/"+testfile+" -p "+`p`+" -f 2 "#+" -cilk_set_worker_count "+`p`
     print `p` + " -f 2 " + testfile 
     print shellGetOutput(ss)
     sys.stdout.flush()
