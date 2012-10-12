@@ -53,7 +53,7 @@ pair<pair<int,int>*,int> compute(int* A, int n){
   int j = 0;
   while(LZ[j].first < n){
     LZ[j+1].first = LZ[j].first + max(1,LPF[LZ[j].first]);
-    LZ[j+1].second = -1;
+    LZ[j+1].second = -1; //no prev_occ computed
     j++;
   }
   //for(int i=0;i<10;i++)cout<<LPF[i]<<" ";cout<<endl;

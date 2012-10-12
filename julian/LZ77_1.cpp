@@ -47,7 +47,7 @@ pair< pair<int, int>*,int> LempelZiv(int *s, int n) {
 
         //LZ[k++] = i;
 	LZ[k].first = i;
-	if(left == -1 && -1 == right || !(l || r)) { LZ[k].second = -1;}
+	if(l==0 && 0==r) { LZ[k].second = -1;}
 	else if(l > r) { LZ[k].second = SA[left]; }
 	else { LZ[k].second = SA[right];}
         lpf = max(l, r);

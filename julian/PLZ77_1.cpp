@@ -44,7 +44,7 @@ void getLPF_0(int *s, int *sa, int n, int *lcp, int *lpf, int *prev_occ) {
         //lpf[sai] = max(llcp, rlcp);
 	//cout<<i<<" "<<sa[i]<<" "<<ln<<" "<<rn<<" "<<llcp<<" "<<rlcp<<" "<<sa[ln]<<" "<<sa[rn]<<endl;
 
-	if ((ln == -1 && -1 == rn) || !(llcp || rlcp)) {prev_occ[sai] = -1; lpf[sai] = 1;}
+	if (llcp==0&&rlcp==0) {prev_occ[sai] = -1; lpf[sai] = 1;}
 	// no neighbor
 	else if(llcp > rlcp) {prev_occ[sai] = sa[ln]; lpf[sai] = llcp;}
 	else {prev_occ[sai] = sa[rn];lpf[sai] = rlcp;}
@@ -89,7 +89,7 @@ void getLPF_1(int *s, int *sa, int n, int *lcp, int *lpf, int* prev_occ) {
             rightLPF[i] = st.Query(mid + 1, right);
         } else rightLPF[i] = 0;
 
-	if (left == -1 && -1 == right) {prev_occ[i] = -1; lpf[i] = 1;}
+	if (leftLPF[i] == 0 && rightLPF[i] == 0) {prev_occ[i] = -1; lpf[i] = 1;}
 	// no neighbor
 	else if(leftLPF[i] > rightLPF[i]) {
 	  prev_occ[i] = sa[left]; lpf[i] = leftLPF[i];}
@@ -118,7 +118,7 @@ void getLPF_1(int *s, int *sa, int n, int *lcp, int *lpf, int* prev_occ) {
             } else rightLPF[k] = 0;
 
 
-	    if (left == -1 && -1 == right) {prev_occ[k] = -1; lpf[k] = 1;}
+	    if (leftLPF[k]==0&&rightLPF[k]==0) {prev_occ[k] = -1; lpf[k] = 1;}
 	    // no neighbor
 	    else if(leftLPF[k] > rightLPF[k]) {
 	      prev_occ[k] = sa[left]; lpf[k] = leftLPF[k];}
@@ -184,7 +184,7 @@ void getLPF_2(int *s, int *sa, int n, int *lcp, int *lpf, int* prev_occ) {
             rightLPF[i] = rlcp;
         } else rightLPF[i] = 0;
 
-	if (left == -1 && -1 == right) {prev_occ[i] = -1; lpf[i] = 1;}
+	if (leftLPF[i]==0&&rightLPF[i]==0) {prev_occ[i] = -1; lpf[i] = 1;}
 	// no neighbor
 	else if(leftLPF[i] > rightLPF[i]) {
 	  prev_occ[i] = sa[left]; lpf[i] = leftLPF[i];}
@@ -208,7 +208,7 @@ void getLPF_2(int *s, int *sa, int n, int *lcp, int *lpf, int* prev_occ) {
                 rightLPF[k] = rlcp;
             } else rightLPF[k] = 0;
 
-	    if (left == -1 && -1 == right) {prev_occ[k] = -1; lpf[k] = 1;}
+	    if (leftLPF[k]==0&&rightLPF[k]==0) {prev_occ[k] = -1; lpf[k] = 1;}
 	    // no neighbor
 	    else if(leftLPF[k] > rightLPF[k]) {
 	      prev_occ[k] = sa[left]; lpf[k] = leftLPF[k];}
