@@ -10,7 +10,7 @@
 #include "suffixArray.h"
 using namespace std;
 
-pair<int *, int> LempelZiv(int *s, int n) {
+pair< pair<int, int>*,int> LempelZiv(int *s, int n) {
     timer lzTm;
     lzTm.start();
 
@@ -32,7 +32,9 @@ pair<int *, int> LempelZiv(int *s, int n) {
     }
 
     int k = 0;
-    int *LZ = Rank;
+    //int *LZ = Rank;
+    pair<int,int> *LZ = new pair<int,int>[n];
+
     for (k = i = 0; i < n; i += max(1, lpf)) {
         int left = leftElements[Rank[i]], right = rightElements[Rank[i]];
 
@@ -43,14 +45,23 @@ pair<int *, int> LempelZiv(int *s, int n) {
         if (right != -1) while (s[SA[right] + r] == s[i + r])
                 r++;
 
-        LZ[k++] = i;
+        //LZ[k++] = i;
+	LZ[k].first = i;
+	if(left == -1 && -1 == right || !(l || r)) { LZ[k].second = -1;}
+	else if(l > r) { LZ[k].second = SA[left]; }
+	else { LZ[k].second = SA[right];}
         lpf = max(l, r);
+	k++;
+	
     }
+    
+    //for(int i=0;i<k;i++) cout<<"("<<LZ[i].first<<","<<LZ[i].second<<") ";cout<<endl;
     //printf("%d\n", k);
     //for (i = 0;i < k;i++) printf("%d ", LZ[i] + 1);
     delete SA;
     delete leftElements;
     delete rightElements;
+    delete Rank;
     lzTm.reportNext("\tlpf");
     return make_pair(LZ, k);
 }

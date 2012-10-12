@@ -30,7 +30,7 @@ INTSORT = intSort.h transpose.h
 STRINGGEN = $(ITEMGEN) stringGen.h
 
 
-all: plz77_1 plz77_3 lz77_1 lz77_2 lz77_3 suffixArray
+all: plz77_1 lz77_1 lz77_2 lz77_3 suffixArray
 
 .PHONY: clean
 

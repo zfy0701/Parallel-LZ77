@@ -31,7 +31,7 @@ inline void Usage(char *program) {
 	printf("-h \t\tDisplay this help\n");
 }
 
-inline int test_main(int argc, char *argv[], char * algoname, std::pair<int *, int> lz77(int *s, int n)) {
+inline int test_main(int argc, char *argv[], char * algoname, std::pair< std::pair<int, int>*, int> lz77(int *s, int n)) {
 	int opt;
 	int p = 1, d = -1, n = -1;
 	int sigma = -1;
@@ -133,14 +133,15 @@ inline int test_main(int argc, char *argv[], char * algoname, std::pair<int *, i
 	s[n] = s[n + 1] = s[n + 2] = 0;
 	testTm.start();
 
-	std::pair<int *, int> res = lz77(s, n);
-	int maxoffset = n - res.first[res.second-1];
+	std::pair< std::pair<int,int>*, int> res = lz77(s, n);
+	int maxoffset = n - res.first[res.second-1].first;
 	for (int i = 0; i < res.second - 1; i++) {
-		maxoffset = std::max(maxoffset, res.first[i+1] - res.first[i]);
+		maxoffset = std::max(maxoffset, res.first[i+1].first - res.first[i].first);
 	}
 	printf(" * result: size = %d, max offset = %d\n", res.second, maxoffset);
 	testTm.reportNext(" * Total time:");
 	printf("***************** TEST ENDED *****************\n\n");
+	//for(int i=0;i<100;i++)cout<<"("<<res.first[i].first << ","<<res.first[i].second<<") ";cout<<endl;
 	free(s);
 	//delete a;
 	return 0;

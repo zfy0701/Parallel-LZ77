@@ -36,16 +36,16 @@ void sop(int i, int l, int j, int *lps, int *prev_occ, int bot){
   }
 }
 
-pair<int*,int> LempelZiv(int *s, int n) {
+pair<pair<int,int>*,int> LempelZiv(int *s, int n) {
   timer lzTm;
   lzTm.start();
-
+  //n--;
   pair<int *, int *> res = suffixArray(s, n, 0);
 
   int *sa = res.first;
   lzTm.reportNext("\tsuffix array");
 
-  //for(int i=n-100;i<n;i++) cout<<sa[i]<<" ";cout<<endl;
+  //for(int i=0;i<n;i++) cout<<sa[i]<<" ";cout<<endl;
   //cout<<"n = "<<n<<endl;
   int *phi = new int [n];
   int *prev_occ = new int [n];
@@ -57,7 +57,7 @@ pair<int*,int> LempelZiv(int *s, int n) {
     phi[sa[i]] = sa[i+to_add[i==0]];
   }
   free(sa);
-  //for(int i=0;i<100;i++)cout<<prev_occ[i]<<" ";cout<<endl;
+  //for(int i=0;i<n;i++)cout<<prev_occ[i]<<" ";cout<<endl;
   // sa holds now LPS
   for(int i=0; i<n; ++i)
     lps[i] = -1;	   
@@ -79,18 +79,38 @@ pair<int*,int> LempelZiv(int *s, int n) {
 
   lzTm.reportNext("\tLPF");
 
-  delete prev_occ; delete phi;
+  delete phi;
+
+  // //compute LZ array
+  // int* LZ = newA(int,n);
+  // LZ[0] = 0;
+  // int j = 0;
+  // while(LZ[j] < n){
+  //   LZ[j+1] = LZ[j] + max(1,lps[LZ[j]]);
+  //   j++;
+  // }
+
+  //lps[0] = 1; prev_occ[0] = -1;
+
+  // for(int i=0;i<n;i++)cout<<lps[i]<<" ";cout<<endl;
+  // for(int i=0;i<n;i++)cout<<prev_occ[i]<<" ";cout<<endl;
 
   //compute LZ array
-  int* LZ = newA(int,n);
-  LZ[0] = 0;
+  pair<int,int>* LZ = new pair<int,int>[n];
+  //int* LZ = newA(int,n);
+  
+  //Comment: prev_occ array is incorrect, wtf?
+  LZ[0].first = 0; LZ[0].second = -1;
   int j = 0;
-  while(LZ[j] < n){
-    LZ[j+1] = LZ[j] + max(1,lps[LZ[j]]);
+  while(LZ[j].first < n){
+    LZ[j+1].first = LZ[j].first + max(1,lps[LZ[j].first]);
+    LZ[j+1].second = -1;
     j++;
   }
+
+
   lzTm.reportNext("\tLZ");
-  delete lps;
+  delete lps; delete prev_occ; 
   return make_pair(LZ, j);
 }
 

@@ -8,7 +8,7 @@
 #include "suffixArray.h"
 using namespace std;
 
-pair<int*,int> compute(int* A, int n){
+pair<pair<int,int>*,int> compute(int* A, int n){
   timer lzTm;
   lzTm.start();
 
@@ -45,19 +45,24 @@ pair<int*,int> compute(int* A, int n){
   free(stack); free(SA); free(LCP);
 
   //compute LZ array
-  int* LZ = newA(int,n);
-  LZ[0] = 0;
+
+  pair<int,int>* LZ = new pair<int,int>[n];
+  //int* LZ = newA(int,n);
+
+  LZ[0].first = 0; LZ[0].second = -1;
   int j = 0;
-  while(LZ[j] < n){
-    LZ[j+1] = LZ[j] + max(1,LPF[LZ[j]]);
+  while(LZ[j].first < n){
+    LZ[j+1].first = LZ[j].first + max(1,LPF[LZ[j].first]);
+    LZ[j+1].second = -1;
     j++;
   }
-  free(LPF);
+  //for(int i=0;i<10;i++)cout<<LPF[i]<<" ";cout<<endl;
+  free(LPF); 
   lzTm.reportNext("\tlpf && lz");
-  return pair<int*,int>(LZ,j);
+  return pair<pair<int,int>*,int>(LZ,j);
 }
 
 int parallel_main(int argc, char *argv[]) {
-    return test_main(argc, argv, (char *)"Seq LZ77 DCC 2008", compute);
+    return test_main(argc, argv, (char *)"Seq LZ77 DCC 2008 (no prev_occ)", compute);
 }
 
