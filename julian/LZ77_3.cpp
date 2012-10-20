@@ -104,7 +104,7 @@ pair<pair<int,int>*,int> LempelZiv(int *s, int n) {
   int j = 0;
   while(LZ[j].first < n){
     LZ[j+1].first = LZ[j].first + max(1,lps[LZ[j].first]);
-    LZ[j+1].second = (lps[LZ[j].first] == 0) ? -1 : prev_occ[LZ[j+1].first];
+    LZ[j+1].second = prev_occ[LZ[j+1].first];
     j++;
   }
 
