@@ -11,15 +11,16 @@ PCC = $(CC)
 CFLAGS = -fopenmp -O2 -DOPENMP $(INTT)
 LFLAGS = -fopenmp
 else ifdef CILK
-PCC = cilk++
-CFLAGS = -O2 -DCILK -Wno-cilk-for $(INTT)
-#PCC = $(CC)
-#CFLAGS = -O2 -lcilkrts -DCILK
-#LFLAGS = -O2 -lcilkrts -DCILK
+# we should never use old cilk++
+# PCC = cilk++
+# CFLAGS = -O2 -DCILK -Wno-cilk-for $(INTT)
+PCC = $(CC)
+CFLAGS = -O2 -lcilkrts -DCILK
+LFLAGS = -O2 -lcilkrts -DCILK
 else ifdef CILKP
 PCC = icpc
 CFLAGS = -O2 -DCILKP $(INTT)
-else 
+else
 PCC = $(CC)
 #CFLAGS = -g
 endif
@@ -30,11 +31,11 @@ INTSORT = intSort.h transpose.h
 STRINGGEN = $(ITEMGEN) stringGen.h
 
 
-all: plz77_1 lz77_1 lz77_2 lz77_3 suffixArray
+all: plz77_1 lz77_1 lz77_2 lz77_3
 
 .PHONY: clean
 
-clean: 
+clean:
 	rm -rf plz77_? lz77_? *~ *.o *.exe suffixArray
 
 ANSV.o: ANSV.cpp ANSV.h
@@ -46,7 +47,7 @@ rangeMin.o: rangeMin.cpp rangeMin.h
 suffixArray.o: suffixArray.cpp suffixArray.h merge.h PSRS.h $(INTSORT) $(SEQUENCE)
 	$(PCC) $(CFLAGS) -c $<
 
-mergeSuffixArrayToTree.o: mergeSuffixArrayToTree.cpp suffixTree.h 
+mergeSuffixArrayToTree.o: mergeSuffixArrayToTree.cpp suffixTree.h
 	$(PCC) $(CFLAGS) -c $<
 
 segmentTree.o: segmentTree.cpp segmentTree.h
@@ -91,8 +92,8 @@ PLZ77_3.o: PLZ77_3.cpp test.h
 plz77_3: PLZ77_3.o rangeMin.o suffixArray.o mergeSuffixArrayToTree.o LPF_LZ.o
 	$(PCC) $(LFLAGS) -o $@ $^
 
-suffixArrayTest.o: suffixArrayTest.C $(STRINGGEN) $(SEQUENCE)
-	$(PCC) $(CFLAGS) -c suffixArrayTest.C
+# suffixArrayTest.o: suffixArrayTest.C $(STRINGGEN) $(SEQUENCE)
+# 	$(PCC) $(CFLAGS) -c suffixArrayTest.C
 
-suffixArray : suffixArrayTest.o suffixArray.o rangeMin.o
-	$(PCC) $(LFLAGS) -o $@ suffixArrayTest.o suffixArray.o rangeMin.o
+# suffixArray : suffixArrayTest.o suffixArray.o rangeMin.o
+# 	$(PCC) $(LFLAGS) -o $@ suffixArrayTest.o suffixArray.o rangeMin.o

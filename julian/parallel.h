@@ -23,9 +23,9 @@
 #include "Base.h"
 
 #if defined(CILK)
-//#include <cilk/cilk.h>
-//#include <cilk/cilk_api.h>
-#define parallel_main cilk_main
+#include <cilk/cilk.h>
+#include <cilk/cilk_api.h>
+#define parallel_main main
 #define parallel_for cilk_for
 #define parallel_for_1 _Pragma("cilk_grainsize = 1") cilk_for
 #define parallel_grainsize_1 _Pragma("cilk_grainsize = 1")
@@ -33,8 +33,8 @@
 #define parallel_grainsize_256 _Pragma("cilk_grainsize = 256")
 #define parallel_spawn cilk_spawn
 #define parallel_sync cilk_sync
-//#define set_threads(p) __cilkrts_set_param("nworkers", itoa(p))
-//#define get_threads() __cilkrts_get_nworkers()
+#define set_threads(p) __cilkrts_set_param("nworkers", itoa(p))
+#define get_threads() __cilkrts_get_nworkers()
 
 #elif defined(CILKP)
 #include <cilk/cilk.h>
@@ -55,11 +55,11 @@
 #define parallel_main main
 #define parallel_for _Pragma("omp parallel for") for
 #define parallel_for_1 _Pragma("omp parallel for schedule (static,1)") for
-#define parallel_grainsize_1 
-#define parallel_grainsize_2 
+#define parallel_grainsize_1
+#define parallel_grainsize_2
 #define parallel_grainsize_256
 #define parallel_spawn _Pragma("omp task")
-#define parallel_sync _Pragma("omp taskwait") 
+#define parallel_sync _Pragma("omp taskwait")
 #define set_threads(p) omp_set_num_threads(p)
 #define get_threads() omp_get_max_threads()
 
@@ -69,13 +69,13 @@
 #define parallel_for_1 for
 #define parallel_for for
 #define parallel_main main
-#define parallel_grainsize_1 
-#define parallel_grainsize_2 
-#define parallel_grainsize_256 
-#define set_threads(p) 
+#define parallel_grainsize_1
+#define parallel_grainsize_2
+#define parallel_grainsize_256
+#define set_threads(p)
 #define get_threads()  1
 #endif
- 
+
 
 
 #include <limits.h>

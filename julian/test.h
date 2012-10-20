@@ -94,10 +94,8 @@ inline int test_main(int argc, char *argv[], char * algoname, std::pair< std::pa
 	    	exit(1);
 		}
 	}
-	
-#if defined(CILKP) 
+
 	set_threads(p);
-#endif
 	printf("***************** TEST BEGIN *****************\n");
 
 	int *s = newA(int,n+3);
@@ -126,9 +124,8 @@ inline int test_main(int argc, char *argv[], char * algoname, std::pair< std::pa
 
 	printf(" * Data size: %d\n", n);
 	printf(" * Algorithm: %s\n", algoname);
-#if defined(CILKP)
 	printf(" * Threads num: %d\n", p);
-#endif
+
 	timer testTm;
 	s[n] = s[n + 1] = s[n + 2] = 0;
 	testTm.start();
@@ -142,6 +139,7 @@ inline int test_main(int argc, char *argv[], char * algoname, std::pair< std::pa
 	testTm.reportNext(" * Total time:");
 	printf("***************** TEST ENDED *****************\n\n");
 	//for(int i=0;i<100;i++)cout<<"("<<res.first[i].first << ","<<res.first[i].second<<") ";cout<<endl;
+	free(res.first);
 	free(s);
 	//delete a;
 	return 0;
