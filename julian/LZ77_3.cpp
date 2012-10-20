@@ -31,7 +31,7 @@ void sop(int i, int l, int j, int *lps, int *prev_occ, int bot){
       if( prev_occ[i] > j )
 	sop(prev_occ[i], l, j, lps, prev_occ, bot);
       else
-	sop(j, l, prev_occ[i],lps, prev_occ, bot);			
+	sop(j, l, prev_occ[i],lps, prev_occ, bot);
     }
   }
 }
@@ -60,19 +60,19 @@ pair<pair<int,int>*,int> LempelZiv(int *s, int n) {
   //for(int i=0;i<n;i++)cout<<prev_occ[i]<<" ";cout<<endl;
   // sa holds now LPS
   for(int i=0; i<n; ++i)
-    lps[i] = -1;	   
+    lps[i] = -1;
 
   int l = 0;
-  for(int i=0; i<n; ++i){ 
+  for(int i=0; i<n; ++i){
     int j = phi[i];
     while( s[i+l] == s[j+l] ) ++l;
-   
+
     if( i>j ){
       sop(i,l,j,lps,prev_occ,-1);
     }else{
       sop(j,l,i,lps,prev_occ,-1);
     }
-    if( l > 0 ) --l;	 
+    if( l > 0 ) --l;
   }
   // for(int i=0;i<n;i++)cout<<sa[i]<<" ";cout<<endl;
   // for(int i=0;i<n;i++)cout<<prev_occ[i]<<" ";cout<<endl;
@@ -98,19 +98,19 @@ pair<pair<int,int>*,int> LempelZiv(int *s, int n) {
   //compute LZ array
   pair<int,int>* LZ = new pair<int,int>[n];
   //int* LZ = newA(int,n);
-  
+
   //Comment: prev_occ array is incorrect, wtf?
   LZ[0].first = 0; LZ[0].second = -1;
   int j = 0;
   while(LZ[j].first < n){
     LZ[j+1].first = LZ[j].first + max(1,lps[LZ[j].first]);
-    LZ[j+1].second = prev_occ[LZ[j+1].first];
+    LZ[j+1].second = (lps[LZ[j].first] == 0) ? -1 : prev_occ[LZ[j+1].first];
     j++;
   }
 
 
   lzTm.reportNext("\tLZ");
-  delete lps; delete prev_occ; 
+  delete lps; delete prev_occ;
   return make_pair(LZ, j);
 }
 
