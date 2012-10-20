@@ -12,38 +12,50 @@
 #include "Base.h"
 #include "segmentTree.h"
 #include "test.h"
+#include "parallel.h"
  
-pair<int *, int> ParallelLPFtoLZ(int *lpf, int n);
+pair< pair<int,int> *, int> ParallelLPFtoLZ(int *lpf, int* prev_occ, int n);
 
-void getLPF_0(int *s, int *sa, int n, int *lcp, int *lpf) {
+void getLPF_0(int *s, int *sa, int n, int *lcp, int *lpf, int *prev_occ) {
     int d = getDepth(n);
     int *l = new int[n], *r = new int[n];
 
     nextTime("\tcheckpoint");
+
     ComputeANSV(sa, n, l, r);
     nextTime("\tansn");
 
     myRMQ rmq(lcp, n);
+    //for(int i=0;i<n;i++)cout<<sa[i]<<" ";cout<<endl;
 
 //    nextTime("rmq");
-    
+    //for(int i=0;i<n;i++)cout<<i<<" "<<l[i]<<" "<<r[i]<<endl;
     parallel_for (int i = 0; i < n; i++) {
-        int llcp = 0, rlcp = 0;
-        if (l[i] != -1) {
-            llcp = lcp[rmq.query(l[i]+1, i)];
+      int llcp = 0, rlcp = 0;
+      int ln = l[i], rn = r[i];
+      int sai = sa[i];
+        if (ln != -1) {
+            llcp = lcp[rmq.query(ln+1, i)];
+	    
         }
-        if (r[i] != -1) {
-            rlcp = lcp[rmq.query(i+1, r[i])];
+        if (rn != -1) {
+            rlcp = lcp[rmq.query(i+1, rn)];
         }
+        //lpf[sai] = max(llcp, rlcp);
+	//cout<<i<<" "<<sa[i]<<" "<<ln<<" "<<rn<<" "<<llcp<<" "<<rlcp<<" "<<sa[ln]<<" "<<sa[rn]<<endl;
 
-        lpf[sa[i]] = max(llcp, rlcp);
+	if (llcp==0&&rlcp==0) {prev_occ[sai] = -1; lpf[sai] = 1;}
+	// no neighbor
+	else if(llcp > rlcp) {prev_occ[sai] = sa[ln]; lpf[sai] = llcp;}
+	else {prev_occ[sai] = sa[rn];lpf[sai] = rlcp;}
     }
     nextTime("\tlpf");
-    
+    //for(int i=0;i<100;i++)cout<<prev_occ[i]<<" ";cout<<endl;
+
     delete l; delete r;
 }
 
-void getLPF_1(int *s, int *sa, int n, int *lcp, int *lpf) {
+void getLPF_1(int *s, int *sa, int n, int *lcp, int *lpf, int* prev_occ) {
     int d = getDepth(n);
     int *leftElements = new int[n], *rightElements = new int[n];
 
@@ -62,11 +74,12 @@ void getLPF_1(int *s, int *sa, int n, int *lcp, int *lpf) {
         rank[sa[i]] = i;
     }
 
+    
     int size = 8196;
 
     //compute lpf for first element
     parallel_for (int i = 0; i < n; i += size) {
-        int j = min(i + size, n);
+      //int j = min(i + size, n);
         int mid = rank[i], left = leftElements[rank[i]], right = rightElements[rank[i]];
         if (left != -1) {
             leftLPF[i] = st.Query(left + 1, mid);
@@ -75,6 +88,13 @@ void getLPF_1(int *s, int *sa, int n, int *lcp, int *lpf) {
         if (right != -1) {
             rightLPF[i] = st.Query(mid + 1, right);
         } else rightLPF[i] = 0;
+
+	if (leftLPF[i] == 0 && rightLPF[i] == 0) {prev_occ[i] = -1; lpf[i] = 1;}
+	// no neighbor
+	else if(leftLPF[i] > rightLPF[i]) {
+	  prev_occ[i] = sa[left]; lpf[i] = leftLPF[i];}
+	else {prev_occ[i] = sa[right];lpf[i] = rightLPF[i];}
+
     }
     st.DeleteTree();
 
@@ -96,12 +116,22 @@ void getLPF_1(int *s, int *sa, int n, int *lcp, int *lpf) {
                 while (s[sa[right] + rlcp] == s[k + rlcp]) rlcp++;
                 rightLPF[k] = rlcp;
             } else rightLPF[k] = 0;
+
+
+	    if (leftLPF[k]==0&&rightLPF[k]==0) {prev_occ[k] = -1; lpf[k] = 1;}
+	    // no neighbor
+	    else if(leftLPF[k] > rightLPF[k]) {
+	      prev_occ[k] = sa[left]; lpf[k] = leftLPF[k];}
+	    else {prev_occ[k] = sa[right];lpf[k] = rightLPF[k];}
+
         }
     }
 
-    parallel_for (int i = 0; i < n; i++) {
-        lpf[i] = max(leftLPF[i], rightLPF[i]);
-    }
+    // parallel_for (int i = 0; i < n; i++) {
+    //   int left = leftElementsRanked[i];
+    //   int right = rightElementsRanked[i];
+    //     lpf[i] = max(leftLPF[i], rightLPF[i]);
+    // }
 
     nextTime("\tlpf");
  
@@ -109,7 +139,7 @@ void getLPF_1(int *s, int *sa, int n, int *lcp, int *lpf) {
     delete leftLPF; delete rightLPF;
 }
 
-void getLPF_2(int *s, int *sa, int n, int *lcp, int *lpf) {
+void getLPF_2(int *s, int *sa, int n, int *lcp, int *lpf, int* prev_occ) {
     int d = getDepth(n);
     int *leftElements = new int[n], *rightElements = new int[n];
 
@@ -126,9 +156,13 @@ void getLPF_2(int *s, int *sa, int n, int *lcp, int *lpf) {
 
     // lcp = GetLCP(s,  n, sa);
     // nextTime("\tlinear lcp test");
-
+    
+    //int p = get_threads();
+#if defined(CILKP)
     int p = get_threads();
-
+#else
+    int p = 8;
+#endif
     p *= 2;
     int size = (n + p - 1) / p;
     //int size = 8196;
@@ -150,6 +184,13 @@ void getLPF_2(int *s, int *sa, int n, int *lcp, int *lpf) {
             rightLPF[i] = rlcp;
         } else rightLPF[i] = 0;
 
+	if (leftLPF[i]==0&&rightLPF[i]==0) {prev_occ[i] = -1; lpf[i] = 1;}
+	// no neighbor
+	else if(leftLPF[i] > rightLPF[i]) {
+	  prev_occ[i] = sa[left]; lpf[i] = leftLPF[i];}
+	else {prev_occ[i] = sa[right];lpf[i] = rightLPF[i];}
+
+
         //compute lpf for rest elements
         for (int k = i + 1; k < j; k++) {
             left = leftElements[rank[k]];
@@ -166,12 +207,19 @@ void getLPF_2(int *s, int *sa, int n, int *lcp, int *lpf) {
                 while (s[sa[right] + rlcp] == s[k + rlcp]) rlcp++;
                 rightLPF[k] = rlcp;
             } else rightLPF[k] = 0;
+
+	    if (leftLPF[k]==0&&rightLPF[k]==0) {prev_occ[k] = -1; lpf[k] = 1;}
+	    // no neighbor
+	    else if(leftLPF[k] > rightLPF[k]) {
+	      prev_occ[k] = sa[left]; lpf[k] = leftLPF[k];}
+	    else {prev_occ[k] = sa[right];lpf[k] = rightLPF[k];}
+
         }
     }
 
-    parallel_for (int i = 0; i < n; i++) {
-        lpf[i] = max(leftLPF[i], rightLPF[i]);
-    }
+    // parallel_for (int i = 0; i < n; i++) {
+    //     lpf[i] = max(leftLPF[i], rightLPF[i]);
+    // }
 
     nextTime("\tlpf");
  
@@ -182,7 +230,7 @@ void getLPF_2(int *s, int *sa, int n, int *lcp, int *lpf) {
 
 int flag = 0;
 
-pair<int *, int> ParallelLZ77(int *s, int n) {
+pair<pair<int, int>*,int> ParallelLZ77(int *s, int n) {
     startTime();
 
     pair<int *, int*> salcp = suffixArray(s, n, flag < 2 ? true : false);
@@ -195,25 +243,29 @@ pair<int *, int> ParallelLZ77(int *s, int n) {
         parallel_for (int i = 1; i < n; i++) 
             lcp[i] = salcp.second[i-1];
     }
-
+    int* prev_occ = new int[n];
+    //parallel_for(int i=0;i<n;i++) prev_occ[i] = -1;
     int *lpf = new int[n];
     if (flag == 0)
-        getLPF_0(s, sa, n, lcp, lpf);
+      getLPF_0(s, sa, n, lcp, lpf,prev_occ);
     else if (flag == 1)
-        getLPF_1(s, sa, n, lcp, lpf);
+      getLPF_1(s, sa, n, lcp, lpf,prev_occ);
     else 
-        getLPF_2(s, sa, n, lcp, lpf);
+      getLPF_2(s, sa, n, lcp, lpf,prev_occ);
 
     //for (int i = 0; i < n; i++) {printf("%d ", lpf[i]);} puts("");
     delete salcp.first;
     delete salcp.second;
-
-    pair<int *, int> r = ParallelLPFtoLZ(lpf, n);
-    delete lpf;
+    //for(int i=0;i<10;i++)cout<<lpf[i]<<" ";cout<<endl;
+    // for(int i=0;i<100;i++)cout<<prev_occ[i]<<" ";cout<<endl;
+    
+    pair< pair<int, int>*, int> r = ParallelLPFtoLZ(lpf, prev_occ, n);
+    nextTime("\tlpf to lz");
+    delete lpf; delete prev_occ;
     return r;
 }
 
-int main(int argc, char *argv[]) {
+int parallel_main(int argc, char *argv[]) {
     int opt;
     while ((opt = getopt(argc, argv, "p:d:r:i:o:f:")) != -1) {
         if (opt == 'f') {
@@ -223,6 +275,7 @@ int main(int argc, char *argv[]) {
     }
 
     optind = 1;
+
     return test_main(argc, argv, (char *)"Parallel LZ77 using suffix array", ParallelLZ77);
 }
 

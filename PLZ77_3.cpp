@@ -129,7 +129,7 @@ pair<int *, int> ParallelLZ77(int *s, int n) {
     return r;
 }
 
-int main(int argc, char *argv[]) {
+int parallel_main(int argc, char *argv[]) {
     return test_main(argc, argv, (char *)"LZ77 using suffix tree (nlog n)", ParallelLZ77);
 }
 

@@ -28,6 +28,7 @@
 #include "gettime.h"
 #include "seq.h"
 #include "utils.h"
+#include "parallel.h"
 using namespace std;
 
 template <class ET, class CMP, class HASH>
@@ -185,7 +186,7 @@ seq<ET> removeDuplicates(seq<ET> A, int m, CMP cmpF, HASH hashF, ET least) {
   Table<ET,CMP,HASH> T(m,cmpF,hashF,least);
   //nextTime("make table");
   parallel_grainsize_256
-  parallel_for(int i=0;i<A.size();i++) T.insert(A[i]);
+    parallel_for(int i=0;i<A.size();i++) T.insert(A[i]);
   //nextTime("insert");
   seq<ET> R = T.entries();
   //nextTime("entries");

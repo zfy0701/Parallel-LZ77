@@ -25,6 +25,7 @@
 #if defined(CILK)
 #include <cilk/cilk.h>
 #include <cilk/cilk_api.h>
+#define parallel_main main
 #define parallel_for cilk_for
 #define parallel_for_1 _Pragma("cilk_grainsize = 1") cilk_for
 #define parallel_grainsize_1 _Pragma("cilk_grainsize = 1")
@@ -38,6 +39,7 @@
 #elif defined(CILKP)
 #include <cilk/cilk.h>
 #include <cilk/cilk_api.h>
+#define parallel_main main
 #define parallel_for cilk_for
 #define parallel_for_1 _Pragma("cilk grainsize = 1") cilk_for
 #define parallel_grainsize_1 _Pragma("cilk grainsize = 1")
@@ -50,13 +52,14 @@
 
 #elif defined(OPENMP)
 #include <omp.h>
+#define parallel_main main
 #define parallel_for _Pragma("omp parallel for") for
 #define parallel_for_1 _Pragma("omp parallel for schedule (static,1)") for
-#define parallel_grainsize_1 
-#define parallel_grainsize_2 
+#define parallel_grainsize_1
+#define parallel_grainsize_2
 #define parallel_grainsize_256
 #define parallel_spawn _Pragma("omp task")
-#define parallel_sync _Pragma("omp taskwait") 
+#define parallel_sync _Pragma("omp taskwait")
 #define set_threads(p) omp_set_num_threads(p)
 #define get_threads() omp_get_max_threads()
 
@@ -66,12 +69,23 @@
 #define parallel_for_1 for
 #define parallel_for for
 #define parallel_main main
-#define parallel_grainsize_1 
-#define parallel_grainsize_2 
-#define parallel_grainsize_256 
-#define set_threads(p) 
+#define parallel_grainsize_1
+#define parallel_grainsize_2
+#define parallel_grainsize_256
+#define set_threads(p)
 #define get_threads()  1
 #endif
- 
 
 
+
+#include <limits.h>
+
+#if defined(LONG)
+typedef long intT;
+typedef unsigned long uintT;
+#define INT_T_MAX LONG_MAX
+#else
+typedef int intT;
+typedef unsigned int uintT;
+#define INT_T_MAX INT_MAX
+#endif

@@ -24,7 +24,7 @@
 #include "math.h"
 #include "utils.h"
 
-#define BSIZE 1
+#define BSIZE 16
 
 myRMQ::myRMQ(int* _a, int _n){
   a = _a;
