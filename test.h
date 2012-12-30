@@ -7,16 +7,16 @@
 #include "gettime.h"
 #include "stringGen.h"
 
-inline int get_file_size(char * path) {
+inline intT get_file_size(char * path) {
 	struct stat info;
 	stat(path, &info);
 	return info.st_size;
 }
 
 
-inline void generateText(int *a, int n, int sigma)  {
+inline void generateText(intT *a, intT n, int sigma)  {
 	srand(time(NULL));
-	for (int i = 0; i < n; i++)
+	for (intT i = 0; i < n; i++)
 		a[i] = rand() % sigma + 1;
 }
 
@@ -31,7 +31,7 @@ inline void Usage(char *program) {
 	printf("-h \t\tDisplay this help\n");
 }
 
-inline int test_main(int argc, char *argv[], char * algoname, std::pair< std::pair<int, int>*, int> lz77(int *s, int n)) {
+inline int test_main(int argc, char *argv[], char * algoname, std::pair< std::pair<intT, intT>*, intT> lz77(intT *s, intT n)) {
 	int opt;
 	int p = 1, d = -1, n = -1;
 	int sigma = -1;
@@ -98,7 +98,7 @@ inline int test_main(int argc, char *argv[], char * algoname, std::pair< std::pa
 	set_threads(p);
 	printf("***************** TEST BEGIN *****************\n");
 
-	int *s = newA(int,n+3);
+	intT *s = newA(intT,n+3);
 
 	if (sigma >= 1) {
 		printf(" * Data generated randomly with alphabet size: %d.\n", sigma);
@@ -130,12 +130,13 @@ inline int test_main(int argc, char *argv[], char * algoname, std::pair< std::pa
 	s[n] = s[n + 1] = s[n + 2] = 0;
 	testTm.start();
 
-	std::pair< std::pair<int,int>*, int> res = lz77(s, n);
-	int maxoffset = n - res.first[res.second-1].first;
-	for (int i = 0; i < res.second - 1; i++) {
+	std::pair< std::pair<intT,intT>*, intT> res = lz77(s, n);
+	intT maxoffset = n - res.first[res.second-1].first;
+	for (intT i = 0; i < res.second - 1; i++) {
 		maxoffset = std::max(maxoffset, res.first[i+1].first - res.first[i].first);
 	}
-	printf(" * result: size = %d, max offset = %d\n", res.second, maxoffset);
+	
+	cout<<" * result: size = "<<res.second<<", max offset = "<<maxoffset<<endl;
 	testTm.reportNext(" * Total time:");
 	printf("***************** TEST ENDED *****************\n\n");
 	//for(int i=0;i<100;i++)cout<<"("<<res.first[i].first << ","<<res.first[i].second<<") ";cout<<endl;

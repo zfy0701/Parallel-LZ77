@@ -15,11 +15,11 @@ using namespace std;
 
 const int BLOCK_SIZE = 8192;
 
-inline int getLeft_opt(int **table, int depth, int n, int index, int start) {
-	int value = table[0][index];
+inline intT getLeft_opt(intT **table, intT depth, intT n, intT index, intT start) {
+	intT value = table[0][index];
 	if (value == table[depth - 1][0]) return -1;
 
-	int cur = PARENT(start), d, dist = 2;
+	intT cur = PARENT(start), d, dist = 2;
 	for (d = 1; d < depth; d++) {
 		if ((cur + 1) * dist > index + 1) cur --;
 		if (cur < 0) return -1;
@@ -37,11 +37,11 @@ inline int getLeft_opt(int **table, int depth, int n, int index, int start) {
 	return cur;
 } 
 
-inline int getRight_opt(int **table, int depth, int n, int index, int start) {
-	int value = table[0][index];
+inline intT getRight_opt(intT **table, intT depth, intT n, intT index, intT start) {
+	intT value = table[0][index];
 	if (value == table[depth - 1][0]) return -1;
 
-	int cur = PARENT(start), d, dist = 2;
+	intT cur = PARENT(start), d, dist = 2;
 	for (d = 1; d < depth; d++) {
 		if (cur * dist < index) cur ++;
 		if (cur * dist >= n) return -1;
@@ -60,9 +60,9 @@ inline int getRight_opt(int **table, int depth, int n, int index, int start) {
 }
 
 
-void ComputeANSV_Linear(int a[], int n, int leftElements[], int rightElements[], int offset) {
-    int i, top;
-    int *stack = new int[n];
+void ComputeANSV_Linear(intT a[], intT n, intT leftElements[], intT rightElements[], intT offset) {
+    intT i, top;
+    intT *stack = new intT[n];
 
     for (i = 0, top = -1; i < n; i++) {
         while (top > -1 && a[stack[top]] > a[i]) top--;
@@ -80,23 +80,23 @@ void ComputeANSV_Linear(int a[], int n, int leftElements[], int rightElements[],
     delete stack;
 }
 
-void ComputeANSV(int * a, int n, int *left, int *right) {
-    int l2 = cflog2(n);
-    int depth = l2 + 1;
-	int **table = new int*[depth];
+void ComputeANSV(intT * a, intT n, intT *left, intT *right) {
+    intT l2 = cflog2(n);
+    intT depth = l2 + 1;
+	intT **table = new intT*[depth];
 
 	table[0] = a;
-	int m = n;
-	for (int i = 1; i < depth; i++) {
+	intT m = n;
+	for (intT i = 1; i < depth; i++) {
 		m = (m + 1) / 2;
-		table[i] = new int[m];
+		table[i] = new intT[m];
 	}
 
 	m = n;
-	for (int d = 1; d < depth; d++) {
-		int m2 = m / 2;
+	for (intT d = 1; d < depth; d++) {
+		intT m2 = m / 2;
 
-		parallel_for (int i = 0; i < m2; i++) {
+		parallel_for (intT i = 0; i < m2; i++) {
 			table[d][i] = min(table[d - 1][LEFT(i)], table[d - 1][RIGHT(i)]);
 		}
 
@@ -107,12 +107,12 @@ void ComputeANSV(int * a, int n, int *left, int *right) {
 		m = (m + 1) / 2;
 	}
 
-  	parallel_for (int i = 0; i < n; i += BLOCK_SIZE) {
-  		int j = min(i + BLOCK_SIZE, n);
+  	parallel_for (intT i = 0; i < n; i += BLOCK_SIZE) {
+  		intT j = min(i + BLOCK_SIZE, n);
   		ComputeANSV_Linear(a + i, j - i, left + i, right + i, i);
 
-  		int tmp = i;
-  		for (int k = i; k < j; k++) {
+  		intT tmp = i;
+  		for (intT k = i; k < j; k++) {
   			if (left[k] == -1) {
   				if ( tmp != -1 && a[tmp] >= a[k]) {
   					//if (left[tmp] != -1)
@@ -124,7 +124,7 @@ void ComputeANSV(int * a, int n, int *left, int *right) {
   		}
 
   		tmp = j - 1;
-  		for (int k = j - 1; k >=  i; k--) {
+  		for (intT k = j - 1; k >=  i; k--) {
   			if (right[k] == -1) {
   				if (tmp != -1 && a[tmp] >= a[k]) {
   					//if (right[tmp] != -1)
@@ -136,6 +136,6 @@ void ComputeANSV(int * a, int n, int *left, int *right) {
   		}
   	}
 
-  	for (int i = 1; i < depth; i++) delete table[i];
+  	for (intT i = 1; i < depth; i++) delete table[i];
   	delete table;
 }

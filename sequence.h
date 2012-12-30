@@ -78,19 +78,19 @@ namespace sequence {
     OT *Sums = newA(OT,l);
     blocked_for (i, s, e, _SCAN_BSIZE,
 		 Sums[i] = reduceSerial<OT>(s, e, f, g););
-    OT r = reduce<OT>(0, l, f, getA<OT,intT>(Sums));
+    OT r = reduce<OT>((intT)0, l, f, getA<OT,intT>(Sums));
     free(Sums);
     return r;
   }
 
   template <class OT, class intT, class F>
   OT reduce(OT* A, intT n, F f) {
-    return reduce<OT>(0,n,f,getA<OT,intT>(A));
+    return reduce<OT>((intT)0,n,f,getA<OT,intT>(A));
   }
 
   template <class OT, class intT>
   OT plusReduce(OT* A, intT n) {
-    return reduce<OT>(0,n,utils::addF<OT>(),getA<OT,intT>(A));
+    return reduce<OT>((intT)0,n,utils::addF<OT>(),getA<OT,intT>(A));
   }
 
   // g is the map function (applied to each element)
@@ -159,7 +159,7 @@ namespace sequence {
 
   template <class ET, class intT, class F>
   ET scanSerial(ET *In, ET* Out, intT n, F f, ET zero) {
-    return scanSerial(Out, 0, n, f, getA<ET,intT>(In), zero, false, false);
+    return scanSerial(Out, (intT)0, n, f, getA<ET,intT>(In), zero, false, false);
   }
 
   // back indicates it runs in reverse direction
@@ -171,7 +171,7 @@ namespace sequence {
     ET *Sums = newA(ET,nblocks(n,_SCAN_BSIZE));
     blocked_for (i, s, e, _SCAN_BSIZE,
 		 Sums[i] = reduceSerial<ET>(s, e, f, g););
-    ET total = scan(Sums, 0, l, f, getA<ET,intT>(Sums), zero, false, back);
+    ET total = scan(Sums, (intT)0, l, f, getA<ET,intT>(Sums), zero, false, back);
     blocked_for (i, s, e, _SCAN_BSIZE,
 		 scanSerial(Out, s, e, f, g, Sums[i], inclusive, back););
     delete Sums;
@@ -180,23 +180,23 @@ namespace sequence {
 
   template <class ET, class intT, class F>
   ET scan(ET *In, ET* Out, intT n, F f, ET zero) {
-    return scan(Out, 0, n, f, getA<ET,intT>(In), zero, false, false);}
+    return scan(Out, (intT)0, n, f, getA<ET,intT>(In), zero, false, false);}
 
   template <class ET, class intT, class F>
   ET scanBack(ET *In, ET* Out, intT n, F f, ET zero) {
-    return scan(Out, 0, n, f, getA<ET,intT>(In), zero, false, true);}
+    return scan(Out, (intT)0, n, f, getA<ET,intT>(In), zero, false, true);}
 
   template <class ET, class intT, class F>
   ET scanI(ET *In, ET* Out, intT n, F f, ET zero) {
-    return scan(Out, 0, n, f, getA<ET,intT>(In), zero, true, false);}
+    return scan(Out, (intT)0, n, f, getA<ET,intT>(In), zero, true, false);}
 
   template <class ET, class intT, class F>
   ET scanIBack(ET *In, ET* Out, intT n, F f, ET zero) {
-    return scan(Out, 0, n, f, getA<ET,intT>(In), zero, true, true);}
+    return scan(Out, (intT)0, n, f, getA<ET,intT>(In), zero, true, true);}
 
   template <class ET, class intT>
   ET plusScan(ET *In, ET* Out, intT n) {
-    return scan(Out, 0, n, utils::addF<ET>(), getA<ET,intT>(In), 0, false, false);}
+    return scan(Out, (intT)0, n, utils::addF<ET>(), getA<ET,intT>(In), (intT)0, false, false);}
 
 #define _F_BSIZE (2*_SCAN_BSIZE)
 
@@ -239,11 +239,11 @@ namespace sequence {
 
   template <class ET, class intT>
   intT pack(ET* In, ET* Out, bool* Fl, intT n) {
-    return pack(Out, Fl, 0, n, getA<ET,intT>(In));}
+    return pack(Out, Fl, (intT)0, n, getA<ET,intT>(In));}
 
   template <class intT>
   intT packIndex(intT* Out, bool* Fl, intT n) {
-    return pack(Out, Fl, 0, n, utils::identityF<intT>());
+    return pack(Out, Fl, (intT)0, n, utils::identityF<intT>());
   }
 
   template <class ET, class intT, class PRED>

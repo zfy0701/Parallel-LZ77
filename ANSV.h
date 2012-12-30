@@ -1,7 +1,7 @@
 #ifndef _ANSV_H
 #define _ANSV_H
-
-void ComputeANSV(int * a, int n, int *left, int *right);
-void ComputeANSV_Linear(int a[], int n, int leftElements[], int rightElements[], int offset = 0);
+#include "parallel.h"
+void ComputeANSV(intT * a, intT n, intT *left, intT *right);
+void ComputeANSV_Linear(intT a[], intT n, intT leftElements[], intT rightElements[], intT offset = 0);
 
 #endif

@@ -29,16 +29,16 @@ using namespace std;
 
 class myRMQ{
 protected:
-  int* a;
-  int n;
-  int m;
-  int** table;
-  int depth;
+  intT* a;
+  intT n;
+  intT m;
+  intT** table;
+  intT depth;
 
 public:
-  myRMQ(int* a, int n);
+  myRMQ(intT* a, intT n);
   void precomputeQueries();
-  int query(int i, int j);
+  intT query(intT i, intT j);
   ~myRMQ();
 };
 

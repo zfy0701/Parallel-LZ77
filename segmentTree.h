@@ -1,17 +1,17 @@
 #ifndef _SEGMENT_TREE_H
 #define _SEGMENT_TREE_H
-
+#include "parallel.h"
 class SegmentTree {
 private:
 	static const int INFI = 1 << 30;
-	int n;
-	int **table;
-	int *all;
-	int depth;
-	int query(int cur, int d, int l, int r);
+	intT n;
+	intT **table;
+	intT *all;
+	intT depth;
+	intT query(intT cur, intT d, intT l, intT r);
 public:
-	void BuildTree(int *a, int n);
-	int Query(int l, int r);
+	void BuildTree(intT *a, intT n);
+	intT Query(intT l, intT r);
 	void DeleteTree();
 };
 

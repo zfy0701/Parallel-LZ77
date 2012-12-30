@@ -13,23 +13,23 @@ using namespace std;
 #define RIGHT(i) (((i) << 1) | 1)
 #define PARENT(i) ((i) >> 1)
 
-void SegmentTree::BuildTree(int * a, int _n) {
+void SegmentTree::BuildTree(intT * a, intT _n) {
 	n = _n;
     depth = getDepth(n);
-    table = new int*[depth];
+    table = new intT*[depth];
     
     table[0] = a;
-    int m = n;
-    for (int i = 1; i < depth; i++) {
+    intT m = n;
+    for (intT i = 1; i < depth; i++) {
         m = (m + 1) / 2;
-        table[i] = new int[m];
+        table[i] = new intT[m];
     }
 
     m = n;
-    for (int d = 1; d < depth; d++) {
-        int m2 = m / 2;
+    for (intT d = 1; d < depth; d++) {
+        intT m2 = m / 2;
 
-        parallel_for (int i = 0; i < m2; i++) {
+        parallel_for (intT i = 0; i < m2; i++) {
             table[d][i] = min(table[d - 1][LEFT(i)], table[d - 1][RIGHT(i)]);
         }
 
@@ -42,18 +42,18 @@ void SegmentTree::BuildTree(int * a, int _n) {
 }
 
 void SegmentTree::DeleteTree() {
-	for (int i = 1; i < depth; i++) delete table[i];
+	for (intT i = 1; i < depth; i++) delete table[i];
     delete table;
 }
 
-int SegmentTree::Query(int l, int r) {
+intT SegmentTree::Query(intT l, intT r) {
 	return this->query(0, depth - 1, l, r);
 }
 
-int SegmentTree::query(int cur, int dep, int l, int r) {
-	int range = 1 << dep;
-	int leftBound = cur * range;
-	int rightBound = min(leftBound + range - 1, n - 1);	//all the bound is incluisve
+intT SegmentTree::query(intT cur, intT dep, intT l, intT r) {
+	intT range = 1 << dep;
+	intT leftBound = cur * range;
+	intT rightBound = min(leftBound + range - 1, n - 1);	//all the bound is incluisve
 
 	if (leftBound >= n) return INFI;	              //invaild node [since the tree is not 2^n size]
 
