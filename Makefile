@@ -21,7 +21,8 @@ else ifdef CILKP
 PCC = icpc
 CFLAGS = -O2 -DCILKP $(INTT)
 else
-PCC = $(CC)
+PCC = $(CC) 
+CFLAGS = $(INTT)
 #CFLAGS = -g
 endif
 
