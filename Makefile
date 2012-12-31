@@ -27,7 +27,7 @@ CFLAGS = $(INTT)
 endif
 
 BASIC = parallel.h utils.h
-SEQUENCE = sequence.h $(BASIC)
+SEQUENCE = sequence.h seq.h $(BASIC)
 INTSORT = intSort.h transpose.h
 STRINGGEN = $(ITEMGEN) stringGen.h
 

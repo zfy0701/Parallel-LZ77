@@ -38,53 +38,53 @@ typedef void *voidp;
 template <class ET>
 class seq {
 private:
-  static int _nextPow(int i) {
-    int a=0;
-    int b=i-1;
+  static intT _nextPow(intT i) {
+    intT a=0;
+    intT b=i-1;
     while (b > 0) {b = b >> 1; a++;}
     return (1 << a);
   }
 
 public:
   ET* S;
-  int sz;
-  seq(ET* seq, int size) : sz(size),S(seq) {}
+  intT sz;
+  seq(ET* seq, intT size) : sz(size),S(seq) {}
   seq() {sz = 0; S = NULL; }
   seq(ET v) { sz = 1; S = newA(ET,1); S[0] = v;}
 
   seq copy() {
     ET *A = newA(ET,sz);
-    parallel_for(int i=0;i<sz;i++) A[i] = S[i];
+    parallel_for(intT i=0;i<sz;i++) A[i] = S[i];
     return seq(A,sz);
   }
 
    template <class F> 
-   static void tabulate(ET* I, int s, int e, F f) {
-     int n = e-s;
+   static void tabulate(ET* I, intT s, intT e, F f) {
+     intT n = e-s;
      if (n > _BSIZE) {
        parallel_spawn tabulate(I, s, s+n/2, f);
        tabulate(I, s+n/2, e, f);
        parallel_sync;
      } else {
-       for (int i=s; i<e; i++) I[i] = f(i);
+       for (intT i=s; i<e; i++) I[i] = f(i);
      }
   }
 
-  template <class F> seq(int n, F f) {
+  template <class F> seq(intT n, F f) {
     sz = n; S = newA(ET,sz);
     tabulate(S,0,n,f);
   }
 
-  ET& operator[] (const int i) { return S[i]; }
+  ET& operator[] (const intT i) { return S[i]; }
 
   void del() {if (S!=NULL) free(S);}
-  int size() {return sz;} 
-  ET nth(int i) {return S[i];}
+  intT size() {return sz;} 
+  ET nth(intT i) {return S[i];}
 
   template <class F> 
   pair<seq,seq> split(F f) {
     ET* S1 = newA(ET,sz); ET* S2 = newA(ET,sz);
-    int i,j;
+    intT i,j;
     for (j=0, i=0; i<sz; i++)
       if (f(S[i])) S1[j++] = S[i]; else S2[i-j] = S[i];
     return pair<seq,seq>(seq(S1,j),seq(S2,sz-j));
@@ -96,32 +96,32 @@ public:
     return sequence::mapReduce<ET,OT,FR,FM>(S,sz,fr,fm);}
 
   template <class F> 
-  int maxIndex(F f) {return sequence::maxIndex(S,sz,f); }
+  intT maxIndex(F f) {return sequence::maxIndex(S,sz,f); }
 
   seq append(seq S2) {
-    int rsize = S2.size()+sz;
+    intT rsize = S2.size()+sz;
     ET* R = newA(ET,rsize);
-    parallel_for (int i=0; i<sz; i++) R[i] = S[i];
-    parallel_for (int ii=0; ii<S2.size(); ii++) R[ii+sz] = S2.S[ii];
+    parallel_for (intT i=0; i<sz; i++) R[i] = S[i];
+    parallel_for (intT ii=0; ii<S2.size(); ii++) R[ii+sz] = S2.S[ii];
     return seq(R,rsize);
   }
 
   seq appendD(seq S2) {
-    int rsize = S2.size()+sz;
+    intT rsize = S2.size()+sz;
     ET* R = newA(ET,rsize);
-    parallel_for (int i=0; i<sz; i++) R[i] = S[i];
-    parallel_for (int ii=0; ii<S2.size(); ii++) R[ii+sz] = S2.S[ii];
+    parallel_for (intT i=0; i<sz; i++) R[i] = S[i];
+    parallel_for (intT ii=0; ii<S2.size(); ii++) R[ii+sz] = S2.S[ii];
     free(S2.S); free(S);
     return seq(R,rsize);
   }
 
   template <class OT, class F> 
-  void mapR(OT* R, int s, int n, F f) {
+  void mapR(OT* R, intT s, intT n, F f) {
     if (n > _BSIZE) {
       parallel_spawn mapR(R,s,n/2,f); 
       mapR(R,s+n/2,n-n/2,f);
       parallel_sync;
-    } else for (int i=s; i<s+n; i++) R[i] = f(S[i]);
+    } else for (intT i=s; i<s+n; i++) R[i] = f(S[i]);
   }
 
   template <class OT, class F> 
@@ -146,22 +146,22 @@ public:
   }
 
   template <class F>
-  static seq<int> packIndex(int start, int n, F f) {
-    int *Out = newA(int,n);
-    int m = sequence::packIndex(Out,start,start+n,f);
+  static seq<intT> packIndex(intT start, intT n, F f) {
+    intT *Out = newA(intT,n);
+    intT m = sequence::packIndex(Out,start,start+n,f);
     return seq(Out,m);
   }
 
   seq<ET> pack(seq<bool> Fl) {
     ET *Out = newA(ET,sz);
-    int m = sequence::pack(S,Out,Fl.S,sz);
+    intT m = sequence::pack(S,Out,Fl.S,sz);
     return seq(Out,m);
   }
 
   template <class F> 
   seq filter(F f) {
     ET *Out = newA(ET,sz);
-    int n = sequence::filter(S,Out,sz,f);
+    intT n = sequence::filter(S,Out,sz,f);
     return seq(Out,n);
   }
 
@@ -179,7 +179,7 @@ ostream &operator<<(ostream &os, seq<ETYPE> S) {
   os << "[";
   if (S.size() > 0) {
     os << S.nth(0);
-    for (int i=1; i < S.size(); i++)
+    for (intT i=1; i < S.size(); i++)
       os << "," << S.nth(i);
   }
   os << "]";

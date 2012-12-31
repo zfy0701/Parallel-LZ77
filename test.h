@@ -33,10 +33,10 @@ inline void Usage(char *program) {
 
 inline int test_main(int argc, char *argv[], char * algoname, std::pair< std::pair<intT, intT>*, intT> lz77(intT *s, intT n)) {
 	int opt;
-	int p = 1, d = -1, n = -1;
-	int sigma = -1;
+	int p = 1, d = -1; intT n = -1;
+	intT sigma = -1;
 	char path[1025] = {};
-	int t = 0;
+	//int t = 0;
 
 	while ((opt = getopt(argc, argv, "p:d:r:i:o:f:t:")) != -1) {
 		switch (opt) {
@@ -101,7 +101,8 @@ inline int test_main(int argc, char *argv[], char * algoname, std::pair< std::pa
 	intT *s = newA(intT,n+3);
 
 	if (sigma >= 1) {
-		printf(" * Data generated randomly with alphabet size: %d.\n", sigma);
+	  
+	  cout<<" * Data generated randomly with alphabet size: "<<sigma<<endl;
 		generateText(s, n, sigma);
 	} else {
 		printf(" * Data from file: %s\n", path);
@@ -109,6 +110,7 @@ inline int test_main(int argc, char *argv[], char * algoname, std::pair< std::pa
 
 		seq<char> str = dataGen::readCharFile(path);
 		intT size = str.size();
+		
 		if (n > size) {
 			perror("The file is not as large as the size specified.");
 			exit(1);
@@ -122,7 +124,7 @@ inline int test_main(int argc, char *argv[], char * algoname, std::pair< std::pa
 		//readText(a, n, path);
 	}
 
-	printf(" * Data size: %d\n", n);
+	cout<<" * Data size: "<<n<<endl;
 	printf(" * Algorithm: %s\n", algoname);
 	printf(" * Threads num: %d\n", p);
 
