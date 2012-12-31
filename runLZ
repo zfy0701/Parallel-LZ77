@@ -29,7 +29,7 @@ def shellGetOutput(str) :
 testfiles = ["10Midentical","10Mrandom","10Msqrtn","chr22.dna","etext99","howto.txt","jdk13c","rctail96","rfc","sprot34.dat","thesaurus.doc","w3c2","wikisamp.xml","wikisamp9.xml"]
 #testfiles = ["wikisamp9.xml"]
 testfiles = ["proteins","english"]
-
+testfiles = ["english"]
 
 apps = ["lz77_1","lz77_2","lz77_3"]
 

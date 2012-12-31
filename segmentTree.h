@@ -3,7 +3,7 @@
 #include "parallel.h"
 class SegmentTree {
 private:
-	static const int INFI = 1 << 30;
+  static const intT INFI = INT_T_MAX;
 	intT n;
 	intT **table;
 	intT *all;
