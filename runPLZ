@@ -29,12 +29,12 @@ def shellGetOutput(str) :
 #testfiles = []
 testfiles = ["10Midentical","10Mrandom","10Msqrtn","chr22.dna","etext99","howto.txt","jdk13c","rctail96","rfc","sprot34.dat","thesaurus.doc","w3c2","wikisamp.xml","wikisamp9.xml"]
 #testfiles = ["wikisamp9.xml"]
-testfiles = ["proteins","english"]
-testfiles = ["english"]
+#testfiles = ["proteins","english"]
+testfiles = ["pitches","proteins.200MB","sources"]
 
 processors = [1,2,4]+range(8,80+1,8)
 #processors= [64]
-processors = [1] + range(32,80+1,8)
+#processors = [1] + range(32,80+1,8)
 
 for testfile in testfiles :
   for p in processors :
