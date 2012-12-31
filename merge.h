@@ -27,10 +27,10 @@
 #define _MERGE_BSIZE 8192
 
 template <class ET, class F>
-int binSearchOld(ET *S, int n, ET v) {
+intT binSearchOld(ET *S, intT n, ET v) {
     if (n == 0) return 0;
     else {
-        int mid = n / 2;
+        intT mid = n / 2;
         // if (f(v,S[mid])) return binSearch(S, mid, v, f);
         if (v < S[mid]) return binSearch(S, mid, v);
         else return mid + 1 + binSearch(S + mid + 1, (n - mid) - 1, v);
@@ -38,10 +38,10 @@ int binSearchOld(ET *S, int n, ET v) {
 }
 
 template <class ET, class F>
-int binSearch(ET *S, int n, ET v, F f) {
+intT binSearch(ET *S, intT n, ET v, F f) {
     ET *T = S;
     while (n > 0) {
-        int mid = n / 2;
+        intT mid = n / 2;
         if (f(v, T[mid])) n = mid;
         else {
             n = (n - mid) - 1;
@@ -56,28 +56,28 @@ int binSearch(ET *S, int n, ET v, F f) {
 #define SPLIT_BSIZE (_MERGE_BSIZE >> 2)
 
 template <class ET, class F>
-void merge(ET *S1, int l1, ET *S2, int l2, ET *R, F f) {
-    int lr = l1 + l2;
+void merge(ET *S1, intT l1, ET *S2, intT l2, ET *R, F f) {
+    intT lr = l1 + l2;
     if (lr > _MERGE_BSIZE) {
         if (l2 > l1)  merge(S2, l2, S1, l1, R, f);
         else {
-            int ll1 = (l1 + SPLIT_BSIZE - 1) / SPLIT_BSIZE;
+            intT ll1 = (l1 + SPLIT_BSIZE - 1) / SPLIT_BSIZE;
 
-            int *pos1 = new int[ll1 + 1]; // pos1[i] means the position of s1[i*Splite] in s2
+            intT *pos1 = new intT[ll1 + 1]; // pos1[i] means the position of s1[i*Splite] in s2
             *(pos1++) = 0;
 
-            parallel_for (int i = 0; i < ll1; i++) {
+            parallel_for (intT i = 0; i < ll1; i++) {
                 pos1[i] = binSearch(S2, l2, S1[std::min((i + 1) * SPLIT_BSIZE, l1) - 1], f);
             }
 
             pos1[ll1-1] = l2;
 
             {
-            parallel_for (int i = 0; i < ll1; i++) {
-                int start1 = i * SPLIT_BSIZE;
-                int n1 = std::min(SPLIT_BSIZE, l1 - start1);
-                int start2 = pos1[i - 1];
-                int n2 = pos1[i] - start2;
+            parallel_for (intT i = 0; i < ll1; i++) {
+                intT start1 = i * SPLIT_BSIZE;
+                intT n1 = std::min(SPLIT_BSIZE, l1 - start1);
+                intT start2 = pos1[i - 1];
+                intT n2 = pos1[i] - start2;
                 
                 std::merge(S1+start1, S1+start1+n1, S2+start2, S2+start2+n2, R+start1+start2, f);
             }
@@ -92,13 +92,13 @@ void merge(ET *S1, int l1, ET *S2, int l2, ET *R, F f) {
 
 #else
 template <class ET, class F> 
-void merge(ET* S1, int l1, ET* S2, int l2, ET* R, F f) {
-  int lr = l1 + l2;
-  if (lr > _MERGE_BSIZE) {
+void merge(ET* S1, intT l1, ET* S2, intT l2, ET* R, F f) {
+  intT lr = l1 + l2; //cout<<"merge "<<lr<<endl;
+  if (lr > _MERGE_BSIZE) { 
     if (l2>l1)  merge(S2,l2,S1,l1,R,f);
     else {
-      int m1 = l1/2;
-      int m2 = binSearch(S2,l2,S1[m1],f);
+      intT m1 = l1/2;
+      intT m2 = binSearch(S2,l2,S1[m1],f);  
       parallel_spawn 
       merge(S1,m1,S2,m2,R,f);
       merge(S1+m1,l1-m1,S2+m2,l2-m2,R+m1+m2,f);
@@ -112,8 +112,16 @@ void merge(ET* S1, int l1, ET* S2, int l2, ET* R, F f) {
     ET* eS2 = S2+l2;
     while (true) {
       *pR++ = f(*pS2,*pS1) ? *pS2++ : *pS1++;
-      if (pS1==eS1) {std::copy(pS2,eS2,pR); break;}
-      if (pS2==eS2) {std::copy(pS1,eS1,pR); break;}
+      if (pS1==eS1) {
+	//while(pS2 != eS2) *pR++ = *pS2++;
+	std::copy(pS2,eS2,pR); 
+	break;
+      }
+      if (pS2==eS2) {
+	//while(pS1 != eS1) *pR++ = *pS1++;
+	std::copy(pS1,eS1,pR); 
+	break;
+      }
     }
   }
 }

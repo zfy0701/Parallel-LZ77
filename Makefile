@@ -3,7 +3,7 @@ INTT = -DLONG
 endif
 
 CC = g++
-CFLAGS = -O2
+CFLAGS = -O2 $(INTT)
 LFLAGS =
 
 ifdef OPENMP
@@ -22,7 +22,7 @@ PCC = icpc
 CFLAGS = -O2 -DCILKP $(INTT)
 else
 PCC = $(CC) 
-CFLAGS = $(INTT)
+#CFLAGS = $(INTT)
 #CFLAGS = -g
 endif
 

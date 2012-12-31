@@ -368,7 +368,7 @@ pair<intT*,intT*> suffixArrayRec(intT* s, intT n, int K, bool findLCPs) {
   n = n+1;
   intT n0=(n+2)/3, n1=(n+1)/3, n12=n-n0;
   pair<intT,intT> *C = (pair<intT,intT> *) malloc(n12*sizeof(pair<intT,intT>));
-
+  //cout<<n<<endl;
   int bits = utils::logUp(K);
   // if 3 chars fit into an int then just do one radix sort
   if (bits < 11) {
@@ -452,7 +452,6 @@ pair<intT*,intT*> suffixArrayRec(intT* s, intT n, int K, bool findLCPs) {
   rank[n]=1; rank[n+1] = 0;
   parallel_for (intT i = 0;  i < n12;  i++) {rank[SA12[i]] = i+2;}
 
-  
   // stably sort the mod 0 suffixes 
   // uses the fact that we already have the tails sorted in SA12
   intT* s0  = newA(intT,n0);
@@ -468,9 +467,9 @@ pair<intT*,intT*> suffixArrayRec(intT* s, intT n, int K, bool findLCPs) {
   free(D);
 
   compS comp(s,rank);
-  int o = (n%3 == 1) ? 1 : 0;
-  intT *SA = newA(intT,n); 
-  merge(SA0+o,n0-o,SA12+1-o,n12+o-1,SA,comp);
+  intT o = (n%3 == 1) ? 1 : 0;
+  intT *SA = newA(intT,n); //cout<<"start merge "<<n0-o<<" "<<n12+o-1<<endl;;
+  merge(SA0+o,n0-o,SA12+1-o,n12+o-1,SA,comp); //cout<<"end merge\n";
   free(SA0); free(SA12);
   intT* LCP = NULL;
 
@@ -499,6 +498,7 @@ pair<intT*,intT*> suffixArrayRec(intT* s, intT n, int K, bool findLCPs) {
     free(LCP12);
   }
   free(rank);
+
   return make_pair(SA,LCP);
 }
 
