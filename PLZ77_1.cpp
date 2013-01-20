@@ -184,7 +184,8 @@ void getLPF_2(intT *s, intT *sa, intT n, intT *lcp, intT *lpf, intT *prev_occ) {
     }
     // no neighbor
     else if (leftLPF[i] > rightLPF[i]) {
-      prev_occ[i] = sa[left]; lpf[i] = leftLPF[i];
+      prev_occ[i] = sa[left];
+      lpf[i] = leftLPF[i];
     } else {
       prev_occ[i] = sa[right];
       lpf[i] = rightLPF[i];
