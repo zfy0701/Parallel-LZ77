@@ -76,8 +76,6 @@
 #define get_threads()  1
 #endif
 
-
-
 #include <limits.h>
 
 #if defined(LONG)

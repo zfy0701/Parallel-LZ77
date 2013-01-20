@@ -21,7 +21,7 @@ else ifdef CILKP
 PCC = icpc
 CFLAGS = -O2 -DCILKP $(INTT)
 else
-PCC = $(CC) 
+PCC = $(CC)
 #CFLAGS = $(INTT)
 #CFLAGS = -g
 endif
@@ -30,7 +30,6 @@ BASIC = parallel.h utils.h
 SEQUENCE = sequence.h seq.h $(BASIC)
 INTSORT = intSort.h transpose.h
 STRINGGEN = $(ITEMGEN) stringGen.h
-
 
 all: plz77_1 lz77_1 lz77_2 lz77_3
 
@@ -92,9 +91,3 @@ PLZ77_3.o: PLZ77_3.cpp test.h
 
 plz77_3: PLZ77_3.o rangeMin.o suffixArray.o mergeSuffixArrayToTree.o LPF_LZ.o
 	$(PCC) $(LFLAGS) -o $@ $^
-
-# suffixArrayTest.o: suffixArrayTest.C $(STRINGGEN) $(SEQUENCE)
-# 	$(PCC) $(CFLAGS) -c suffixArrayTest.C
-
-# suffixArray : suffixArrayTest.o suffixArray.o rangeMin.o
-# 	$(PCC) $(LFLAGS) -o $@ suffixArrayTest.o suffixArray.o rangeMin.o
