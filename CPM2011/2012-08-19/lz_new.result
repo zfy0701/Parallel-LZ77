@@ -1,0 +1,26 @@
+# 18:31:31 
+Test case = /fibo/fib_s9227465
+# 18:31:31 
+Test case = /fibo/fib_s14930352
+# 18:31:31 
+Test case = /periodic/fss9
+# 18:31:31 
+Test case = /periodic/fss10
+# 18:31:31 
+Test case = /random/rndA2_8Mb
+# 18:31:31 
+Test case = /random/rndA21_8Mb
+# 18:31:31 
+Test case = /dna/E.coli
+# 18:31:31 
+Test case = /dna/chr19.dna4
+# 18:31:31 
+Test case = /dna/chr22.dna4
+# 18:31:31 
+Test case = /protein/p16Mb
+# 18:31:31 
+Test case = /protein/p32Mb
+# 18:31:31 
+Test case = /english/bible
+# 18:31:31 
+Test case = /english/howto

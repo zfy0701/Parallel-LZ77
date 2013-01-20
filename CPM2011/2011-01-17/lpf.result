@@ -1,0 +1,1989 @@
+# 08:58:41 
+Test case = /fibo/fib_s9227465
+time for sa: 2.748171
+time for lcp: 1.400088
+time for lpf_simple: 2.756172
+time for lpf_next_prev: 0.800050
+time for lpf_sorting: 0.972061
+time for lpf_on_line: 0.656041
+time for lpf_optimal: 1.300081
+# 08:58:52 
+Test case = /fibo/fib_s14930352
+time for sa: 4.824302
+time for lcp: 2.180136
+time for lpf_simple: 4.540284
+time for lpf_next_prev: 1.164073
+time for lpf_sorting: 1.544096
+time for lpf_on_line: 1.068067
+time for lpf_optimal: 1.076067
+# 08:59:09 
+Test case = /periodic/fss9
+time for sa: 0.676042
+time for lcp: 0.368023
+time for lpf_simple: 0.732046
+time for lpf_next_prev: 0.204012
+time for lpf_sorting: 0.288018
+time for lpf_on_line: 0.220014
+time for lpf_optimal: 0.212013
+# 08:59:11 
+Test case = /periodic/fss10
+time for sa: 3.812238
+time for lcp: 1.732109
+time for lpf_simple: 3.840240
+time for lpf_next_prev: 1.060066
+time for lpf_sorting: 1.316083
+time for lpf_on_line: 0.988061
+time for lpf_optimal: 0.964060
+# 08:59:25 
+Test case = /random/rndA2_8Mb
+time for sa: 1.504095
+time for lcp: 1.528095
+time for lpf_simple: 2.404151
+time for lpf_next_prev: 0.728045
+time for lpf_sorting: 1.096069
+time for lpf_on_line: 0.696043
+time for lpf_optimal: 0.652040
+# 08:59:34 
+Test case = /random/rndA21_8Mb
+time for sa: 1.916121
+time for lcp: 1.544096
+time for lpf_simple: 2.396150
+time for lpf_next_prev: 0.728045
+time for lpf_sorting: 1.156073
+time for lpf_on_line: 0.672041
+time for lpf_optimal: 0.652041
+# 08:59:43 
+Test case = /dna/E.coli
+time for sa: 0.720045
+time for lcp: 0.784049
+time for lpf_simple: 1.208075
+time for lpf_next_prev: 0.344022
+time for lpf_sorting: 0.576036
+time for lpf_on_line: 0.360022
+time for lpf_optimal: 0.340021
+# 08:59:48 
+Test case = /dna/chr19.dna4
+time for sa: 14.736921
+time for lcp: 19.265204
+time for lpf_simple: 26.333646
+time for lpf_next_prev: 7.636477
+time for lpf_sorting: 11.880742
+time for lpf_on_line: 6.800426
+time for lpf_optimal: 7.112444
+# 09:01:23 
+Test case = /dna/chr22.dna4
+time for sa: 7.524470
+time for lcp: 8.856554
+time for lpf_simple: 15.864991
+time for lpf_next_prev: 5.808363
+time for lpf_sorting: 5.556348
+time for lpf_on_line: 3.316207
+time for lpf_optimal: 3.372211
+# 09:02:14 
+Test case = /protein/p16Mb
+time for sa: 3.940246
+time for lcp: 3.312208
+time for lpf_simple: 5.168323
+time for lpf_next_prev: 1.452090
+time for lpf_sorting: 2.304144
+time for lpf_on_line: 1.384086
+time for lpf_optimal: 1.340084
+# 09:02:33 
+Test case = /protein/p32Mb
+time for sa: 8.588537
+time for lcp: 8.340522
+time for lpf_simple: 12.408775
+time for lpf_next_prev: 2.964185
+time for lpf_sorting: 5.456341
+time for lpf_on_line: 3.076192
+time for lpf_optimal: 3.196200
+# 09:03:18 
+Test case = /english/bible
+time for sa: 0.580036
+time for lcp: 0.620039
+time for lpf_simple: 0.952059
+time for lpf_next_prev: 0.300019
+time for lpf_sorting: 0.464029
+time for lpf_on_line: 0.300019
+time for lpf_optimal: 0.292018
+# 09:03:21 
+Test case = /english/howto
+time for sa: 6.800426
+time for lcp: 7.952496
+time for lpf_simple: 12.172761
+time for lpf_next_prev: 4.160260
+time for lpf_sorting: 5.288331
+time for lpf_on_line: 3.428214
+time for lpf_optimal: 3.392212
+# 09:53:05 
+Test case = /fibo/fib_s9227465
+time for sa: 2.752172
+time for lcp: 1.332083
+time for lpf_simple: 2.732171
+time for lpf_next_prev: 0.796049
+time for lpf_sorting: 0.964060
+time for lpf_on_line: 0.656042
+time for lpf_optimal: 0.656041
+# 09:53:15 
+Test case = /fibo/fib_s14930352
+time for sa: 4.816300
+time for lcp: 2.112133
+time for lpf_simple: 4.488281
+time for lpf_next_prev: 1.152071
+time for lpf_sorting: 1.528096
+time for lpf_on_line: 1.056066
+time for lpf_optimal: 1.128070
+# 09:53:32 
+Test case = /periodic/fss9
+time for sa: 0.680042
+time for lcp: 0.388024
+time for lpf_simple: 0.736047
+time for lpf_next_prev: 0.200012
+time for lpf_sorting: 0.296018
+time for lpf_on_line: 0.220014
+time for lpf_optimal: 0.216014
+# 09:53:35 
+Test case = /periodic/fss10
+time for sa: 3.828239
+time for lcp: 1.672105
+time for lpf_simple: 4.412276
+time for lpf_next_prev: 1.060066
+time for lpf_sorting: 1.276080
+time for lpf_on_line: 0.984061
+time for lpf_optimal: 0.968061
+# 09:53:49 
+Test case = /random/rndA2_8Mb
+time for sa: 1.512095
+time for lcp: 1.528095
+time for lpf_simple: 2.408150
+time for lpf_next_prev: 0.728046
+time for lpf_sorting: 1.100068
+time for lpf_on_line: 0.700044
+time for lpf_optimal: 0.652041
+# 09:53:58 
+Test case = /random/rndA21_8Mb
+time for sa: 1.920121
+time for lcp: 1.544096
+time for lpf_simple: 2.376149
+time for lpf_next_prev: 0.728045
+time for lpf_sorting: 1.080068
+time for lpf_on_line: 0.676041
+time for lpf_optimal: 0.652042
+# 09:54:07 
+Test case = /dna/E.coli
+time for sa: 0.720045
+time for lcp: 0.788049
+time for lpf_simple: 1.208076
+time for lpf_next_prev: 0.348022
+time for lpf_sorting: 0.576036
+time for lpf_on_line: 0.360022
+time for lpf_optimal: 0.340022
+# 09:54:11 
+Test case = /dna/chr19.dna4
+time for sa: 13.932870
+time for lcp: 19.869242
+time for lpf_simple: 26.289644
+time for lpf_next_prev: 6.148384
+time for lpf_sorting: 11.764735
+time for lpf_on_line: 6.768423
+time for lpf_optimal: 7.856491
+# 09:55:45 
+Test case = /dna/chr22.dna4
+time for sa: 6.884430
+time for lcp: 8.784549
+time for lpf_simple: 15.216951
+time for lpf_next_prev: 5.824364
+time for lpf_sorting: 5.620352
+time for lpf_on_line: 3.200200
+time for lpf_optimal: 3.260204
+# 09:56:35 
+Test case = /protein/p16Mb
+time for sa: 3.940246
+time for lcp: 4.012251
+time for lpf_simple: 5.164322
+time for lpf_next_prev: 1.448091
+time for lpf_sorting: 2.296143
+time for lpf_on_line: 1.372086
+time for lpf_optimal: 1.336084
+# 09:56:55 
+Test case = /protein/p32Mb
+time for sa: 8.580535
+time for lcp: 8.180512
+time for lpf_simple: 11.856741
+time for lpf_next_prev: 2.956184
+time for lpf_sorting: 5.428340
+time for lpf_on_line: 3.208200
+time for lpf_optimal: 3.140197
+# 09:57:39 
+Test case = /english/bible
+time for sa: 0.584036
+time for lcp: 0.620039
+time for lpf_simple: 0.956060
+time for lpf_next_prev: 0.296018
+time for lpf_sorting: 0.464029
+time for lpf_on_line: 0.304019
+time for lpf_optimal: 0.288018
+# 09:57:42 
+Test case = /english/howto
+time for sa: 6.788425
+time for lcp: 7.948496
+time for lpf_simple: 12.156760
+time for lpf_next_prev: 3.448215
+time for lpf_sorting: 5.264330
+time for lpf_on_line: 3.452215
+time for lpf_optimal: 3.320208
+# 10:47:23 
+Test case = /fibo/fib_s9227465
+time for sa: 2.756172
+time for lcp: 1.380086
+time for lpf_simple: 2.736172
+time for lpf_next_prev: 0.792049
+time for lpf_sorting: 0.956059
+time for lpf_on_line: 0.748047
+time for lpf_optimal: 1.208075
+# 10:47:34 
+Test case = /fibo/fib_s14930352
+time for sa: 4.824302
+time for lcp: 2.164135
+time for lpf_simple: 4.560285
+time for lpf_next_prev: 1.144072
+time for lpf_sorting: 1.548096
+time for lpf_on_line: 1.052067
+time for lpf_optimal: 1.072067
+# 10:47:50 
+Test case = /periodic/fss9
+time for sa: 0.672041
+time for lcp: 0.372024
+time for lpf_simple: 0.732045
+time for lpf_next_prev: 0.200013
+time for lpf_sorting: 0.288018
+time for lpf_on_line: 0.220014
+time for lpf_optimal: 0.216014
+# 10:47:53 
+Test case = /periodic/fss10
+time for sa: 3.812239
+time for lcp: 1.712106
+time for lpf_simple: 3.764236
+time for lpf_next_prev: 1.060066
+time for lpf_sorting: 1.240077
+time for lpf_on_line: 0.992062
+time for lpf_optimal: 0.964060
+# 10:48:07 
+Test case = /random/rndA2_8Mb
+time for sa: 1.500094
+time for lcp: 1.528095
+time for lpf_simple: 2.388149
+time for lpf_next_prev: 0.728045
+time for lpf_sorting: 1.096069
+time for lpf_on_line: 0.704045
+time for lpf_optimal: 0.652040
+# 10:48:16 
+Test case = /random/rndA21_8Mb
+time for sa: 1.916120
+time for lcp: 1.540096
+time for lpf_simple: 2.380150
+time for lpf_next_prev: 0.728045
+time for lpf_sorting: 1.152072
+time for lpf_on_line: 0.672042
+time for lpf_optimal: 0.652041
+# 10:48:25 
+Test case = /dna/E.coli
+time for sa: 0.724045
+time for lcp: 0.784050
+time for lpf_simple: 1.208074
+time for lpf_next_prev: 0.344022
+time for lpf_sorting: 0.576036
+time for lpf_on_line: 0.360022
+time for lpf_optimal: 0.340022
+# 10:48:29 
+Test case = /dna/chr19.dna4
+time for sa: 14.720920
+time for lcp: 19.237202
+time for lpf_simple: 26.509657
+time for lpf_next_prev: 6.964435
+time for lpf_sorting: 11.736734
+time for lpf_on_line: 6.912432
+time for lpf_optimal: 6.552409
+# 10:50:03 
+Test case = /dna/chr22.dna4
+time for sa: 6.880430
+time for lcp: 8.768548
+time for lpf_simple: 15.800988
+time for lpf_next_prev: 5.812364
+time for lpf_sorting: 5.556347
+time for lpf_on_line: 3.320208
+time for lpf_optimal: 3.308206
+# 10:50:54 
+Test case = /protein/p16Mb
+time for sa: 3.940247
+time for lcp: 3.336207
+time for lpf_simple: 5.132321
+time for lpf_next_prev: 1.448091
+time for lpf_sorting: 2.292143
+time for lpf_on_line: 1.388087
+time for lpf_optimal: 1.336084
+# 10:51:13 
+Test case = /protein/p32Mb
+time for sa: 8.564535
+time for lcp: 8.184512
+time for lpf_simple: 12.520783
+time for lpf_next_prev: 2.960185
+time for lpf_sorting: 5.428339
+time for lpf_on_line: 3.040190
+time for lpf_optimal: 3.216201
+# 10:51:57 
+Test case = /english/bible
+time for sa: 0.580036
+time for lcp: 0.620039
+time for lpf_simple: 1.292081
+time for lpf_next_prev: 0.612038
+time for lpf_sorting: 0.460029
+time for lpf_on_line: 0.300018
+time for lpf_optimal: 0.288018
+# 10:52:01 
+Test case = /english/howto
+time for sa: 6.788424
+time for lcp: 7.920494
+time for lpf_simple: 12.156760
+time for lpf_next_prev: 3.892243
+time for lpf_sorting: 5.308333
+time for lpf_on_line: 3.464216
+time for lpf_optimal: 3.412214
+# 11:41:39 
+Test case = /fibo/fib_s9227465
+time for sa: 2.756172
+time for lcp: 1.348085
+time for lpf_simple: 2.736170
+time for lpf_next_prev: 0.804050
+time for lpf_sorting: 0.972061
+time for lpf_on_line: 0.652041
+time for lpf_optimal: 0.656041
+# 11:41:49 
+Test case = /fibo/fib_s14930352
+time for sa: 4.816300
+time for lcp: 2.176137
+time for lpf_simple: 4.584286
+time for lpf_next_prev: 1.152072
+time for lpf_sorting: 1.548097
+time for lpf_on_line: 1.068066
+time for lpf_optimal: 1.056067
+# 11:42:06 
+Test case = /periodic/fss9
+time for sa: 0.672042
+time for lcp: 0.396024
+time for lpf_simple: 0.740047
+time for lpf_next_prev: 0.200012
+time for lpf_sorting: 0.300019
+time for lpf_on_line: 0.220014
+time for lpf_optimal: 0.212013
+# 11:42:09 
+Test case = /periodic/fss10
+time for sa: 3.828239
+time for lcp: 1.676105
+time for lpf_simple: 3.776236
+time for lpf_next_prev: 1.056066
+time for lpf_sorting: 1.240078
+time for lpf_on_line: 0.988061
+time for lpf_optimal: 0.960061
+# 11:42:22 
+Test case = /random/rndA2_8Mb
+time for sa: 1.508094
+time for lcp: 1.528095
+time for lpf_simple: 2.392150
+time for lpf_next_prev: 0.724045
+time for lpf_sorting: 1.104069
+time for lpf_on_line: 0.700044
+time for lpf_optimal: 0.648041
+# 11:42:31 
+Test case = /random/rndA21_8Mb
+time for sa: 1.908120
+time for lcp: 1.540096
+time for lpf_simple: 2.392150
+time for lpf_next_prev: 0.724045
+time for lpf_sorting: 1.072066
+time for lpf_on_line: 0.672043
+time for lpf_optimal: 0.652041
+# 11:42:40 
+Test case = /dna/E.coli
+time for sa: 0.720045
+time for lcp: 0.784049
+time for lpf_simple: 1.208076
+time for lpf_next_prev: 0.344021
+time for lpf_sorting: 0.576036
+time for lpf_on_line: 0.364023
+time for lpf_optimal: 0.340021
+# 11:42:45 
+Test case = /dna/chr19.dna4
+time for sa: 13.896869
+time for lcp: 19.169198
+time for lpf_simple: 26.989686
+time for lpf_next_prev: 6.120383
+time for lpf_sorting: 11.776736
+time for lpf_on_line: 6.924432
+time for lpf_optimal: 6.584412
+# 11:44:17 
+Test case = /dna/chr22.dna4
+time for sa: 7.512469
+time for lcp: 8.880555
+time for lpf_simple: 15.200950
+time for lpf_next_prev: 5.800362
+time for lpf_sorting: 5.756360
+time for lpf_on_line: 3.436214
+time for lpf_optimal: 3.248203
+# 11:45:08 
+Test case = /protein/p16Mb
+time for sa: 3.936246
+time for lcp: 3.308208
+time for lpf_simple: 5.136320
+time for lpf_next_prev: 1.440091
+time for lpf_sorting: 2.848177
+time for lpf_on_line: 1.364086
+time for lpf_optimal: 1.352084
+# 11:45:28 
+Test case = /protein/p32Mb
+time for sa: 8.564534
+time for lcp: 8.128509
+time for lpf_simple: 11.856741
+time for lpf_next_prev: 2.960185
+time for lpf_sorting: 5.544346
+time for lpf_on_line: 3.032190
+time for lpf_optimal: 3.088193
+# 11:46:11 
+Test case = /english/bible
+time for sa: 0.584036
+time for lcp: 0.620039
+time for lpf_simple: 1.512094
+time for lpf_next_prev: 0.392025
+time for lpf_sorting: 0.460028
+time for lpf_on_line: 0.304019
+time for lpf_optimal: 0.288018
+# 11:46:15 
+Test case = /english/howto
+time for sa: 7.432465
+time for lcp: 7.900494
+time for lpf_simple: 12.160759
+time for lpf_next_prev: 3.436215
+time for lpf_sorting: 5.252328
+time for lpf_on_line: 3.536221
+time for lpf_optimal: 3.324208
+# 12:35:53 
+Test case = /fibo/fib_s9227465
+time for sa: 2.756172
+time for lcp: 1.336084
+time for lpf_simple: 2.748172
+time for lpf_next_prev: 0.820051
+time for lpf_sorting: 0.980061
+time for lpf_on_line: 0.660041
+time for lpf_optimal: 0.660041
+# 12:36:03 
+Test case = /fibo/fib_s14930352
+time for sa: 4.820301
+time for lcp: 2.156135
+time for lpf_simple: 5.208325
+time for lpf_next_prev: 1.160073
+time for lpf_sorting: 1.584099
+time for lpf_on_line: 1.060066
+time for lpf_optimal: 1.056066
+# 12:36:21 
+Test case = /periodic/fss9
+time for sa: 0.672042
+time for lcp: 0.388024
+time for lpf_simple: 0.744047
+time for lpf_next_prev: 0.200012
+time for lpf_sorting: 0.296018
+time for lpf_on_line: 0.216014
+time for lpf_optimal: 0.216013
+# 12:36:23 
+Test case = /periodic/fss10
+time for sa: 3.828240
+time for lcp: 1.648102
+time for lpf_simple: 3.776236
+time for lpf_next_prev: 1.076068
+time for lpf_sorting: 1.284080
+time for lpf_on_line: 0.988062
+time for lpf_optimal: 0.952059
+# 12:36:37 
+Test case = /random/rndA2_8Mb
+time for sa: 1.512094
+time for lcp: 1.528095
+time for lpf_simple: 2.392150
+time for lpf_next_prev: 0.732046
+time for lpf_sorting: 1.100068
+time for lpf_on_line: 0.704044
+time for lpf_optimal: 0.696044
+# 12:36:46 
+Test case = /random/rndA21_8Mb
+time for sa: 1.912119
+time for lcp: 1.540096
+time for lpf_simple: 2.380149
+time for lpf_next_prev: 0.728046
+time for lpf_sorting: 1.160072
+time for lpf_on_line: 0.676043
+time for lpf_optimal: 0.648040
+# 12:36:55 
+Test case = /dna/E.coli
+time for sa: 0.720045
+time for lcp: 0.784049
+time for lpf_simple: 1.208076
+time for lpf_next_prev: 0.344021
+time for lpf_sorting: 0.576036
+time for lpf_on_line: 0.360022
+time for lpf_optimal: 0.340022
+# 12:37:00 
+Test case = /dna/chr19.dna4
+time for sa: 14.312895
+time for lcp: 19.425214
+time for lpf_simple: 26.349646
+time for lpf_next_prev: 6.120383
+time for lpf_sorting: 12.432777
+time for lpf_on_line: 6.828427
+time for lpf_optimal: 6.576410
+# 12:38:33 
+Test case = /dna/chr22.dna4
+time for sa: 6.872429
+time for lcp: 8.812551
+time for lpf_simple: 15.172948
+time for lpf_next_prev: 5.836365
+time for lpf_sorting: 6.216389
+time for lpf_on_line: 3.324207
+time for lpf_optimal: 3.248203
+# 12:39:23 
+Test case = /protein/p16Mb
+time for sa: 3.932246
+time for lcp: 3.320207
+time for lpf_simple: 5.132321
+time for lpf_next_prev: 1.440090
+time for lpf_sorting: 2.284143
+time for lpf_on_line: 1.388086
+time for lpf_optimal: 1.368085
+# 12:39:42 
+Test case = /protein/p32Mb
+time for sa: 8.556534
+time for lcp: 8.176511
+time for lpf_simple: 11.860741
+time for lpf_next_prev: 3.548223
+time for lpf_sorting: 5.544345
+time for lpf_on_line: 3.148197
+time for lpf_optimal: 2.936184
+# 12:40:27 
+Test case = /english/bible
+time for sa: 0.580037
+time for lcp: 0.620038
+time for lpf_simple: 0.956060
+time for lpf_next_prev: 0.340021
+time for lpf_sorting: 0.848053
+time for lpf_on_line: 0.440028
+time for lpf_optimal: 0.288018
+# 12:40:31 
+Test case = /english/howto
+time for sa: 6.780423
+time for lcp: 7.940497
+time for lpf_simple: 12.152760
+time for lpf_next_prev: 3.436214
+time for lpf_sorting: 5.080318
+time for lpf_on_line: 3.584224
+time for lpf_optimal: 3.964248
+# 13:30:07 
+Test case = /fibo/fib_s9227465
+time for sa: 2.756172
+time for lcp: 1.316082
+time for lpf_simple: 2.760173
+time for lpf_next_prev: 0.800049
+time for lpf_sorting: 0.984063
+time for lpf_on_line: 0.656040
+time for lpf_optimal: 0.652041
+# 13:30:18 
+Test case = /fibo/fib_s14930352
+time for sa: 4.808301
+time for lcp: 2.136134
+time for lpf_simple: 4.508282
+time for lpf_next_prev: 1.148071
+time for lpf_sorting: 1.520095
+time for lpf_on_line: 1.064067
+time for lpf_optimal: 1.052065
+# 13:30:34 
+Test case = /periodic/fss9
+time for sa: 0.672042
+time for lcp: 0.392024
+time for lpf_simple: 0.740047
+time for lpf_next_prev: 0.204013
+time for lpf_sorting: 0.296018
+time for lpf_on_line: 0.220013
+time for lpf_optimal: 0.216014
+# 13:30:37 
+Test case = /periodic/fss10
+time for sa: 3.824238
+time for lcp: 1.644103
+time for lpf_simple: 3.808238
+time for lpf_next_prev: 1.060066
+time for lpf_sorting: 1.236077
+time for lpf_on_line: 0.992062
+time for lpf_optimal: 0.952060
+# 13:30:51 
+Test case = /random/rndA2_8Mb
+time for sa: 1.512095
+time for lcp: 1.528096
+time for lpf_simple: 2.404149
+time for lpf_next_prev: 0.728046
+time for lpf_sorting: 1.100069
+time for lpf_on_line: 0.712044
+time for lpf_optimal: 0.652042
+# 13:30:59 
+Test case = /random/rndA21_8Mb
+time for sa: 1.912120
+time for lcp: 1.548096
+time for lpf_simple: 2.580162
+time for lpf_next_prev: 1.296081
+time for lpf_sorting: 1.072067
+time for lpf_on_line: 0.672042
+time for lpf_optimal: 0.652041
+# 13:31:09 
+Test case = /dna/E.coli
+time for sa: 0.724046
+time for lcp: 0.788049
+time for lpf_simple: 1.212076
+time for lpf_next_prev: 0.344021
+time for lpf_sorting: 0.580036
+time for lpf_on_line: 0.360022
+time for lpf_optimal: 0.340021
+# 13:31:14 
+Test case = /dna/chr19.dna4
+time for sa: 13.904869
+time for lcp: 19.221201
+time for lpf_simple: 28.341772
+time for lpf_next_prev: 6.156385
+time for lpf_sorting: 11.724733
+time for lpf_on_line: 6.800424
+time for lpf_optimal: 6.812426
+# 13:32:48 
+Test case = /dna/chr22.dna4
+time for sa: 6.888430
+time for lcp: 8.868554
+time for lpf_simple: 15.736984
+time for lpf_next_prev: 5.816363
+time for lpf_sorting: 5.564349
+time for lpf_on_line: 3.184198
+time for lpf_optimal: 3.256204
+# 13:33:38 
+Test case = /protein/p16Mb
+time for sa: 3.928245
+time for lcp: 3.312208
+time for lpf_simple: 5.140321
+time for lpf_next_prev: 1.448090
+time for lpf_sorting: 2.212139
+time for lpf_on_line: 1.380085
+time for lpf_optimal: 1.352085
+# 13:33:57 
+Test case = /protein/p32Mb
+time for sa: 9.220576
+time for lcp: 8.200513
+time for lpf_simple: 11.868741
+time for lpf_next_prev: 2.964185
+time for lpf_sorting: 5.512345
+time for lpf_on_line: 3.076192
+time for lpf_optimal: 3.088193
+# 13:34:42 
+Test case = /english/bible
+time for sa: 0.580037
+time for lcp: 0.616038
+time for lpf_simple: 0.952060
+time for lpf_next_prev: 0.296017
+time for lpf_sorting: 0.460030
+time for lpf_on_line: 0.304019
+time for lpf_optimal: 0.288018
+# 13:34:45 
+Test case = /english/howto
+time for sa: 6.788425
+time for lcp: 7.916495
+time for lpf_simple: 12.836801
+time for lpf_next_prev: 3.448216
+time for lpf_sorting: 5.168323
+time for lpf_on_line: 3.492219
+time for lpf_optimal: 3.320206
+# 14:24:51 
+Test case = /fibo/fib_s9227465
+time for sa: 2.748173
+time for lcp: 1.300081
+time for lpf_simple: 3.356209
+time for lpf_next_prev: 0.800050
+time for lpf_sorting: 0.956060
+time for lpf_on_line: 0.652041
+time for lpf_optimal: 0.648040
+# 14:25:02 
+Test case = /fibo/fib_s14930352
+time for sa: 4.796301
+time for lcp: 2.128132
+time for lpf_simple: 4.492281
+time for lpf_next_prev: 1.140072
+time for lpf_sorting: 1.528095
+time for lpf_on_line: 1.064066
+time for lpf_optimal: 1.048066
+# 14:25:18 
+Test case = /periodic/fss9
+time for sa: 0.672042
+time for lcp: 0.392024
+time for lpf_simple: 0.732046
+time for lpf_next_prev: 0.200013
+time for lpf_sorting: 0.288018
+time for lpf_on_line: 0.220013
+time for lpf_optimal: 0.216014
+# 14:25:21 
+Test case = /periodic/fss10
+time for sa: 3.816239
+time for lcp: 1.620101
+time for lpf_simple: 3.816238
+time for lpf_next_prev: 1.056066
+time for lpf_sorting: 1.268079
+time for lpf_on_line: 0.992063
+time for lpf_optimal: 0.928057
+# 14:25:34 
+Test case = /random/rndA2_8Mb
+time for sa: 1.504093
+time for lcp: 1.528097
+time for lpf_simple: 2.400150
+time for lpf_next_prev: 0.728045
+time for lpf_sorting: 1.104069
+time for lpf_on_line: 0.704044
+time for lpf_optimal: 0.652041
+# 14:25:43 
+Test case = /random/rndA21_8Mb
+time for sa: 1.912120
+time for lcp: 1.532096
+time for lpf_simple: 2.384149
+time for lpf_next_prev: 0.724045
+time for lpf_sorting: 1.160072
+time for lpf_on_line: 0.676043
+time for lpf_optimal: 0.648040
+# 14:25:52 
+Test case = /dna/E.coli
+time for sa: 0.724046
+time for lcp: 0.784048
+time for lpf_simple: 1.208075
+time for lpf_next_prev: 0.348023
+time for lpf_sorting: 0.572035
+time for lpf_on_line: 0.452028
+time for lpf_optimal: 0.700044
+# 14:25:57 
+Test case = /dna/chr19.dna4
+time for sa: 13.916869
+time for lcp: 19.173199
+time for lpf_simple: 27.649727
+time for lpf_next_prev: 6.144384
+time for lpf_sorting: 11.724733
+time for lpf_on_line: 6.776424
+time for lpf_optimal: 6.848427
+# 14:27:31 
+Test case = /dna/chr22.dna4
+time for sa: 6.868430
+time for lcp: 8.828551
+time for lpf_simple: 15.844991
+time for lpf_next_prev: 5.852365
+time for lpf_sorting: 5.524346
+time for lpf_on_line: 3.432215
+time for lpf_optimal: 3.256203
+# 14:28:21 
+Test case = /protein/p16Mb
+time for sa: 3.936246
+time for lcp: 3.332209
+time for lpf_simple: 5.132321
+time for lpf_next_prev: 1.448090
+time for lpf_sorting: 2.292144
+time for lpf_on_line: 1.368085
+time for lpf_optimal: 1.672105
+# 14:28:41 
+Test case = /protein/p32Mb
+time for sa: 8.572536
+time for lcp: 8.824551
+time for lpf_simple: 12.508782
+time for lpf_next_prev: 2.984187
+time for lpf_sorting: 5.628351
+time for lpf_on_line: 3.060191
+time for lpf_optimal: 3.096194
+# 14:29:26 
+Test case = /english/bible
+time for sa: 0.580036
+time for lcp: 0.620039
+time for lpf_simple: 0.952059
+time for lpf_next_prev: 0.296019
+time for lpf_sorting: 0.464029
+time for lpf_on_line: 0.300018
+time for lpf_optimal: 0.288018
+# 14:29:30 
+Test case = /english/howto
+time for sa: 6.784425
+time for lcp: 7.920495
+time for lpf_simple: 12.820800
+time for lpf_next_prev: 4.252266
+time for lpf_sorting: 6.000375
+time for lpf_on_line: 3.576224
+time for lpf_optimal: 3.320207
+# 15:19:42 
+Test case = /fibo/fib_s9227465
+time for sa: 2.756172
+time for lcp: 1.312082
+time for lpf_simple: 3.288206
+time for lpf_next_prev: 0.884055
+time for lpf_sorting: 0.952060
+time for lpf_on_line: 0.656041
+time for lpf_optimal: 0.652041
+# 15:19:52 
+Test case = /fibo/fib_s14930352
+time for sa: 4.808300
+time for lcp: 2.116132
+time for lpf_simple: 4.620290
+time for lpf_next_prev: 1.160071
+time for lpf_sorting: 1.552097
+time for lpf_on_line: 1.052066
+time for lpf_optimal: 1.068068
+# 15:20:09 
+Test case = /periodic/fss9
+time for sa: 0.668042
+time for lcp: 0.376023
+time for lpf_simple: 0.740046
+time for lpf_next_prev: 0.204013
+time for lpf_sorting: 0.296019
+time for lpf_on_line: 0.220014
+time for lpf_optimal: 0.212013
+# 15:20:12 
+Test case = /periodic/fss10
+time for sa: 3.816238
+time for lcp: 1.664104
+time for lpf_simple: 3.788237
+time for lpf_next_prev: 1.084067
+time for lpf_sorting: 1.276080
+time for lpf_on_line: 0.996062
+time for lpf_optimal: 0.964061
+# 15:20:26 
+Test case = /random/rndA2_8Mb
+time for sa: 1.500094
+time for lcp: 1.524095
+time for lpf_simple: 2.396150
+time for lpf_next_prev: 0.732045
+time for lpf_sorting: 1.024064
+time for lpf_on_line: 0.708045
+time for lpf_optimal: 0.648040
+# 15:20:34 
+Test case = /random/rndA21_8Mb
+time for sa: 1.912120
+time for lcp: 1.552097
+time for lpf_simple: 2.672167
+time for lpf_next_prev: 1.156072
+time for lpf_sorting: 1.160072
+time for lpf_on_line: 0.676043
+time for lpf_optimal: 0.652040
+# 15:20:44 
+Test case = /dna/E.coli
+time for sa: 0.720045
+time for lcp: 0.788050
+time for lpf_simple: 1.212075
+time for lpf_next_prev: 0.344021
+time for lpf_sorting: 0.984062
+time for lpf_on_line: 0.516032
+time for lpf_optimal: 0.340021
+# 15:20:49 
+Test case = /dna/chr19.dna4
+time for sa: 13.920870
+time for lcp: 19.217201
+time for lpf_simple: 28.357772
+time for lpf_next_prev: 6.156385
+time for lpf_sorting: 11.780737
+time for lpf_on_line: 6.908431
+time for lpf_optimal: 6.992437
+# 15:22:24 
+Test case = /dna/chr22.dna4
+time for sa: 6.884430
+time for lcp: 8.848552
+time for lpf_simple: 17.153073
+time for lpf_next_prev: 5.888368
+time for lpf_sorting: 5.632352
+time for lpf_on_line: 3.416213
+time for lpf_optimal: 3.256204
+# 15:23:16 
+Test case = /protein/p16Mb
+time for sa: 3.936247
+time for lcp: 3.360210
+time for lpf_simple: 5.136320
+time for lpf_next_prev: 1.460092
+time for lpf_sorting: 2.292143
+time for lpf_on_line: 1.364085
+time for lpf_optimal: 1.360085
+# 15:23:35 
+Test case = /protein/p32Mb
+time for sa: 8.568535
+time for lcp: 8.812550
+time for lpf_simple: 11.892744
+time for lpf_next_prev: 2.968185
+time for lpf_sorting: 5.500344
+time for lpf_on_line: 3.244203
+time for lpf_optimal: 2.960185
+# 15:24:19 
+Test case = /english/bible
+time for sa: 0.580036
+time for lcp: 0.620039
+time for lpf_simple: 0.960060
+time for lpf_next_prev: 0.296019
+time for lpf_sorting: 0.464029
+time for lpf_on_line: 0.316019
+time for lpf_optimal: 0.288018
+# 15:24:23 
+Test case = /english/howto
+time for sa: 6.796425
+time for lcp: 7.960498
+time for lpf_simple: 12.868804
+time for lpf_next_prev: 3.448215
+time for lpf_sorting: 5.272329
+time for lpf_on_line: 3.492219
+time for lpf_optimal: 3.320208
+# 16:14:29 
+Test case = /fibo/fib_s9227465
+time for sa: 2.752172
+time for lcp: 1.344083
+time for lpf_simple: 2.708170
+time for lpf_next_prev: 0.808051
+time for lpf_sorting: 0.940059
+time for lpf_on_line: 0.656040
+time for lpf_optimal: 0.656042
+# 16:14:39 
+Test case = /fibo/fib_s14930352
+time for sa: 4.816301
+time for lcp: 2.116133
+time for lpf_simple: 4.680292
+time for lpf_next_prev: 1.152072
+time for lpf_sorting: 1.548097
+time for lpf_on_line: 1.052066
+time for lpf_optimal: 1.072067
+# 16:14:56 
+Test case = /periodic/fss9
+time for sa: 0.672042
+time for lcp: 0.376023
+time for lpf_simple: 0.740046
+time for lpf_next_prev: 0.204013
+time for lpf_sorting: 0.296019
+time for lpf_on_line: 0.216013
+time for lpf_optimal: 0.216014
+# 16:14:59 
+Test case = /periodic/fss10
+time for sa: 3.820239
+time for lcp: 1.716107
+time for lpf_simple: 3.792237
+time for lpf_next_prev: 1.064067
+time for lpf_sorting: 1.260078
+time for lpf_on_line: 0.988063
+time for lpf_optimal: 0.968060
+# 16:15:12 
+Test case = /random/rndA2_8Mb
+time for sa: 1.504093
+time for lcp: 1.528096
+time for lpf_simple: 2.396150
+time for lpf_next_prev: 0.728046
+time for lpf_sorting: 1.048064
+time for lpf_on_line: 0.700045
+time for lpf_optimal: 0.664041
+# 16:15:21 
+Test case = /random/rndA21_8Mb
+time for sa: 1.912119
+time for lcp: 1.548097
+time for lpf_simple: 2.396149
+time for lpf_next_prev: 0.732046
+time for lpf_sorting: 1.104069
+time for lpf_on_line: 0.672043
+time for lpf_optimal: 0.652040
+# 16:15:30 
+Test case = /dna/E.coli
+time for sa: 0.720045
+time for lcp: 0.784049
+time for lpf_simple: 1.216076
+time for lpf_next_prev: 0.344022
+time for lpf_sorting: 0.576035
+time for lpf_on_line: 0.356023
+time for lpf_optimal: 0.340021
+# 16:15:35 
+Test case = /dna/chr19.dna4
+time for sa: 13.928871
+time for lcp: 19.157197
+time for lpf_simple: 26.341646
+time for lpf_next_prev: 6.816426
+time for lpf_sorting: 11.836740
+time for lpf_on_line: 7.472467
+time for lpf_optimal: 7.248453
+# 16:17:09 
+Test case = /dna/chr22.dna4
+time for sa: 6.876429
+time for lcp: 8.800551
+time for lpf_simple: 16.489030
+time for lpf_next_prev: 5.816364
+time for lpf_sorting: 5.696356
+time for lpf_on_line: 3.276205
+time for lpf_optimal: 3.120194
+# 16:18:00 
+Test case = /protein/p16Mb
+time for sa: 3.932245
+time for lcp: 3.336209
+time for lpf_simple: 5.152322
+time for lpf_next_prev: 1.448091
+time for lpf_sorting: 2.300143
+time for lpf_on_line: 1.388087
+time for lpf_optimal: 1.340084
+# 16:18:19 
+Test case = /protein/p32Mb
+time for sa: 8.564536
+time for lcp: 8.196512
+time for lpf_simple: 12.592787
+time for lpf_next_prev: 3.556222
+time for lpf_sorting: 5.448341
+time for lpf_on_line: 3.192199
+time for lpf_optimal: 2.976186
+# 16:19:05 
+Test case = /english/bible
+time for sa: 0.580036
+time for lcp: 0.620039
+time for lpf_simple: 0.952060
+time for lpf_next_prev: 0.296018
+time for lpf_sorting: 0.460029
+time for lpf_on_line: 0.304019
+time for lpf_optimal: 0.308019
+# 16:19:08 
+Test case = /english/howto
+time for sa: 6.784424
+time for lcp: 7.960498
+time for lpf_simple: 12.844802
+time for lpf_next_prev: 4.020251
+time for lpf_sorting: 5.156323
+time for lpf_on_line: 3.504219
+time for lpf_optimal: 3.332209
+# 17:09:12 
+Test case = /fibo/fib_s9227465
+time for sa: 2.752172
+time for lcp: 1.400087
+time for lpf_simple: 2.784174
+time for lpf_next_prev: 0.804050
+time for lpf_sorting: 0.980061
+time for lpf_on_line: 0.648040
+time for lpf_optimal: 0.660042
+# 17:09:22 
+Test case = /fibo/fib_s14930352
+time for sa: 4.828302
+time for lcp: 2.220138
+time for lpf_simple: 5.240328
+time for lpf_next_prev: 1.160072
+time for lpf_sorting: 1.592099
+time for lpf_on_line: 1.052066
+time for lpf_optimal: 1.080068
+# 17:09:40 
+Test case = /periodic/fss9
+time for sa: 0.672041
+time for lcp: 0.364023
+time for lpf_simple: 0.740047
+time for lpf_next_prev: 0.200012
+time for lpf_sorting: 0.296019
+time for lpf_on_line: 0.220014
+time for lpf_optimal: 0.216013
+# 17:09:42 
+Test case = /periodic/fss10
+time for sa: 3.816239
+time for lcp: 1.732107
+time for lpf_simple: 3.836241
+time for lpf_next_prev: 1.088067
+time for lpf_sorting: 1.312083
+time for lpf_on_line: 0.992061
+time for lpf_optimal: 0.964061
+# 17:09:56 
+Test case = /random/rndA2_8Mb
+time for sa: 1.504093
+time for lcp: 1.532096
+time for lpf_simple: 2.396150
+time for lpf_next_prev: 0.732046
+time for lpf_sorting: 1.096068
+time for lpf_on_line: 0.700044
+time for lpf_optimal: 0.656041
+# 17:10:05 
+Test case = /random/rndA21_8Mb
+time for sa: 1.912120
+time for lcp: 1.540097
+time for lpf_simple: 2.384148
+time for lpf_next_prev: 0.728046
+time for lpf_sorting: 1.536096
+time for lpf_on_line: 0.880055
+time for lpf_optimal: 0.652041
+# 17:10:15 
+Test case = /dna/E.coli
+time for sa: 0.724045
+time for lcp: 0.784049
+time for lpf_simple: 1.204075
+time for lpf_next_prev: 0.348022
+time for lpf_sorting: 0.576037
+time for lpf_on_line: 0.364022
+time for lpf_optimal: 0.336021
+# 17:10:19 
+Test case = /dna/chr19.dna4
+time for sa: 14.596913
+time for lcp: 19.217200
+time for lpf_simple: 26.993687
+time for lpf_next_prev: 6.164386
+time for lpf_sorting: 12.416776
+time for lpf_on_line: 6.812425
+time for lpf_optimal: 6.860429
+# 17:11:54 
+Test case = /dna/chr22.dna4
+time for sa: 6.880430
+time for lcp: 8.844553
+time for lpf_simple: 15.848990
+time for lpf_next_prev: 6.472404
+time for lpf_sorting: 5.648354
+time for lpf_on_line: 3.316207
+time for lpf_optimal: 3.280205
+# 17:12:45 
+Test case = /protein/p16Mb
+time for sa: 3.936246
+time for lcp: 3.324208
+time for lpf_simple: 5.184323
+time for lpf_next_prev: 1.464092
+time for lpf_sorting: 2.304144
+time for lpf_on_line: 1.384087
+time for lpf_optimal: 1.344084
+# 17:13:04 
+Test case = /protein/p32Mb
+time for sa: 8.564535
+time for lcp: 8.816550
+time for lpf_simple: 12.576787
+time for lpf_next_prev: 2.984186
+time for lpf_sorting: 5.464341
+time for lpf_on_line: 3.036191
+time for lpf_optimal: 3.120194
+# 17:13:49 
+Test case = /english/bible
+time for sa: 0.580036
+time for lcp: 0.616038
+time for lpf_simple: 0.956061
+time for lpf_next_prev: 0.296018
+time for lpf_sorting: 0.464029
+time for lpf_on_line: 0.300018
+time for lpf_optimal: 0.288018
+# 17:13:53 
+Test case = /english/howto
+time for sa: 6.784425
+time for lcp: 7.964497
+time for lpf_simple: 12.212763
+time for lpf_next_prev: 4.268267
+time for lpf_sorting: 5.632352
+time for lpf_on_line: 3.792237
+time for lpf_optimal: 3.332208
+# 18:04:14 
+Test case = /fibo/fib_s9227465
+time for sa: 2.752172
+time for lcp: 1.400088
+time for lpf_simple: 2.752172
+time for lpf_next_prev: 1.308081
+time for lpf_sorting: 1.124071
+time for lpf_on_line: 0.656040
+time for lpf_optimal: 0.660042
+# 18:04:25 
+Test case = /fibo/fib_s14930352
+time for sa: 4.824301
+time for lcp: 2.204138
+time for lpf_simple: 4.520282
+time for lpf_next_prev: 1.152072
+time for lpf_sorting: 1.572099
+time for lpf_on_line: 1.056066
+time for lpf_optimal: 1.084067
+# 18:04:42 
+Test case = /periodic/fss9
+time for sa: 0.672042
+time for lcp: 0.364023
+time for lpf_simple: 0.740046
+time for lpf_next_prev: 0.200012
+time for lpf_sorting: 0.296019
+time for lpf_on_line: 0.224014
+time for lpf_optimal: 0.212013
+# 18:04:45 
+Test case = /periodic/fss10
+time for sa: 3.824239
+time for lcp: 1.736109
+time for lpf_simple: 3.812238
+time for lpf_next_prev: 1.076067
+time for lpf_sorting: 1.316083
+time for lpf_on_line: 0.992062
+time for lpf_optimal: 0.968060
+# 18:04:59 
+Test case = /random/rndA2_8Mb
+time for sa: 1.500095
+time for lcp: 1.536096
+time for lpf_simple: 2.408150
+time for lpf_next_prev: 0.732045
+time for lpf_sorting: 1.096069
+time for lpf_on_line: 0.708045
+time for lpf_optimal: 0.652040
+# 18:05:07 
+Test case = /random/rndA21_8Mb
+time for sa: 1.912120
+time for lcp: 1.536096
+time for lpf_simple: 2.396150
+time for lpf_next_prev: 0.732045
+time for lpf_sorting: 1.152072
+time for lpf_on_line: 0.672043
+time for lpf_optimal: 0.652040
+# 18:05:17 
+Test case = /dna/E.coli
+time for sa: 0.720045
+time for lcp: 0.784049
+time for lpf_simple: 1.216077
+time for lpf_next_prev: 0.348021
+time for lpf_sorting: 0.576036
+time for lpf_on_line: 0.364022
+time for lpf_optimal: 0.336021
+# 18:05:21 
+Test case = /dna/chr19.dna4
+time for sa: 14.736920
+time for lcp: 19.217202
+time for lpf_simple: 27.561722
+time for lpf_next_prev: 6.440402
+time for lpf_sorting: 11.720733
+time for lpf_on_line: 6.876430
+time for lpf_optimal: 6.904431
+# 18:06:55 
+Test case = /dna/chr22.dna4
+time for sa: 6.876430
+time for lcp: 9.412589
+time for lpf_simple: 15.856990
+time for lpf_next_prev: 5.860367
+time for lpf_sorting: 5.632352
+time for lpf_on_line: 3.192200
+time for lpf_optimal: 3.256202
+# 18:07:47 
+Test case = /protein/p16Mb
+time for sa: 3.936246
+time for lcp: 3.360210
+time for lpf_simple: 5.148322
+time for lpf_next_prev: 1.456091
+time for lpf_sorting: 2.288142
+time for lpf_on_line: 1.392088
+time for lpf_optimal: 1.988124
+# 18:08:06 
+Test case = /protein/p32Mb
+time for sa: 8.560535
+time for lcp: 8.848553
+time for lpf_simple: 11.900743
+time for lpf_next_prev: 2.976186
+time for lpf_sorting: 5.504344
+time for lpf_on_line: 3.080193
+time for lpf_optimal: 3.104194
+# 18:08:51 
+Test case = /english/bible
+time for sa: 0.584037
+time for lcp: 0.620038
+time for lpf_simple: 0.952060
+time for lpf_next_prev: 0.300018
+time for lpf_sorting: 0.460030
+time for lpf_on_line: 0.304018
+time for lpf_optimal: 0.288018
+# 18:08:54 
+Test case = /english/howto
+time for sa: 6.784424
+time for lcp: 8.588537
+time for lpf_simple: 12.704794
+time for lpf_next_prev: 3.628227
+time for lpf_sorting: 5.148322
+time for lpf_on_line: 3.600224
+time for lpf_optimal: 3.324208
+# 18:59:12 
+Test case = /fibo/fib_s9227465
+time for sa: 3.416214
+time for lcp: 1.396088
+time for lpf_simple: 2.792174
+time for lpf_next_prev: 0.800049
+time for lpf_sorting: 1.004064
+time for lpf_on_line: 0.660041
+time for lpf_optimal: 0.652040
+# 18:59:23 
+Test case = /fibo/fib_s14930352
+time for sa: 4.816301
+time for lcp: 2.236139
+time for lpf_simple: 4.712295
+time for lpf_next_prev: 1.136072
+time for lpf_sorting: 1.576097
+time for lpf_on_line: 1.056067
+time for lpf_optimal: 1.076067
+# 18:59:40 
+Test case = /periodic/fss9
+time for sa: 0.676042
+time for lcp: 0.368023
+time for lpf_simple: 0.740047
+time for lpf_next_prev: 0.200012
+time for lpf_sorting: 0.296018
+time for lpf_on_line: 0.220014
+time for lpf_optimal: 0.216013
+# 18:59:43 
+Test case = /periodic/fss10
+time for sa: 4.520283
+time for lcp: 1.732108
+time for lpf_simple: 3.812238
+time for lpf_next_prev: 1.068067
+time for lpf_sorting: 1.344083
+time for lpf_on_line: 0.988063
+time for lpf_optimal: 0.964059
+# 18:59:57 
+Test case = /random/rndA2_8Mb
+time for sa: 1.500094
+time for lcp: 1.532096
+time for lpf_simple: 2.416151
+time for lpf_next_prev: 0.736046
+time for lpf_sorting: 1.104069
+time for lpf_on_line: 0.704044
+time for lpf_optimal: 0.652041
+# 19:00:06 
+Test case = /random/rndA21_8Mb
+time for sa: 1.912120
+time for lcp: 1.540096
+time for lpf_simple: 2.404150
+time for lpf_next_prev: 0.732046
+time for lpf_sorting: 1.492093
+time for lpf_on_line: 0.936059
+time for lpf_optimal: 0.652041
+# 19:00:16 
+Test case = /dna/E.coli
+time for sa: 0.720045
+time for lcp: 0.784049
+time for lpf_simple: 1.212076
+time for lpf_next_prev: 0.348022
+time for lpf_sorting: 0.576036
+time for lpf_on_line: 0.364023
+time for lpf_optimal: 0.340021
+# 19:00:20 
+Test case = /dna/chr19.dna4
+time for sa: 13.960873
+time for lcp: 19.885242
+time for lpf_simple: 27.033690
+time for lpf_next_prev: 6.180386
+time for lpf_sorting: 11.872742
+time for lpf_on_line: 6.832427
+time for lpf_optimal: 7.624476
+# 19:01:55 
+Test case = /dna/chr22.dna4
+time for sa: 6.880429
+time for lcp: 8.836553
+time for lpf_simple: 15.888993
+time for lpf_next_prev: 5.856366
+time for lpf_sorting: 5.624352
+time for lpf_on_line: 3.556221
+time for lpf_optimal: 3.280205
+# 19:02:46 
+Test case = /protein/p16Mb
+time for sa: 3.948247
+time for lcp: 3.980248
+time for lpf_simple: 5.160323
+time for lpf_next_prev: 1.456090
+time for lpf_sorting: 2.304145
+time for lpf_on_line: 1.364085
+time for lpf_optimal: 1.352085
+# 19:03:06 
+Test case = /protein/p32Mb
+time for sa: 9.224576
+time for lcp: 8.212513
+time for lpf_simple: 11.900744
+time for lpf_next_prev: 2.980186
+time for lpf_sorting: 5.132321
+time for lpf_on_line: 3.168198
+time for lpf_optimal: 3.076192
+# 19:03:50 
+Test case = /english/bible
+time for sa: 0.580036
+time for lcp: 0.616039
+time for lpf_simple: 0.952059
+time for lpf_next_prev: 0.296019
+time for lpf_sorting: 0.464029
+time for lpf_on_line: 0.300018
+time for lpf_optimal: 0.288018
+# 19:03:53 
+Test case = /english/howto
+time for sa: 6.784425
+time for lcp: 7.940496
+time for lpf_simple: 12.896806
+time for lpf_next_prev: 3.484218
+time for lpf_sorting: 5.324332
+time for lpf_on_line: 3.500219
+time for lpf_optimal: 3.336208
+# 19:54:09 
+Test case = /fibo/fib_s9227465
+time for sa: 2.748172
+time for lcp: 1.400088
+time for lpf_simple: 2.772173
+time for lpf_next_prev: 0.800050
+time for lpf_sorting: 0.968061
+time for lpf_on_line: 0.652040
+time for lpf_optimal: 0.660042
+# 19:54:19 
+Test case = /fibo/fib_s14930352
+time for sa: 4.824302
+time for lcp: 2.196137
+time for lpf_simple: 4.596287
+time for lpf_next_prev: 1.780112
+time for lpf_sorting: 1.592099
+time for lpf_on_line: 1.056067
+time for lpf_optimal: 1.076067
+# 19:54:37 
+Test case = /periodic/fss9
+time for sa: 0.672042
+time for lcp: 0.368023
+time for lpf_simple: 0.740046
+time for lpf_next_prev: 0.204013
+time for lpf_sorting: 0.296018
+time for lpf_on_line: 0.220014
+time for lpf_optimal: 0.212013
+# 19:54:39 
+Test case = /periodic/fss10
+time for sa: 3.820239
+time for lcp: 1.732108
+time for lpf_simple: 3.904244
+time for lpf_next_prev: 1.064066
+time for lpf_sorting: 1.336084
+time for lpf_on_line: 0.988061
+time for lpf_optimal: 0.964061
+# 19:54:54 
+Test case = /random/rndA2_8Mb
+time for sa: 1.500093
+time for lcp: 1.528095
+time for lpf_simple: 2.396150
+time for lpf_next_prev: 0.736047
+time for lpf_sorting: 1.096068
+time for lpf_on_line: 0.700044
+time for lpf_optimal: 0.652041
+# 19:55:02 
+Test case = /random/rndA21_8Mb
+time for sa: 1.912119
+time for lcp: 2.180136
+time for lpf_simple: 2.400151
+time for lpf_next_prev: 0.728045
+time for lpf_sorting: 1.156072
+time for lpf_on_line: 0.656041
+time for lpf_optimal: 0.652041
+# 19:55:12 
+Test case = /dna/E.coli
+time for sa: 0.720045
+time for lcp: 0.788049
+time for lpf_simple: 1.208075
+time for lpf_next_prev: 0.348023
+time for lpf_sorting: 0.576036
+time for lpf_on_line: 0.364023
+time for lpf_optimal: 0.348021
+# 19:55:17 
+Test case = /dna/chr19.dna4
+time for sa: 13.968873
+time for lcp: 19.877242
+time for lpf_simple: 27.001688
+time for lpf_next_prev: 6.128383
+time for lpf_sorting: 13.136821
+time for lpf_on_line: 6.768423
+time for lpf_optimal: 6.816426
+# 19:56:51 
+Test case = /dna/chr22.dna4
+time for sa: 6.872429
+time for lcp: 10.040627
+time for lpf_simple: 15.208951
+time for lpf_next_prev: 5.832365
+time for lpf_sorting: 6.224389
+time for lpf_on_line: 4.012251
+time for lpf_optimal: 3.268204
+# 19:57:44 
+Test case = /protein/p16Mb
+time for sa: 3.940246
+time for lcp: 3.356210
+time for lpf_simple: 5.136321
+time for lpf_next_prev: 1.460091
+time for lpf_sorting: 2.292144
+time for lpf_on_line: 1.936121
+time for lpf_optimal: 1.408088
+# 19:58:04 
+Test case = /protein/p32Mb
+time for sa: 8.572536
+time for lcp: 8.196513
+time for lpf_simple: 12.432776
+time for lpf_next_prev: 3.132196
+time for lpf_sorting: 5.704356
+time for lpf_on_line: 2.996188
+time for lpf_optimal: 3.096194
+# 19:58:48 
+Test case = /english/bible
+time for sa: 0.584037
+time for lcp: 0.616038
+time for lpf_simple: 0.960060
+time for lpf_next_prev: 0.296019
+time for lpf_sorting: 0.464028
+time for lpf_on_line: 0.300019
+time for lpf_optimal: 0.292018
+# 19:58:52 
+Test case = /english/howto
+time for sa: 6.788425
+time for lcp: 9.256578
+time for lpf_simple: 12.868804
+time for lpf_next_prev: 3.468217
+time for lpf_sorting: 5.360335
+time for lpf_on_line: 3.580224
+time for lpf_optimal: 3.992249
+# 20:49:09 
+Test case = /fibo/fib_s9227465
+time for sa: 2.752172
+time for lcp: 1.404088
+time for lpf_simple: 2.860179
+time for lpf_next_prev: 0.804050
+time for lpf_sorting: 1.444090
+time for lpf_on_line: 0.832052
+time for lpf_optimal: 0.660041
+# 20:49:20 
+Test case = /fibo/fib_s14930352
+time for sa: 4.828302
+time for lcp: 2.292144
+time for lpf_simple: 4.576285
+time for lpf_next_prev: 1.168073
+time for lpf_sorting: 1.544097
+time for lpf_on_line: 1.060066
+time for lpf_optimal: 1.076068
+# 20:49:37 
+Test case = /periodic/fss9
+time for sa: 0.676042
+time for lcp: 0.372024
+time for lpf_simple: 0.740045
+time for lpf_next_prev: 0.204013
+time for lpf_sorting: 0.296019
+time for lpf_on_line: 0.220014
+time for lpf_optimal: 0.216013
+# 20:49:40 
+Test case = /periodic/fss10
+time for sa: 3.820238
+time for lcp: 1.732109
+time for lpf_simple: 3.900244
+time for lpf_next_prev: 1.076067
+time for lpf_sorting: 1.352085
+time for lpf_on_line: 1.008062
+time for lpf_optimal: 1.000063
+# 20:49:54 
+Test case = /random/rndA2_8Mb
+time for sa: 1.504095
+time for lcp: 1.532095
+time for lpf_simple: 3.044191
+time for lpf_next_prev: 0.736045
+time for lpf_sorting: 1.100070
+time for lpf_on_line: 0.704043
+time for lpf_optimal: 0.652041
+# 20:50:03 
+Test case = /random/rndA21_8Mb
+time for sa: 1.912120
+time for lcp: 1.536095
+time for lpf_simple: 2.404150
+time for lpf_next_prev: 0.732047
+time for lpf_sorting: 1.156071
+time for lpf_on_line: 0.672043
+time for lpf_optimal: 0.652040
+# 20:50:12 
+Test case = /dna/E.coli
+time for sa: 0.720045
+time for lcp: 0.784049
+time for lpf_simple: 1.216076
+time for lpf_next_prev: 0.344022
+time for lpf_sorting: 0.576036
+time for lpf_on_line: 0.364022
+time for lpf_optimal: 0.340021
+# 20:50:17 
+Test case = /dna/chr19.dna4
+time for sa: 14.660916
+time for lcp: 19.157197
+time for lpf_simple: 27.013689
+time for lpf_next_prev: 6.808426
+time for lpf_sorting: 11.740733
+time for lpf_on_line: 6.900431
+time for lpf_optimal: 6.780424
+# 20:51:51 
+Test case = /dna/chr22.dna4
+time for sa: 7.520470
+time for lcp: 8.824551
+time for lpf_simple: 15.208950
+time for lpf_next_prev: 6.692418
+time for lpf_sorting: 5.548347
+time for lpf_on_line: 3.284205
+time for lpf_optimal: 3.276205
+# 20:52:42 
+Test case = /protein/p16Mb
+time for sa: 3.936246
+time for lcp: 3.356210
+time for lpf_simple: 5.144321
+time for lpf_next_prev: 1.456091
+time for lpf_sorting: 2.856179
+time for lpf_on_line: 1.368085
+time for lpf_optimal: 1.348084
+# 20:53:02 
+Test case = /protein/p32Mb
+time for sa: 9.228576
+time for lcp: 8.192512
+time for lpf_simple: 12.548785
+time for lpf_next_prev: 2.976186
+time for lpf_sorting: 5.688355
+time for lpf_on_line: 3.172198
+time for lpf_optimal: 3.072193
+# 20:53:47 
+Test case = /english/bible
+time for sa: 0.584036
+time for lcp: 0.620039
+time for lpf_simple: 0.952060
+time for lpf_next_prev: 0.296018
+time for lpf_sorting: 0.464029
+time for lpf_on_line: 0.300019
+time for lpf_optimal: 0.288018
+# 20:53:51 
+Test case = /english/howto
+time for sa: 7.440466
+time for lcp: 7.972497
+time for lpf_simple: 12.856805
+time for lpf_next_prev: 3.460216
+time for lpf_sorting: 5.860366
+time for lpf_on_line: 3.572223
+time for lpf_optimal: 3.328208
+# 21:44:05 
+Test case = /fibo/fib_s9227465
+time for sa: 2.756172
+time for lcp: 1.400087
+time for lpf_simple: 2.772174
+time for lpf_next_prev: 0.796049
+time for lpf_sorting: 0.968061
+time for lpf_on_line: 0.656041
+time for lpf_optimal: 0.656041
+# 21:44:16 
+Test case = /fibo/fib_s14930352
+time for sa: 4.828302
+time for lcp: 2.192138
+time for lpf_simple: 4.612288
+time for lpf_next_prev: 1.168073
+time for lpf_sorting: 1.620101
+time for lpf_on_line: 1.060066
+time for lpf_optimal: 1.076068
+# 21:44:32 
+Test case = /periodic/fss9
+time for sa: 0.676042
+time for lcp: 0.372023
+time for lpf_simple: 0.740046
+time for lpf_next_prev: 0.204013
+time for lpf_sorting: 0.296018
+time for lpf_on_line: 0.220014
+time for lpf_optimal: 0.212013
+# 21:44:35 
+Test case = /periodic/fss10
+time for sa: 3.812239
+time for lcp: 1.724107
+time for lpf_simple: 3.864242
+time for lpf_next_prev: 1.064066
+time for lpf_sorting: 1.356085
+time for lpf_on_line: 0.992062
+time for lpf_optimal: 1.560097
+# 21:44:50 
+Test case = /random/rndA2_8Mb
+time for sa: 1.500094
+time for lcp: 1.524095
+time for lpf_simple: 2.396151
+time for lpf_next_prev: 0.736045
+time for lpf_sorting: 1.100069
+time for lpf_on_line: 0.704044
+time for lpf_optimal: 0.652041
+# 21:44:59 
+Test case = /random/rndA21_8Mb
+time for sa: 1.908119
+time for lcp: 1.544098
+time for lpf_simple: 2.400149
+time for lpf_next_prev: 0.732046
+time for lpf_sorting: 1.152072
+time for lpf_on_line: 0.672042
+time for lpf_optimal: 0.652041
+# 21:45:08 
+Test case = /dna/E.coli
+time for sa: 0.724045
+time for lcp: 0.784049
+time for lpf_simple: 1.836115
+time for lpf_next_prev: 0.348021
+time for lpf_sorting: 0.576037
+time for lpf_on_line: 0.364023
+time for lpf_optimal: 0.340021
+# 21:45:13 
+Test case = /dna/chr19.dna4
+time for sa: 13.940870
+time for lcp: 19.133196
+time for lpf_simple: 28.277768
+time for lpf_next_prev: 6.152384
+time for lpf_sorting: 11.852741
+time for lpf_on_line: 6.796425
+time for lpf_optimal: 6.728420
+# 21:46:47 
+Test case = /dna/chr22.dna4
+time for sa: 7.576473
+time for lcp: 8.800550
+time for lpf_simple: 15.856991
+time for lpf_next_prev: 5.812363
+time for lpf_sorting: 5.512345
+time for lpf_on_line: 3.260203
+time for lpf_optimal: 3.212201
+# 21:47:38 
+Test case = /protein/p16Mb
+time for sa: 3.940246
+time for lcp: 4.000250
+time for lpf_simple: 5.816364
+time for lpf_next_prev: 1.452090
+time for lpf_sorting: 2.296144
+time for lpf_on_line: 1.372085
+time for lpf_optimal: 1.348085
+# 21:47:58 
+Test case = /protein/p32Mb
+time for sa: 8.576536
+time for lcp: 9.536596
+time for lpf_simple: 11.960748
+time for lpf_next_prev: 2.980187
+time for lpf_sorting: 5.168322
+time for lpf_on_line: 3.004188
+time for lpf_optimal: 3.060191
+# 21:48:43 
+Test case = /english/bible
+time for sa: 0.580036
+time for lcp: 0.616039
+time for lpf_simple: 0.952059
+time for lpf_next_prev: 0.296019
+time for lpf_sorting: 0.460028
+time for lpf_on_line: 0.304019
+time for lpf_optimal: 0.292019
+# 21:48:47 
+Test case = /english/howto
+time for sa: 6.804426
+time for lcp: 7.976498
+time for lpf_simple: 12.416776
+time for lpf_next_prev: 4.040253
+time for lpf_sorting: 5.268329
+time for lpf_on_line: 3.476217
+time for lpf_optimal: 3.320208
+# 22:38:33 
+Test case = /fibo/fib_s9227465
+time for sa: 2.752172
+time for lcp: 1.396088
+time for lpf_simple: 2.800175
+time for lpf_next_prev: 1.188074
+time for lpf_sorting: 1.276080
+time for lpf_on_line: 0.652040
+time for lpf_optimal: 0.660042
+# 22:38:44 
+Test case = /fibo/fib_s14930352
+time for sa: 4.824301
+time for lcp: 2.916183
+time for lpf_simple: 5.240327
+time for lpf_next_prev: 1.148071
+time for lpf_sorting: 1.588100
+time for lpf_on_line: 1.052065
+time for lpf_optimal: 1.084069
+# 22:39:02 
+Test case = /periodic/fss9
+time for sa: 0.672042
+time for lcp: 0.376024
+time for lpf_simple: 0.740046
+time for lpf_next_prev: 0.200012
+time for lpf_sorting: 0.296019
+time for lpf_on_line: 0.220013
+time for lpf_optimal: 0.212014
+# 22:39:05 
+Test case = /periodic/fss10
+time for sa: 3.820238
+time for lcp: 1.736109
+time for lpf_simple: 3.920244
+time for lpf_next_prev: 1.080068
+time for lpf_sorting: 1.352085
+time for lpf_on_line: 0.992062
+time for lpf_optimal: 0.968060
+# 22:39:19 
+Test case = /random/rndA2_8Mb
+time for sa: 1.504093
+time for lcp: 1.536097
+time for lpf_simple: 2.404150
+time for lpf_next_prev: 0.736046
+time for lpf_sorting: 1.104069
+time for lpf_on_line: 0.700044
+time for lpf_optimal: 0.652041
+# 22:39:28 
+Test case = /random/rndA21_8Mb
+time for sa: 1.916120
+time for lcp: 1.544097
+time for lpf_simple: 2.400150
+time for lpf_next_prev: 0.740046
+time for lpf_sorting: 1.156072
+time for lpf_on_line: 0.664042
+time for lpf_optimal: 0.656041
+# 22:39:37 
+Test case = /dna/E.coli
+time for sa: 0.720045
+time for lcp: 0.784049
+time for lpf_simple: 1.212076
+time for lpf_next_prev: 0.460028
+time for lpf_sorting: 1.016064
+time for lpf_on_line: 0.360022
+time for lpf_optimal: 0.340022
+# 22:39:42 
+Test case = /dna/chr19.dna4
+time for sa: 14.680918
+time for lcp: 19.169198
+time for lpf_simple: 26.365648
+time for lpf_next_prev: 6.140383
+time for lpf_sorting: 11.728733
+time for lpf_on_line: 6.884431
+time for lpf_optimal: 6.908432
+# 22:41:15 
+Test case = /dna/chr22.dna4
+time for sa: 6.876430
+time for lcp: 8.832552
+time for lpf_simple: 15.832989
+time for lpf_next_prev: 5.828365
+time for lpf_sorting: 5.536346
+time for lpf_on_line: 3.196199
+time for lpf_optimal: 3.216202
+# 22:42:05 
+Test case = /protein/p16Mb
+time for sa: 3.940246
+time for lcp: 3.336209
+time for lpf_simple: 5.144321
+time for lpf_next_prev: 1.456091
+time for lpf_sorting: 2.288144
+time for lpf_on_line: 1.380085
+time for lpf_optimal: 1.344084
+# 22:42:24 
+Test case = /protein/p32Mb
+time for sa: 8.568536
+time for lcp: 8.840552
+time for lpf_simple: 11.904745
+time for lpf_next_prev: 3.000187
+time for lpf_sorting: 5.144322
+time for lpf_on_line: 2.984186
+time for lpf_optimal: 3.068192
+# 22:43:08 
+Test case = /english/bible
+time for sa: 0.584037
+time for lcp: 0.620038
+time for lpf_simple: 0.952060
+time for lpf_next_prev: 0.300019
+time for lpf_sorting: 0.460028
+time for lpf_on_line: 0.300019
+time for lpf_optimal: 0.288018
+# 22:43:12 
+Test case = /english/howto
+time for sa: 6.792425
+time for lcp: 7.928496
+time for lpf_simple: 12.192761
+time for lpf_next_prev: 4.260267
+time for lpf_sorting: 5.228326
+time for lpf_on_line: 3.484218
+time for lpf_optimal: 3.316207
+# 23:33:02 
+Test case = /fibo/fib_s9227465
+time for sa: 2.752172
+time for lcp: 1.392087
+time for lpf_simple: 2.800175
+time for lpf_next_prev: 0.800050
+time for lpf_sorting: 1.016063
+time for lpf_on_line: 0.660042
+time for lpf_optimal: 0.656040
+# 23:33:12 
+Test case = /fibo/fib_s14930352
+time for sa: 4.820302
+time for lcp: 2.272142
+time for lpf_simple: 4.496281
+time for lpf_next_prev: 1.160072
+time for lpf_sorting: 1.572098
+time for lpf_on_line: 1.056066
+time for lpf_optimal: 1.080068
+# 23:33:29 
+Test case = /periodic/fss9
+time for sa: 0.672042
+time for lcp: 0.372023
+time for lpf_simple: 0.740046
+time for lpf_next_prev: 0.200013
+time for lpf_sorting: 0.296018
+time for lpf_on_line: 0.224014
+time for lpf_optimal: 0.212014
+# 23:33:32 
+Test case = /periodic/fss10
+time for sa: 3.812239
+time for lcp: 2.340145
+time for lpf_simple: 3.860242
+time for lpf_next_prev: 1.072067
+time for lpf_sorting: 1.356085
+time for lpf_on_line: 0.988061
+time for lpf_optimal: 0.964061
+# 23:33:47 
+Test case = /random/rndA2_8Mb
+time for sa: 1.504093
+time for lcp: 1.528096
+time for lpf_simple: 2.400150
+time for lpf_next_prev: 0.736046
+time for lpf_sorting: 1.100069
+time for lpf_on_line: 0.700043
+time for lpf_optimal: 0.652042
+# 23:33:55 
+Test case = /random/rndA21_8Mb
+time for sa: 1.912120
+time for lcp: 1.536096
+time for lpf_simple: 2.396150
+time for lpf_next_prev: 0.728045
+time for lpf_sorting: 1.152072
+time for lpf_on_line: 0.672042
+time for lpf_optimal: 0.652041
+# 23:34:04 
+Test case = /dna/E.coli
+time for sa: 0.720045
+time for lcp: 0.788049
+time for lpf_simple: 1.212076
+time for lpf_next_prev: 0.348022
+time for lpf_sorting: 0.576036
+time for lpf_on_line: 0.360022
+time for lpf_optimal: 0.340021
+# 23:34:09 
+Test case = /dna/chr19.dna4
+time for sa: 13.920870
+time for lcp: 19.865242
+time for lpf_simple: 26.373648
+time for lpf_next_prev: 6.148384
+time for lpf_sorting: 11.768735
+time for lpf_on_line: 7.532471
+time for lpf_optimal: 6.520408
+# 23:35:42 
+Test case = /dna/chr22.dna4
+time for sa: 6.880430
+time for lcp: 8.784549
+time for lpf_simple: 15.212951
+time for lpf_next_prev: 5.836365
+time for lpf_sorting: 5.512344
+time for lpf_on_line: 3.332208
+time for lpf_optimal: 3.764236
+# 23:36:32 
+Test case = /protein/p16Mb
+time for sa: 3.936246
+time for lcp: 3.344209
+time for lpf_simple: 5.128321
+time for lpf_next_prev: 1.452091
+time for lpf_sorting: 2.292142
+time for lpf_on_line: 1.380087
+time for lpf_optimal: 1.340084
+# 23:36:52 
+Test case = /protein/p32Mb
+time for sa: 8.572535
+time for lcp: 8.168511
+time for lpf_simple: 11.896743
+time for lpf_next_prev: 2.976186
+time for lpf_sorting: 5.056316
+time for lpf_on_line: 3.756235
+time for lpf_optimal: 2.984186
+# 23:37:35 
+Test case = /english/bible
+time for sa: 0.584037
+time for lcp: 0.620038
+time for lpf_simple: 0.952059
+time for lpf_next_prev: 0.296019
+time for lpf_sorting: 0.464029
+time for lpf_on_line: 0.300019
+time for lpf_optimal: 0.288018
+# 23:37:39 
+Test case = /english/howto
+time for sa: 6.784425
+time for lcp: 7.928494
+time for lpf_simple: 12.184763
+time for lpf_next_prev: 3.464216
+time for lpf_sorting: 5.180323
+time for lpf_on_line: 3.488219
+time for lpf_optimal: 3.320207
