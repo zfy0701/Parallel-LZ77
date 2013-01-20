@@ -21,7 +21,7 @@ def shellGetOutput(str) :
   process = subprocess.Popen(str,shell=True,stdout=subprocess.PIPE,
                              stderr=subprocess.PIPE)
   output, err = process.communicate()
-  
+
   if (len(err) > 0):
       raise NameError(str+"\n"+output+err)
   return output
@@ -39,18 +39,18 @@ processors = [1,2,4]+range(8,80+1,8)
 for testfile in testfiles :
   for p in processors :
     ss = "./plz77_1 -i testData/"+testfile+" -p "+`p`+" -f 0 "#+" -cilk_set_worker_count "+`p`
-    print `p` + " -f 0 " + testfile 
+    print `p` + " -f 0 " + testfile
     print shellGetOutput(ss)
     sys.stdout.flush()
 for testfile in testfiles:
   for p in processors :
     ss = "./plz77_1 -i testData/"+testfile+" -p "+`p`+" -f 1 "#+" -cilk_set_worker_count "+`p`
-    print `p` + " -f 1 " + testfile 
+    print `p` + " -f 1 " + testfile
     print shellGetOutput(ss)
     sys.stdout.flush()
 for testfile in testfiles:
   for p in processors :
     ss = "./plz77_1 -i testData/"+testfile+" -p "+`p`+" -f 2 "#+" -cilk_set_worker_count "+`p`
-    print `p` + " -f 2 " + testfile 
+    print `p` + " -f 2 " + testfile
     print shellGetOutput(ss)
     sys.stdout.flush()

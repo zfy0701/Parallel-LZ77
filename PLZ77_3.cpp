@@ -16,6 +16,7 @@
 
 using namespace std;
 
+// TODO: this module should be update to the new interface.
 pair<int *, int> ParallelLPFtoLZ(int *lpf, int n);
 
 pair<int *, int> ParallelLZ77(int *s, int n) {
@@ -112,7 +113,6 @@ pair<int *, int> ParallelLZ77(int *s, int n) {
     lpf[minLabel[i]] = len;
   }
   lpf[0] = 0;
-
 
   nextTime("\tget lpf");
 
