@@ -1,7 +1,7 @@
-// This code is part of the 15418 course project: Implementation and Comparison
-// of Parallel LZ77 and LZ78 Algorithms and DCC 2013 paper: Practical Parallel
-// Lempel-Ziv Factorization
-// Copyright (c) 2012 Fuyao Zhao, Julian Shun
+// This code is part of the Problem Based Benchmark Suite (PBBS), 15418 course
+// project: Implementation and Comparison of Parallel LZ77 and LZ78 Algorithms
+// and DCC 2013 paper: Practical Parallel Lempel-Ziv Factorization
+// Copyright (c) 2012 Julian Shun, Fuyao Zhao and the PBBS team
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
 // copy of this software and associated documentation files (the
