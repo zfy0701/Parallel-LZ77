@@ -144,21 +144,21 @@ inline bool CCAS(int *ptr, int oldv, int newv) {
 
 inline bool writeMax(int *a, int b) {
   int c; bool r=0;
-  do c = *a; 
+  do c = *a;
   while (c < b && !(r=CAS(a,c,b)));
   return r;
 }
 
 inline bool writeMin(int *a, int b) {
   int c; bool r = 0;
-  do c = *a; 
+  do c = *a;
   while (c > b && !(r=CAS(a,c,b)));
   return r;
 }
 
 inline bool writeMin(long *a, long b) {
   long c; bool r = 0;
-  do c = *a; 
+  do c = *a;
   while (c > b && !(r=CAS(a,c,b)));
   return r;
 }

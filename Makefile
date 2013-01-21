@@ -31,7 +31,7 @@ SEQUENCE = sequence.h seq.h $(BASIC)
 INTSORT = intSort.h transpose.h
 STRINGGEN = $(ITEMGEN) stringGen.h
 
-all: plz77_1 lz77_1 lz77_2 lz77_3
+all: plz77_1 lz77_1
 
 .PHONY: clean
 
@@ -59,18 +59,6 @@ LZ77_1.o: LZ77_1.cpp  test.h
 lz77_1: LZ77_1.o suffixArray.o rangeMin.o ANSV.o
 	$(PCC) $(LFLAGS) -o $@ $^
 
-LZ77_2.o: LZ77_2.cpp test.h
-	$(PCC) $(CFLAGS) -c $<
-
-lz77_2: LZ77_2.o suffixArray.o rangeMin.o
-	$(PCC) $(LFLAGS) -o $@ $^
-
-LZ77_3.o: LZ77_3.cpp test.h
-	$(PCC) $(CFLAGS) -c $<
-
-lz77_3: LZ77_3.o rangeMin.o suffixArray.o
-	$(PCC) $(LFLAGS) -o $@ $^
-
 LPF_LZ.o: LPF_LZ.cpp
 	$(PCC) $(CFLAGS) -c $<
 
@@ -78,16 +66,4 @@ PLZ77_1.o: PLZ77_1.cpp test.h transpose.h intSort.h sequence.h
 	$(PCC) $(CFLAGS) -c $<
 
 plz77_1: PLZ77_1.o ANSV.o rangeMin.o suffixArray.o segmentTree.o LPF_LZ.o
-	$(PCC) $(LFLAGS) -o $@ $^
-
-# PLZ77_2.o: PLZ77_2.cpp test.h
-# 	$(PCC) $(CFLAGS) -c $<
-
-# plz77_2: PLZ77_2.o rangeMin.o suffixArray.o mergeSuffixArrayToTree.o
-# 	$(PCC) $(CFLAGS) -o $@ $^
-
-PLZ77_3.o: PLZ77_3.cpp test.h
-	$(PCC) $(CFLAGS) -c $<
-
-plz77_3: PLZ77_3.o rangeMin.o suffixArray.o mergeSuffixArrayToTree.o LPF_LZ.o
 	$(PCC) $(LFLAGS) -o $@ $^
