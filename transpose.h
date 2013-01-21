@@ -95,7 +95,6 @@ struct blockTrans {
   void trans(intT rCount, intT cCount) {
     transR(0,rCount,cCount,0,cCount,rCount);
   }
-
 } ;
 
 #endif // A_TRANSPOSE_INCLUDED
