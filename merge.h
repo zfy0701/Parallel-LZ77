@@ -1,5 +1,7 @@
-// This code is part of the Problem Based Benchmark Suite (PBBS)
-// Copyright (c) 2011 Guy Blelloch, Julian Shun and the PBBS team
+// This code is part of the 15418 course project: Implementation and Comparison
+// of Parallel LZ77 and LZ78 Algorithms and DCC 2013 paper: Practical Parallel
+// Lempel-Ziv Factorization
+// Copyright (c) 2012 Fuyao Zhao, Julian Shun
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
 // copy of this software and associated documentation files (the
@@ -19,6 +21,7 @@
 // LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 // OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
 #ifndef _MERGE_H
 #define _MERGE_H
 
@@ -78,11 +81,11 @@ void merge(ET *S1, intT l1, ET *S2, intT l2, ET *R, F f) {
                 intT n1 = std::min(SPLIT_BSIZE, l1 - start1);
                 intT start2 = pos1[i - 1];
                 intT n2 = pos1[i] - start2;
-                
+
                 std::merge(S1+start1, S1+start1+n1, S2+start2, S2+start2+n2, R+start1+start2, f);
             }
             }
-            
+
             delete --pos1;
         }
     } else {
@@ -91,35 +94,35 @@ void merge(ET *S1, intT l1, ET *S2, intT l2, ET *R, F f) {
 }
 
 #else
-template <class ET, class F> 
+template <class ET, class F>
 void merge(ET* S1, intT l1, ET* S2, intT l2, ET* R, F f) {
   intT lr = l1 + l2; //cout<<"merge "<<lr<<endl;
-  if (lr > _MERGE_BSIZE) { 
+  if (lr > _MERGE_BSIZE) {
     if (l2>l1)  merge(S2,l2,S1,l1,R,f);
     else {
       intT m1 = l1/2;
-      intT m2 = binSearch(S2,l2,S1[m1],f);  
-      parallel_spawn 
+      intT m2 = binSearch(S2,l2,S1[m1],f);
+      parallel_spawn
       merge(S1,m1,S2,m2,R,f);
       merge(S1+m1,l1-m1,S2+m2,l2-m2,R+m1+m2,f);
       parallel_sync;
     }
   } else {
-    ET* pR = R; 
-    ET* pS1 = S1; 
+    ET* pR = R;
+    ET* pS1 = S1;
     ET* pS2 = S2;
-    ET* eS1 = S1+l1; 
+    ET* eS1 = S1+l1;
     ET* eS2 = S2+l2;
     while (true) {
       *pR++ = f(*pS2,*pS1) ? *pS2++ : *pS1++;
       if (pS1==eS1) {
 	//while(pS2 != eS2) *pR++ = *pS2++;
-	std::copy(pS2,eS2,pR); 
+	std::copy(pS2,eS2,pR);
 	break;
       }
       if (pS2==eS2) {
 	//while(pS1 != eS1) *pR++ = *pS1++;
-	std::copy(pS1,eS1,pR); 
+	std::copy(pS1,eS1,pR);
 	break;
       }
     }
