@@ -148,18 +148,21 @@ inline int test_main(int argc, char *argv[], char *algoname, std::pair< std::pai
 
   timer testTm;
   s[n] = s[n + 1] = s[n + 2] = 0;
-  testTm.start();
+  for(int r=0;r<4;r++){
+    testTm.start();
 
-  std::pair< std::pair<intT, intT>*, intT> res = lz77(s, n);
-  intT maxoffset = n - res.first[res.second - 1].first;
-  for (intT i = 0; i < res.second - 1; i++) {
-    maxoffset = std::max(maxoffset, res.first[i + 1].first - res.first[i].first);
+    std::pair< std::pair<intT, intT>*, intT> res = lz77(s, n);
+    intT maxoffset = n - res.first[res.second - 1].first;
+    for (intT i = 0; i < res.second - 1; i++) {
+      maxoffset = std::max(maxoffset, res.first[i + 1].first - res.first[i].first);
+    }
+
+    cout << " * result: size = " << res.second << ", max offset = " << maxoffset << endl;
+    testTm.reportNext(" * Total time:");
+  
+    printf("***************** TEST ENDED *****************\n\n");
+    free(res.first);
   }
-
-  cout << " * result: size = " << res.second << ", max offset = " << maxoffset << endl;
-  testTm.reportNext(" * Total time:");
-  printf("***************** TEST ENDED *****************\n\n");
-  free(res.first);
   free(s);
   return 0;
 }
