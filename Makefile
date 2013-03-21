@@ -15,8 +15,8 @@ else ifdef CILK
 # PCC = cilk++
 # CFLAGS = -O2 -DCILK -Wno-cilk-for $(INTT)
 PCC = $(CC)
-CFLAGS = -O2 -lcilkrts -DCILK
-LFLAGS = -O2 -lcilkrts -DCILK
+CFLAGS = -O2 -fcilkplus -lcilkrts -DCILK
+LFLAGS = -O2 -fcilkplus -lcilkrts -DCILK
 else ifdef CILKP
 PCC = icpc
 CFLAGS = -O2 -DCILKP $(INTT)

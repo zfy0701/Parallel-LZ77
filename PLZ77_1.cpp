@@ -45,7 +45,7 @@ void getLPF_0(intT *s, intT *sa, intT n, intT *lcp, intT *lpf, intT *prev_occ) {
   intT *l = new intT[n], *r = new intT[n];
 
   ComputeANSV(sa, n, l, r);
-  nextTime("\tansn");
+  nextTime("\tansv");
 
   myRMQ rmq(lcp, n);
 
@@ -87,7 +87,7 @@ void getLPF_1(intT *s, intT *sa, intT n, intT *lcp, intT *lpf, intT *prev_occ) {
   intT *rank = lpf; //reuse the space
 
   ComputeANSV(sa, n, leftElements, rightElements);
-  nextTime("\tansn");
+  nextTime("\tansv");
 
   SegmentTree st;
   st.BuildTree(lcp, n);
@@ -174,7 +174,7 @@ void getLPF_2(intT *s, intT *sa, intT n, intT *lcp, intT *lpf, intT *prev_occ) {
   intT *rank = lpf;
 
   ComputeANSV(sa, n, leftElements, rightElements);
-  nextTime("\tansn");
+  nextTime("\tansv");
 
   parallel_for (intT i = 0; i < n; i++) {
     rank[sa[i]] = i;

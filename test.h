@@ -46,11 +46,11 @@ inline void generateText(intT *a, intT n, int sigma)  {
 inline void Usage(char *program) {
   printf("Usage: %s [options]\n", program);
   printf("-p <num>\tNumber of processors to use\n");
-  printf("-d <num>\t2^n of character will be processed\n");
-  printf("-r <num>\tGenerete random string with the specified alphabet size\n");
+  //printf("-d <num>\t2^n of character will be processed\n");
+  //printf("-r <num>\tGenerete random string with the specified alphabet size\n");
   printf("-i <file>\tInput file name\n");
-  printf("-o <file>\tOutput file name\n");
-  printf("-f <file>\tChoose different algorithm for LPF\n");
+  //printf("-o <file>\tOutput file name\n");
+  printf("-f <num>\tChoose different algorithm for LPF\n");
   printf("-h \t\tDisplay this help\n");
 }
 
