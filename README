@@ -1,0 +1,28 @@
+This code is part of the paper "Practical Parallel Lempel-Ziv
+Factorization", by Julian Shun and Fuyao Zhao, presented at Data
+Compression Conference (DCC) 2013.
+
+The code can be compiled with the following compilers by defining the
+respective environment variables. Make sure at most one of the
+following variables are set.
+
+The Cilk Plus compiler in g++ version 4.8.0 (define CILK).
+The Cilk Plus compiler in icpc (define CILKP).
+OpenMP (define OPENMP).
+Sequential g++ (define none of the above variables).
+
+To compile, simply run "make". See the Makefile for more details.
+
+Our parallel code can be run by executing plz77_1 with the following arguments:
+-p <num>: Number of processors to use (default is 1)
+-i <file>: Input file name
+-f <num>: The variant of the parallel algorithm to use. "0" corresponds to PLZ1, "1" correponds to PLZ2, and "2" corresponds to PLZ3. PLZ3 is the fastest of the three; see the paaper for more details.
+
+Our sequential code can be run by executing lz77_1. The arguments are
+the same as above, except you do not need to set the number of
+processors.
+
+The algorithm is run for 4 iterations by default (the last 3
+iterations are usually faster due to cache effects). This can be
+modified in test.h.
+

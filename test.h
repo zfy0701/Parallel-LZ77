@@ -46,11 +46,11 @@ inline void generateText(intT *a, intT n, int sigma)  {
 inline void Usage(char *program) {
   printf("Usage: %s [options]\n", program);
   printf("-p <num>\tNumber of processors to use\n");
-  printf("-d <num>\t2^n of character will be processed\n");
-  printf("-r <num>\tGenerete random string with the specified alphabet size\n");
+  //printf("-d <num>\t2^n of character will be processed\n");
+  //printf("-r <num>\tGenerete random string with the specified alphabet size\n");
   printf("-i <file>\tInput file name\n");
-  printf("-o <file>\tOutput file name\n");
-  printf("-f <file>\tChoose different algorithm for LPF\n");
+  //printf("-o <file>\tOutput file name\n");
+  printf("-f <num>\tChoose different algorithm for LPF\n");
   printf("-h \t\tDisplay this help\n");
 }
 
@@ -148,18 +148,21 @@ inline int test_main(int argc, char *argv[], char *algoname, std::pair< std::pai
 
   timer testTm;
   s[n] = s[n + 1] = s[n + 2] = 0;
-  testTm.start();
+  for(int r=0;r<4;r++){
+    testTm.start();
 
-  std::pair< std::pair<intT, intT>*, intT> res = lz77(s, n);
-  intT maxoffset = n - res.first[res.second - 1].first;
-  for (intT i = 0; i < res.second - 1; i++) {
-    maxoffset = std::max(maxoffset, res.first[i + 1].first - res.first[i].first);
+    std::pair< std::pair<intT, intT>*, intT> res = lz77(s, n);
+    intT maxoffset = n - res.first[res.second - 1].first;
+    for (intT i = 0; i < res.second - 1; i++) {
+      maxoffset = std::max(maxoffset, res.first[i + 1].first - res.first[i].first);
+    }
+
+    cout << " * result: size = " << res.second << ", max offset = " << maxoffset << endl;
+    testTm.reportNext(" * Total time:");
+  
+    printf("***************** TEST ENDED *****************\n\n");
+    free(res.first);
   }
-
-  cout << " * result: size = " << res.second << ", max offset = " << maxoffset << endl;
-  testTm.reportNext(" * Total time:");
-  printf("***************** TEST ENDED *****************\n\n");
-  free(res.first);
   free(s);
   return 0;
 }
